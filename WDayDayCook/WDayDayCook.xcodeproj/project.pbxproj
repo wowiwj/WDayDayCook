@@ -7,12 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		99B8910E1D44788A00261A84 /* NewFeatureController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99B8910D1D44788A00261A84 /* NewFeatureController.swift */; };
+		99B891101D447C4100261A84 /* loadingVideo.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 99B8910F1D447C4100261A84 /* loadingVideo.mp4 */; };
 		99FA8AE01D4469120029E898 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99FA8ADF1D4469120029E898 /* AppDelegate.swift */; };
 		99FA8AE51D4469120029E898 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 99FA8AE31D4469120029E898 /* Main.storyboard */; };
 		99FA8AE71D4469120029E898 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 99FA8AE61D4469120029E898 /* Assets.xcassets */; };
 		99FA8AEA1D4469120029E898 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 99FA8AE81D4469120029E898 /* LaunchScreen.storyboard */; };
 		99FA8AF51D4469120029E898 /* WDayDayCookTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99FA8AF41D4469120029E898 /* WDayDayCookTests.swift */; };
 		99FA8B001D4469120029E898 /* WDayDayCookUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99FA8AFF1D4469120029E898 /* WDayDayCookUITests.swift */; };
+		B65D97C1589950090769B5F7 /* Pods_WDayDayCook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 34888801C8AEAB4046589C3C /* Pods_WDayDayCook.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -33,6 +36,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		34888801C8AEAB4046589C3C /* Pods_WDayDayCook.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WDayDayCook.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		583DA87A9745822DAFCC763F /* Pods-WDayDayCook.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WDayDayCook.debug.xcconfig"; path = "Pods/Target Support Files/Pods-WDayDayCook/Pods-WDayDayCook.debug.xcconfig"; sourceTree = "<group>"; };
+		99B8910D1D44788A00261A84 /* NewFeatureController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewFeatureController.swift; sourceTree = "<group>"; };
+		99B8910F1D447C4100261A84 /* loadingVideo.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = loadingVideo.mp4; sourceTree = "<group>"; };
 		99FA8ADC1D4469120029E898 /* WDayDayCook.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WDayDayCook.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		99FA8ADF1D4469120029E898 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		99FA8AE41D4469120029E898 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -45,6 +52,7 @@
 		99FA8AFB1D4469120029E898 /* WDayDayCookUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WDayDayCookUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		99FA8AFF1D4469120029E898 /* WDayDayCookUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WDayDayCookUITests.swift; sourceTree = "<group>"; };
 		99FA8B011D4469120029E898 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		DE4CED5AAD1A41271F01640C /* Pods-WDayDayCook.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WDayDayCook.release.xcconfig"; path = "Pods/Target Support Files/Pods-WDayDayCook/Pods-WDayDayCook.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -52,6 +60,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B65D97C1589950090769B5F7 /* Pods_WDayDayCook.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -72,6 +81,31 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		76C0E20F0E32447499E8844E /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				34888801C8AEAB4046589C3C /* Pods_WDayDayCook.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		98945E70E155EEDA183239AB /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				583DA87A9745822DAFCC763F /* Pods-WDayDayCook.debug.xcconfig */,
+				DE4CED5AAD1A41271F01640C /* Pods-WDayDayCook.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		99B8910C1D44752300261A84 /* NewFeature */ = {
+			isa = PBXGroup;
+			children = (
+				99B8910D1D44788A00261A84 /* NewFeatureController.swift */,
+			);
+			path = NewFeature;
+			sourceTree = "<group>";
+		};
 		99FA8AD31D4469120029E898 = {
 			isa = PBXGroup;
 			children = (
@@ -79,6 +113,8 @@
 				99FA8AF31D4469120029E898 /* WDayDayCookTests */,
 				99FA8AFE1D4469120029E898 /* WDayDayCookUITests */,
 				99FA8ADD1D4469120029E898 /* Products */,
+				98945E70E155EEDA183239AB /* Pods */,
+				76C0E20F0E32447499E8844E /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -127,6 +163,7 @@
 		99FA8B0D1D446EEF0029E898 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				99B8910C1D44752300261A84 /* NewFeature */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -141,6 +178,7 @@
 		99FA8B0F1D446FD10029E898 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				99B8910F1D447C4100261A84 /* loadingVideo.mp4 */,
 				99FA8AEB1D4469120029E898 /* Info.plist */,
 			);
 			name = "Supporting Files";
@@ -153,9 +191,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 99FA8B041D4469120029E898 /* Build configuration list for PBXNativeTarget "WDayDayCook" */;
 			buildPhases = (
+				0A9A5361CA72E8177AE29972 /* [CP] Check Pods Manifest.lock */,
 				99FA8AD81D4469120029E898 /* Sources */,
 				99FA8AD91D4469120029E898 /* Frameworks */,
 				99FA8ADA1D4469120029E898 /* Resources */,
+				CD4C1B4A187555ECFF0D292E /* [CP] Embed Pods Frameworks */,
+				2BCB362350F7DE85E4E9207C /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -253,6 +294,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				99B891101D447C4100261A84 /* loadingVideo.mp4 in Resources */,
 				99FA8AEA1D4469120029E898 /* LaunchScreen.storyboard in Resources */,
 				99FA8AE71D4469120029E898 /* Assets.xcassets in Resources */,
 				99FA8AE51D4469120029E898 /* Main.storyboard in Resources */,
@@ -275,12 +317,61 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		0A9A5361CA72E8177AE29972 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		2BCB362350F7DE85E4E9207C /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-WDayDayCook/Pods-WDayDayCook-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		CD4C1B4A187555ECFF0D292E /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-WDayDayCook/Pods-WDayDayCook-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		99FA8AD81D4469120029E898 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				99FA8AE01D4469120029E898 /* AppDelegate.swift in Sources */,
+				99B8910E1D44788A00261A84 /* NewFeatureController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -420,6 +511,7 @@
 		};
 		99FA8B051D4469120029E898 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 583DA87A9745822DAFCC763F /* Pods-WDayDayCook.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = WDayDayCook/Info.plist;
@@ -432,6 +524,7 @@
 		};
 		99FA8B061D4469120029E898 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = DE4CED5AAD1A41271F01640C /* Pods-WDayDayCook.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = WDayDayCook/Info.plist;
@@ -507,6 +600,7 @@
 				99FA8B061D4469120029E898 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		99FA8B071D4469120029E898 /* Build configuration list for PBXNativeTarget "WDayDayCookTests" */ = {
 			isa = XCConfigurationList;
@@ -515,6 +609,7 @@
 				99FA8B091D4469120029E898 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		99FA8B0A1D4469120029E898 /* Build configuration list for PBXNativeTarget "WDayDayCookUITests" */ = {
 			isa = XCConfigurationList;
@@ -523,6 +618,7 @@
 				99FA8B0C1D4469120029E898 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
