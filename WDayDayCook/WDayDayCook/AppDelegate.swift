@@ -21,10 +21,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         if  fistOpen{
             showNewFeature()
         }
-        
-        
-        
-        
+        customAppearance()
+   
         return true
     }
 
@@ -67,8 +65,25 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
  
     }
     
+    /// 全局样式
+    func customAppearance()
+    {
+        // Tabbar
+        UITabBar.appearance().backgroundImage = UIImage(named: "tabBar_bg~iphone")
+        UITabBar.appearance().tintColor = UIColor.orangeColor()
+        
+        // Nav bar
+        let navBar = UINavigationBar.appearance()
+        
+        navBar.backgroundColor = UIColor.whiteColor()
+        navBar.tintColor = UIColor.redColor()
+        navBar.barStyle = .Default
+        
+        //navBg~iphone navi_bar_bg~iphone navBg2~iphone
+        navBar.setBackgroundImage(UIImage(named: "navi_bar_bg~iphone"), forBarMetrics: .Default)
+        navBar.shadowImage = UIImage()
     
-
+    }
 
 }
 

@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		99B8910E1D44788A00261A84 /* NewFeatureController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99B8910D1D44788A00261A84 /* NewFeatureController.swift */; };
 		99B891101D447C4100261A84 /* loadingVideo.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 99B8910F1D447C4100261A84 /* loadingVideo.mp4 */; };
+		99B891141D4498DA00261A84 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99B891131D4498DA00261A84 /* TabBarViewController.swift */; };
 		99FA8AE01D4469120029E898 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99FA8ADF1D4469120029E898 /* AppDelegate.swift */; };
 		99FA8AE51D4469120029E898 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 99FA8AE31D4469120029E898 /* Main.storyboard */; };
 		99FA8AE71D4469120029E898 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 99FA8AE61D4469120029E898 /* Assets.xcassets */; };
@@ -40,6 +41,7 @@
 		583DA87A9745822DAFCC763F /* Pods-WDayDayCook.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WDayDayCook.debug.xcconfig"; path = "Pods/Target Support Files/Pods-WDayDayCook/Pods-WDayDayCook.debug.xcconfig"; sourceTree = "<group>"; };
 		99B8910D1D44788A00261A84 /* NewFeatureController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewFeatureController.swift; sourceTree = "<group>"; };
 		99B8910F1D447C4100261A84 /* loadingVideo.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = loadingVideo.mp4; sourceTree = "<group>"; };
+		99B891131D4498DA00261A84 /* TabBarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
 		99FA8ADC1D4469120029E898 /* WDayDayCook.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WDayDayCook.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		99FA8ADF1D4469120029E898 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		99FA8AE41D4469120029E898 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -106,6 +108,21 @@
 			path = NewFeature;
 			sourceTree = "<group>";
 		};
+		99B891111D4498B600261A84 /* Navigation */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Navigation;
+			sourceTree = "<group>";
+		};
+		99B891121D4498B600261A84 /* Tabbar */ = {
+			isa = PBXGroup;
+			children = (
+				99B891131D4498DA00261A84 /* TabBarViewController.swift */,
+			);
+			path = Tabbar;
+			sourceTree = "<group>";
+		};
 		99FA8AD31D4469120029E898 = {
 			isa = PBXGroup;
 			children = (
@@ -163,6 +180,8 @@
 		99FA8B0D1D446EEF0029E898 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				99B891111D4498B600261A84 /* Navigation */,
+				99B891121D4498B600261A84 /* Tabbar */,
 				99B8910C1D44752300261A84 /* NewFeature */,
 			);
 			path = Controllers;
@@ -371,6 +390,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				99FA8AE01D4469120029E898 /* AppDelegate.swift in Sources */,
+				99B891141D4498DA00261A84 /* TabBarViewController.swift in Sources */,
 				99B8910E1D44788A00261A84 /* NewFeatureController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

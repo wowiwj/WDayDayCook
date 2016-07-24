@@ -5,10 +5,10 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
     </dependencies>
     <scenes>
-        <!--Tab Bar Controller-->
+        <!--Tab Bar View Controller-->
         <scene sceneID="u1r-LJ-rEF">
             <objects>
-                <tabBarController id="VFp-yV-CCe" sceneMemberID="viewController">
+                <tabBarController id="VFp-yV-CCe" customClass="TabBarViewController" customModule="WDayDayCook" customModuleProvider="target" sceneMemberID="viewController">
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" id="Hpi-rN-Mdk">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="49"/>
