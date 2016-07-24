@@ -7,6 +7,10 @@
 //
 
 import UIKit
+import Alamofire
+import SwiftyJSON
+
+
 
 final class ChooseViewController: UIViewController {
 
@@ -30,20 +34,23 @@ final class ChooseViewController: UIViewController {
         
         navigationItem.titleView = titleView
         tableView.rowHeight = 80
+        
+        loadADData()
+        
 
-        tableView.addHeaderWithCallback { 
-            print("----")
-            
-
-            
-        }
-        tableView.addFooterWithCallback {
-            
-//            print("----1111")
-//            self.data.append("skjhgkjsgsgsg")
-//            self.tableView.reloadData()
-            
-        }
+//        tableView.addHeaderWithCallback { 
+//            print("----")
+//            
+//
+//            
+//        }
+//        tableView.addFooterWithCallback {
+//            
+////            print("----1111")
+////            self.data.append("skjhgkjsgsgsg")
+////            self.tableView.reloadData()
+//            
+//        }
 
 
         // Do any additional setup after loading the view.
@@ -63,6 +70,32 @@ final class ChooseViewController: UIViewController {
     override func viewDidAppear(animated: Bool) {
 //        tableView.headerBeginRefreshing()
     }
+    
+    // MARK: - LoadData
+    
+    /// 加载上方滚动广告
+    func loadADData(){
+       
+        Alamofire.request(Router.ChooseViewAdList(parameters: nil)).responseJSON { responses in
+            
+            print(responses.result.value)
+            
+        
+            
+            if let resultValue = responses.result.value as? [String:AnyObject]
+            {
+                let json = JSON(resultValue)
+                print(JSON(resultValue))
+            
+            }
+//            print(responses.result.error)
+            
+   
+        }
+        
+        
+    }
+    
     
     
 
