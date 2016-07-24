@@ -20,6 +20,8 @@ final class ChooseViewController: UIViewController {
     
     }()
     
+    var data = ["111","222","333","444","555","huff","666","444","555","huff","666","444","555","huff","666"]
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,15 +29,41 @@ final class ChooseViewController: UIViewController {
         view.backgroundColor = UIColor.yellowColor()
         
         navigationItem.titleView = titleView
+        tableView.rowHeight = 80
+
+        tableView.addHeaderWithCallback { 
+            print("----")
+            
+
+            
+        }
+        tableView.addFooterWithCallback {
+            
+//            print("----1111")
+//            self.data.append("skjhgkjsgsgsg")
+//            self.tableView.reloadData()
+            
+        }
 
 
         // Do any additional setup after loading the view.
     }
 
+    @IBAction func end(sender: AnyObject) {
+        self.data.append("skjhgkjsgsgsg")
+        self.tableView.reloadData()
+        tableView.footerEndRefreshing()
+        
+    }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    override func viewDidAppear(animated: Bool) {
+//        tableView.headerBeginRefreshing()
+    }
+    
     
 
     /*
@@ -54,7 +82,7 @@ extension ChooseViewController:UITableViewDelegate,UITableViewDataSource
 {
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 20
+        return data.count
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
@@ -62,7 +90,7 @@ extension ChooseViewController:UITableViewDelegate,UITableViewDataSource
         
         let cell = UITableViewCell()
         
-        cell.textLabel?.text = "哈哈\(indexPath.row)"
+        cell.textLabel?.text = "哈哈\(data[indexPath.row])"
         
         return cell
         

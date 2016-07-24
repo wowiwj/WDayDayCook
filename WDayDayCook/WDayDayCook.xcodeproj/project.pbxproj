@@ -11,6 +11,12 @@
 		99B891101D447C4100261A84 /* loadingVideo.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 99B8910F1D447C4100261A84 /* loadingVideo.mp4 */; };
 		99B891141D4498DA00261A84 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99B891131D4498DA00261A84 /* TabBarViewController.swift */; };
 		99B891171D44A2C900261A84 /* ChooseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99B891161D44A2C900261A84 /* ChooseViewController.swift */; };
+		99B891211D44D4C100261A84 /* RefreshConst.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99B891201D44D4C100261A84 /* RefreshConst.swift */; };
+		99B891241D44D4CA00261A84 /* RefreshFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99B891221D44D4CA00261A84 /* RefreshFooterView.swift */; };
+		99B891251D44D4CA00261A84 /* RefreshHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99B891231D44D4CA00261A84 /* RefreshHeaderView.swift */; };
+		99B891271D44D4D600261A84 /* UIScrollView+Refresh.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99B891261D44D4D600261A84 /* UIScrollView+Refresh.swift */; };
+		99B891291D44D8D500261A84 /* RefreshBaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99B891281D44D8D500261A84 /* RefreshBaseView.swift */; };
+		99B8912B1D44DE9700261A84 /* IndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99B8912A1D44DE9700261A84 /* IndicatorView.swift */; };
 		99FA8AE01D4469120029E898 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99FA8ADF1D4469120029E898 /* AppDelegate.swift */; };
 		99FA8AE51D4469120029E898 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 99FA8AE31D4469120029E898 /* Main.storyboard */; };
 		99FA8AE71D4469120029E898 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 99FA8AE61D4469120029E898 /* Assets.xcassets */; };
@@ -44,6 +50,12 @@
 		99B8910F1D447C4100261A84 /* loadingVideo.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = loadingVideo.mp4; sourceTree = "<group>"; };
 		99B891131D4498DA00261A84 /* TabBarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
 		99B891161D44A2C900261A84 /* ChooseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChooseViewController.swift; sourceTree = "<group>"; };
+		99B891201D44D4C100261A84 /* RefreshConst.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RefreshConst.swift; sourceTree = "<group>"; };
+		99B891221D44D4CA00261A84 /* RefreshFooterView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RefreshFooterView.swift; sourceTree = "<group>"; };
+		99B891231D44D4CA00261A84 /* RefreshHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RefreshHeaderView.swift; sourceTree = "<group>"; };
+		99B891261D44D4D600261A84 /* UIScrollView+Refresh.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIScrollView+Refresh.swift"; sourceTree = "<group>"; };
+		99B891281D44D8D500261A84 /* RefreshBaseView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RefreshBaseView.swift; sourceTree = "<group>"; };
+		99B8912A1D44DE9700261A84 /* IndicatorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IndicatorView.swift; sourceTree = "<group>"; };
 		99FA8ADC1D4469120029E898 /* WDayDayCook.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WDayDayCook.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		99FA8ADF1D4469120029E898 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		99FA8AE41D4469120029E898 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -133,6 +145,19 @@
 			path = Choose;
 			sourceTree = "<group>";
 		};
+		99B891181D44BC7C00261A84 /* PullToRefresh */ = {
+			isa = PBXGroup;
+			children = (
+				99B891201D44D4C100261A84 /* RefreshConst.swift */,
+				99B891281D44D8D500261A84 /* RefreshBaseView.swift */,
+				99B891221D44D4CA00261A84 /* RefreshFooterView.swift */,
+				99B891231D44D4CA00261A84 /* RefreshHeaderView.swift */,
+				99B891261D44D4D600261A84 /* UIScrollView+Refresh.swift */,
+				99B8912A1D44DE9700261A84 /* IndicatorView.swift */,
+			);
+			path = PullToRefresh;
+			sourceTree = "<group>";
+		};
 		99FA8AD31D4469120029E898 = {
 			isa = PBXGroup;
 			children = (
@@ -201,6 +226,7 @@
 		99FA8B0E1D446EEF0029E898 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				99B891181D44BC7C00261A84 /* PullToRefresh */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -401,9 +427,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				99FA8AE01D4469120029E898 /* AppDelegate.swift in Sources */,
+				99B891211D44D4C100261A84 /* RefreshConst.swift in Sources */,
+				99B8912B1D44DE9700261A84 /* IndicatorView.swift in Sources */,
 				99B891171D44A2C900261A84 /* ChooseViewController.swift in Sources */,
 				99B891141D4498DA00261A84 /* TabBarViewController.swift in Sources */,
+				99B891271D44D4D600261A84 /* UIScrollView+Refresh.swift in Sources */,
+				99B891251D44D4CA00261A84 /* RefreshHeaderView.swift in Sources */,
+				99B891241D44D4CA00261A84 /* RefreshFooterView.swift in Sources */,
 				99B8910E1D44788A00261A84 /* NewFeatureController.swift in Sources */,
+				99B891291D44D8D500261A84 /* RefreshBaseView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

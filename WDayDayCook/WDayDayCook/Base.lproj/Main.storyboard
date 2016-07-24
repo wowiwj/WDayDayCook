@@ -73,7 +73,18 @@
                             <constraint firstAttribute="bottom" secondItem="470-rK-eHK" secondAttribute="bottom" id="zcb-KS-J3j"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="3ot-tk-gCl"/>
+                    <navigationItem key="navigationItem" id="3ot-tk-gCl">
+                        <barButtonItem key="rightBarButtonItem" style="plain" id="VzT-lo-oNf">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="waA-3D-n7E">
+                                <rect key="frame" x="276" y="7" width="83" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="end"/>
+                                <connections>
+                                    <action selector="end:" destination="qiO-yI-yeD" eventType="touchUpInside" id="CnF-10-3qY"/>
+                                </connections>
+                            </button>
+                        </barButtonItem>
+                    </navigationItem>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
                         <outlet property="tableView" destination="470-rK-eHK" id="L7u-Te-Q3Y"/>
