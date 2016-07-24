@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" initialViewController="01J-lp-oVM">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="EHf-IW-A2E">
+            <objects>
+                <viewController id="01J-lp-oVM" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Llm-lL-Icb"/>
+                        <viewControllerLayoutGuide type="bottom" id="xb3-aO-Qok"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Ze5-6b-2t3">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Bxp-Vy-XRH">
+                                <rect key="frame" x="111" y="185" width="152" height="298"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="launchLogo~iphone" translatesAutoresizingMaskIntoConstraints="NO" id="381-WG-Rml">
+                                        <rect key="frame" x="0.0" y="0.0" width="152" height="298"/>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="298" id="8ML-3j-UqJ"/>
+                                    <constraint firstAttribute="width" constant="152" id="eXc-jI-YeF"/>
+                                    <constraint firstAttribute="trailing" secondItem="381-WG-Rml" secondAttribute="trailing" id="f6M-Fn-Ay9"/>
+                                    <constraint firstItem="381-WG-Rml" firstAttribute="top" secondItem="Bxp-Vy-XRH" secondAttribute="top" id="g9K-Va-u4p"/>
+                                    <constraint firstAttribute="bottom" secondItem="381-WG-Rml" secondAttribute="bottom" id="ny1-4P-Hyx"/>
+                                    <constraint firstItem="381-WG-Rml" firstAttribute="leading" secondItem="Bxp-Vy-XRH" secondAttribute="leading" id="oRl-dL-0s4"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Bxp-Vy-XRH" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="LrK-Sw-48c"/>
+                            <constraint firstItem="Bxp-Vy-XRH" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="br7-uU-nY0"/>
+                        </constraints>
+                    </view>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="iYj-Kq-Ea1" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="52.5" y="374.5"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="launchLogo~iphone" width="152" height="298"/>
+    </resources>
+</document>
