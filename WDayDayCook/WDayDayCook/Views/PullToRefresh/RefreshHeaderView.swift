@@ -22,8 +22,9 @@ class RefreshHeaderView: RefreshBaseView {
         NSUserDefaults.standardUserDefaults().setObject(lastUpdateTime, forKey: RefreshHeaderTimeKey)
         NSUserDefaults.standardUserDefaults().synchronize()
         self.updateTimeLabel()
+        }
     }
-    }
+
     
     // 最后的更新时间lable
     var lastUpdateTimeLabel:UILabel!
@@ -64,6 +65,7 @@ class RefreshHeaderView: RefreshBaseView {
         let lastUpdateHeight:CGFloat = statusHeight
         let lastUpdateWidth:CGFloat = statusWidth
         self.lastUpdateTimeLabel.frame = CGRectMake(lastUpdateX, lastUpdateY, lastUpdateWidth, lastUpdateHeight);
+        self.activityView.center.y -= 10
     }
     
     override func willMoveToSuperview(newSuperview: UIView!) {

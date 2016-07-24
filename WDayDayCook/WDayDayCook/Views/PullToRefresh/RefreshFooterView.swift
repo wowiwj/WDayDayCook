@@ -25,6 +25,9 @@ class RefreshFooterView: RefreshBaseView {
         let statusWidth:CGFloat = self.frame.size.width
         //状态标签
         self.statusLabel.frame = CGRectMake(statusX, statusY, statusWidth, statusHeight)
+
+        self.activityView.center.y += 10
+        
     }
     
     override func willMoveToSuperview(newSuperview: UIView!) {
@@ -103,12 +106,7 @@ class RefreshFooterView: RefreshBaseView {
                     UIView.animateWithDuration(RefreshSlowAnimationDuration, animations: {
                         
                         self.scrollView.setContentOffset(CGPointMake(0, self.scrollView.contentOffset.y), animated: false)
-                        
-                        print(self.scrollView.contentOffset)
-                 
-                        
                         self.scrollView.contentInset.bottom = self.scrollViewOriginalInset.bottom
-                        print(self.scrollView.contentOffset)
                     })
                 }
                 let deltaH:CGFloat = self.heightForContentBreakView()
