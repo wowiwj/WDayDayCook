@@ -71,16 +71,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Tabbar
         UITabBar.appearance().backgroundImage = UIImage(named: "tabBar_bg~iphone")
         UITabBar.appearance().tintColor = UIColor.orangeColor()
+        UITabBar.appearance().translucent = false
         
         // Nav bar
         let navBar = UINavigationBar.appearance()
         
-        navBar.backgroundColor = UIColor.whiteColor()
+//        navBar.backgroundColor = UIColor.whiteColor()
         navBar.tintColor = UIColor.redColor()
-        navBar.barStyle = .Default
+        // 导航条默认设置为不透明
+        navBar.translucent = false
         
         //navBg~iphone navi_bar_bg~iphone navBg2~iphone
         navBar.setBackgroundImage(UIImage(named: "navi_bar_bg~iphone"), forBarMetrics: .Default)
+        // 取消navbar 下面的细线
         navBar.shadowImage = UIImage()
     
     }
