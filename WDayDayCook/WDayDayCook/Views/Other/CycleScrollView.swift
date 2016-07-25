@@ -8,11 +8,26 @@
 
 import UIKit
 
+enum imageStyle {
+    case current
+    case front
+    case behind
+}
+
+class scrollImage: UIImage
+{
+    var scrollStyle :imageStyle?
+    
+
+
+}
+
+
 class CycleScrollView: UIView {
     
     var imagesURL = []{
         didSet{
-            collectionView?.reloadData()
+            
             print(imagesURL)
         
         }
@@ -29,8 +44,11 @@ class CycleScrollView: UIView {
     
     
     // 自己的属性
-    private var collectionView:UICollectionView?
-    private var layout:CycleViewLayout!
+    private var scrollView:UIScrollView?
+    
+    
+
+    
     
     convenience init(placeholder: UIImage,imagesURL:[String]) {
         let size = placeholder.size
@@ -53,38 +71,29 @@ class CycleScrollView: UIView {
     private func makeUI()
     {
         
-        layout = CycleViewLayout()
-        collectionView = UICollectionView(frame: frame, collectionViewLayout: layout)
-        addSubview(collectionView!)
-        layout.minimumLineSpacing = 0
-        layout.minimumInteritemSpacing = 0
+        scrollView = UIScrollView()
+        addSubview(scrollView!)
+        scrollView?.pagingEnabled = true
         
-        backgroundColor = UIColor.redColor()
+        scrollView?.delegate = self
         
-        collectionView?.registerClass(UICollectionViewCell.self, forCellWithReuseIdentifier: "1111")
-        collectionView?.pagingEnabled = true
+        scrollView?.setContentOffset(CGPoint(x: 100, y: 0), animated: false)
         
         
-    
+        
+        
     }
     
     override func layoutSubviews() {
         super.layoutSubviews()
         
+        scrollView?.frame = self.bounds
+        scrollView?.backgroundColor = UIColor.yellowColor()
+        
+        scrollView?.contentSize = CGSize(width: self.bounds.width * 3, height: self.bounds.height)
+        
         print("---")
-        collectionView!.frame = self.bounds
-        collectionView!.backgroundColor = UIColor.greenColor()
-        collectionView?.delegate = self
-        collectionView?.dataSource = self
-        
-        if let cv = collectionView {
-            layout.itemSize = cv.bounds.size ?? CGSizeZero
-        }
-        
-        
-        layout.scrollDirection = .Horizontal
-        layout.sectionInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
-
+     
         
     }
     
@@ -102,49 +111,28 @@ class CycleScrollView: UIView {
 
 }
 
-extension CycleScrollView :UICollectionViewDelegate,UICollectionViewDataSource
+extension CycleScrollView: UIScrollViewDelegate
 {
-    
-    func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        print(images.count)
-        
-        return 5
+    func scrollViewDidScroll(scrollView: UIScrollView) {
+        print("----")
     }
     
-    func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
+    func scrollViewDidEndDecelerating(scrollView: UIScrollView) {
+        print("@@@@@")
         
-      let cell = collectionView.dequeueReusableCellWithReuseIdentifier("1111", forIndexPath: indexPath)
+        let index = scrollView.contentOffset.x / scrollView.frame.size.width
         
-        if indexPath.item % 2 == 0 {
-            cell.backgroundColor = UIColor.blueColor()
-        }else
-        {
-            cell.backgroundColor = UIColor.redColor()
+        print(index)
         
-        }
+        scrollView.setContentOffset(CGPoint(x: scrollView.frame.size.width, y: 0), animated: false)
         
         
         
-        
-            return cell
     }
     
-       
-  
 
 
 }
 
-class CycleViewLayout: UICollectionViewFlowLayout
-{
-    override func prepareLayout() {
-        super.prepareLayout()
-    }
-    
-    
-    
-
-
-}
 
 

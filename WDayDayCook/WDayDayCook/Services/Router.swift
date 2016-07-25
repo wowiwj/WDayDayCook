@@ -12,6 +12,8 @@ import Alamofire
 enum Router: URLRequestConvertible {
 
     case ChooseViewAdList(parameters:[String: AnyObject]?)
+    case NewFoodEachDay(currentpage :Int,pageSize:Int)
+    case getRecommendInfo(parameters:[String: AnyObject]?)
     case test()
     
     
@@ -20,8 +22,10 @@ enum Router: URLRequestConvertible {
         switch self {
         case .ChooseViewAdList:
             return ServiceApi.getChooseViewAdList()
-        case .test():
-            return ServiceApi.test()
+        case .NewFoodEachDay(let currentpage, let pageSize):
+            return ServiceApi.getNewFoodEachDay(currentpage, pageSize: pageSize)
+        case .getRecommendInfo:
+            return ServiceApi.getRecommendInfo()
         default:
             return ServiceApi.getChooseViewAdList()
         }
@@ -38,8 +42,6 @@ enum Router: URLRequestConvertible {
         switch self {
         case .ChooseViewAdList(let parameters):
             return Alamofire.ParameterEncoding.JSON.encode(mutableURLRequest, parameters: parameters).0
-        case .test():
-            return Alamofire.ParameterEncoding.JSON.encode(mutableURLRequest, parameters: nil).0
         default:
             return mutableURLRequest
         }
