@@ -18,7 +18,8 @@ class NewFeatureController: UIViewController {
     
     private lazy var moviePlayer: MPMoviePlayerController = {
     
-        let player = MPMoviePlayerController()
+        let path = NSBundle.mainBundle().pathForResource("loadingVideo", ofType: "mp4")
+        let player = MPMoviePlayerController(contentURL: NSURL(fileURLWithPath: path!))
         // 和屏幕一样大小
         player.view.frame = self.view.bounds
         // 设置自动播放
@@ -40,13 +41,11 @@ class NewFeatureController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-  
+        
+        
+
         view.addSubview(moviePlayer.view)
-        
-        let path = NSBundle.mainBundle().pathForResource("loadingVideo", ofType: "mp4")
-        
-        moviePlayer.contentURL = NSURL.fileURLWithPath(path!)
-        
+        moviePlayer.prepareToPlay()
         view.addSubview(cancerButton)
      
         cancerButton.snp_makeConstraints { (make) in
@@ -55,20 +54,32 @@ class NewFeatureController: UIViewController {
             make.width.equalTo(self.view).multipliedBy(0.6)
             make.height.equalTo(cancerButton.snp_width).multipliedBy(0.18)
         }
+        
+        
         cancerButton.addTarget(self, action: #selector(playFinished), forControlEvents: .TouchUpInside)
  
-        
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(playFinished), name: MPMoviePlayerPlaybackDidFinishNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(playEnd), name: MPMoviePlayerPlaybackDidFinishNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(loadStatus), name: MPMoviePlayerLoadStateDidChangeNotification, object: nil)
 
     }
     
-    override func viewDidAppear(animated: Bool) {
-        super.viewDidAppear(animated)
-        moviePlayer.play()
+
+    @objc private func loadStatus()
+    {
+        print(moviePlayer.loadState)
+        
+        if moviePlayer.loadState == MPMovieLoadState.PlaythroughOK{
+            moviePlayer.play()
+        }
+    
     }
     
-    
     @objc private func playFinished()
+    {
+        NSNotificationCenter.defaultCenter().postNotificationName(MPMoviePlayerPlaybackDidFinishNotification, object: nil)
+    }
+    
+    @objc func playEnd()
     {
         if let appDelegate = UIApplication.sharedApplication().delegate as? AppDelegate {
             appDelegate.showMainStoryboard()

@@ -9,6 +9,7 @@
 import UIKit
 import Alamofire
 import SwiftyJSON
+import RealmSwift
 
 
 
@@ -24,6 +25,14 @@ final class ChooseViewController: UIViewController {
     
     }()
     
+    private var realm: Realm!
+    
+    private lazy var adData: Results<MainADItem> = {
+        return getADItemInRealm(self.realm)
+    }()
+    
+    
+    
     var data = ["111","222","333","444","555","huff","666","444","555","huff","666","444","555","huff","666"]
     
     
@@ -37,23 +46,23 @@ final class ChooseViewController: UIViewController {
         
         loadADData()
         
+        realm = try! Realm()
+        
+        print(adData)
+        
+        let placeholderImage = UIImage(named: "default_1~iphone")
+        
+        let images = realm.objects(MainADItem).map { item -> String in
+            return item.path
+        }
+        
+        let cycleView = CycleScrollView(placeholder: placeholderImage!, imagesURL: images)
+        
+        tableView.tableHeaderView = cycleView
+        
+        
+        
 
-//        tableView.addHeaderWithCallback { 
-//            print("----")
-//            
-//
-//            
-//        }
-//        tableView.addFooterWithCallback {
-//            
-////            print("----1111")
-////            self.data.append("skjhgkjsgsgsg")
-////            self.tableView.reloadData()
-//            
-//        }
-
-
-        // Do any additional setup after loading the view.
     }
 
     @IBAction func end(sender: AnyObject) {
@@ -72,25 +81,27 @@ final class ChooseViewController: UIViewController {
     }
     
     // MARK: - LoadData
-    
     /// 加载上方滚动广告
     func loadADData(){
-       
-        Alamofire.request(Router.ChooseViewAdList(parameters: nil)).responseJSON { responses in
-            
-            print(responses.result.value)
-            
-        
-            
-            if let resultValue = responses.result.value as? [String:AnyObject]
+        Alamofire.request(Router.ChooseViewAdList(parameters: nil)).responseJSON { [unowned self] responses in
+ 
+            if responses.result.isFailure
             {
-                let json = JSON(resultValue)
-                print(JSON(resultValue))
-            
+                let alert = UIAlertController(title: "网路异常", message: "请检查网络设置", preferredStyle: .Alert)
+                let cancer = UIAlertAction(title: "确定", style: .Cancel, handler: nil)
+                alert.addAction(cancer)
+                self.presentViewController(alert, animated: true, completion: nil)
+                // 加载失败，使用旧数据
+                return
             }
-//            print(responses.result.error)
-            
-   
+       
+            let json = responses.result.value
+            let result = JSON(json!)
+            deleteAllADItem()
+            addNewMainADItemInRealm(result["data"])
+            // 加载成功，使用新数据
+            self.adData = getADItemInRealm(self.realm)
+
         }
         
         

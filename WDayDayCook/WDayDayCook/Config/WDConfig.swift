@@ -16,5 +16,9 @@ public class WDConfig {
     
     public static var languageId = 3
     public static var uid = ""
+    
+    static let appGroupID: String = "group.wangju.WdaydayCook"
+    static let firstOpen = false
+    
 }
 

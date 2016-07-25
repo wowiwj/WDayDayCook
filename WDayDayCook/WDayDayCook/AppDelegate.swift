@@ -7,21 +7,39 @@
 //
 
 import UIKit
+import RealmSwift
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
+    private func realmConfig() -> Realm.Configuration {
+        let directory: NSURL = NSFileManager.defaultManager().containerURLForSecurityApplicationGroupIdentifier(WDConfig.appGroupID)!
+        let realmFileURL = directory.URLByAppendingPathComponent("db.realm")
+        
+        print(realmFileURL)
+        
+        var config = Realm.Configuration()
+        config.fileURL = realmFileURL
+        config.schemaVersion = 2
+        config.migrationBlock = { migration, oldSchemaVersion in
+        }
+        
+        return config
+    }
+
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
-        let fistOpen = true
+        let fistOpen = WDConfig.firstOpen
       
         if  fistOpen{
             showNewFeature()
         }
         customAppearance()
+        
+        Realm.Configuration.defaultConfiguration = realmConfig()
    
         return true
     }
