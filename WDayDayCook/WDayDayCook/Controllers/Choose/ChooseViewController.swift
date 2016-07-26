@@ -12,13 +12,21 @@ import SwiftyJSON
 import RealmSwift
 import SDCycleScrollView
 
-
-
-
+let cellIdentifier = "BaseTitleViewCell"
 
 final class ChooseViewController: UIViewController {
 
-    @IBOutlet weak var tableView: UITableView!
+    
+    
+    @IBOutlet weak var tableView: UITableView!{
+        didSet{
+            
+            tableView.backgroundColor = UIColor.purpleColor()
+            tableView.registerClass(BaseTitleViewCell.self, forCellReuseIdentifier: cellIdentifier)
+            tableView.rowHeight = 80
+
+        }
+    }
     private lazy var titleView :UIImageView = {
         let titleView = UIImageView()
         titleView.image = UIImage(named: "navi_logo~iphone")
@@ -46,24 +54,42 @@ final class ChooseViewController: UIViewController {
         }
     }
     
+    /// 主题推荐
+    private var themeList: Results<FoodRecmmand>? {
+        
+        didSet{
+            print("---themeList---")
+            print(themeList)
+        }
+    }
+    
+    /// 热门推荐
+    private var recipeList: Results<FoodRecmmand>? {
+        
+        didSet{
+            print("---recipeList---")
+            print(recipeList)
+        }
+    }
+    
+    /// 话题推荐
+    private var recipeDiscussList: Results<FoodRecmmand>? {
+        
+        didSet{
+            print("---recipeList---")
+            print(recipeDiscussList)
+        }
+    }
+    
     // tabble头部
     var cycleView: SDCycleScrollView?
     
-    //
-    
-    
-    
-    var data = ["111","222","333","444","555","huff","666","444","555","huff","666","444","555","huff","666"]
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         view.backgroundColor = UIColor.yellowColor()
         
         navigationItem.titleView = titleView
-        tableView.rowHeight = 80
-        
         loadADData()
         
         realm = try! Realm()
@@ -79,19 +105,20 @@ final class ChooseViewController: UIViewController {
         cycleView!.imageURLStringsGroup = images
         
         tableView.tableHeaderView = cycleView
+        
+//        tableView.addHeaderWithCallback { 
+        
+//        }
+        
 
         // 加载每日新品
         loadNewFoodEachDay(0, pageSize: 10)
         // 加载推荐信息
         loadRecommandInfo()
+
     }
 
-    @IBAction func end(sender: AnyObject) {
-        self.data.append("skjhgkjsgsgsg")
-        self.tableView.reloadData()
-        tableView.footerEndRefreshing()
-        
-    }
+
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -108,10 +135,7 @@ final class ChooseViewController: UIViewController {
  
             if responses.result.isFailure
             {
-                let alert = UIAlertController(title: "网路异常", message: "请检查网络设置", preferredStyle: .Alert)
-                let cancer = UIAlertAction(title: "确定", style: .Cancel, handler: nil)
-                alert.addAction(cancer)
-                self.presentViewController(alert, animated: true, completion: nil)
+                WDAlert.alertSorry(message: "网络异常", inViewController: self)
                 // 加载失败，使用旧数据
                 return
             }
@@ -150,8 +174,6 @@ final class ChooseViewController: UIViewController {
             addNewFoodItemInRealm(result["data"])
             
             self.newFoodItems = getNewFoodItemInRealm(self.realm)
-            
-//            print(self.newFoodItems)
         }
 
     }
@@ -160,26 +182,35 @@ final class ChooseViewController: UIViewController {
     func loadRecommandInfo()
     {
         Alamofire.request(Router.getRecommendInfo(parameters: nil)).responseJSON {[unowned self] response in
+            func getFoodRecmmand()
+            {
+                self.themeList = getThemeListInRealm(self.realm)
+                self.recipeList = getRecipeListInRealm(self.realm)
+                self.recipeDiscussList = getRecipeDiscussListInRealm(self.realm)
+            }
+
             if response.result.isFailure
             {
                 WDAlert.alertSorry(message: "网络异常", inViewController: self)
-                // 获取离线数据
-                self.newFoodItems = getNewFoodItemInRealm(self.realm)
+                getFoodRecmmand()
                 return
             }
             
             let value = response.result.value
             let result = JSON(value!)
             
-            print(result)
+            func updateFoodRecmmand()
+            {
+                // 删除之前存的旧数据
+                deleteAllObject(FoodRecmmand)
+                // 添加新数据到数据库
+                addFoodRecmmandItemInRealm(result["themeList"])
+                addFoodRecmmandItemInRealm(result["recipeList"])
+                addFoodRecmmandItemInRealm(result["recipeDiscussList"])
+            }
             
-            deleteAllObject(FoodRecmmand)
-            addFoodRecmmandItemInRealm(result["themeList"])
-        
-            addFoodRecmmandItemInRealm(result["recipeList"])
-            addFoodRecmmandItemInRealm(result["recipeDiscussList"])
-            print(getFoodRecmmandListInRealm(self.realm))
-     
+            updateFoodRecmmand()
+            getFoodRecmmand()
         }
     }
 
@@ -189,21 +220,16 @@ final class ChooseViewController: UIViewController {
 
 extension ChooseViewController:UITableViewDelegate,UITableViewDataSource
 {
-    
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return data.count
+        return 30
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
-        
-        let cell = UITableViewCell()
-        
-        cell.textLabel?.text = "哈哈\(data[indexPath.row])"
+        let cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier)!
         
         return cell
-        
-        
+   
     }
 
 

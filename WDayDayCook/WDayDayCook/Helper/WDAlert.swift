@@ -10,19 +10,28 @@ import UIKit
 
 class WDAlert: NSObject {
     
+    private static var isPresenting = false
+    
     class func alert(title title: String, message: String?, dismissTitle: String, inViewController viewController: UIViewController?, withDismissAction dismissAction: (() -> Void)?) {
         
+        if self.isPresenting == true
+        {
+            return
+        }
+
         dispatch_async(dispatch_get_main_queue()) {
-            
+
             let alertController = UIAlertController(title: title, message: message, preferredStyle: .Alert)
             
             let action: UIAlertAction = UIAlertAction(title: dismissTitle, style: .Default) { action in
                 if let dismissAction = dismissAction {
+                    self.isPresenting = false
                     dismissAction()
                 }
             }
             alertController.addAction(action)
-            
+   
+            self.isPresenting = true
             viewController?.presentViewController(alertController, animated: true, completion: nil)
         }
     }

@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		991BA78D1D47009100EE3CFE /* BaseTitleViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 991BA78C1D47009100EE3CFE /* BaseTitleViewCell.swift */; };
+		991BA78F1D47058900EE3CFE /* TitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 991BA78E1D47058900EE3CFE /* TitleView.swift */; };
+		991BA7911D4786BA00EE3CFE /* MyCollectionCellTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 991BA7901D4786BA00EE3CFE /* MyCollectionCellTableViewCell.swift */; };
 		99A081C61D46302D003FC427 /* CycleScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99A081C51D46302D003FC427 /* CycleScrollView.swift */; };
 		99A081CC1D4662D4003FC427 /* WDAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99A081CB1D4662D4003FC427 /* WDAlert.swift */; };
 		99B8910E1D44788A00261A84 /* NewFeatureController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99B8910D1D44788A00261A84 /* NewFeatureController.swift */; };
@@ -52,6 +55,9 @@
 /* Begin PBXFileReference section */
 		34888801C8AEAB4046589C3C /* Pods_WDayDayCook.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WDayDayCook.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		583DA87A9745822DAFCC763F /* Pods-WDayDayCook.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WDayDayCook.debug.xcconfig"; path = "Pods/Target Support Files/Pods-WDayDayCook/Pods-WDayDayCook.debug.xcconfig"; sourceTree = "<group>"; };
+		991BA78C1D47009100EE3CFE /* BaseTitleViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseTitleViewCell.swift; sourceTree = "<group>"; };
+		991BA78E1D47058900EE3CFE /* TitleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TitleView.swift; sourceTree = "<group>"; };
+		991BA7901D4786BA00EE3CFE /* MyCollectionCellTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyCollectionCellTableViewCell.swift; sourceTree = "<group>"; };
 		99A081C51D46302D003FC427 /* CycleScrollView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CycleScrollView.swift; sourceTree = "<group>"; };
 		99A081CB1D4662D4003FC427 /* WDAlert.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WDAlert.swift; sourceTree = "<group>"; };
 		99B8910D1D44788A00261A84 /* NewFeatureController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewFeatureController.swift; sourceTree = "<group>"; };
@@ -127,6 +133,15 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		991BA78B1D47003800EE3CFE /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				991BA78C1D47009100EE3CFE /* BaseTitleViewCell.swift */,
+				991BA7901D4786BA00EE3CFE /* MyCollectionCellTableViewCell.swift */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
 		99A081C31D462031003FC427 /* Choose */ = {
 			isa = PBXGroup;
 			children = (
@@ -138,6 +153,7 @@
 			isa = PBXGroup;
 			children = (
 				99A081C51D46302D003FC427 /* CycleScrollView.swift */,
+				991BA78E1D47058900EE3CFE /* TitleView.swift */,
 			);
 			path = Other;
 			sourceTree = "<group>";
@@ -307,6 +323,7 @@
 		99FA8B0E1D446EEF0029E898 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				991BA78B1D47003800EE3CFE /* Cell */,
 				99A081C41D463022003FC427 /* Other */,
 				99A081C31D462031003FC427 /* Choose */,
 				99B8912D1D44FBCF00261A84 /* SlideView */,
@@ -520,8 +537,11 @@
 				99B8912B1D44DE9700261A84 /* IndicatorView.swift in Sources */,
 				99B891171D44A2C900261A84 /* ChooseViewController.swift in Sources */,
 				99A081C61D46302D003FC427 /* CycleScrollView.swift in Sources */,
+				991BA78F1D47058900EE3CFE /* TitleView.swift in Sources */,
+				991BA78D1D47009100EE3CFE /* BaseTitleViewCell.swift in Sources */,
 				99B891311D44FC7900261A84 /* Router.swift in Sources */,
 				99B891141D4498DA00261A84 /* TabBarViewController.swift in Sources */,
+				991BA7911D4786BA00EE3CFE /* MyCollectionCellTableViewCell.swift in Sources */,
 				99B891271D44D4D600261A84 /* UIScrollView+Refresh.swift in Sources */,
 				99B891251D44D4CA00261A84 /* RefreshHeaderView.swift in Sources */,
 				99B891341D44FD4D00261A84 /* WDConfig.swift in Sources */,

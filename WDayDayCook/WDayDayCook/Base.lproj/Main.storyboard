@@ -56,9 +56,10 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="470-rK-eHK">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="470-rK-eHK">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="separatorColor" red="1" green="0.69240674058920493" blue="0.8297598632836527" alpha="1" colorSpace="calibratedRGB"/>
                                 <connections>
                                     <outlet property="dataSource" destination="qiO-yI-yeD" id="2Nd-sX-YAF"/>
                                     <outlet property="delegate" destination="qiO-yI-yeD" id="DXa-6N-Oza"/>
@@ -74,14 +75,11 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="3ot-tk-gCl">
-                        <barButtonItem key="rightBarButtonItem" style="plain" id="VzT-lo-oNf">
-                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="waA-3D-n7E">
+                        <barButtonItem key="rightBarButtonItem" style="plain" id="Bw6-wn-7W9">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Mra-Uz-UyO">
                                 <rect key="frame" x="276" y="7" width="83" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="end"/>
-                                <connections>
-                                    <action selector="end:" destination="qiO-yI-yeD" eventType="touchUpInside" id="CnF-10-3qY"/>
-                                </connections>
+                                <state key="normal" title="Button"/>
                             </button>
                         </barButtonItem>
                     </navigationItem>
@@ -122,7 +120,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CVq-RU-bZM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="783.5" y="-170.5"/>
+            <point key="canvasLocation" x="573.5" y="-206.5"/>
         </scene>
         <!--食谱-->
         <scene sceneID="5Vy-oo-upc">

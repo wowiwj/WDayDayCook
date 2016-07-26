@@ -182,11 +182,32 @@ func addFoodRecmmandItemInRealm(json :JSON)
 
 
 }
-
 func getFoodRecmmandListInRealm(realm : Realm) -> Results<FoodRecmmand>
 {
     let items = realm.objects(FoodRecmmand)
     return items
+}
+
+func getRecmmandListInRealm(realm : Realm,recommendType:Int) -> Results<FoodRecmmand>
+{
+    let items = getFoodRecmmandListInRealm(realm)
+    let predicate = NSPredicate(format:"recommend_type = %d",recommendType)
+    return items.filter(predicate)
+}
+
+func getThemeListInRealm(realm : Realm) -> Results<FoodRecmmand>
+{
+    return getRecmmandListInRealm(realm, recommendType: 2)
+}
+
+func getRecipeListInRealm(realm : Realm) -> Results<FoodRecmmand>
+{
+    return getRecmmandListInRealm(realm, recommendType: 1)
+}
+
+func getRecipeDiscussListInRealm(realm : Realm) -> Results<FoodRecmmand>
+{
+    return getRecmmandListInRealm(realm, recommendType: 3)
 }
 
 
@@ -214,5 +235,7 @@ func getObjectItemsInRealm(objectType: Object.Type,realm : Realm) -> Results<Obj
     let items = realm.objects(objectType)
     return items
 }
+
+
 
 
