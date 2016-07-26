@@ -174,6 +174,7 @@ func addFoodRecmmandItemInRealm(json :JSON)
         model.group_id = item["group_id"].intValue
         model.share_count = item["share_count"].intValue
         model.str_date = item["str_date"].doubleValue
+        model.image_url = item["image_url"].stringValue
         
         try! realm.write({
             realm.add(model)

@@ -11,30 +11,25 @@ import SnapKit
 
 class BaseTitleViewCell: UITableViewCell {
 
-    var titleView :TitleView?
+    lazy var titleView :TitleView = TitleView()
 
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        
-        titleView = TitleView()
-        addSubview(titleView!)
 
-        titleView?.backgroundColor = UIColor.whiteColor()
-        
-        
+        contentView.addSubview(titleView)
     }
     
     override func layoutSubviews() {
         super.layoutSubviews()
         
-        titleView?.snp_makeConstraints(closure: { (make) in
+        titleView.snp_makeConstraints(closure: { (make) in
             make.top.equalTo(self)
             make.width.equalTo(self)
             make.height.equalTo(40)
         })
         
-        titleView?.image = UIImage(named: "icon- 每日新品~iphone")
-        titleView?.title = "每日新品"
+        titleView.image = UIImage(named: "icon- 每日新品~iphone")
+        titleView.title = "每日新品"
         
     }
     

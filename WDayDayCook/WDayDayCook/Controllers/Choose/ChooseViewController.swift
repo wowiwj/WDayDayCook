@@ -12,7 +12,7 @@ import SwiftyJSON
 import RealmSwift
 import SDCycleScrollView
 
-let cellIdentifier = "BaseTitleViewCell"
+let cellIdentifier = "MyCollectionCell"
 
 final class ChooseViewController: UIViewController {
 
@@ -22,8 +22,11 @@ final class ChooseViewController: UIViewController {
         didSet{
             
             tableView.backgroundColor = UIColor.purpleColor()
-            tableView.registerClass(BaseTitleViewCell.self, forCellReuseIdentifier: cellIdentifier)
-            tableView.rowHeight = 80
+            tableView.registerClass(MyCollectionCell.self, forCellReuseIdentifier: cellIdentifier)
+            tableView.rowHeight = WDConfig.articleCellHeight
+//            tableView.estimatedRowHeight = 250
+//            tableView.rowHeight = UITableViewAutomaticDimension
+            tableView.separatorStyle = .None
 
         }
     }
@@ -48,6 +51,8 @@ final class ChooseViewController: UIViewController {
     private var newFoodItems: Results<NewFood>?{
     
         didSet{
+            
+            tableView.reloadData()
             
             print("newFoodItems")
         
@@ -221,7 +226,7 @@ final class ChooseViewController: UIViewController {
 extension ChooseViewController:UITableViewDelegate,UITableViewDataSource
 {
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 30
+        return 4
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
@@ -230,6 +235,18 @@ extension ChooseViewController:UITableViewDelegate,UITableViewDataSource
         
         return cell
    
+    }
+    
+    func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
+        let cell = cell as! MyCollectionCell
+        
+        if let fooditems = newFoodItems
+        {
+            cell.newFoodItems = fooditems
+        }
+        
+        
+        
     }
 
 

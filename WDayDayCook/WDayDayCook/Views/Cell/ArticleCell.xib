@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10116" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ArticleCell" id="gTV-IL-0wX" customClass="ArticleCell" customModule="WDayDayCook" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="216" height="227"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="216" height="227"/>
+                <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="menuBar_bg~iphone" translatesAutoresizingMaskIntoConstraints="NO" id="Wdw-vD-bt0">
+                        <rect key="frame" x="0.0" y="0.0" width="216" height="227"/>
+                    </imageView>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="kDm-PQ-5P2">
+                        <rect key="frame" x="0.0" y="0.0" width="216" height="152"/>
+                    </imageView>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gPA-Ec-8c5">
+                        <rect key="frame" x="5" y="152" width="206" height="70"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NWH-65-mj0">
+                                <rect key="frame" x="0.0" y="0.0" width="206" height="25"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="25" id="sIC-cA-8Pz"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1pr-EO-lQo">
+                                <rect key="frame" x="0.0" y="25" width="206" height="20"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="20" id="DWp-z7-CUM"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                <color key="textColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="P7E-5p-Q22">
+                                <rect key="frame" x="0.0" y="45" width="206" height="25"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KLB-bV-XCL">
+                                        <rect key="frame" x="10" y="0.0" width="18" height="25"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="26" id="OGL-aV-CPD"/>
+                                        </constraints>
+                                        <state key="normal" image="iPad_mainpage_btn_collect~iphone"/>
+                                        <variation key="default">
+                                            <mask key="constraints">
+                                                <exclude reference="OGL-aV-CPD"/>
+                                            </mask>
+                                        </variation>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ePy-KQ-ubp">
+                                        <rect key="frame" x="38" y="0.0" width="52" height="25"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                        <state key="normal" title="4657" image="iPad_mainpage_btn_click~iphone">
+                                            <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="KLB-bV-XCL" firstAttribute="leading" secondItem="P7E-5p-Q22" secondAttribute="leading" constant="10" id="0Ti-rb-aWH"/>
+                                    <constraint firstAttribute="bottom" secondItem="KLB-bV-XCL" secondAttribute="bottom" id="A9Q-0A-yK1"/>
+                                    <constraint firstItem="ePy-KQ-ubp" firstAttribute="top" secondItem="P7E-5p-Q22" secondAttribute="top" id="HTi-zT-dJd"/>
+                                    <constraint firstItem="ePy-KQ-ubp" firstAttribute="leading" secondItem="KLB-bV-XCL" secondAttribute="trailing" constant="10" id="TzC-7o-8ki"/>
+                                    <constraint firstAttribute="bottom" secondItem="ePy-KQ-ubp" secondAttribute="bottom" id="Uqr-a9-7a2"/>
+                                    <constraint firstItem="KLB-bV-XCL" firstAttribute="top" secondItem="P7E-5p-Q22" secondAttribute="top" id="XA7-UI-d8U"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="70" id="07a-BQ-piT"/>
+                            <constraint firstItem="1pr-EO-lQo" firstAttribute="leading" secondItem="gPA-Ec-8c5" secondAttribute="leading" id="CZN-fM-gLr"/>
+                            <constraint firstItem="1pr-EO-lQo" firstAttribute="top" secondItem="NWH-65-mj0" secondAttribute="bottom" id="GbU-W3-ZxR"/>
+                            <constraint firstItem="NWH-65-mj0" firstAttribute="leading" secondItem="gPA-Ec-8c5" secondAttribute="leading" id="JZB-Qr-rqi"/>
+                            <constraint firstAttribute="trailing" secondItem="P7E-5p-Q22" secondAttribute="trailing" id="Q2x-od-zPy"/>
+                            <constraint firstItem="P7E-5p-Q22" firstAttribute="top" secondItem="1pr-EO-lQo" secondAttribute="bottom" id="ThV-qf-ZBp"/>
+                            <constraint firstItem="P7E-5p-Q22" firstAttribute="leading" secondItem="gPA-Ec-8c5" secondAttribute="leading" id="Tuo-pf-IkI"/>
+                            <constraint firstAttribute="bottom" secondItem="P7E-5p-Q22" secondAttribute="bottom" id="aGE-Bu-auL"/>
+                            <constraint firstItem="NWH-65-mj0" firstAttribute="top" secondItem="gPA-Ec-8c5" secondAttribute="top" id="nXO-YC-LRb"/>
+                            <constraint firstAttribute="trailing" secondItem="1pr-EO-lQo" secondAttribute="trailing" id="sMn-jJ-0tx"/>
+                            <constraint firstAttribute="trailing" secondItem="NWH-65-mj0" secondAttribute="trailing" id="zUZ-tx-pkw"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+            </view>
+            <constraints>
+                <constraint firstItem="kDm-PQ-5P2" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="7O4-Gu-nYm"/>
+                <constraint firstAttribute="trailing" secondItem="kDm-PQ-5P2" secondAttribute="trailing" id="8g1-pl-O5R"/>
+                <constraint firstItem="kDm-PQ-5P2" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="Bg6-F4-vnp"/>
+                <constraint firstAttribute="trailing" secondItem="Wdw-vD-bt0" secondAttribute="trailing" id="GCt-Qb-vJI"/>
+                <constraint firstAttribute="bottom" secondItem="Wdw-vD-bt0" secondAttribute="bottom" id="Jcv-YH-Gdd"/>
+                <constraint firstItem="Wdw-vD-bt0" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="QdM-YX-Ouj"/>
+                <constraint firstItem="gPA-Ec-8c5" firstAttribute="top" secondItem="kDm-PQ-5P2" secondAttribute="bottom" id="SBW-sQ-WIz"/>
+                <constraint firstItem="Wdw-vD-bt0" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="SCl-CO-3JK"/>
+                <constraint firstAttribute="trailing" secondItem="gPA-Ec-8c5" secondAttribute="trailing" constant="5" id="c7z-T6-9uK"/>
+                <constraint firstItem="gPA-Ec-8c5" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="5" id="nba-h2-BEo"/>
+                <constraint firstAttribute="bottom" secondItem="gPA-Ec-8c5" secondAttribute="bottom" constant="5" id="ypS-YW-bpc"/>
+            </constraints>
+            <size key="customSize" width="216" height="227"/>
+            <connections>
+                <outlet property="bgView" destination="Wdw-vD-bt0" id="4bb-rF-VFl"/>
+                <outlet property="clickCountButton" destination="ePy-KQ-ubp" id="teY-xx-Eau"/>
+                <outlet property="favoriteButton" destination="KLB-bV-XCL" id="JAl-uD-jYz"/>
+                <outlet property="foodDescription" destination="1pr-EO-lQo" id="i0L-Vm-DC6"/>
+                <outlet property="foodImageView" destination="kDm-PQ-5P2" id="PtS-Iz-EBZ"/>
+                <outlet property="titleLabel" destination="NWH-65-mj0" id="3xC-EI-bWG"/>
+            </connections>
+            <point key="canvasLocation" x="304" y="239.5"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <image name="iPad_mainpage_btn_click~iphone" width="22" height="16"/>
+        <image name="iPad_mainpage_btn_collect~iphone" width="18" height="16"/>
+        <image name="menuBar_bg~iphone" width="80" height="745"/>
+    </resources>
+</document>
