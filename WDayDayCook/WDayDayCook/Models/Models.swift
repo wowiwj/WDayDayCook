@@ -90,7 +90,7 @@ class NewFood: Object {
     
 }
 
-func addNewFoodtemInRealm(json :JSON)
+func addNewFoodItemInRealm(json :JSON)
 {
     let jsonArr = json.arrayValue
     
@@ -132,7 +132,7 @@ func getNewFoodItemInRealm(realm : Realm) -> Results<NewFood>
     
 }
 
-class ThemeRecmmand: Object
+class FoodRecmmand: Object
 {
     dynamic var foodDescription: String = ""
     dynamic var favorite: Bool = false
@@ -149,9 +149,43 @@ class ThemeRecmmand: Object
     dynamic var str_date: NSTimeInterval = NSDate().timeIntervalSince1970
 }
 
-func getThemeListInRealm(realm : Realm) -> Results<ThemeRecmmand>
+func addFoodRecmmandItemInRealm(json :JSON)
 {
-    let items = realm.objects(ThemeRecmmand)
+    let jsonArr = json.arrayValue
+    
+    guard let realm = try? Realm() else
+    {
+        return
+    }
+    
+    jsonArr.forEach { item in
+        
+        let model = FoodRecmmand()
+        
+        model.foodDescription = item["description"].stringValue
+        model.favorite = item["favorite"].boolValue
+        model.recipe_type = item["recipe_type"].stringValue
+        model.click_count = item["click_count"].intValue
+        model.favorite_count = item["favorite_count"].intValue
+        model.rid = item["rid"].stringValue
+        model.title = item["title"].stringValue
+        model.recommend_type = item["recommend_type"].intValue
+        model.recipe_id = item["recipe_id"].intValue
+        model.group_id = item["group_id"].intValue
+        model.share_count = item["share_count"].intValue
+        model.str_date = item["str_date"].doubleValue
+        
+        try! realm.write({
+            realm.add(model)
+        })
+    }
+
+
+}
+
+func getFoodRecmmandListInRealm(realm : Realm) -> Results<FoodRecmmand>
+{
+    let items = realm.objects(FoodRecmmand)
     return items
 }
 
@@ -159,7 +193,7 @@ func getThemeListInRealm(realm : Realm) -> Results<ThemeRecmmand>
 
 
 
-// MARK: - 共用的方法
+// MARK: - 公用的方法
 
 // 删除某一个对象的所有数据
 func deleteAllObject(objectType: Object.Type)
@@ -179,26 +213,6 @@ func getObjectItemsInRealm(objectType: Object.Type,realm : Realm) -> Results<Obj
 {
     let items = realm.objects(objectType)
     return items
-}
-
-func addNewObjectInRealm(json:JSON,type:Object.Type,action:(model :Object,json:JSON)->())
-{
-    
-    let jsonArr = json.arrayValue
-    
-    guard let realm = try? Realm() else
-    {
-        return
-    }
-    for item in jsonArr {
-        let model = type.init()
-        
-        action(model: model, json: item)
-        
-        try! realm.write({
-            realm.add(model)
-        })
-    }
 }
 
 

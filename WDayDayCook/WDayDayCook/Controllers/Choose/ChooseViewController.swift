@@ -147,7 +147,7 @@ final class ChooseViewController: UIViewController {
             let result = JSON(value!)
  
             deleteAllObject(NewFood)
-            addNewFoodtemInRealm(result["data"])
+            addNewFoodItemInRealm(result["data"])
             
             self.newFoodItems = getNewFoodItemInRealm(self.realm)
             
@@ -159,7 +159,7 @@ final class ChooseViewController: UIViewController {
     /// 加载推荐信息数据
     func loadRecommandInfo()
     {
-        Alamofire.request(Router.getRecommendInfo(parameters: nil)).responseJSON { response in
+        Alamofire.request(Router.getRecommendInfo(parameters: nil)).responseJSON {[unowned self] response in
             if response.result.isFailure
             {
                 WDAlert.alertSorry(message: "网络异常", inViewController: self)
@@ -173,8 +173,13 @@ final class ChooseViewController: UIViewController {
             
             print(result)
             
-           
-            
+            deleteAllObject(FoodRecmmand)
+            addFoodRecmmandItemInRealm(result["themeList"])
+        
+            addFoodRecmmandItemInRealm(result["recipeList"])
+            addFoodRecmmandItemInRealm(result["recipeDiscussList"])
+            print(getFoodRecmmandListInRealm(self.realm))
+     
         }
     }
 
