@@ -23,9 +23,6 @@ final class ChooseViewController: UIViewController {
             
             tableView.backgroundColor = UIColor.purpleColor()
             tableView.registerClass(MyCollectionCell.self, forCellReuseIdentifier: cellIdentifier)
-            tableView.rowHeight = WDConfig.articleCellHeight
-//            tableView.estimatedRowHeight = 250
-//            tableView.rowHeight = UITableViewAutomaticDimension
             tableView.separatorStyle = .None
 
         }
@@ -231,22 +228,38 @@ extension ChooseViewController:UITableViewDelegate,UITableViewDataSource
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
-        let cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier)!
-        
+        let cell =
+            tableView.dequeueReusableCellWithIdentifier(cellIdentifier)!
+  
         return cell
    
     }
     
     func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
         let cell = cell as! MyCollectionCell
-        
-        if let fooditems = newFoodItems
-        {
-            cell.newFoodItems = fooditems
+
+        switch indexPath.row {
+        case CellStyle.newFood.rawValue:
+            cell.newFoodItems = newFoodItems
+        case CellStyle.themeList.rawValue:
+            cell.themeList = themeList
+        case CellStyle.recipeList.rawValue:
+            cell.recipeList = recipeList
+        default:
+            cell.recipeDiscussList = recipeDiscussList
         }
+
+    }
+    
+    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         
-        
-        
+        switch indexPath.row {
+        case CellStyle.themeList.rawValue:
+            return 600
+        default:
+            return 250
+        }
+
     }
 
 

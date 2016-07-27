@@ -9,9 +9,10 @@
 import UIKit
 import Kingfisher
 
+
+
 class ArticleCell: UICollectionViewCell {
-    
-    
+
 
     @IBOutlet weak var bgView: UIImageView!
     @IBOutlet weak var foodImageView: UIImageView!
@@ -22,6 +23,15 @@ class ArticleCell: UICollectionViewCell {
     @IBOutlet weak var clickCountButton: UIButton!
     @IBOutlet weak var favoriteButton: UIButton!
     
+ 
+    private lazy var placeholderImage: UIImage = {
+    
+        let image = UIImage(named: "default~iphone")!
+        return image
+    
+    }()
+    
+
     var newFood: NewFood? {
         didSet{
             
@@ -33,8 +43,22 @@ class ArticleCell: UICollectionViewCell {
             foodDescription.text = newFood?.foodDescription
             clickCountButton.setTitle("\(newFood!.clickCount)", forState: .Normal)
             foodImageView.kf_setImageWithURL(NSURL(string: (newFood?.imageUrl)!))
-        
-        
+        }
+    }
+    
+    var recipe: FoodRecmmand? {
+        didSet{
+            
+            guard let _ = recipe else
+            {
+                return
+            }
+            titleLabel.text = recipe!.title
+            foodDescription.text = recipe!.foodDescription
+            clickCountButton.setTitle("\(recipe!.click_count)", forState: .Normal)
+            
+            
+            foodImageView.kf_setImageWithURL(NSURL(string: recipe!.image_url))
         }
     }
     
@@ -46,8 +70,7 @@ class ArticleCell: UICollectionViewCell {
         bgView.layer.borderColor = UIColor.lightGrayColor().CGColor
         bgView.layer.cornerRadius = 5
         bgView.layer.masksToBounds = true
-        
-        
+
     }
 
 }

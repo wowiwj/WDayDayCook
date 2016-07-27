@@ -9,6 +9,7 @@
 import UIKit
 import SnapKit
 
+
 class BaseTitleViewCell: UITableViewCell {
 
     lazy var titleView :TitleView = TitleView()
@@ -27,10 +28,7 @@ class BaseTitleViewCell: UITableViewCell {
             make.width.equalTo(self)
             make.height.equalTo(40)
         })
-        
-        titleView.image = UIImage(named: "icon- 每日新品~iphone")
-        titleView.title = "每日新品"
-        
+ 
     }
     
     required init?(coder aDecoder: NSCoder) {

@@ -22,8 +22,8 @@ public class WDConfig {
     
     static let cellTitleViewHeight = 40
     
-    static let articleCellHeight:CGFloat = 250
-    
+    static let articleCellWidth:CGFloat = 160
+    static let articleCellInfoViewHeight:CGFloat = 70
     
     
 }

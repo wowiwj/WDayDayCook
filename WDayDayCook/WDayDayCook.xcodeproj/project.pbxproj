@@ -28,6 +28,8 @@
 		99B891311D44FC7900261A84 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99B891301D44FC7900261A84 /* Router.swift */; };
 		99B891341D44FD4D00261A84 /* WDConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99B891331D44FD4D00261A84 /* WDConfig.swift */; };
 		99B891371D45105D00261A84 /* Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99B891361D45105D00261A84 /* Models.swift */; };
+		99D92DD91D4905EF005BA901 /* ThemeRecommandCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99D92DD71D4905EF005BA901 /* ThemeRecommandCell.swift */; };
+		99D92DDA1D4905EF005BA901 /* ThemeRecommandCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 99D92DD81D4905EF005BA901 /* ThemeRecommandCell.xib */; };
 		99FA8AE01D4469120029E898 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99FA8ADF1D4469120029E898 /* AppDelegate.swift */; };
 		99FA8AE51D4469120029E898 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 99FA8AE31D4469120029E898 /* Main.storyboard */; };
 		99FA8AE71D4469120029E898 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 99FA8AE61D4469120029E898 /* Assets.xcassets */; };
@@ -79,6 +81,8 @@
 		99B891331D44FD4D00261A84 /* WDConfig.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WDConfig.swift; sourceTree = "<group>"; };
 		99B891361D45105D00261A84 /* Models.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Models.swift; sourceTree = "<group>"; };
 		99B891381D451BB600261A84 /* WDayDayCook.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = WDayDayCook.entitlements; sourceTree = "<group>"; };
+		99D92DD71D4905EF005BA901 /* ThemeRecommandCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThemeRecommandCell.swift; sourceTree = "<group>"; };
+		99D92DD81D4905EF005BA901 /* ThemeRecommandCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ThemeRecommandCell.xib; sourceTree = "<group>"; };
 		99FA8ADC1D4469120029E898 /* WDayDayCook.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WDayDayCook.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		99FA8ADF1D4469120029E898 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		99FA8AE41D4469120029E898 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -144,6 +148,8 @@
 				991BA7901D4786BA00EE3CFE /* MyCollectionCell.swift */,
 				991BA7921D479C5F00EE3CFE /* ArticleCell.swift */,
 				991BA7931D479C5F00EE3CFE /* ArticleCell.xib */,
+				99D92DD71D4905EF005BA901 /* ThemeRecommandCell.swift */,
+				99D92DD81D4905EF005BA901 /* ThemeRecommandCell.xib */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -462,6 +468,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				99D92DDA1D4905EF005BA901 /* ThemeRecommandCell.xib in Resources */,
 				99B891101D447C4100261A84 /* loadingVideo.mp4 in Resources */,
 				99FA8AEA1D4469120029E898 /* LaunchScreen.storyboard in Resources */,
 				99FA8AE71D4469120029E898 /* Assets.xcassets in Resources */,
@@ -547,6 +554,7 @@
 				991BA78F1D47058900EE3CFE /* TitleView.swift in Sources */,
 				991BA78D1D47009100EE3CFE /* BaseTitleViewCell.swift in Sources */,
 				99B891311D44FC7900261A84 /* Router.swift in Sources */,
+				99D92DD91D4905EF005BA901 /* ThemeRecommandCell.swift in Sources */,
 				991BA7941D479C5F00EE3CFE /* ArticleCell.swift in Sources */,
 				99B891141D4498DA00261A84 /* TabBarViewController.swift in Sources */,
 				991BA7911D4786BA00EE3CFE /* MyCollectionCell.swift in Sources */,
