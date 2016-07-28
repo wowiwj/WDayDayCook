@@ -33,9 +33,14 @@ enum CellStyle:Int {
     
 }
 
+protocol MyCollectionCellDelegete {
+    func didSeclectItem(item:Object)
+}
+
 
 class MyCollectionCell: BaseTitleViewCell {
 
+    var delegate: MyCollectionCellDelegete?
     
     // MARK: - 接收的参数
     var newFoodItems: Results<NewFood>?{
@@ -174,6 +179,35 @@ extension MyCollectionCell: UICollectionViewDataSource,UICollectionViewDelegate
     }
     
     func collectionView(collectionView: UICollectionView, didEndDisplayingCell cell: UICollectionViewCell, forItemAtIndexPath indexPath: NSIndexPath) {
+        
+        
+    }
+    
+    
+    func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+        
+        print(indexPath.item)
+        
+        guard let delegate = delegate else
+        {
+            return
+        
+        }
+        
+        
+        
+        if let recipeList = recipeList
+        {
+            delegate.didSeclectItem(recipeList[indexPath.row])
+            print()
+        
+        }
+        
+        if let newFoodItems = newFoodItems {
+            delegate.didSeclectItem(newFoodItems[indexPath.row])
+//            print(newFoodItems[indexPath.row])
+        }
+        
         
         
     }

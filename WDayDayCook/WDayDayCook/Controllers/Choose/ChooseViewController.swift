@@ -28,8 +28,6 @@ final class ChooseViewController: UIViewController {
             tableView.separatorStyle = .None
             tableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 20, right: 0)
             tableView.estimatedRowHeight = 250
-            //            tableView.rowHeight = UITableViewAutomaticDimension
-            //
             
         }
     }
@@ -238,7 +236,11 @@ extension ChooseViewController:UITableViewDelegate,UITableViewDataSource
 {
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        return (recipeDiscussList == nil ) ? 3 : 4
+        if recipeDiscussList == nil {
+            return 3
+        }
+        
+        return recipeDiscussList!.count > 0 ? 4 : 3
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
@@ -254,7 +256,8 @@ extension ChooseViewController:UITableViewDelegate,UITableViewDataSource
             return cell
         default:
             let cell =
-                tableView.dequeueReusableCellWithIdentifier(cellIdentifier)!
+                tableView.dequeueReusableCellWithIdentifier(cellIdentifier)! as! MyCollectionCell
+            cell.delegate = self
             return cell
         }
         
@@ -308,5 +311,20 @@ extension ChooseViewController : SDCycleScrollViewDelegate
     }
     
     
+}
+extension ChooseViewController :MyCollectionCellDelegete
+{
+    
+    func didSeclectItem(item: Object) {
+        if item is NewFood
+        {
+            print("123343434343")
+        
+        }
+        
+//        print(item)
+    }
+
+
 }
 

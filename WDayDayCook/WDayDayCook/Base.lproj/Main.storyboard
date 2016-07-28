@@ -47,7 +47,7 @@
         <!--Choose View Controller-->
         <scene sceneID="WJf-7h-Ld1">
             <objects>
-                <viewController id="qiO-yI-yeD" customClass="ChooseViewController" customModule="WDayDayCook" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ShowDetailNav" id="qiO-yI-yeD" customClass="ChooseViewController" customModule="WDayDayCook" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Vpo-4Y-Tsw"/>
                         <viewControllerLayoutGuide type="bottom" id="v5v-OT-JaS"/>
@@ -85,11 +85,20 @@
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
                         <outlet property="tableView" destination="470-rK-eHK" id="L7u-Te-Q3Y"/>
+                        <segue destination="IvJ-AA-arm" kind="show" id="HyG-I0-PbL"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FZx-K7-0k6" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="456.5" y="-1216.5"/>
+        </scene>
+        <!--ShowDetailNavC-->
+        <scene sceneID="Cgf-BV-gSw">
+            <objects>
+                <viewControllerPlaceholder storyboardIdentifier="ShowDetailNavC" storyboardName="ShowDetail" referencedIdentifier="ShowDetailNavC" id="IvJ-AA-arm" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="aca-n7-HTS" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="865.5" y="-1511"/>
         </scene>
         <!--食谱-->
         <scene sceneID="XqD-to-pfz">
