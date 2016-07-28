@@ -23,6 +23,17 @@ class ServiceApi: NSObject {
     // 推荐
     // http://api.daydaycook.com.cn/daydaycook/recommend/queryRecommendAll.do?username=(null)&password=(null)&languageId=3&mainland=1&deviceId=D83DA445-62E2-46EF-A035-779FAE071FB2&uid=&regionCode=156
     
+    // http://api.daydaycook.com.cn/daydaycook/recommend/queryRecommendAll.do?username=(null)&password=(null)&languageId=3&mainland=1&deviceId=D83DA445-62E2-46EF-A035-779FAE071FB2&uid=&regionCode=156
+    
+    // http://api.daydaycook.com.cn/daydaycook/server/recipe/details.do?ver=2&id=38443&username=&password=&languageId=3&mainland=1&deviceId=D83DA445-62E2-46EF-A035-779FAE071FB2&uid=&regionCode=156
+    
+    // http://api.daydaycook.com.cn/daydaycook/server/recipe/details.do?ver=2&id=37697&username=&password=&languageId=3&mainland=1&deviceId=D83DA445-62E2-46EF-A035-779FAE071FB2&uid=&regionCode=156
+    
+    // http://api.daydaycook.com.cn/daydaycook//server/recipe/getRecipe.do?id=21691,27811&languageId=3&mainland=
+    
+    
+    // http://api.daydaycook.com.cn/daydaycook/server/recipe/details.do?ver=2&id=38461&username=&password=&languageId=3&mainland=1&deviceId=D83DA445-62E2-46EF-A035-779FAE071FB2&uid=&regionCode=156
+    
     class func getChooseViewAdList() -> String
     {
         return "\(host)/server/ad/listAds.do?languageId=\(WDConfig.languageId)&mainland=\(WDConfig.mainland)&uid=\(WDConfig.uid)&regionCode=\(WDConfig.regionCode)"

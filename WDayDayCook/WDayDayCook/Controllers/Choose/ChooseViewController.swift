@@ -13,18 +13,24 @@ import RealmSwift
 import SDCycleScrollView
 
 let cellIdentifier = "MyCollectionCell"
+let ThemeListTableViewCellID = "ThemeListTableViewCell"
+let RecipeDiscussListTableViewCellID = "RecipeDiscussListTableViewCell"
 
 final class ChooseViewController: UIViewController {
-
-    
     
     @IBOutlet weak var tableView: UITableView!{
         didSet{
             
-            tableView.backgroundColor = UIColor.purpleColor()
+            tableView.backgroundColor = UIColor.whiteColor()
             tableView.registerClass(MyCollectionCell.self, forCellReuseIdentifier: cellIdentifier)
+            tableView.registerClass(ThemeListTableViewCell.self, forCellReuseIdentifier: ThemeListTableViewCellID)
+            tableView.registerClass(RecipeDiscussListTableViewCell.self, forCellReuseIdentifier: RecipeDiscussListTableViewCellID)
             tableView.separatorStyle = .None
-
+            tableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 20, right: 0)
+            tableView.estimatedRowHeight = 250
+            //            tableView.rowHeight = UITableViewAutomaticDimension
+            //
+            
         }
     }
     private lazy var titleView :UIImageView = {
@@ -33,7 +39,7 @@ final class ChooseViewController: UIViewController {
         titleView.sizeToFit()
         
         return titleView
-    
+        
     }()
     
     private var realm: Realm!
@@ -46,13 +52,13 @@ final class ChooseViewController: UIViewController {
     
     // 每日新品数据
     private var newFoodItems: Results<NewFood>?{
-    
+        
         didSet{
             
             tableView.reloadData()
             
-            print("newFoodItems")
-        
+            //            print("newFoodItems")
+            
         }
     }
     
@@ -60,8 +66,8 @@ final class ChooseViewController: UIViewController {
     private var themeList: Results<FoodRecmmand>? {
         
         didSet{
-            print("---themeList---")
-            print(themeList)
+            //            print("---themeList---")
+            //            print(themeList)
         }
     }
     
@@ -69,8 +75,8 @@ final class ChooseViewController: UIViewController {
     private var recipeList: Results<FoodRecmmand>? {
         
         didSet{
-            print("---recipeList---")
-            print(recipeList)
+            //            print("---recipeList---")
+            //            print(recipeList)
         }
     }
     
@@ -78,8 +84,8 @@ final class ChooseViewController: UIViewController {
     private var recipeDiscussList: Results<FoodRecmmand>? {
         
         didSet{
-            print("---recipeList---")
-            print(recipeDiscussList)
+            //            print("---recipeList---")
+            //            print(recipeDiscussList)
         }
     }
     
@@ -88,7 +94,7 @@ final class ChooseViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         view.backgroundColor = UIColor.yellowColor()
         
         navigationItem.titleView = titleView
@@ -108,40 +114,40 @@ final class ChooseViewController: UIViewController {
         
         tableView.tableHeaderView = cycleView
         
-//        tableView.addHeaderWithCallback { 
+        //        tableView.addHeaderWithCallback {
         
-//        }
+        //        }
         
-
+        
         // 加载每日新品
         loadNewFoodEachDay(0, pageSize: 10)
         // 加载推荐信息
         loadRecommandInfo()
-
+        
     }
-
-
+    
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
     override func viewDidAppear(animated: Bool) {
-//        tableView.headerBeginRefreshing()
+        //        tableView.headerBeginRefreshing()
     }
     
     // MARK: - LoadData
     /// 加载上方滚动广告
     func loadADData(){
         Alamofire.request(Router.ChooseViewAdList(parameters: nil)).responseJSON { [unowned self] responses in
- 
+            
             if responses.result.isFailure
             {
                 WDAlert.alertSorry(message: "网络异常", inViewController: self)
                 // 加载失败，使用旧数据
                 return
             }
-
+            
             
             let json = responses.result.value
             let result = JSON(json!)
@@ -152,7 +158,7 @@ final class ChooseViewController: UIViewController {
             self.cycleView?.imageURLStringsGroup = self.realm.objects(MainADItem).map { item -> String in
                 return item.path
             }
-
+            
         }
     }
     // 加载每日新品
@@ -171,13 +177,13 @@ final class ChooseViewController: UIViewController {
             
             let value = response.result.value
             let result = JSON(value!)
- 
+            
             deleteAllObject(NewFood)
             addNewFoodItemInRealm(result["data"])
             
             self.newFoodItems = getNewFoodItemInRealm(self.realm)
         }
-
+        
     }
     
     /// 加载推荐信息数据
@@ -190,9 +196,15 @@ final class ChooseViewController: UIViewController {
                 self.recipeList = getRecipeListInRealm(self.realm)
                 self.recipeDiscussList = getRecipeDiscussListInRealm(self.realm)
             }
-
+            
+            //            print(response.result.value)
+            
             if response.result.isFailure
             {
+                print(response.request)
+                
+                print(response.result.error)
+                
                 WDAlert.alertSorry(message: "网络异常", inViewController: self)
                 getFoodRecmmand()
                 return
@@ -200,6 +212,8 @@ final class ChooseViewController: UIViewController {
             
             let value = response.result.value
             let result = JSON(value!)
+            
+            print(result)
             
             func updateFoodRecmmand()
             {
@@ -215,7 +229,7 @@ final class ChooseViewController: UIViewController {
             getFoodRecmmand()
         }
     }
-
+    
 }
 
 // MARK: - UITableViewDelegate,UITableViewDataSource
@@ -223,32 +237,51 @@ final class ChooseViewController: UIViewController {
 extension ChooseViewController:UITableViewDelegate,UITableViewDataSource
 {
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 4
+        
+        return (recipeDiscussList == nil ) ? 3 : 4
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
-        let cell =
-            tableView.dequeueReusableCellWithIdentifier(cellIdentifier)!
-  
-        return cell
-   
+        switch indexPath.row {
+        case CellStyle.themeList.rawValue:
+            let cell =
+                tableView.dequeueReusableCellWithIdentifier(ThemeListTableViewCellID)!
+            return cell
+        case CellStyle.recipeDiscussList.rawValue:
+            let cell =
+                tableView.dequeueReusableCellWithIdentifier(RecipeDiscussListTableViewCellID)!
+            return cell
+        default:
+            let cell =
+                tableView.dequeueReusableCellWithIdentifier(cellIdentifier)!
+            return cell
+        }
+        
     }
     
     func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
-        let cell = cell as! MyCollectionCell
-
+        
         switch indexPath.row {
         case CellStyle.newFood.rawValue:
-            cell.newFoodItems = newFoodItems
+            let newFoodcell = cell as! MyCollectionCell
+            newFoodcell.newFoodItems = newFoodItems
         case CellStyle.themeList.rawValue:
+            let cell = cell as! ThemeListTableViewCell
             cell.themeList = themeList
         case CellStyle.recipeList.rawValue:
+            let cell = cell as! MyCollectionCell
             cell.recipeList = recipeList
         default:
+            let cell = cell as! RecipeDiscussListTableViewCell
             cell.recipeDiscussList = recipeDiscussList
         }
-
+        
+    }
+    
+    func tableView(tableView: UITableView, didEndDisplayingCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
+        //        let cell = cell as! MyCollectionCell
+        //        cell.collectionView.frame = CGRectZero
     }
     
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
@@ -256,13 +289,15 @@ extension ChooseViewController:UITableViewDelegate,UITableViewDataSource
         switch indexPath.row {
         case CellStyle.themeList.rawValue:
             return 600
+        case CellStyle.recipeDiscussList.rawValue:
+            return 200
         default:
             return 250
         }
-
+        
     }
-
-
+    
+    
 }
 
 extension ChooseViewController : SDCycleScrollViewDelegate
@@ -271,6 +306,7 @@ extension ChooseViewController : SDCycleScrollViewDelegate
     func cycleScrollView(cycleScrollView: SDCycleScrollView!, didSelectItemAtIndex index: Int) {
         print(index)
     }
-
-
+    
+    
 }
+

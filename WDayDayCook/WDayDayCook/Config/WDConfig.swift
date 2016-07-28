@@ -25,6 +25,7 @@ public class WDConfig {
     static let articleCellWidth:CGFloat = 160
     static let articleCellInfoViewHeight:CGFloat = 70
     
+    static let themeListCount = 4
     
 }
 

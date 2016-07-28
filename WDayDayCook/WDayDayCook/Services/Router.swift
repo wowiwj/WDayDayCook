@@ -38,6 +38,7 @@ enum Router: URLRequestConvertible {
         let URL = NSURL(string: path)!
         
         let mutableURLRequest = NSMutableURLRequest(URL: URL)
+        mutableURLRequest.setValue("1", forHTTPHeaderField: "device")
 
         switch self {
         case .ChooseViewAdList(let parameters):
