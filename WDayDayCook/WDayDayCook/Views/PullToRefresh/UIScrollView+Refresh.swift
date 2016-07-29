@@ -46,6 +46,7 @@ extension UIScrollView {
     {
         for object : AnyObject in self.subviews{
             if object is RefreshHeaderView{
+      
                 object.endRefreshing()
             }
         }
@@ -110,6 +111,7 @@ extension UIScrollView {
         for object : AnyObject in self.subviews{
             if object is RefreshFooterView{
                 object.endRefreshing()
+             
             }
         }
      

@@ -18,6 +18,20 @@ let RecipeDiscussListTableViewCellID = "RecipeDiscussListTableViewCell"
 
 final class ChooseViewController: UIViewController {
     
+    lazy var manager :Alamofire.Manager = {
+        
+        let manager = Alamofire.Manager.sharedInstance
+        
+        
+
+        return manager
+        
+    
+    }()
+    
+    
+    
+    
     @IBOutlet weak var tableView: UITableView!{
         didSet{
             
@@ -96,7 +110,7 @@ final class ChooseViewController: UIViewController {
         view.backgroundColor = UIColor.yellowColor()
         
         navigationItem.titleView = titleView
-        loadADData()
+//        loadADData()
         
         realm = try! Realm()
         
@@ -112,15 +126,29 @@ final class ChooseViewController: UIViewController {
         
         tableView.tableHeaderView = cycleView
         
-        //        tableView.addHeaderWithCallback {
+        tableView.addHeaderWithCallback {
+            
+            let group = dispatch_group_create()
+            
+            let queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)
+            
+            dispatch_group_async(group, queue) {
+                print(NSThread.currentThread())
+                self.loadADData()
+            }
+            dispatch_group_async(group, queue) {
+                print(NSThread.currentThread())
+                self.loadNewFoodEachDay(0, pageSize: 10)
+            }
+            
+            dispatch_group_notify(group, queue) {
+                print(NSThread.currentThread())
+                self.loadRecommandInfo()
+                
+            }
+        }
         
-        //        }
-        
-        
-        // 加载每日新品
-        loadNewFoodEachDay(0, pageSize: 10)
-        // 加载推荐信息
-        loadRecommandInfo()
+        self.tableView.headerBeginRefreshing()
         
     }
     
@@ -139,6 +167,8 @@ final class ChooseViewController: UIViewController {
     func loadADData(){
         Alamofire.request(Router.ChooseViewAdList(parameters: nil)).responseJSON { [unowned self] responses in
             
+            
+            print("loadADData\(NSThread.currentThread())")
             if responses.result.isFailure
             {
                 WDAlert.alertSorry(message: "网络异常", inViewController: self)
@@ -162,6 +192,7 @@ final class ChooseViewController: UIViewController {
     // 加载每日新品
     func loadNewFoodEachDay(currentPage:Int,pageSize:Int)
     {
+        print("loadNewFoodEachDay\(NSThread.currentThread())")
         Alamofire.request(Router.NewFoodEachDay(currentpage: currentPage, pageSize: pageSize)).responseJSON { [unowned self] response in
             
             
@@ -188,6 +219,10 @@ final class ChooseViewController: UIViewController {
     func loadRecommandInfo()
     {
         Alamofire.request(Router.getRecommendInfo(parameters: nil)).responseJSON {[unowned self] response in
+            
+            
+            self.tableView.headerEndRefreshing()
+            
             func getFoodRecmmand()
             {
                 self.themeList = getThemeListInRealm(self.realm)
@@ -210,9 +245,7 @@ final class ChooseViewController: UIViewController {
             
             let value = response.result.value
             let result = JSON(value!)
-            
-            print(result)
-            
+  
             func updateFoodRecmmand()
             {
                 // 删除之前存的旧数据
