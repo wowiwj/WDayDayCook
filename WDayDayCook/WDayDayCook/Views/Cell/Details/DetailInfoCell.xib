@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10116" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="DetailInfoCell" rowHeight="293" id="KGk-i7-Jjw" customClass="DetailInfoCell" customModule="WDayDayCook" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="293"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="292"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="H0o-4C-dWv">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="292"/>
+                        <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="deviceRGB"/>
+                    </webView>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="H0o-4C-dWv" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="B87-Al-Mbd"/>
+                    <constraint firstAttribute="trailing" secondItem="H0o-4C-dWv" secondAttribute="trailing" id="NC7-rg-0cS"/>
+                    <constraint firstItem="H0o-4C-dWv" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="Ue0-4y-yH0"/>
+                    <constraint firstAttribute="bottom" secondItem="H0o-4C-dWv" secondAttribute="bottom" id="u7R-qF-uE2"/>
+                </constraints>
+            </tableViewCellContentView>
+            <color key="backgroundColor" red="1" green="0.92734757285728464" blue="0.60016107149157205" alpha="1" colorSpace="calibratedRGB"/>
+            <connections>
+                <outlet property="webView" destination="H0o-4C-dWv" id="aGp-eo-Dr5"/>
+            </connections>
+            <point key="canvasLocation" x="336" y="271.5"/>
+        </tableViewCell>
+    </objects>
+</document>

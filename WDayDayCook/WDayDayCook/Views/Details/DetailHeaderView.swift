@@ -25,6 +25,7 @@ class DetailHeaderView: UIView {
         let button = UIButton()
         button.setImage(UIImage(named: "食谱详情icon－Play~iphone"), forState: .Normal)
         button.sizeToFit()
+        button.hidden = true
         return button
     
     }()

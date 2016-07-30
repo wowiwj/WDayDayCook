@@ -11,6 +11,15 @@ import Alamofire
 import SwiftyJSON
 import Kingfisher
 
+enum DetailCellStyle: Int {
+    case Title
+    case Detail
+}
+
+let DetailTitleViewCellID = "DetailTitleViewCell"
+let DetailInfoCellID = "DetailInfoCell"
+
+
 class ShowDetailViewController: UIViewController {
     
     var id :Int!
@@ -33,10 +42,17 @@ class ShowDetailViewController: UIViewController {
             
             tableView.delegate = self
             tableView.dataSource = self
-
+            
+            tableView.estimatedRowHeight = 600
+//            tableView.rowHeight = UITableViewAutomaticDimension
+//            tableView.rowHeight = 300
+            
+            tableView.registerNib(UINib(nibName: DetailTitleViewCellID, bundle: nil), forCellReuseIdentifier: DetailTitleViewCellID)
+            tableView.registerNib(UINib(nibName: DetailInfoCellID, bundle: nil), forCellReuseIdentifier: DetailInfoCellID)
         }
-    
     }
+    
+    var webCell:DetailInfoCell?
     
 
     private lazy var customNavigationItem: UINavigationItem = UINavigationItem(title: "")
@@ -54,6 +70,18 @@ class ShowDetailViewController: UIViewController {
         return bar
     
     }()
+    
+    var result:JSON?{
+        didSet{
+            if let result = result
+            {
+                print(result)
+                self.headerView.imageUrl = result["data"]["imageUrl"].stringValue
+                self.headerView.videoButton.hidden = result["data"]["loadContent"].stringValue.isEmpty
+                tableView.reloadData()
+            }
+        }
+    }
     
    
 
@@ -99,17 +127,9 @@ class ShowDetailViewController: UIViewController {
             let value = resopnse.result.value
             let result = JSON(value!)
             
-            self.headerView.imageUrl = result["data"]["imageUrl"].stringValue
-           print(result)
-            
-            
-            
-            
-        }
-        
-        
-        
+            self.result = result
     
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -117,15 +137,6 @@ class ShowDetailViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
     override func viewWillDisappear(animated: Bool) {
         super.viewWillAppear(animated)
         
@@ -143,9 +154,7 @@ class ShowDetailViewController: UIViewController {
     // MARK: - 消息的监听
     @objc private func backBarButtonClicked()
     {
-        
         self.navigationController?.popViewControllerAnimated(true)
-    
     }
 
 }
@@ -155,18 +164,70 @@ extension ShowDetailViewController :UITableViewDelegate,UITableViewDataSource
 {
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 12
+        return 2
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = UITableViewCell()
-        cell.textLabel?.text = "666"
-        cell.backgroundColor = UIColor.redColor()
         
-        return cell
+        switch indexPath.row {
+        case DetailCellStyle.Title.rawValue:
+            let cell = tableView.dequeueReusableCellWithIdentifier(DetailTitleViewCellID)
+            return cell!
+        case DetailCellStyle.Detail.rawValue:
+            let cell = tableView.dequeueReusableCellWithIdentifier(DetailInfoCellID) as! DetailInfoCell
+            if let result = result
+            {
+                cell.requestUrl = result["data"]["loadContent"].stringValue
+                webCell = cell
+                cell.loadFinishedAction = { [unowned self] in
+                    self.tableView.reloadRowsAtIndexPaths([NSIndexPath(forRow: 0, inSection: 0)], withRowAnimation: .None)
+                }
+            }
+            return cell
+        default:
+            return UITableViewCell()
+        }
+    }
+    
+    func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
+        
+        guard let result = result else{
+            return
+        }
+        
+        
+        switch indexPath.row {
+        case DetailCellStyle.Title.rawValue:
+            let cell = cell as! DetailTitleViewCell
+            cell.nameLabel.text = result["data"]["name"].stringValue
+            let maketime = " \(result["data"]["maketime"])"
+            cell.makeTimeButton.setTitle(maketime, forState: .Normal)
+            let clickCount = " \(result["data"]["clickCount"].stringValue)"
+            cell.clickCountButton.setTitle(clickCount, forState: .Normal)
+   
+        default:
+            return
+        }
+    }
+    
+    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+
+        switch indexPath.row {
+        case DetailCellStyle.Title.rawValue:
+            return 60
+        case DetailCellStyle.Detail.rawValue:
+            if let cell = webCell
+            {
+                print(cell.cellHeight)
+                return cell.cellHeight
+                
+            }
+        default:
+            return 0
+        }
+        return 0
     }
 
-    
     /// 下拉放大效果
     func scrollViewDidScroll(scrollView: UIScrollView) {
         
@@ -182,6 +243,14 @@ extension ShowDetailViewController :UITableViewDelegate,UITableViewDataSource
             frame.origin.x = -deltaY * 0.5
             frame.origin.y = CGRectGetMinX(frame) - deltaY * 0.5
             self.headerView.imageView.frame = frame
+        }
+        
+        let value1 = scrollView.contentOffset.y + UIScreen.mainScreen().bounds.height
+        let value2 = scrollView.contentSize.height
+
+        if value1 == value2 {
+            print("22222")
+            webCell?.scrollEnabled = true
         }
 
     }
