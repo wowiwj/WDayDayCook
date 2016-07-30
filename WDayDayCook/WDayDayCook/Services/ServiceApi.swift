@@ -34,6 +34,10 @@ class ServiceApi: NSObject {
     
     // http://api.daydaycook.com.cn/daydaycook/server/recipe/details.do?ver=2&id=38461&username=&password=&languageId=3&mainland=1&deviceId=D83DA445-62E2-46EF-A035-779FAE071FB2&uid=&regionCode=156
     
+    // http://api.daydaycook.com.cn/daydaycook/server/recipe/detailVideo.do?id=38332&languageId=3&mainland=1&deviceId=D83DA445-62E2-46EF-A035-779FAE071FB2&uid=&regionCode=156
+    
+    // 38443 38332
+    
     class func getChooseViewAdList() -> String
     {
         return "\(host)/server/ad/listAds.do?languageId=\(WDConfig.languageId)&mainland=\(WDConfig.mainland)&uid=\(WDConfig.uid)&regionCode=\(WDConfig.regionCode)"
@@ -52,6 +56,11 @@ class ServiceApi: NSObject {
     {
         return "\(host)/recommend/queryRecommendAll.do?username=(null)&password=(null)&languageId=\(WDConfig.languageId)&mainland=\(WDConfig.mainland)&uid=\(WDConfig.uid)&regionCode=\(WDConfig.regionCode)"
  
+    }
+    
+    class func getDetails(id:Int)->String
+    {
+        return "\(host)/server/recipe/details.do?ver=2&id=\(id)&username=&password=&languageId=\(WDConfig.languageId)&mainland=\(WDConfig.mainland)&uid=\(WDConfig.uid)&regionCode=\(WDConfig.regionCode)"
     }
     
     

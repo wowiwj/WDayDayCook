@@ -64,42 +64,20 @@ final class ChooseViewController: UIViewController {
     
     // 每日新品数据
     private var newFoodItems: Results<NewFood>?{
-        
         didSet{
-            
-            tableView.reloadData()
-            
-            //            print("newFoodItems")
-            
+            tableView.reloadRowsAtIndexPaths([NSIndexPath(forRow: 0, inSection: 0)], withRowAnimation: UITableViewRowAnimation.Automatic)
+        
         }
     }
     
     /// 主题推荐
-    private var themeList: Results<FoodRecmmand>? {
-        
-        didSet{
-            //            print("---themeList---")
-            //            print(themeList)
-        }
-    }
+    private var themeList: Results<FoodRecmmand>?
     
     /// 热门推荐
-    private var recipeList: Results<FoodRecmmand>? {
-        
-        didSet{
-            //            print("---recipeList---")
-            //            print(recipeList)
-        }
-    }
+    private var recipeList: Results<FoodRecmmand>?
     
     /// 话题推荐
-    private var recipeDiscussList: Results<FoodRecmmand>? {
-        
-        didSet{
-            //            print("---recipeList---")
-            //            print(recipeDiscussList)
-        }
-    }
+    private var recipeDiscussList: Results<FoodRecmmand>?
     
     // tabble头部
     var cycleView: SDCycleScrollView?
@@ -109,9 +87,9 @@ final class ChooseViewController: UIViewController {
         
         view.backgroundColor = UIColor.yellowColor()
         
-        navigationItem.titleView = titleView
-//        loadADData()
         
+        
+        navigationItem.titleView = titleView
         realm = try! Realm()
         
         let placeholderImage = UIImage(named: "default_1~iphone")!
@@ -131,7 +109,6 @@ final class ChooseViewController: UIViewController {
             let group = dispatch_group_create()
             
             let queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)
-            
             dispatch_group_async(group, queue) {
                 print(NSThread.currentThread())
                 self.loadADData()
@@ -158,17 +135,16 @@ final class ChooseViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    override func viewDidAppear(animated: Bool) {
-        //        tableView.headerBeginRefreshing()
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+//        self.navigationController?.navigationBar.hidden = false
     }
     
     // MARK: - LoadData
     /// 加载上方滚动广告
     func loadADData(){
         Alamofire.request(Router.ChooseViewAdList(parameters: nil)).responseJSON { [unowned self] responses in
-            
-            
-            print("loadADData\(NSThread.currentThread())")
+
             if responses.result.isFailure
             {
                 WDAlert.alertSorry(message: "网络异常", inViewController: self)
@@ -192,7 +168,6 @@ final class ChooseViewController: UIViewController {
     // 加载每日新品
     func loadNewFoodEachDay(currentPage:Int,pageSize:Int)
     {
-        print("loadNewFoodEachDay\(NSThread.currentThread())")
         Alamofire.request(Router.NewFoodEachDay(currentpage: currentPage, pageSize: pageSize)).responseJSON { [unowned self] response in
             
             
@@ -218,7 +193,7 @@ final class ChooseViewController: UIViewController {
     /// 加载推荐信息数据
     func loadRecommandInfo()
     {
-        Alamofire.request(Router.getRecommendInfo(parameters: nil)).responseJSON {[unowned self] response in
+        Alamofire.request(Router.RecommendInfo(parameters: nil)).responseJSON {[unowned self] response in
             
             
             self.tableView.headerEndRefreshing()
@@ -228,10 +203,9 @@ final class ChooseViewController: UIViewController {
                 self.themeList = getThemeListInRealm(self.realm)
                 self.recipeList = getRecipeListInRealm(self.realm)
                 self.recipeDiscussList = getRecipeDiscussListInRealm(self.realm)
+                self.tableView.reloadData()
             }
-            
-            //            print(response.result.value)
-            
+    
             if response.result.isFailure
             {
                 print(response.request)
@@ -260,6 +234,24 @@ final class ChooseViewController: UIViewController {
             getFoodRecmmand()
         }
     }
+    
+    // MARK: - 控制器跳转
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        
+        guard let identifier = segue.identifier else{
+            return
+        }
+        
+        if identifier == "showDetail" {
+            let vc = segue.destinationViewController as! ShowDetailViewController
+            let item = sender as! Int
+            
+            vc.id = item
+        }
+        
+        
+    }
+    
     
 }
 
@@ -351,11 +343,10 @@ extension ChooseViewController :MyCollectionCellDelegete
     func didSeclectItem(item: Object) {
         if item is NewFood
         {
-            print("123343434343")
-        
+            performSegueWithIdentifier("showDetail", sender: (item as! NewFood).id)
+
         }
         
-//        print(item)
     }
 
 

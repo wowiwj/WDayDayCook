@@ -85,20 +85,22 @@
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
                         <outlet property="tableView" destination="470-rK-eHK" id="L7u-Te-Q3Y"/>
-                        <segue destination="IvJ-AA-arm" kind="show" id="HyG-I0-PbL"/>
+                        <segue destination="IvJ-AA-arm" kind="show" identifier="showDetail" id="vBe-K3-5U0"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FZx-K7-0k6" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="456.5" y="-1216.5"/>
         </scene>
-        <!--ShowDetailNavC-->
+        <!--showDetailController-->
         <scene sceneID="Cgf-BV-gSw">
             <objects>
-                <viewControllerPlaceholder storyboardIdentifier="ShowDetailNavC" storyboardName="ShowDetail" referencedIdentifier="ShowDetailNavC" id="IvJ-AA-arm" sceneMemberID="viewController"/>
+                <viewControllerPlaceholder storyboardIdentifier="ShowDetailNavC" storyboardName="ShowDetail" referencedIdentifier="showDetailController" id="IvJ-AA-arm" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="eAJ-iT-Ibc"/>
+                </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aca-n7-HTS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="865.5" y="-1511"/>
+            <point key="canvasLocation" x="832.5" y="-1496"/>
         </scene>
         <!--食谱-->
         <scene sceneID="XqD-to-pfz">

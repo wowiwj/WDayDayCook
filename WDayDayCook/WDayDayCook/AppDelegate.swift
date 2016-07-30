@@ -94,15 +94,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Nav bar
         let navBar = UINavigationBar.appearance()
         
-//        navBar.backgroundColor = UIColor.whiteColor()
-        navBar.tintColor = UIColor.redColor()
+        //   navBar.backgroundColor = UIColor.whiteColor()
+        navBar.tintColor = UIColor.darkGrayColor()
         // 导航条默认设置为不透明
         navBar.translucent = false
         
-        //navBg~iphone navi_bar_bg~iphone navBg2~iphone
+        // navBg~iphone navi_bar_bg~iphone navBg2~iphone
         navBar.setBackgroundImage(UIImage(named: "navi_bar_bg~iphone"), forBarMetrics: .Default)
         // 取消navbar 下面的细线
-//        navBar.shadowImage = UIImage()
+        navBar.shadowImage = UIImage()
     
     }
 

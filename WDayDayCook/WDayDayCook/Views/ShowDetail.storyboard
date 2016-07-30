@@ -5,50 +5,41 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
     </dependencies>
     <scenes>
-        <!--Root View Controller-->
-        <scene sceneID="t80-ky-JV0">
+        <!--Show Detail View Controller-->
+        <scene sceneID="Jc0-I5-sxP">
             <objects>
-                <tableViewController id="cOq-TS-kcv" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="aIc-Lz-zfS">
+                <viewController storyboardIdentifier="showDetailController" hidesBottomBarWhenPushed="YES" id="S85-gQ-YZl" customClass="ShowDetailViewController" customModule="WDayDayCook" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="atv-og-IbA"/>
+                        <viewControllerLayoutGuide type="bottom" id="qlM-k5-0bK"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="VTT-Mu-tfe">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="V8l-BL-BXL">
-                                <rect key="frame" x="0.0" y="92" width="600" height="44"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="V8l-BL-BXL" id="kaX-tC-keC">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                </tableViewCellContentView>
-                            </tableViewCell>
-                        </prototypes>
-                        <connections>
-                            <outlet property="dataSource" destination="cOq-TS-kcv" id="I1Y-9y-6nn"/>
-                            <outlet property="delegate" destination="cOq-TS-kcv" id="M2I-9d-Kva"/>
-                        </connections>
-                    </tableView>
-                    <navigationItem key="navigationItem" title="Root View Controller" id="WNZ-ac-I6P"/>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="R2t-o8-R5B" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="593" y="386"/>
-        </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="9kD-7z-r9Y">
-            <objects>
-                <navigationController storyboardIdentifier="ShowDetailNavC" id="vcp-uo-TgF" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="LPs-9C-cTv">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="izU-C2-qT5">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="S85-gQ-YZl" id="7e1-aC-9Xg"/>
+                                    <outlet property="delegate" destination="S85-gQ-YZl" id="Uwd-gH-JR0"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="izU-C2-qT5" secondAttribute="trailing" id="877-Y6-6mC"/>
+                            <constraint firstItem="izU-C2-qT5" firstAttribute="top" secondItem="VTT-Mu-tfe" secondAttribute="top" id="BDg-xR-lFp"/>
+                            <constraint firstItem="qlM-k5-0bK" firstAttribute="top" secondItem="izU-C2-qT5" secondAttribute="bottom" id="HeR-AL-1NV"/>
+                            <constraint firstItem="izU-C2-qT5" firstAttribute="leading" secondItem="VTT-Mu-tfe" secondAttribute="leading" id="fAl-Yt-esM"/>
+                        </constraints>
+                    </view>
                     <connections>
-                        <segue destination="cOq-TS-kcv" kind="relationship" relationship="rootViewController" id="Qsa-lS-W7b"/>
+                        <outlet property="tableView" destination="izU-C2-qT5" id="NrN-zf-c4n"/>
                     </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="bMc-De-K1N" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="8p3-8Y-Cb6" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-227" y="386"/>
+            <point key="canvasLocation" x="620" y="284"/>
         </scene>
     </scenes>
 </document>
