@@ -9,6 +9,10 @@
 import UIKit
 import RealmSwift
 
+protocol ThemeListTableViewCellDelagate {
+    func didSeclectItem(item:Object)
+}
+
 class ThemeListTableViewCell: BaseTitleViewCell {
 
     
@@ -20,6 +24,7 @@ class ThemeListTableViewCell: BaseTitleViewCell {
         }
     }
 
+    var delegate: ThemeListTableViewCellDelagate?
     
     let ThemeRecommandCellID = "ThemeRecommandCell"
     
@@ -124,5 +129,24 @@ extension ThemeListTableViewCell: UICollectionViewDataSource,UICollectionViewDel
     func collectionView(collectionView: UICollectionView, didEndDisplayingCell cell: UICollectionViewCell, forItemAtIndexPath indexPath: NSIndexPath) {
         
     }
+    
+    func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+        
+        print(indexPath.item)
+        
+        guard let delegate = delegate else
+        {
+            return
+            
+        }
+        
+        if let themeList = themeList
+        {
+            delegate.didSeclectItem(themeList[indexPath.row])
+            print()
+            
+        }
+    }
+
     
 }

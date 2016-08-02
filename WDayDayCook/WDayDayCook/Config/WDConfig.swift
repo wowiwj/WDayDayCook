@@ -20,12 +20,15 @@ public class WDConfig {
     static let appGroupID: String = "group.wangju.WdaydayCook"
     static let firstOpen = false
     
-    static let cellTitleViewHeight = 40
+    static let cellTitleViewHeight:CGFloat = 60
     
     static let articleCellWidth:CGFloat = 160
     static let articleCellInfoViewHeight:CGFloat = 70
     
     static let themeListCount = 4
+    
+    // 详情头部Cell的高度
+    static let DetailTitleCellHeight: CGFloat = 60
     
 }
 

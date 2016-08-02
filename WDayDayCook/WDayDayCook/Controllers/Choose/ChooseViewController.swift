@@ -18,19 +18,7 @@ let RecipeDiscussListTableViewCellID = "RecipeDiscussListTableViewCell"
 
 final class ChooseViewController: UIViewController {
     
-    lazy var manager :Alamofire.Manager = {
-        
-        let manager = Alamofire.Manager.sharedInstance
-        
-        
 
-        return manager
-        
-    
-    }()
-    
-    
-    
     
     @IBOutlet weak var tableView: UITableView!{
         didSet{
@@ -273,7 +261,8 @@ extension ChooseViewController:UITableViewDelegate,UITableViewDataSource
         switch indexPath.row {
         case CellStyle.themeList.rawValue:
             let cell =
-                tableView.dequeueReusableCellWithIdentifier(ThemeListTableViewCellID)!
+                tableView.dequeueReusableCellWithIdentifier(ThemeListTableViewCellID)! as! ThemeListTableViewCell
+            cell.delegate = self
             return cell
         case CellStyle.recipeDiscussList.rawValue:
             let cell =
@@ -332,12 +321,16 @@ extension ChooseViewController : SDCycleScrollViewDelegate
 {
     
     func cycleScrollView(cycleScrollView: SDCycleScrollView!, didSelectItemAtIndex index: Int) {
-        print(index)
+        let item = adData[index]
+        print(item)
+        performSegueWithIdentifier("showDetail", sender: Int(item.url))
+        
+
     }
     
     
 }
-extension ChooseViewController :MyCollectionCellDelegete
+extension ChooseViewController :MyCollectionCellDelegete,ThemeListTableViewCellDelagate
 {
     
     func didSeclectItem(item: Object) {
@@ -347,6 +340,18 @@ extension ChooseViewController :MyCollectionCellDelegete
 
         }
         
+        if item is FoodRecmmand{
+            print(item)
+            
+            performSegueWithIdentifier("showDetail", sender: (item as! FoodRecmmand).recipe_id)
+        }
+        
+        if item is FoodRecmmand {
+            
+            
+            
+        }
+     
     }
 
 

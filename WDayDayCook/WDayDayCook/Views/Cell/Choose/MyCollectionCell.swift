@@ -200,12 +200,14 @@ extension MyCollectionCell: UICollectionViewDataSource,UICollectionViewDelegate
         {
             delegate.didSeclectItem(recipeList[indexPath.row])
             print()
+            return
         
         }
         
         if let newFoodItems = newFoodItems {
             delegate.didSeclectItem(newFoodItems[indexPath.row])
 //            print(newFoodItems[indexPath.row])
+            return
         }
         
         

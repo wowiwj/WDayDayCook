@@ -26,6 +26,7 @@ class DetailInfoCell: UITableViewCell {
             self.webView.scrollView.scrollEnabled = false
             scrollEnabled = false
             if oldHeight == cellHeight {
+                // 数据加载完，则不再加载
                 return
             }
             
@@ -97,8 +98,6 @@ extension DetailInfoCell:UIWebViewDelegate
         if let action = loadFinishedAction {
             action()
         }
-        
-        print("9999999")
 
         print(cellHeight)
     }
@@ -110,11 +109,3 @@ extension DetailInfoCell:UIWebViewDelegate
 
 }
 
-extension DetailInfoCell: UIScrollViewDelegate
-{
-//    func scrollViewWillBeginDragging(scrollView: UIScrollView) {
-//        print("11111")
-//    }
-
-
-}

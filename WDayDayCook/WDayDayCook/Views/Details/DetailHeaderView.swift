@@ -10,6 +10,10 @@ import UIKit
 import SnapKit
 import Kingfisher
 
+protocol DetailHeaderViewDelegate {
+    func videoButtonClicked(detailsUrl:String?,id:Int?)
+}
+
 class DetailHeaderView: UIView {
     
     var imageUrl:String?{
@@ -20,12 +24,20 @@ class DetailHeaderView: UIView {
         }
     }
     
+    
+    var delegate : DetailHeaderViewDelegate?
+    
+    var detailsUrl:String?
+    
+    var id:Int?
+    
     lazy var videoButton:UIButton = {
     
         let button = UIButton()
         button.setImage(UIImage(named: "食谱详情icon－Play~iphone"), forState: .Normal)
         button.sizeToFit()
         button.hidden = true
+        button.addTarget(self, action: #selector(videoButtonClicked), forControlEvents: .TouchUpInside)
         return button
     
     }()
@@ -63,13 +75,14 @@ class DetailHeaderView: UIView {
         }   
     }
     
-    /*
-    // Only override drawRect: if you perform custom drawing.
-    // An empty implementation adversely affects performance during animation.
-    override func drawRect(rect: CGRect) {
-        // Drawing code
+    @objc func videoButtonClicked()
+    {
+        if let delegate = delegate
+        {
+            delegate.videoButtonClicked(detailsUrl,id: self.id)
+        }
     }
-    */
+
 
 
 }

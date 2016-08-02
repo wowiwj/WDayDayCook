@@ -30,7 +30,7 @@ class ShowDetailViewController: UIViewController {
         
         let headerView = DetailHeaderView()
         headerView.frame = CGRect(x: 0, y: 0, width: 0, height: 300)
-        
+         headerView.delegate = self
         return headerView
     }()
     
@@ -77,7 +77,9 @@ class ShowDetailViewController: UIViewController {
             {
                 print(result)
                 self.headerView.imageUrl = result["data"]["imageUrl"].stringValue
-                self.headerView.videoButton.hidden = result["data"]["loadContent"].stringValue.isEmpty
+                self.headerView.detailsUrl = result["data"]["detailsUrl"].stringValue
+                self.headerView.id = result["data"]["id"].intValue
+                self.headerView.videoButton.hidden = result["data"]["detailsUrl"].stringValue.isEmpty
                 tableView.reloadData()
             }
         }
@@ -121,6 +123,7 @@ class ShowDetailViewController: UIViewController {
             if resopnse.result.isFailure
             {
                 print("请求失败")
+                return
             
             }
             
@@ -214,7 +217,7 @@ extension ShowDetailViewController :UITableViewDelegate,UITableViewDataSource
 
         switch indexPath.row {
         case DetailCellStyle.Title.rawValue:
-            return 60
+            return WDConfig.cellTitleViewHeight
         case DetailCellStyle.Detail.rawValue:
             if let cell = webCell
             {
@@ -255,4 +258,61 @@ extension ShowDetailViewController :UITableViewDelegate,UITableViewDataSource
 
     }
 
+}
+
+extension ShowDetailViewController: DetailHeaderViewDelegate
+{
+    
+    func videoButtonClicked(detailsUrl: String?,id:Int?) {
+        
+        if let url = detailsUrl,id = id {
+            let moreUrl = ServiceApi.getVideosDetail(id)
+            
+            Alamofire.request(Router.VideosDetail(id: id)).responseJSON(completionHandler: { [unowned self] response in
+                
+                
+                func playBaseVideo()
+                {
+                    let player = VVSDKPlayerViewController(url: url, videoType: 1, localVideoTitle: "")
+                    player.setEnableBubble(false)
+                    //            player.setIsLive(false)
+                    self.presentViewController(player, animated: true, completion: nil)
+                    return
+                    
+                }
+                
+                if response.result.isFailure
+                {
+                    playBaseVideo()
+                }
+                
+                let value = response.result.value
+                let json = JSON(value!)
+                
+                if json["code"].intValue == 200
+                {
+                    //                    playBaseVideo()
+                    
+                    let player = VVSDKPlayerViewController(url: moreUrl, videoType: 2, localVideoTitle: "")
+                    player.setEnableBubble(false)
+                    //            player.setIsLive(false)
+                    self.presentViewController(player, animated: true, completion: nil)
+                }else{
+                    
+                    playBaseVideo()
+                    
+                }
+                
+                
+                print(json)
+                
+                
+                })
+            
+            
+        }
+        
+        print(detailsUrl)
+    }
+    
 }

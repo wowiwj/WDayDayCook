@@ -15,6 +15,7 @@ enum Router: URLRequestConvertible {
     case NewFoodEachDay(currentpage :Int,pageSize:Int)
     case RecommendInfo(parameters:[String: AnyObject]?)
     case Details(id: Int)
+    case VideosDetail(id:Int)
     case test()
     
     
@@ -29,6 +30,8 @@ enum Router: URLRequestConvertible {
             return ServiceApi.getRecommendInfo()
         case .Details(let id):
             return ServiceApi.getDetails(id)
+        case .VideosDetail(let id):
+            return ServiceApi.getVideosDetail(id)
         default:
             return ServiceApi.getChooseViewAdList()
         }

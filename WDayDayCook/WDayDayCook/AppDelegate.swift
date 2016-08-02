@@ -41,6 +41,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         Realm.Configuration.defaultConfiguration = realmConfig()
    
+        // 设置播放器AppKey
+        VenvyVideoSDK.setAppKey("N1oWm_rdb")
+        
         return true
     }
 

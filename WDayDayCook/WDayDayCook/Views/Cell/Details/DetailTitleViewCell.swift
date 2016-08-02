@@ -21,6 +21,8 @@ class DetailTitleViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        self.sizeToFit()
+        cellheight = self.bounds.size.height
         // Initialization code
     }
     

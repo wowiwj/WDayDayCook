@@ -63,6 +63,12 @@ class ServiceApi: NSObject {
         return "\(host)/server/recipe/details.do?ver=2&id=\(id)&username=&password=&languageId=\(WDConfig.languageId)&mainland=\(WDConfig.mainland)&uid=\(WDConfig.uid)&regionCode=\(WDConfig.regionCode)"
     }
     
+    class func getVideosDetail(id:Int)->String
+    {
+        return "\(host)/server/recipe/detailVideo.do?id=\(id)&languageId=\(WDConfig.languageId)&mainland=\(WDConfig.mainland)&uid=\(WDConfig.uid)&regionCode=\(WDConfig.regionCode)"
+    }
+
+    
     
     
 }
