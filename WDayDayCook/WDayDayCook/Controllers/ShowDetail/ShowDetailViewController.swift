@@ -74,6 +74,16 @@ class ShowDetailViewController: UIViewController {
     
     }()
     
+    private lazy var scrollTopButton:UIButton = {
+    
+        let button = UIButton()
+        button.setImage(UIImage(named: "upupupIcon~iphone"), forState: .Normal)
+        button.hidden = true
+        button.addTarget(self, action: #selector(scrollButtonClicked), forControlEvents: .TouchUpInside)
+        return button
+    
+    }()
+    
     var result:JSON?{
         didSet{
             if let result = result
@@ -127,12 +137,12 @@ class ShowDetailViewController: UIViewController {
             make.height.equalTo(44)
         }
         
-        
-//        let switch1 = UISwitch()
-//        switch1.frame = CGRect(x: 100, y: 100, width: 100, height: 100)
-//        
-//        self.view.addSubview(switch1)
- 
+        view.addSubview(scrollTopButton)
+        scrollTopButton.snp_makeConstraints { (make) in
+            make.bottom.equalTo(tabbar.snp_top).offset(-20)
+            make.trailing.equalTo(self.view).offset(-20)
+        }
+
         
     }
     
@@ -179,6 +189,21 @@ class ShowDetailViewController: UIViewController {
     @objc private func backBarButtonClicked()
     {
         self.navigationController?.popViewControllerAnimated(true)
+    }
+    
+    @objc private func scrollButtonClicked()
+    {
+        
+        tableView.scrollToRowAtIndexPath(NSIndexPath(forRow: 0, inSection: 0), atScrollPosition: UITableViewScrollPosition.Top, animated: true)
+        
+        
+        tableView.setContentOffset(headerView.frame.origin, animated: true)
+    
+        print(UIScreen.mainScreen().bounds.size.height)
+        
+        
+    
+    
     }
 
 }
@@ -257,12 +282,14 @@ extension ShowDetailViewController :UITableViewDelegate,UITableViewDataSource
         return 0
     }
 
-    /// 下拉放大效果
+    
     func scrollViewDidScroll(scrollView: UIScrollView) {
+        
+        /// 下拉放大效果
         
         let minY: CGFloat = 0
         let offsetY = scrollView.contentOffset.y
-        
+
         var frame = self.headerView.imageView.frame
         if offsetY < 0 {
             
@@ -274,14 +301,22 @@ extension ShowDetailViewController :UITableViewDelegate,UITableViewDataSource
             self.headerView.imageView.frame = frame
         }
         
+//         加载更多
+        
         let value1 = scrollView.contentOffset.y + UIScreen.mainScreen().bounds.height
         let value2 = scrollView.contentSize.height + tableView.contentInset.bottom
 
         
         if value1 == value2 {
             print("22222")
+//            print(offsetY)
             webCell?.scrollEnabled = true
         }
+        
+     
+        scrollTopButton.hidden = offsetY < UIScreen.mainScreen().bounds.size.height
+        
+        
 
     }
 
