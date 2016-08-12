@@ -16,7 +16,7 @@
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="menuBar_bg~iphone" translatesAutoresizingMaskIntoConstraints="NO" id="Wdw-vD-bt0">
                         <rect key="frame" x="0.0" y="0.0" width="216" height="227"/>
                     </imageView>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="kDm-PQ-5P2">
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="default_1~iphone" translatesAutoresizingMaskIntoConstraints="NO" id="kDm-PQ-5P2">
                         <rect key="frame" x="0.0" y="0.0" width="216" height="152"/>
                     </imageView>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gPA-Ec-8c5" userLabel="infoView">
@@ -29,15 +29,6 @@
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1pr-EO-lQo">
-                                <rect key="frame" x="0.0" y="25" width="206" height="20"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="20" id="DWp-z7-CUM"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="11"/>
-                                <color key="textColor" red="0.43529411759999997" green="0.4431372549" blue="0.47450980390000003" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="P7E-5p-Q22">
@@ -73,6 +64,15 @@
                                     <constraint firstItem="KLB-bV-XCL" firstAttribute="top" secondItem="P7E-5p-Q22" secondAttribute="top" id="XA7-UI-d8U"/>
                                 </constraints>
                             </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1pr-EO-lQo">
+                                <rect key="frame" x="0.0" y="25" width="206" height="20"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="20" id="DWp-z7-CUM"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                <color key="textColor" red="0.43529411759999997" green="0.4431372549" blue="0.47450980390000003" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -118,6 +118,7 @@
         </collectionViewCell>
     </objects>
     <resources>
+        <image name="default_1~iphone" width="375" height="217"/>
         <image name="iPad_mainpage_btn_click~iphone" width="22" height="16"/>
         <image name="iPad_mainpage_btn_collect~iphone" width="18" height="16"/>
         <image name="menuBar_bg~iphone" width="80" height="745"/>

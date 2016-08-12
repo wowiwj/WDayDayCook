@@ -10,6 +10,7 @@ import UIKit
 import Alamofire
 import SwiftyJSON
 import Kingfisher
+import SnapKit
 
 enum DetailCellStyle: Int {
     case Title
@@ -46,9 +47,11 @@ class ShowDetailViewController: UIViewController {
             tableView.estimatedRowHeight = 600
 //            tableView.rowHeight = UITableViewAutomaticDimension
 //            tableView.rowHeight = 300
+            tableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 44, right: 0)
             
             tableView.registerNib(UINib(nibName: DetailTitleViewCellID, bundle: nil), forCellReuseIdentifier: DetailTitleViewCellID)
             tableView.registerNib(UINib(nibName: DetailInfoCellID, bundle: nil), forCellReuseIdentifier: DetailInfoCellID)
+            
         }
     }
     
@@ -111,6 +114,24 @@ class ShowDetailViewController: UIViewController {
         customNavigationItem.leftBarButtonItem = backItem
         
         automaticallyAdjustsScrollViewInsets = false
+        
+        
+        // 添加底部的tabbar
+        
+        let tabbar = DetailTabbar()
+
+        self.view.addSubview(tabbar)
+        tabbar.snp_makeConstraints { (make) in
+            make.bottom.equalTo(self.view)
+            make.width.equalTo(self.view)
+            make.height.equalTo(44)
+        }
+        
+        
+//        let switch1 = UISwitch()
+//        switch1.frame = CGRect(x: 100, y: 100, width: 100, height: 100)
+//        
+//        self.view.addSubview(switch1)
  
         
     }
@@ -205,6 +226,11 @@ extension ShowDetailViewController :UITableViewDelegate,UITableViewDataSource
             cell.nameLabel.text = result["data"]["name"].stringValue
             let maketime = " \(result["data"]["maketime"])"
             cell.makeTimeButton.setTitle(maketime, forState: .Normal)
+            cell.makeTimeButton.hidden = (maketime == " ")
+            if maketime == " " {
+                cell.makeTimeButton.setImage(UIImage(), forState: .Normal)
+                cell.makeTimeButton.layoutIfNeeded()
+            }
             let clickCount = " \(result["data"]["clickCount"].stringValue)"
             cell.clickCountButton.setTitle(clickCount, forState: .Normal)
    
@@ -249,8 +275,9 @@ extension ShowDetailViewController :UITableViewDelegate,UITableViewDataSource
         }
         
         let value1 = scrollView.contentOffset.y + UIScreen.mainScreen().bounds.height
-        let value2 = scrollView.contentSize.height
+        let value2 = scrollView.contentSize.height + tableView.contentInset.bottom
 
+        
         if value1 == value2 {
             print("22222")
             webCell?.scrollEnabled = true
@@ -302,11 +329,9 @@ extension ShowDetailViewController: DetailHeaderViewDelegate
                     playBaseVideo()
                     
                 }
-                
-                
+
                 print(json)
-                
-                
+
                 })
             
             

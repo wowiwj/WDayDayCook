@@ -35,6 +35,10 @@ class ThemeListTableViewCell: BaseTitleViewCell {
         flowLayout.scrollDirection = .Vertical
         flowLayout.minimumLineSpacing = 0
         flowLayout.minimumInteritemSpacing = 0
+        let width = UIScreen.mainScreen().bounds.size.width
+        let height = WDConfig.themeListHeight
+        
+        flowLayout.itemSize = CGSize(width: width, height: height)
         return flowLayout
     }()
     
@@ -50,6 +54,7 @@ class ThemeListTableViewCell: BaseTitleViewCell {
         collectionView.dataSource = self
         collectionView.delegate = self
         collectionView.backgroundColor = UIColor.whiteColor()
+        collectionView.scrollEnabled = false
         collectionView.registerNib(UINib(nibName: self.ThemeRecommandCellID, bundle: nil), forCellWithReuseIdentifier: self.ThemeRecommandCellID)
         return collectionView
         
@@ -74,22 +79,7 @@ class ThemeListTableViewCell: BaseTitleViewCell {
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
-    override func layoutSubviews() {
-        super.layoutSubviews()
-        
-        let width = collectionView.frame.size.width
-        let height = self.collectionView.frame.size.height / 4
-        
-        if width <= 0 && height <= 0 {
-            return
-        }
-        
-        themeListLayout.itemSize = CGSize(width: width, height: height)
-        
-    }
 
-    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -107,7 +97,7 @@ extension ThemeListTableViewCell: UICollectionViewDataSource,UICollectionViewDel
 {
     
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return themeList?.count >= 4 ? 4  : 0
+        return themeList?.count ?? 0
     }
     
     

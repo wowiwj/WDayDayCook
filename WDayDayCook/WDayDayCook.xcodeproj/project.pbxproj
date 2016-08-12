@@ -13,6 +13,9 @@
 		992644D61D4C3C3B0039DDEA /* DetailTitleViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 992644D41D4C3C3B0039DDEA /* DetailTitleViewCell.xib */; };
 		992644D91D4C3C5C0039DDEA /* DetailInfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 992644D71D4C3C5C0039DDEA /* DetailInfoCell.swift */; };
 		992644DA1D4C3C5C0039DDEA /* DetailInfoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 992644D81D4C3C5C0039DDEA /* DetailInfoCell.xib */; };
+		994556791D503B9F00DDC7A9 /* VenvyVideoSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 994556761D503B9F00DDC7A9 /* VenvyVideoSDK.framework */; };
+		9945567A1D503B9F00DDC7A9 /* VenvyVideoSDKResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 994556771D503B9F00DDC7A9 /* VenvyVideoSDKResources.bundle */; };
+		9945567B1D503B9F00DDC7A9 /* VideoPlsIVASDKResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 994556781D503B9F00DDC7A9 /* VideoPlsIVASDKResources.bundle */; };
 		999C82B81D4A6CCC00B8EA9E /* ArticleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 999C82B01D4A6CCC00B8EA9E /* ArticleCell.swift */; };
 		999C82B91D4A6CCC00B8EA9E /* ArticleCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 999C82B11D4A6CCC00B8EA9E /* ArticleCell.xib */; };
 		999C82BA1D4A6CCC00B8EA9E /* BaseTitleViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 999C82B21D4A6CCC00B8EA9E /* BaseTitleViewCell.swift */; };
@@ -26,6 +29,7 @@
 		999C82E51D4A709600B8EA9E /* ThemeRecommandCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 999C82DE1D4A709600B8EA9E /* ThemeRecommandCell.xib */; };
 		99A081C61D46302D003FC427 /* CycleScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99A081C51D46302D003FC427 /* CycleScrollView.swift */; };
 		99A081CC1D4662D4003FC427 /* WDAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99A081CB1D4662D4003FC427 /* WDAlert.swift */; };
+		99A1FBE01D5DFC6E006D6D2A /* DetailTabbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99A1FBDF1D5DFC6E006D6D2A /* DetailTabbar.swift */; };
 		99B8910E1D44788A00261A84 /* NewFeatureController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99B8910D1D44788A00261A84 /* NewFeatureController.swift */; };
 		99B891101D447C4100261A84 /* loadingVideo.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 99B8910F1D447C4100261A84 /* loadingVideo.mp4 */; };
 		99B891141D4498DA00261A84 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99B891131D4498DA00261A84 /* TabBarViewController.swift */; };
@@ -79,6 +83,9 @@
 		992644D71D4C3C5C0039DDEA /* DetailInfoCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailInfoCell.swift; sourceTree = "<group>"; };
 		992644D81D4C3C5C0039DDEA /* DetailInfoCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DetailInfoCell.xib; sourceTree = "<group>"; };
 		9945565F1D50395F00DDC7A9 /* BridgeHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BridgeHeader.h; sourceTree = "<group>"; };
+		994556761D503B9F00DDC7A9 /* VenvyVideoSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = VenvyVideoSDK.framework; sourceTree = "<group>"; };
+		994556771D503B9F00DDC7A9 /* VenvyVideoSDKResources.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = VenvyVideoSDKResources.bundle; sourceTree = "<group>"; };
+		994556781D503B9F00DDC7A9 /* VideoPlsIVASDKResources.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = VideoPlsIVASDKResources.bundle; sourceTree = "<group>"; };
 		999C82B01D4A6CCC00B8EA9E /* ArticleCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArticleCell.swift; sourceTree = "<group>"; };
 		999C82B11D4A6CCC00B8EA9E /* ArticleCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ArticleCell.xib; sourceTree = "<group>"; };
 		999C82B21D4A6CCC00B8EA9E /* BaseTitleViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseTitleViewCell.swift; sourceTree = "<group>"; };
@@ -92,6 +99,7 @@
 		999C82DE1D4A709600B8EA9E /* ThemeRecommandCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ThemeRecommandCell.xib; sourceTree = "<group>"; };
 		99A081C51D46302D003FC427 /* CycleScrollView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CycleScrollView.swift; sourceTree = "<group>"; };
 		99A081CB1D4662D4003FC427 /* WDAlert.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WDAlert.swift; sourceTree = "<group>"; };
+		99A1FBDF1D5DFC6E006D6D2A /* DetailTabbar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailTabbar.swift; sourceTree = "<group>"; };
 		99B8910D1D44788A00261A84 /* NewFeatureController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewFeatureController.swift; sourceTree = "<group>"; };
 		99B8910F1D447C4100261A84 /* loadingVideo.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = loadingVideo.mp4; sourceTree = "<group>"; };
 		99B891131D4498DA00261A84 /* TabBarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
@@ -130,6 +138,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				994556791D503B9F00DDC7A9 /* VenvyVideoSDK.framework in Frameworks */,
 				99B89E5C1D501E76009231F9 /* libz.1.1.3.tbd in Frameworks */,
 				99B89E5A1D501E68009231F9 /* libsqlite3.tbd in Frameworks */,
 				B65D97C1589950090769B5F7 /* Pods_WDayDayCook.framework in Frameworks */,
@@ -199,8 +208,20 @@
 			isa = PBXGroup;
 			children = (
 				992644D11D4C17FD0039DDEA /* DetailHeaderView.swift */,
+				99A1FBDF1D5DFC6E006D6D2A /* DetailTabbar.swift */,
 			);
 			path = Details;
+			sourceTree = "<group>";
+		};
+		994556751D503B9F00DDC7A9 /* VenvyVideoSDK */ = {
+			isa = PBXGroup;
+			children = (
+				994556761D503B9F00DDC7A9 /* VenvyVideoSDK.framework */,
+				994556771D503B9F00DDC7A9 /* VenvyVideoSDKResources.bundle */,
+				994556781D503B9F00DDC7A9 /* VideoPlsIVASDKResources.bundle */,
+			);
+			name = VenvyVideoSDK;
+			path = ../../../../Framework/VenvyVideoSDK;
 			sourceTree = "<group>";
 		};
 		999C82D71D4A709600B8EA9E /* Choose */ = {
@@ -327,16 +348,9 @@
 		99B89E511D501E55009231F9 /* Framework */ = {
 			isa = PBXGroup;
 			children = (
-				99B89E521D501E55009231F9 /* VenvyVideoSDK */,
+				994556751D503B9F00DDC7A9 /* VenvyVideoSDK */,
 			);
 			path = Framework;
-			sourceTree = "<group>";
-		};
-		99B89E521D501E55009231F9 /* VenvyVideoSDK */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = VenvyVideoSDK;
 			sourceTree = "<group>";
 		};
 		99F4409D1D4B4859009E4F95 /* ShowDetail */ = {
@@ -565,8 +579,10 @@
 				99B891101D447C4100261A84 /* loadingVideo.mp4 in Resources */,
 				992644D61D4C3C3B0039DDEA /* DetailTitleViewCell.xib in Resources */,
 				992644DA1D4C3C5C0039DDEA /* DetailInfoCell.xib in Resources */,
+				9945567B1D503B9F00DDC7A9 /* VideoPlsIVASDKResources.bundle in Resources */,
 				99FA8AEA1D4469120029E898 /* LaunchScreen.storyboard in Resources */,
 				99FA8AE71D4469120029E898 /* Assets.xcassets in Resources */,
+				9945567A1D503B9F00DDC7A9 /* VenvyVideoSDKResources.bundle in Resources */,
 				999C82B91D4A6CCC00B8EA9E /* ArticleCell.xib in Resources */,
 				999C82E11D4A709600B8EA9E /* RecipeDiscussCell.xib in Resources */,
 				99FA8AE51D4469120029E898 /* Main.storyboard in Resources */,
@@ -668,6 +684,7 @@
 				99B8910E1D44788A00261A84 /* NewFeatureController.swift in Sources */,
 				999C82E41D4A709600B8EA9E /* ThemeRecommandCell.swift in Sources */,
 				99B891291D44D8D500261A84 /* RefreshBaseView.swift in Sources */,
+				99A1FBE01D5DFC6E006D6D2A /* DetailTabbar.swift in Sources */,
 				99B891371D45105D00261A84 /* Models.swift in Sources */,
 				999C82DF1D4A709600B8EA9E /* MyCollectionCell.swift in Sources */,
 			);
@@ -816,11 +833,11 @@
 				CODE_SIGN_ENTITLEMENTS = WDayDayCook/WDayDayCook.entitlements;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(PROJECT_DIR)/WDayDayCook/Framework/VenvyVideoSDK",
+					../../Framework/VenvyVideoSDK,
 				);
 				INFOPLIST_FILE = WDayDayCook/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks \"$(SRCROOT)/../../Framework/VenvyVideoSDK\"";
 				PRODUCT_BUNDLE_IDENTIFIER = cn.wjbest.WDayDayCook;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = ./WDayDayCook/BridgeHeader.h;
@@ -835,11 +852,11 @@
 				CODE_SIGN_ENTITLEMENTS = WDayDayCook/WDayDayCook.entitlements;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(PROJECT_DIR)/WDayDayCook/Framework/VenvyVideoSDK",
+					../../Framework/VenvyVideoSDK,
 				);
 				INFOPLIST_FILE = WDayDayCook/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks \"$(SRCROOT)/../../Framework/VenvyVideoSDK\"";
 				PRODUCT_BUNDLE_IDENTIFIER = cn.wjbest.WDayDayCook;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = ./WDayDayCook/BridgeHeader.h;

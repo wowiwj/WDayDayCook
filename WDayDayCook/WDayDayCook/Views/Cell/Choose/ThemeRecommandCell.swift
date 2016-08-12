@@ -20,7 +20,8 @@ class ThemeRecommandCell: UICollectionViewCell {
         didSet{
             if let _ = theme
             {
-                imageView.kf_setImageWithURL(NSURL(string: theme!.image_url))
+//                imageView.kf_setImageWithURL(NSURL(string: theme!.image_url))
+                imageView.kf_setImageWithURL(NSURL(string: theme!.image_url), placeholderImage: UIImage(named: "default_1~iphone"), optionsInfo: nil, progressBlock: nil, completionHandler: nil)
                 descriptionLabel.text = theme!.foodDescription
                 titleLabel.text = theme!.title
                 descriptionLabel.hidden = theme!.foodDescription.isEmpty

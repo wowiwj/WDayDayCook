@@ -23,6 +23,7 @@ class DetailTitleViewCell: UITableViewCell {
         super.awakeFromNib()
         self.sizeToFit()
         cellheight = self.bounds.size.height
+        makeTimeButton.hidden = true
         // Initialization code
     }
     
