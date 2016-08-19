@@ -48,6 +48,7 @@ class ShowDetailViewController: UIViewController {
 //            tableView.rowHeight = UITableViewAutomaticDimension
 //            tableView.rowHeight = 300
             tableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 44, right: 0)
+            tableView.scrollIndicatorInsets = tableView.contentInset
             
             tableView.registerNib(UINib(nibName: DetailTitleViewCellID, bundle: nil), forCellReuseIdentifier: DetailTitleViewCellID)
             tableView.registerNib(UINib(nibName: DetailInfoCellID, bundle: nil), forCellReuseIdentifier: DetailInfoCellID)
@@ -195,15 +196,9 @@ class ShowDetailViewController: UIViewController {
     {
         
         tableView.scrollToRowAtIndexPath(NSIndexPath(forRow: 0, inSection: 0), atScrollPosition: UITableViewScrollPosition.Top, animated: true)
-        
-        
-        tableView.setContentOffset(headerView.frame.origin, animated: true)
-    
-        print(UIScreen.mainScreen().bounds.size.height)
-        
-        
-    
-    
+
+        tableView.setContentOffset(CGPointZero, animated: true)
+
     }
 
 }

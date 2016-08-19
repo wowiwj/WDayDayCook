@@ -46,6 +46,8 @@
 		99B891371D45105D00261A84 /* Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99B891361D45105D00261A84 /* Models.swift */; };
 		99B89E5A1D501E68009231F9 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 99B89E591D501E68009231F9 /* libsqlite3.tbd */; };
 		99B89E5C1D501E76009231F9 /* libz.1.1.3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 99B89E5B1D501E76009231F9 /* libz.1.1.3.tbd */; };
+		99CD21821D66A547006F75EE /* RecipeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99CD21811D66A547006F75EE /* RecipeViewController.swift */; };
+		99CD21851D66B796006F75EE /* WaterFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99CD21841D66B796006F75EE /* WaterFlowLayout.swift */; };
 		99F4409F1D4B4896009E4F95 /* ShowDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99F4409E1D4B4896009E4F95 /* ShowDetailViewController.swift */; };
 		99FA8AE01D4469120029E898 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99FA8ADF1D4469120029E898 /* AppDelegate.swift */; };
 		99FA8AE51D4469120029E898 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 99FA8AE31D4469120029E898 /* Main.storyboard */; };
@@ -117,6 +119,8 @@
 		99B891381D451BB600261A84 /* WDayDayCook.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = WDayDayCook.entitlements; sourceTree = "<group>"; };
 		99B89E591D501E68009231F9 /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
 		99B89E5B1D501E76009231F9 /* libz.1.1.3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.1.1.3.tbd; path = usr/lib/libz.1.1.3.tbd; sourceTree = SDKROOT; };
+		99CD21811D66A547006F75EE /* RecipeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecipeViewController.swift; sourceTree = "<group>"; };
+		99CD21841D66B796006F75EE /* WaterFlowLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WaterFlowLayout.swift; sourceTree = "<group>"; };
 		99F4409E1D4B4896009E4F95 /* ShowDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ShowDetailViewController.swift; path = WDayDayCook/Controllers/ShowDetail/ShowDetailViewController.swift; sourceTree = SOURCE_ROOT; };
 		99FA8ADC1D4469120029E898 /* WDayDayCook.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WDayDayCook.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		99FA8ADF1D4469120029E898 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -254,13 +258,6 @@
 			path = Other;
 			sourceTree = "<group>";
 		};
-		99A081C71D46625A003FC427 /* Extension */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Extension;
-			sourceTree = "<group>";
-		};
 		99A081CA1D4662C6003FC427 /* Helper */ = {
 			isa = PBXGroup;
 			children = (
@@ -353,6 +350,30 @@
 			path = Framework;
 			sourceTree = "<group>";
 		};
+		99CD217D1D66A3DE006F75EE /* Recipe */ = {
+			isa = PBXGroup;
+			children = (
+				99CD21811D66A547006F75EE /* RecipeViewController.swift */,
+			);
+			path = Recipe;
+			sourceTree = "<group>";
+		};
+		99CD21831D66B779006F75EE /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				99CD21861D66B79F006F75EE /* connlecionViewLayout */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
+		99CD21861D66B79F006F75EE /* connlecionViewLayout */ = {
+			isa = PBXGroup;
+			children = (
+				99CD21841D66B796006F75EE /* WaterFlowLayout.swift */,
+			);
+			name = connlecionViewLayout;
+			sourceTree = "<group>";
+		};
 		99F4409D1D4B4859009E4F95 /* ShowDetail */ = {
 			isa = PBXGroup;
 			children = (
@@ -390,9 +411,9 @@
 				99B891381D451BB600261A84 /* WDayDayCook.entitlements */,
 				99FA8ADF1D4469120029E898 /* AppDelegate.swift */,
 				9945565F1D50395F00DDC7A9 /* BridgeHeader.h */,
+				99CD21831D66B779006F75EE /* Extension */,
 				99B89E511D501E55009231F9 /* Framework */,
 				99A081CA1D4662C6003FC427 /* Helper */,
-				99A081C71D46625A003FC427 /* Extension */,
 				99B891351D45104F00261A84 /* Models */,
 				99B891321D44FD3D00261A84 /* Config */,
 				99B8912C1D44FB8E00261A84 /* Services */,
@@ -426,6 +447,7 @@
 		99FA8B0D1D446EEF0029E898 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				99CD217D1D66A3DE006F75EE /* Recipe */,
 				99F4409D1D4B4859009E4F95 /* ShowDetail */,
 				99B891151D44A27300261A84 /* Choose */,
 				99B891111D4498B600261A84 /* Navigation */,
@@ -672,6 +694,7 @@
 				992644D21D4C17FD0039DDEA /* DetailHeaderView.swift in Sources */,
 				999C82E01D4A709600B8EA9E /* RecipeDiscussCell.swift in Sources */,
 				99B891141D4498DA00261A84 /* TabBarViewController.swift in Sources */,
+				99CD21821D66A547006F75EE /* RecipeViewController.swift in Sources */,
 				99B891271D44D4D600261A84 /* UIScrollView+Refresh.swift in Sources */,
 				99B891251D44D4CA00261A84 /* RefreshHeaderView.swift in Sources */,
 				999C82BA1D4A6CCC00B8EA9E /* BaseTitleViewCell.swift in Sources */,
@@ -684,6 +707,7 @@
 				99B8910E1D44788A00261A84 /* NewFeatureController.swift in Sources */,
 				999C82E41D4A709600B8EA9E /* ThemeRecommandCell.swift in Sources */,
 				99B891291D44D8D500261A84 /* RefreshBaseView.swift in Sources */,
+				99CD21851D66B796006F75EE /* WaterFlowLayout.swift in Sources */,
 				99A1FBE01D5DFC6E006D6D2A /* DetailTabbar.swift in Sources */,
 				99B891371D45105D00261A84 /* Models.swift in Sources */,
 				999C82DF1D4A709600B8EA9E /* MyCollectionCell.swift in Sources */,

@@ -305,7 +305,7 @@ extension ChooseViewController:UITableViewDelegate,UITableViewDataSource
         
         switch indexPath.row {
         case CellStyle.themeList.rawValue:
-            return CGFloat(themeList?.count ?? 0) * WDConfig.themeListHeight
+            return CGFloat(themeList?.count ?? 0) * WDConfig.themeListHeight + 30
         case CellStyle.recipeDiscussList.rawValue:
             return 200
         default:
