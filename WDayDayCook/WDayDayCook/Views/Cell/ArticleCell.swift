@@ -62,12 +62,30 @@ class ArticleCell: UICollectionViewCell {
         }
     }
     
+    var recipeData:Recipe?{
+        didSet{
+            guard let recipeData = recipeData else{
+                return
+            }
+        
+            titleLabel.text = recipeData.title
+            foodDescription.text = recipeData.description
+            clickCountButton.setTitle("\(recipeData.clickCount ?? 0)", forState: .Normal)
+            foodImageView.kf_setImageWithURL(NSURL(string: recipeData.imageUrl!))
+        
+        }
+    
+    }
+    
+
+    
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
 
-        bgView.layer.borderWidth = 1
-        bgView.layer.borderColor = UIColor.lightGrayColor().CGColor
+        bgView.layer.borderWidth = 0.5
+        bgView.layer.borderColor = UIColor.lightGrayColor().colorWithAlphaComponent(0.5).CGColor
         bgView.layer.cornerRadius = 5
         bgView.layer.masksToBounds = true
 

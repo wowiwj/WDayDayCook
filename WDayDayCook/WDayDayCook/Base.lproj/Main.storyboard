@@ -100,7 +100,7 @@
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aca-n7-HTS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="832.5" y="-1496"/>
+            <point key="canvasLocation" x="895" y="-1277"/>
         </scene>
         <!--食谱-->
         <scene sceneID="5Vy-oo-upc">
@@ -140,17 +140,7 @@
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
-                                <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="NQC-dT-r3h">
-                                        <rect key="frame" x="0.0" y="64" width="50" height="50"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                            <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                        </view>
-                                    </collectionViewCell>
-                                </cells>
+                                <cells/>
                                 <connections>
                                     <outlet property="dataSource" destination="K2U-g9-jr7" id="srl-Td-zGl"/>
                                     <outlet property="delegate" destination="K2U-g9-jr7" id="Bu6-wY-6wl"/>
@@ -169,11 +159,20 @@
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
                         <outlet property="collectionView" destination="9ci-Wc-AZl" id="Tqy-rx-UJr"/>
+                        <segue destination="Km8-wk-AQu" kind="show" identifier="showDetail" id="sCb-JV-ZW1"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LsS-98-oO6" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="464.5" y="-475.5"/>
+        </scene>
+        <!--showDetailController-->
+        <scene sceneID="KX7-Jc-ZM3">
+            <objects>
+                <viewControllerPlaceholder storyboardName="ShowDetail" referencedIdentifier="showDetailController" id="Km8-wk-AQu" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="DAa-pT-FWM" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="879.5" y="-663"/>
         </scene>
         <!--发现-->
         <scene sceneID="HEC-li-WR4">

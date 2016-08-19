@@ -43,6 +43,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
    
         // 设置播放器AppKey
         VenvyVideoSDK.setAppKey("N1oWm_rdb")
+    
         
         return true
     }
@@ -105,7 +106,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // navBg~iphone navi_bar_bg~iphone navBg2~iphone
         navBar.setBackgroundImage(UIImage(named: "navi_bar_bg~iphone"), forBarMetrics: .Default)
         // 取消navbar 下面的细线
-        navBar.shadowImage = UIImage()
+//        navBar.shadowImage = UIImage()
     
     }
 

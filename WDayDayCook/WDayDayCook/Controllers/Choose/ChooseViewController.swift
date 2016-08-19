@@ -309,7 +309,7 @@ extension ChooseViewController:UITableViewDelegate,UITableViewDataSource
         case CellStyle.recipeDiscussList.rawValue:
             return 200
         default:
-            return 250
+            return 280
         }
         
     }

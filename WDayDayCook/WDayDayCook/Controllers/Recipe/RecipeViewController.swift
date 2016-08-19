@@ -8,30 +8,42 @@
 
 import UIKit
 import Alamofire
+import SwiftyJSON
+import ObjectMapper
+
+
+let ArticleCellID = "ArticleCell"
+
 
 class RecipeViewController: UIViewController {
     
     private lazy var waterlayout:WaterFlowlayout = {
     
-        let layout1 = WaterFlowlayout()
-//        layout1.itemSize = CGSize(width: 200, height: 100)
-     
-        layout1.delegate = self
-        return layout1
+        let layout = WaterFlowlayout()
+        layout.delegate = self
+        return layout
     
     }()
+    
+    // 当前页
+    var currentpage = 0
+    
     
     private lazy var listlayout:UICollectionViewFlowLayout = {
-        let layout2 = UICollectionViewFlowLayout()
-        layout2.itemSize = CGSize(width: 320, height: 150)
-        return layout2
+        let layout = UICollectionViewFlowLayout()
+        layout.itemSize = CGSize(width: 320, height: 150)
+        return layout
         
     }()
+    
+    var recipeList = [Recipe]()
     
     @IBOutlet weak var collectionView: UICollectionView!{
         didSet{
 //            collectionView.collectionViewLayout = layout()
             collectionView.registerClass(UICollectionViewCell.self, forCellWithReuseIdentifier: "123")
+            collectionView.registerNib(UINib(nibName: ArticleCellID, bundle: nil), forCellWithReuseIdentifier: ArticleCellID)
+            
             collectionView.collectionViewLayout = waterlayout
             collectionView.backgroundColor = UIColor.whiteColor()
         
@@ -43,8 +55,16 @@ class RecipeViewController: UIViewController {
         super.viewDidLoad()
         
         makeUI()
-
-        // Do any additional setup after loading the view.
+        
+        collectionView.addHeaderWithCallback { 
+            self.loadNewData()
+        }
+        
+        collectionView.headerBeginRefreshing()
+        
+        collectionView.addFooterWithCallback { 
+            self.loadMoreData()
+        }
     }
     
 
@@ -67,8 +87,41 @@ class RecipeViewController: UIViewController {
     // MARK: - 网络请求
     func loadNewData()
     {
+        currentpage = 0
+        recipeList.removeAll()
+        loadMoreData()
+        
+    }
     
+    func loadMoreData(){
     
+        Alamofire.request(Router.RecipeList(currentpage: currentpage, pageSize: 20)).responseJSON { [unowned self](response) in
+            
+            if response.result.isFailure
+            {
+                print(response.result.error)
+                return
+            }else
+            {
+                let result = JSON(response.result.value!)
+                print(result)
+                
+                let recipeList = Mapper<RecipeList>().map(response.result.value)
+                
+                if recipeList?.code == "200"
+                {
+                    self.currentpage += 1
+                    self.recipeList += recipeList!.data!
+                    self.collectionView.reloadData()
+                    
+                }else
+                {
+                    print(recipeList?.msg)
+                }
+                self.collectionView.headerEndRefreshing()
+                self.collectionView.footerEndRefreshing()
+            }
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -76,16 +129,6 @@ class RecipeViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
     
     // MARK: - 动作监听
     @objc private func layoutStyleButtonClicked(button:UIButton)
@@ -97,6 +140,24 @@ class RecipeViewController: UIViewController {
         collectionView.reloadData()
     
     }
+    
+    // MARK: - 控制器跳转
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        
+        guard let identifier = segue.identifier else{
+            return
+        }
+        
+        if identifier == "showDetail" {
+            let vc = segue.destinationViewController as! ShowDetailViewController
+            let item = sender as! Int
+            
+            vc.id = item
+        }
+        
+        
+    }
+
 
 }
 
@@ -104,15 +165,28 @@ extension RecipeViewController:UICollectionViewDelegate,UICollectionViewDataSour
 {
     
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 50
+        return recipeList.count
     }
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCellWithReuseIdentifier("123", forIndexPath: indexPath)
-        
-        cell.backgroundColor = UIColor.redColor()
+        let cell = collectionView.dequeueReusableCellWithReuseIdentifier(ArticleCellID, forIndexPath: indexPath) as! ArticleCell
+
+        cell.recipeData = recipeList[indexPath.item]
         
         return cell
+    }
+    
+    func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+        
+        
+
+        
+        if let id = recipeList[indexPath.item].id {
+            performSegueWithIdentifier("showDetail", sender: id)
+        }
+        
+        print(indexPath)
+        
     }
 
 
@@ -121,7 +195,7 @@ extension RecipeViewController:UICollectionViewDelegate,UICollectionViewDataSour
 extension RecipeViewController: UICollectionViewWaterFlowLayoutDelegate
 {
     func waterFlowLayout(waterFlowLayout: WaterFlowlayout, heightForItemAtIndexpath indexpath: NSIndexPath, itemWidth: CGFloat) -> CGFloat {
-        return CGFloat(arc4random_uniform(100) + 100)
+        return CGFloat(arc4random_uniform(80) + 200)
     }
     
     func columnCountInwaterFlowLayout(waterFlowLayout: WaterFlowlayout) -> Int {

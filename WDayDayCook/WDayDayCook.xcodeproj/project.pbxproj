@@ -13,6 +13,7 @@
 		992644D61D4C3C3B0039DDEA /* DetailTitleViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 992644D41D4C3C3B0039DDEA /* DetailTitleViewCell.xib */; };
 		992644D91D4C3C5C0039DDEA /* DetailInfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 992644D71D4C3C5C0039DDEA /* DetailInfoCell.swift */; };
 		992644DA1D4C3C5C0039DDEA /* DetailInfoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 992644D81D4C3C5C0039DDEA /* DetailInfoCell.xib */; };
+		99272ADE1D6709B20059FF4C /* Recipe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99272ADD1D6709B20059FF4C /* Recipe.swift */; };
 		994556791D503B9F00DDC7A9 /* VenvyVideoSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 994556761D503B9F00DDC7A9 /* VenvyVideoSDK.framework */; };
 		9945567A1D503B9F00DDC7A9 /* VenvyVideoSDKResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 994556771D503B9F00DDC7A9 /* VenvyVideoSDKResources.bundle */; };
 		9945567B1D503B9F00DDC7A9 /* VideoPlsIVASDKResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 994556781D503B9F00DDC7A9 /* VideoPlsIVASDKResources.bundle */; };
@@ -84,6 +85,7 @@
 		992644D41D4C3C3B0039DDEA /* DetailTitleViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DetailTitleViewCell.xib; sourceTree = "<group>"; };
 		992644D71D4C3C5C0039DDEA /* DetailInfoCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailInfoCell.swift; sourceTree = "<group>"; };
 		992644D81D4C3C5C0039DDEA /* DetailInfoCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DetailInfoCell.xib; sourceTree = "<group>"; };
+		99272ADD1D6709B20059FF4C /* Recipe.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Recipe.swift; sourceTree = "<group>"; };
 		9945565F1D50395F00DDC7A9 /* BridgeHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BridgeHeader.h; sourceTree = "<group>"; };
 		994556761D503B9F00DDC7A9 /* VenvyVideoSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = VenvyVideoSDK.framework; sourceTree = "<group>"; };
 		994556771D503B9F00DDC7A9 /* VenvyVideoSDKResources.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = VenvyVideoSDKResources.bundle; sourceTree = "<group>"; };
@@ -217,6 +219,14 @@
 			path = Details;
 			sourceTree = "<group>";
 		};
+		99272ADC1D6708430059FF4C /* ObjectMapper */ = {
+			isa = PBXGroup;
+			children = (
+				99272ADD1D6709B20059FF4C /* Recipe.swift */,
+			);
+			name = ObjectMapper;
+			sourceTree = "<group>";
+		};
 		994556751D503B9F00DDC7A9 /* VenvyVideoSDK */ = {
 			isa = PBXGroup;
 			children = (
@@ -337,6 +347,7 @@
 		99B891351D45104F00261A84 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				99272ADC1D6708430059FF4C /* ObjectMapper */,
 				99B891361D45105D00261A84 /* Models.swift */,
 			);
 			path = Models;
@@ -711,6 +722,7 @@
 				99A1FBE01D5DFC6E006D6D2A /* DetailTabbar.swift in Sources */,
 				99B891371D45105D00261A84 /* Models.swift in Sources */,
 				999C82DF1D4A709600B8EA9E /* MyCollectionCell.swift in Sources */,
+				99272ADE1D6709B20059FF4C /* Recipe.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

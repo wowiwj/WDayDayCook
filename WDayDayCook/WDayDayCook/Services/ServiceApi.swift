@@ -44,6 +44,7 @@ class ServiceApi: NSObject {
     
     //////////
     // http://api.daydaycook.com.cn/daydaycook/server/recipe/search.do?currentPage=0&pageSize=20&name=&categoryId=&parentId=&screeningId=&tagId=&htagId=&username=2841235923C0DE23194B65BB20C25E74&password=&languageId=3&mainland=1&deviceId=D83DA445-62E2-46EF-A035-779FAE071FB2&notheme=3&uid=172096&regionCode=156&version=2.1.1
+    // http://api.daydaycook.com.cn/daydaycook/server/recipe/search.do?currentPage=1&pageSize=20&name=&categoryId=&parentId=&screeningId=&tagId=&htagId=&username=2841235923C0DE23194B65BB20C25E74&password=&languageId=3&mainland=1&deviceId=D83DA445-62E2-46EF-A035-779FAE071FB2&notheme=3&uid=172096&regionCode=156&version=2.1.1
     
     // 38443 38332
     
