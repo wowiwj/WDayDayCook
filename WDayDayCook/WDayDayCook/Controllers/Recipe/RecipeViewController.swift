@@ -36,16 +36,25 @@ class RecipeViewController: UIViewController {
         
     }()
     
+    private lazy var scrollTopButton:UIButton = {
+        
+        let button = UIButton()
+        button.setImage(UIImage(named: "upupupIcon~iphone"), forState: .Normal)
+        button.hidden = true
+        button.sizeToFit()
+        button.addTarget(self, action: #selector(scrollButtonClicked), forControlEvents: .TouchUpInside)
+        return button
+        
+    }()
+    
     var recipeList = [Recipe]()
     
     @IBOutlet weak var collectionView: UICollectionView!{
         didSet{
-//            collectionView.collectionViewLayout = layout()
-            collectionView.registerClass(UICollectionViewCell.self, forCellWithReuseIdentifier: "123")
             collectionView.registerNib(UINib(nibName: ArticleCellID, bundle: nil), forCellWithReuseIdentifier: ArticleCellID)
             
             collectionView.collectionViewLayout = waterlayout
-            collectionView.backgroundColor = UIColor.whiteColor()
+            collectionView.backgroundColor = UIColor.clearColor()
         
         }
     
@@ -80,8 +89,13 @@ class RecipeViewController: UIViewController {
         let layoutStyleItem = UIBarButtonItem(customView: button)
         self.navigationItem.leftBarButtonItem = layoutStyleItem
         
-        let searchButton = UIBarButtonItem(image: UIImage(named: "icon-search~iphone"), style: .Plain, target: self, action: nil)
+        let searchButton = UIBarButtonItem(image: UIImage(named: "icon-search~iphone"), style: .Plain, target: self, action: #selector(RecipeViewController.searchButtonClicked(_:)))
         navigationItem.rightBarButtonItem = searchButton
+        view.addSubview(scrollTopButton)
+        scrollTopButton.snp_makeConstraints { (make) in
+            make.bottom.equalTo(collectionView.snp_bottom).offset(-20)
+            make.trailing.equalTo(collectionView).offset(-20)
+        }
     }
     
     // MARK: - 网络请求
@@ -97,6 +111,8 @@ class RecipeViewController: UIViewController {
     
         Alamofire.request(Router.RecipeList(currentpage: currentpage, pageSize: 20)).responseJSON { [unowned self](response) in
             
+            self.collectionView.headerEndRefreshing()
+            self.collectionView.footerEndRefreshing()
             if response.result.isFailure
             {
                 print(response.result.error)
@@ -118,8 +134,7 @@ class RecipeViewController: UIViewController {
                 {
                     print(recipeList?.msg)
                 }
-                self.collectionView.headerEndRefreshing()
-                self.collectionView.footerEndRefreshing()
+                
             }
         }
     }
@@ -138,6 +153,18 @@ class RecipeViewController: UIViewController {
         button.selected ?(collectionView.collectionViewLayout = listlayout) :(collectionView.collectionViewLayout = waterlayout)
         
         collectionView.reloadData()
+    
+    }
+    @objc private func scrollButtonClicked()
+    {
+        
+        collectionView.scrollToItemAtIndexPath(NSIndexPath(forItem: 0, inSection: 0), atScrollPosition: UICollectionViewScrollPosition.Top, animated: true)
+        
+    }
+    
+    @objc private func searchButtonClicked(button:UIButton)
+    {
+
     
     }
     
@@ -195,12 +222,23 @@ extension RecipeViewController:UICollectionViewDelegate,UICollectionViewDataSour
 extension RecipeViewController: UICollectionViewWaterFlowLayoutDelegate
 {
     func waterFlowLayout(waterFlowLayout: WaterFlowlayout, heightForItemAtIndexpath indexpath: NSIndexPath, itemWidth: CGFloat) -> CGFloat {
-        return CGFloat(arc4random_uniform(80) + 200)
+        let defaultValue: CGFloat = 0
+        let arr = recipeList.map{ $0.screeningId ?? (defaultValue,defaultValue,defaultValue) }
+        
+        let (_,value2,_) = arr[indexpath.item]
+        
+        return CGFloat(value2)
     }
     
     func columnCountInwaterFlowLayout(waterFlowLayout: WaterFlowlayout) -> Int {
         return 2
     }
+    
+    func scrollViewDidScroll(scrollView: UIScrollView) {
+        let offsetY = scrollView.contentOffset.y
+        scrollTopButton.hidden = offsetY < UIScreen.mainScreen().bounds.size.height
+    }
+
 
 }
 

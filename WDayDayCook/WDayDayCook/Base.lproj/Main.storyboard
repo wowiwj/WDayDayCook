@@ -169,7 +169,9 @@
         <!--showDetailController-->
         <scene sceneID="KX7-Jc-ZM3">
             <objects>
-                <viewControllerPlaceholder storyboardName="ShowDetail" referencedIdentifier="showDetailController" id="Km8-wk-AQu" sceneMemberID="viewController"/>
+                <viewControllerPlaceholder storyboardName="ShowDetail" referencedIdentifier="showDetailController" id="Km8-wk-AQu" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="be6-gL-pp1"/>
+                </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DAa-pT-FWM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="879.5" y="-663"/>

@@ -23,6 +23,34 @@ struct RecipeList: Mappable
         msg <- map["msg"]
     }
 }
+
+func transfromOfTupleAndString()->TransformOf<(CGFloat,CGFloat,CGFloat),String>{
+
+    return TransformOf<(CGFloat,CGFloat,CGFloat),String>.init(fromJSON: { (screenID) -> (CGFloat, CGFloat, CGFloat)? in
+        let defaultV:CGFloat = 3
+        
+        if let string = screenID
+        {
+            let strArr = string.componentsSeparatedByString(",")
+            
+            if strArr.count >= 3
+            {
+                let value1 = (strArr[0] as NSString).floatValue
+                let value2 = (strArr[1] as NSString).floatValue
+                let value3 = (strArr[2] as NSString).floatValue
+                print("\(value1) \(value2) \(value3)")
+                return (CGFloat(value1),CGFloat(value2),CGFloat(value3))
+            }
+        }
+        return (defaultV,defaultV,defaultV)
+        
+        }, toJSON: { (value) -> String? in
+            
+            let (value1,value2,value3) = value!
+            return "\(value1),\(value2),\(value3)"
+    })
+}
+
 struct Recipe: Mappable {
     
     var detailsUrl:String?
@@ -60,6 +88,7 @@ struct Recipe: Mappable {
         modifyDate <- map["modifyDate"]
         imageUrl <- map["imageUrl"]
         title <- map["title"]
+        screeningId <- (map["screeningId"],transfromOfTupleAndString())
     }
 
 }
