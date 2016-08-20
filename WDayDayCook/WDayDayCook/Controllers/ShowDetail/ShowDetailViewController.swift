@@ -105,7 +105,8 @@ class ShowDetailViewController: UIViewController {
         super.viewDidLoad()
         makeUI()
         
-        print(id)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(ShowDetailViewController.ShowDetailVC(_:)), name: showDetailVcNotificationKey, object: nil)
+        
         loadData()
         
 
@@ -199,6 +200,24 @@ class ShowDetailViewController: UIViewController {
 
         tableView.setContentOffset(CGPointZero, animated: true)
 
+    }
+    
+    @objc private func ShowDetailVC(info:NSNotification){
+        
+        print(info)
+    
+        if let id = info.object {
+            
+            let sb = UIStoryboard(name: "ShowDetail", bundle: nil)
+            let showDetailVc = sb.instantiateViewControllerWithIdentifier("showDetailController") as! ShowDetailViewController
+            let item = id as! Int
+            showDetailVc.id = item
+            
+            dispatch_async(dispatch_get_main_queue(), { 
+                self.navigationController?.pushViewController(showDetailVc, animated: true)
+            })
+   
+        }
     }
 
 }

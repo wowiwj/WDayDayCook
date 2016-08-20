@@ -174,18 +174,13 @@ class RecipeViewController: UIViewController {
         guard let identifier = segue.identifier else{
             return
         }
-        
         if identifier == "showDetail" {
             let vc = segue.destinationViewController as! ShowDetailViewController
             let item = sender as! Int
             
             vc.id = item
         }
-        
-        
     }
-
-
 }
 
 extension RecipeViewController:UICollectionViewDelegate,UICollectionViewDataSource

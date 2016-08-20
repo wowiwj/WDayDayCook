@@ -72,12 +72,11 @@ final class ChooseViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        view.backgroundColor = UIColor.yellowColor()
-        
-        
-        
         navigationItem.titleView = titleView
+        
+        let searchButton = UIBarButtonItem(image: UIImage(named: "icon-search~iphone"), style: .Plain, target: self, action: #selector(searchButtonClicked(_:)))
+        navigationItem.rightBarButtonItem = searchButton
+        
         realm = try! Realm()
         
         let placeholderImage = UIImage(named: "default_1~iphone")!
@@ -236,6 +235,13 @@ final class ChooseViewController: UIViewController {
             
             vc.id = item
         }
+        
+        
+    }
+    
+    // MARK: - 动作监听
+    @objc private func searchButtonClicked(button:UIButton)
+    {
         
         
     }

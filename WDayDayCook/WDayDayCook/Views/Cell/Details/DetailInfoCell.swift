@@ -7,6 +7,38 @@
 //
 
 import UIKit
+import JavaScriptCore
+
+let showDetailVcNotificationKey = "showDetailVcNotification"
+
+// 定义协议SwiftJavaScriptDelegate 该协议必须遵守JSExport协议
+@objc protocol SwiftJavaScriptDelegate: JSExport {
+    // js调用App方法时传递多个参数 并弹出对话框 注意js调用时的函数名
+    // 第二个参数首字母大写 
+    //showDetailVcId('linkRecipeDtl', id);
+    func showDetailVc(title: String, id: Int)
+    
+}
+
+@objc class SwiftJavaScriptModel:NSObject,SwiftJavaScriptDelegate
+{
+    
+    weak var controller: UIViewController?
+    weak var jsContext: JSContext?
+    
+    func showDetailVc(title: String, id: Int) {
+        
+        print(title)
+        print(id)
+        
+        if title == "linkRecipeDtl" {
+            NSNotificationCenter.defaultCenter().postNotificationName(showDetailVcNotificationKey, object: id)
+        }
+        
+    }
+
+
+}
 
 class DetailInfoCell: UITableViewCell {
 
@@ -39,29 +71,36 @@ class DetailInfoCell: UITableViewCell {
     }
     
     var requestUrl:String?{
-        didSet{
-            
-            if loadFinished {
+        
+        willSet{
+            if let _ = requestUrl {
                 return
             }
         
-            if let requestUrl = requestUrl
-            {
-                let request = NSURLRequest(URL: NSURL(string: requestUrl)!)
-                
-                webView.loadRequest(request)
-            }
         }
-
+        
+        didSet{
+            
+            guard let requestUrl = requestUrl else{
+                return
+            }
+            
+            let request = NSURLRequest(URL: NSURL(string: requestUrl)!)
+                
+            webView.loadRequest(request)
+            
+        }
     }
     
-    @IBOutlet weak var webView: UIWebView!
+    @IBOutlet weak var webView: UIWebView!{
+        didSet{
+            webView.delegate = self
+            webView.scrollView.scrollEnabled = false
+            webView.stringByEvaluatingJavaScriptFromString(try! String(contentsOfURL: NSBundle.mainBundle().URLForResource("myJsf", withExtension: "js")!, encoding: NSUTF8StringEncoding))
+        }
+    }
     override func awakeFromNib() {
         super.awakeFromNib()
-        webView.delegate = self
-        webView.scrollView.scrollEnabled = false
-       
-        // Initialization code
     }
 
     override func setSelected(selected: Bool, animated: Bool) {
@@ -80,11 +119,6 @@ extension DetailInfoCell:UIWebViewDelegate
         print(cellHeight)
     }
     func webView(webView: UIWebView, shouldStartLoadWithRequest request: NSURLRequest, navigationType: UIWebViewNavigationType) -> Bool {
-//        if self.loadFinished {
-//            return false
-//        }
-        
-        print("---------------------------")
         
         return true
     }
@@ -95,17 +129,27 @@ extension DetailInfoCell:UIWebViewDelegate
         cellHeight = webView.scrollView.contentSize.height
         loadFinished = true
         
+//        print(webView.request?.URL?.absoluteString)
+        
+        
         if let action = loadFinishedAction {
             action()
         }
+        
 
-        print(cellHeight)
+        let context = webView.valueForKeyPath("documentView.webView.mainFrame.javaScriptContext") as! JSContext
+        
+        let model = SwiftJavaScriptModel()
+        model.controller = UIApplication.sharedApplication().keyWindow?.rootViewController
+        model.jsContext = context
+        
+        context.setObject(model, forKeyedSubscript: "WebViewJavascriptBridge")
+        
+        context.exceptionHandler = { (context, exception) in
+            print("exception：", exception)
+        }
+
     }
-    
-    
-    
-    
-
 
 }
 

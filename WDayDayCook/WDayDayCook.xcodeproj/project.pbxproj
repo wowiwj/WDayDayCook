@@ -50,6 +50,7 @@
 		99CD21821D66A547006F75EE /* RecipeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99CD21811D66A547006F75EE /* RecipeViewController.swift */; };
 		99CD21851D66B796006F75EE /* WaterFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99CD21841D66B796006F75EE /* WaterFlowLayout.swift */; };
 		99F4409F1D4B4896009E4F95 /* ShowDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99F4409E1D4B4896009E4F95 /* ShowDetailViewController.swift */; };
+		99F88DDE1D6841C50036D715 /* myJsf.js in Resources */ = {isa = PBXBuildFile; fileRef = 99F88DDD1D6841C50036D715 /* myJsf.js */; };
 		99FA8AE01D4469120029E898 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99FA8ADF1D4469120029E898 /* AppDelegate.swift */; };
 		99FA8AE51D4469120029E898 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 99FA8AE31D4469120029E898 /* Main.storyboard */; };
 		99FA8AE71D4469120029E898 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 99FA8AE61D4469120029E898 /* Assets.xcassets */; };
@@ -124,6 +125,7 @@
 		99CD21811D66A547006F75EE /* RecipeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecipeViewController.swift; sourceTree = "<group>"; };
 		99CD21841D66B796006F75EE /* WaterFlowLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WaterFlowLayout.swift; sourceTree = "<group>"; };
 		99F4409E1D4B4896009E4F95 /* ShowDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ShowDetailViewController.swift; path = WDayDayCook/Controllers/ShowDetail/ShowDetailViewController.swift; sourceTree = SOURCE_ROOT; };
+		99F88DDD1D6841C50036D715 /* myJsf.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = myJsf.js; sourceTree = "<group>"; };
 		99FA8ADC1D4469120029E898 /* WDayDayCook.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WDayDayCook.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		99FA8ADF1D4469120029E898 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		99FA8AE41D4469120029E898 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -372,6 +374,7 @@
 		99CD21831D66B779006F75EE /* Extension */ = {
 			isa = PBXGroup;
 			children = (
+				99F88DDC1D68419F0036D715 /* js */,
 				99CD21861D66B79F006F75EE /* connlecionViewLayout */,
 			);
 			path = Extension;
@@ -392,6 +395,14 @@
 			);
 			name = ShowDetail;
 			path = showDetail;
+			sourceTree = "<group>";
+		};
+		99F88DDC1D68419F0036D715 /* js */ = {
+			isa = PBXGroup;
+			children = (
+				99F88DDD1D6841C50036D715 /* myJsf.js */,
+			);
+			path = js;
 			sourceTree = "<group>";
 		};
 		99FA8AD31D4469120029E898 = {
@@ -616,6 +627,7 @@
 				99FA8AEA1D4469120029E898 /* LaunchScreen.storyboard in Resources */,
 				99FA8AE71D4469120029E898 /* Assets.xcassets in Resources */,
 				9945567A1D503B9F00DDC7A9 /* VenvyVideoSDKResources.bundle in Resources */,
+				99F88DDE1D6841C50036D715 /* myJsf.js in Resources */,
 				999C82B91D4A6CCC00B8EA9E /* ArticleCell.xib in Resources */,
 				999C82E11D4A709600B8EA9E /* RecipeDiscussCell.xib in Resources */,
 				99FA8AE51D4469120029E898 /* Main.storyboard in Resources */,
