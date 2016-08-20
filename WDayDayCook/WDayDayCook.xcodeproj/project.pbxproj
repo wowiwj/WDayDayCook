@@ -17,6 +17,8 @@
 		994556791D503B9F00DDC7A9 /* VenvyVideoSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 994556761D503B9F00DDC7A9 /* VenvyVideoSDK.framework */; };
 		9945567A1D503B9F00DDC7A9 /* VenvyVideoSDKResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 994556771D503B9F00DDC7A9 /* VenvyVideoSDKResources.bundle */; };
 		9945567B1D503B9F00DDC7A9 /* VideoPlsIVASDKResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 994556781D503B9F00DDC7A9 /* VideoPlsIVASDKResources.bundle */; };
+		996F847E1D6899CC0052FB96 /* DiscoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 996F847D1D6899CC0052FB96 /* DiscoverViewController.swift */; };
+		996F84811D68A9E70052FB96 /* ThemeRecipe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 996F84801D68A9E70052FB96 /* ThemeRecipe.swift */; };
 		999C82B81D4A6CCC00B8EA9E /* ArticleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 999C82B01D4A6CCC00B8EA9E /* ArticleCell.swift */; };
 		999C82B91D4A6CCC00B8EA9E /* ArticleCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 999C82B11D4A6CCC00B8EA9E /* ArticleCell.xib */; };
 		999C82BA1D4A6CCC00B8EA9E /* BaseTitleViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 999C82B21D4A6CCC00B8EA9E /* BaseTitleViewCell.swift */; };
@@ -91,6 +93,8 @@
 		994556761D503B9F00DDC7A9 /* VenvyVideoSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = VenvyVideoSDK.framework; sourceTree = "<group>"; };
 		994556771D503B9F00DDC7A9 /* VenvyVideoSDKResources.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = VenvyVideoSDKResources.bundle; sourceTree = "<group>"; };
 		994556781D503B9F00DDC7A9 /* VideoPlsIVASDKResources.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = VideoPlsIVASDKResources.bundle; sourceTree = "<group>"; };
+		996F847D1D6899CC0052FB96 /* DiscoverViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiscoverViewController.swift; sourceTree = "<group>"; };
+		996F84801D68A9E70052FB96 /* ThemeRecipe.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThemeRecipe.swift; sourceTree = "<group>"; };
 		999C82B01D4A6CCC00B8EA9E /* ArticleCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArticleCell.swift; sourceTree = "<group>"; };
 		999C82B11D4A6CCC00B8EA9E /* ArticleCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ArticleCell.xib; sourceTree = "<group>"; };
 		999C82B21D4A6CCC00B8EA9E /* BaseTitleViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseTitleViewCell.swift; sourceTree = "<group>"; };
@@ -225,6 +229,7 @@
 			isa = PBXGroup;
 			children = (
 				99272ADD1D6709B20059FF4C /* Recipe.swift */,
+				996F84801D68A9E70052FB96 /* ThemeRecipe.swift */,
 			);
 			name = ObjectMapper;
 			sourceTree = "<group>";
@@ -238,6 +243,21 @@
 			);
 			name = VenvyVideoSDK;
 			path = ../../../../Framework/VenvyVideoSDK;
+			sourceTree = "<group>";
+		};
+		996F847C1D6899B30052FB96 /* Discover */ = {
+			isa = PBXGroup;
+			children = (
+				996F847D1D6899CC0052FB96 /* DiscoverViewController.swift */,
+			);
+			path = Discover;
+			sourceTree = "<group>";
+		};
+		996F847F1D689E7F0052FB96 /* Discover */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Discover;
 			sourceTree = "<group>";
 		};
 		999C82D71D4A709600B8EA9E /* Choose */ = {
@@ -469,6 +489,7 @@
 		99FA8B0D1D446EEF0029E898 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				996F847C1D6899B30052FB96 /* Discover */,
 				99CD217D1D66A3DE006F75EE /* Recipe */,
 				99F4409D1D4B4859009E4F95 /* ShowDetail */,
 				99B891151D44A27300261A84 /* Choose */,
@@ -483,6 +504,7 @@
 			isa = PBXGroup;
 			children = (
 				99FA8AE31D4469120029E898 /* Main.storyboard */,
+				996F847F1D689E7F0052FB96 /* Discover */,
 				992644D01D4C17DC0039DDEA /* Details */,
 				991BA78B1D47003800EE3CFE /* Cell */,
 				99A081C41D463022003FC427 /* Other */,
@@ -577,7 +599,7 @@
 						DevelopmentTeam = XCDWEQ56GP;
 						SystemCapabilities = {
 							com.apple.ApplicationGroups.iOS = {
-								enabled = 1;
+								enabled = 0;
 							};
 						};
 					};
@@ -712,6 +734,7 @@
 				99A081C61D46302D003FC427 /* CycleScrollView.swift in Sources */,
 				991BA78F1D47058900EE3CFE /* TitleView.swift in Sources */,
 				999C82B81D4A6CCC00B8EA9E /* ArticleCell.swift in Sources */,
+				996F84811D68A9E70052FB96 /* ThemeRecipe.swift in Sources */,
 				999C82E31D4A709600B8EA9E /* ThemeListTableViewCell.swift in Sources */,
 				99B891311D44FC7900261A84 /* Router.swift in Sources */,
 				992644D21D4C17FD0039DDEA /* DetailHeaderView.swift in Sources */,
@@ -733,6 +756,7 @@
 				99CD21851D66B796006F75EE /* WaterFlowLayout.swift in Sources */,
 				99A1FBE01D5DFC6E006D6D2A /* DetailTabbar.swift in Sources */,
 				99B891371D45105D00261A84 /* Models.swift in Sources */,
+				996F847E1D6899CC0052FB96 /* DiscoverViewController.swift in Sources */,
 				999C82DF1D4A709600B8EA9E /* MyCollectionCell.swift in Sources */,
 				99272ADE1D6709B20059FF4C /* Recipe.swift in Sources */,
 			);
@@ -811,6 +835,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_BITCODE = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -856,6 +881,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_BITCODE = NO;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -878,7 +904,6 @@
 			baseConfigurationReference = 583DA87A9745822DAFCC763F /* Pods-WDayDayCook.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = WDayDayCook/WDayDayCook.entitlements;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					../../Framework/VenvyVideoSDK,
@@ -897,7 +922,6 @@
 			baseConfigurationReference = DE4CED5AAD1A41271F01640C /* Pods-WDayDayCook.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = WDayDayCook/WDayDayCook.entitlements;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					../../Framework/VenvyVideoSDK,

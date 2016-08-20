@@ -15,8 +15,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 
     private func realmConfig() -> Realm.Configuration {
-        let directory: NSURL = NSFileManager.defaultManager().containerURLForSecurityApplicationGroupIdentifier(WDConfig.appGroupID)!
-        let realmFileURL = directory.URLByAppendingPathComponent("db.realm")
+//        let directory: NSURL = NSFileManager.defaultManager().containerURLForSecurityApplicationGroupIdentifier(WDConfig.appGroupID)!
+//        let realmFileURL = directory.URLByAppendingPathComponent("db.realm")
+        
+        let directory: NSURL = NSURL.fileURLWithPath(NSSearchPathForDirectoriesInDomains(.DocumentDirectory, NSSearchPathDomainMask.UserDomainMask, true).first!)
+        let realmFileURL =  directory.URLByAppendingPathComponent("db.realm")
         
         print(realmFileURL)
         

@@ -113,6 +113,12 @@ class ShowDetailViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     
+    deinit
+    {
+        NSNotificationCenter.defaultCenter().removeObserver(self)
+    
+    }
+    
     
     func makeUI()
     {
@@ -322,16 +328,10 @@ extension ShowDetailViewController :UITableViewDelegate,UITableViewDataSource
 
         
         if value1 == value2 {
-            print("22222")
-//            print(offsetY)
             webCell?.scrollEnabled = true
         }
         
-     
         scrollTopButton.hidden = offsetY < UIScreen.mainScreen().bounds.size.height
-        
-        
-
     }
 
 }
@@ -382,7 +382,6 @@ extension ShowDetailViewController: DetailHeaderViewDelegate
                 print(json)
 
                 })
-            
             
         }
         

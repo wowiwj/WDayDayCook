@@ -192,10 +192,25 @@ extension RecipeViewController:UICollectionViewDelegate,UICollectionViewDataSour
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier(ArticleCellID, forIndexPath: indexPath) as! ArticleCell
-
-        cell.recipeData = recipeList[indexPath.item]
-        
         return cell
+    }
+    
+    func collectionView(collectionView: UICollectionView, willDisplayCell cell: UICollectionViewCell, forItemAtIndexPath indexPath: NSIndexPath) {
+        
+        print(indexPath.item)
+        
+        guard let cell = cell as? ArticleCell else{
+            return
+        }
+        cell.recipeData = recipeList[indexPath.item]
+    }
+    
+    func collectionView(collectionView: UICollectionView, didEndDisplayingCell cell: UICollectionViewCell, forItemAtIndexPath indexPath: NSIndexPath) {
+        
+        guard let cell = collectionView.cellForItemAtIndexPath(indexPath) as? ArticleCell else{
+            return
+        }
+        cell.foodImageView.image = nil
     }
     
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {

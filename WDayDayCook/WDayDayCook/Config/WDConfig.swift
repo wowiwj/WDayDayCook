@@ -30,5 +30,8 @@ public class WDConfig {
     // 详情头部Cell的高度
     static let DetailTitleCellHeight: CGFloat = 60
     
+    // DiscoverViewController 默认边距
+    static let discoverDefaultMargin: CGFloat = 3
+    
 }
 

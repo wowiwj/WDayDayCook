@@ -17,6 +17,7 @@ enum Router: URLRequestConvertible {
     case Details(id: Int)
     case VideosDetail(id:Int)
     case RecipeList(currentpage :Int,pageSize:Int)
+    case MoreThemeRecipe(parameters:[String: AnyObject]?)
     case test()
     
     
@@ -35,6 +36,8 @@ enum Router: URLRequestConvertible {
             return ServiceApi.getVideosDetail(id)
         case .RecipeList(let currentpage, let pageSize):
             return ServiceApi.getRecipeList(currentpage, pageSize: pageSize)
+        case .MoreThemeRecipe:
+            return ServiceApi.getMoreThemeRecipe()
         default:
             return ServiceApi.getChooseViewAdList()
         }

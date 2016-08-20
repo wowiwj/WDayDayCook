@@ -78,6 +78,12 @@ class ArticleCell: UICollectionViewCell {
     }
     
 
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        foodImageView.image = nil
+        titleLabel.text = nil
+        foodDescription.text = nil
+    }
     
     
     override func awakeFromNib() {
