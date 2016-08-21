@@ -12,7 +12,7 @@ import Alamofire
 import SwiftyJSON
 import ObjectMapper
 
-private let reuseIdentifier = "Cell"
+private let RecipeDiscussCellId = "RecipeDiscussCell"
 private let reusableHeaderViewID = "DiscoverHeaderView"
 
 class DiscoverViewController: UICollectionViewController {
@@ -46,11 +46,8 @@ class DiscoverViewController: UICollectionViewController {
     
     var themeRecipes:[ThemeRecipe]?{
         didSet{
-            
             print(themeRecipes)
-            
-            
-        
+            collectionView?.reloadData()
         }
     }
     
@@ -66,29 +63,14 @@ class DiscoverViewController: UICollectionViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        
-        
+ 
         MakeUI()
         
         loadDatda()
-        
-        
-        
-
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
-        // Register cell classes
-        self.collectionView!.registerClass(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
-        
-        
-        
-        self.collectionView?.backgroundColor = UIColor.greenColor()
-        
-        print("哈哈")
 
-        // Do any additional setup after loading the view.
     }
     
     func MakeUI()
@@ -108,15 +90,14 @@ class DiscoverViewController: UICollectionViewController {
             
             layout.sectionInset = UIEdgeInsets(top: WDConfig.discoverDefaultMargin, left: 0, bottom: 0, right: 0)
             
-            
-            
             layout.headerReferenceSize = cycleView.frame.size
         }
         
         setLayout()
         
-        
-        
+        collectionView?.registerNib(UINib(nibName: RecipeDiscussCellId, bundle: nil), forCellWithReuseIdentifier: RecipeDiscussCellId)
+        self.collectionView?.backgroundColor = UIColor.whiteColor()
+ 
     }
     
     func loadDatda()
@@ -150,39 +131,51 @@ class DiscoverViewController: UICollectionViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    
+    // MARK: - 控制器跳转
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using [segue destinationViewController].
-        // Pass the selected object to the new view controller.
+        
+        guard let identifier = segue.identifier else{
+            return
+        }
+        if identifier == "showDetail" {
+            let vc = segue.destinationViewController as! ShowDetailViewController
+            let item = sender as! Int
+            
+            vc.id = item
+        }
     }
-    */
 
     // MARK: UICollectionViewDataSource
 
     override func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
         return 1
     }
 
 
     override func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of items
-        return 20
+        return themeRecipes?.count ?? 0
     }
 
     override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
  
-        let cell = collectionView.dequeueReusableCellWithReuseIdentifier(reuseIdentifier, forIndexPath: indexPath)
-    
-        // Configure the cell
-        
-        cell.backgroundColor = UIColor.redColor()
-    
+        let cell = collectionView.dequeueReusableCellWithReuseIdentifier(RecipeDiscussCellId, forIndexPath: indexPath)
         return cell
+    }
+    
+    override func collectionView(collectionView: UICollectionView, willDisplayCell cell: UICollectionViewCell, forItemAtIndexPath indexPath: NSIndexPath) {
+        
+        guard let cell = cell as? RecipeDiscussCell else {
+            return
+        }
+        if let themeRecipes = themeRecipes {
+            cell.themeRecipe = themeRecipes[indexPath.item]
+        }
+    
+    }
+    
+    override func collectionView(collectionView: UICollectionView, didEndDisplayingCell cell: UICollectionViewCell, forItemAtIndexPath indexPath: NSIndexPath) {
+        
     }
     
     override func collectionView(collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, atIndexPath indexPath: NSIndexPath) -> UICollectionReusableView {
@@ -193,8 +186,6 @@ class DiscoverViewController: UICollectionViewController {
         if kind == "UICollectionElementKindSectionHeader" {
             reusableHeaderView = collectionView.dequeueReusableSupplementaryViewOfKind(kind, withReuseIdentifier: reusableHeaderViewID, forIndexPath: indexPath)
             reusableHeaderView?.addSubview(cycleView)
-            
-            
         }
         
         return reusableHeaderView ?? UICollectionReusableView()
@@ -202,9 +193,16 @@ class DiscoverViewController: UICollectionViewController {
         
     }
     
+    override func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+        guard let themeRecipes = themeRecipes else{
+            return
+        }
+        let headerRecipe = themeRecipes[indexPath.item]
+        if let id = headerRecipe.recipe_id {
+            performSegueWithIdentifier("showDetail", sender: id)
+        }
+    }
     
-    
-
     // MARK: UICollectionViewDelegate
 
     /*
@@ -240,6 +238,15 @@ class DiscoverViewController: UICollectionViewController {
 
 extension DiscoverViewController: SDCycleScrollViewDelegate
 {
-
-
+    func cycleScrollView(cycleScrollView: SDCycleScrollView!, didSelectItemAtIndex index: Int) {
+        print(index)
+        guard let headerRecipes = headerRecipes else{
+            return
+        }
+        
+        let headerRecipe = headerRecipes[index]
+        if let id = headerRecipe.recipe_id {
+            performSegueWithIdentifier("showDetail", sender: id)
+        }
+    }
 }

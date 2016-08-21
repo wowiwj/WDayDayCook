@@ -59,6 +59,8 @@
 		99FA8AEA1D4469120029E898 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 99FA8AE81D4469120029E898 /* LaunchScreen.storyboard */; };
 		99FA8AF51D4469120029E898 /* WDayDayCookTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99FA8AF41D4469120029E898 /* WDayDayCookTests.swift */; };
 		99FA8B001D4469120029E898 /* WDayDayCookUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99FA8AFF1D4469120029E898 /* WDayDayCookUITests.swift */; };
+		99FE1F581D69C3590075559F /* ViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99FE1F571D69C3590075559F /* ViewController+Extension.swift */; };
+		99FE1F5B1D69CB2C0075559F /* MineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99FE1F5A1D69CB2C0075559F /* MineViewController.swift */; };
 		B65D97C1589950090769B5F7 /* Pods_WDayDayCook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 34888801C8AEAB4046589C3C /* Pods_WDayDayCook.framework */; };
 /* End PBXBuildFile section */
 
@@ -142,6 +144,8 @@
 		99FA8AFB1D4469120029E898 /* WDayDayCookUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WDayDayCookUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		99FA8AFF1D4469120029E898 /* WDayDayCookUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WDayDayCookUITests.swift; sourceTree = "<group>"; };
 		99FA8B011D4469120029E898 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		99FE1F571D69C3590075559F /* ViewController+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ViewController+Extension.swift"; sourceTree = "<group>"; };
+		99FE1F5A1D69CB2C0075559F /* MineViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MineViewController.swift; sourceTree = "<group>"; };
 		DE4CED5AAD1A41271F01640C /* Pods-WDayDayCook.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WDayDayCook.release.xcconfig"; path = "Pods/Target Support Files/Pods-WDayDayCook/Pods-WDayDayCook.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -396,6 +400,7 @@
 			children = (
 				99F88DDC1D68419F0036D715 /* js */,
 				99CD21861D66B79F006F75EE /* connlecionViewLayout */,
+				99FE1F571D69C3590075559F /* ViewController+Extension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -489,6 +494,7 @@
 		99FA8B0D1D446EEF0029E898 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				99FE1F591D69CB150075559F /* Mine */,
 				996F847C1D6899B30052FB96 /* Discover */,
 				99CD217D1D66A3DE006F75EE /* Recipe */,
 				99F4409D1D4B4859009E4F95 /* ShowDetail */,
@@ -504,6 +510,7 @@
 			isa = PBXGroup;
 			children = (
 				99FA8AE31D4469120029E898 /* Main.storyboard */,
+				999C82C01D4A6E8300B8EA9E /* ShowDetail.storyboard */,
 				996F847F1D689E7F0052FB96 /* Discover */,
 				992644D01D4C17DC0039DDEA /* Details */,
 				991BA78B1D47003800EE3CFE /* Cell */,
@@ -511,7 +518,6 @@
 				99A081C31D462031003FC427 /* Choose */,
 				99B8912D1D44FBCF00261A84 /* SlideView */,
 				99B891181D44BC7C00261A84 /* PullToRefresh */,
-				999C82C01D4A6E8300B8EA9E /* ShowDetail.storyboard */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -523,6 +529,14 @@
 				99FA8AEB1D4469120029E898 /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		99FE1F591D69CB150075559F /* Mine */ = {
+			isa = PBXGroup;
+			children = (
+				99FE1F5A1D69CB2C0075559F /* MineViewController.swift */,
+			);
+			path = Mine;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -728,6 +742,7 @@
 				99FA8AE01D4469120029E898 /* AppDelegate.swift in Sources */,
 				99B891211D44D4C100261A84 /* RefreshConst.swift in Sources */,
 				992644D91D4C3C5C0039DDEA /* DetailInfoCell.swift in Sources */,
+				99FE1F581D69C3590075559F /* ViewController+Extension.swift in Sources */,
 				99B8912B1D44DE9700261A84 /* IndicatorView.swift in Sources */,
 				99F4409F1D4B4896009E4F95 /* ShowDetailViewController.swift in Sources */,
 				99B891171D44A2C900261A84 /* ChooseViewController.swift in Sources */,
@@ -735,6 +750,7 @@
 				991BA78F1D47058900EE3CFE /* TitleView.swift in Sources */,
 				999C82B81D4A6CCC00B8EA9E /* ArticleCell.swift in Sources */,
 				996F84811D68A9E70052FB96 /* ThemeRecipe.swift in Sources */,
+				99FE1F5B1D69CB2C0075559F /* MineViewController.swift in Sources */,
 				999C82E31D4A709600B8EA9E /* ThemeListTableViewCell.swift in Sources */,
 				99B891311D44FC7900261A84 /* Router.swift in Sources */,
 				992644D21D4C17FD0039DDEA /* DetailHeaderView.swift in Sources */,

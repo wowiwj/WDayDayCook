@@ -133,7 +133,7 @@ struct ThemeRecipe: Mappable {
     var title:String?
     var locationId:Int?
     var recommend_type:String?
-    var recipe_id:String?
+    var recipe_id:Int?
     var group_id:String?
     var share_count:String?
     var str_date:String?

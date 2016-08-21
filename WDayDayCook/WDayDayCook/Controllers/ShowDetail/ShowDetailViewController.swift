@@ -209,19 +209,9 @@ class ShowDetailViewController: UIViewController {
     }
     
     @objc private func ShowDetailVC(info:NSNotification){
-        
-        print(info)
-    
         if let id = info.object {
-            
-            let sb = UIStoryboard(name: "ShowDetail", bundle: nil)
-            let showDetailVc = sb.instantiateViewControllerWithIdentifier("showDetailController") as! ShowDetailViewController
             let item = id as! Int
-            showDetailVc.id = item
-            
-            dispatch_async(dispatch_get_main_queue(), { 
-                self.navigationController?.pushViewController(showDetailVc, animated: true)
-            })
+            navigationController?.pushToDetailViewController(item, animated: true)
    
         }
     }
@@ -384,7 +374,6 @@ extension ShowDetailViewController: DetailHeaderViewDelegate
                 })
             
         }
-        
         print(detailsUrl)
     }
     

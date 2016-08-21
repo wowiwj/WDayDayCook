@@ -22,9 +22,20 @@ class RecipeDiscussCell: UICollectionViewCell {
                 return
             }
             
-            
             imageView.kf_setImageWithURL(NSURL(string: recipeDiscuss!.image_url))
             title.text = recipeDiscuss?.foodDescription
+        }
+    }
+    
+    var themeRecipe: ThemeRecipe?{
+        didSet{
+            if let themeRecipe = themeRecipe
+            {
+                imageView.kf_setImageWithURL(NSURL(string: themeRecipe.image_url!))
+                title.text = themeRecipe.title
+                
+            }
+            
         }
     }
     
