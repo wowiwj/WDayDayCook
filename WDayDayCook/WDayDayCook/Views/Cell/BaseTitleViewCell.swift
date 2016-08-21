@@ -26,7 +26,7 @@ class BaseTitleViewCell: UITableViewCell {
         titleView.snp_makeConstraints(closure: { (make) in
             make.top.equalTo(self)
             make.width.equalTo(self)
-            make.height.equalTo(40)
+            make.height.equalTo(WDConfig.baseTitleHeight.autoAdjust())
         })
  
     }

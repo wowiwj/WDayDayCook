@@ -92,7 +92,7 @@
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aca-n7-HTS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="895" y="-1277"/>
+            <point key="canvasLocation" x="900" y="-1245"/>
         </scene>
         <!--食谱-->
         <scene sceneID="5Vy-oo-upc">
@@ -115,7 +115,7 @@
         <!--食谱-->
         <scene sceneID="Dqq-V5-DL6">
             <objects>
-                <viewController id="K2U-g9-jr7" customClass="RecipeViewController" customModule="WDayDayCook" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Recipe" id="K2U-g9-jr7" customClass="RecipeViewController" customModule="WDayDayCook" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="brx-c4-XYm"/>
                         <viewControllerLayoutGuide type="bottom" id="Hph-LB-u3H"/>
@@ -151,22 +151,12 @@
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
                         <outlet property="collectionView" destination="9ci-Wc-AZl" id="Tqy-rx-UJr"/>
-                        <segue destination="Km8-wk-AQu" kind="show" identifier="showDetail" id="sCb-JV-ZW1"/>
+                        <segue destination="Nbv-xF-VxD" kind="show" identifier="showDetail" id="iki-Hc-vXV"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LsS-98-oO6" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="464.5" y="-475.5"/>
-        </scene>
-        <!--showDetailController-->
-        <scene sceneID="KX7-Jc-ZM3">
-            <objects>
-                <viewControllerPlaceholder storyboardName="ShowDetail" referencedIdentifier="showDetailController" id="Km8-wk-AQu" sceneMemberID="viewController">
-                    <navigationItem key="navigationItem" id="be6-gL-pp1"/>
-                </viewControllerPlaceholder>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="DAa-pT-FWM" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="879.5" y="-663"/>
         </scene>
         <!--发现-->
         <scene sceneID="rcm-pd-iF6">
@@ -189,7 +179,7 @@
         <!--发现-->
         <scene sceneID="Pwu-1q-VMn">
             <objects>
-                <collectionViewController id="pBu-xx-9MH" customClass="DiscoverViewController" customModule="WDayDayCook" customModuleProvider="target" sceneMemberID="viewController">
+                <collectionViewController storyboardIdentifier="11" id="pBu-xx-9MH" customClass="DiscoverViewController" customModule="WDayDayCook" customModuleProvider="target" sceneMemberID="viewController">
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="9UN-ZR-R9t">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -222,7 +212,7 @@
         <!--showDetailController-->
         <scene sceneID="h5i-xx-NS1">
             <objects>
-                <viewControllerPlaceholder storyboardName="ShowDetail" referencedIdentifier="showDetailController" id="p4y-Fg-mCy" sceneMemberID="viewController"/>
+                <viewControllerPlaceholder storyboardIdentifier="777" storyboardName="ShowDetail" referencedIdentifier="showDetailController" id="p4y-Fg-mCy" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="c3j-Dn-kA3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="924.5" y="273"/>
@@ -238,7 +228,7 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
-                        <segue destination="OtJ-iY-5Dc" kind="relationship" relationship="rootViewController" id="q5I-3I-rvh"/>
+                        <segue destination="OtJ-iY-5Dc" kind="relationship" relationship="rootViewController" id="WL9-SW-cAv"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Jbh-Qd-azi" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -314,30 +304,24 @@
                     </view>
                     <navigationItem key="navigationItem" id="NO5-Nh-oQj"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                    <connections>
+                        <outlet property="topView" destination="dye-l9-I07" id="7Ll-zO-kOQ"/>
+                        <outlet property="topViewHeightCons" destination="ngW-Ik-nod" id="p7N-hk-FoV"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vXa-cU-eWF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="508.5" y="1093.5"/>
+            <point key="canvasLocation" x="508.5" y="1081.5"/>
         </scene>
         <!--showDetailController-->
-        <scene sceneID="lj7-ly-dsF">
+        <scene sceneID="V1e-nu-KDF">
             <objects>
-                <viewControllerPlaceholder storyboardName="ShowDetail" referencedIdentifier="showDetailController" id="sjd-Jp-FoU" sceneMemberID="viewController">
-                    <navigationItem key="navigationItem" id="y6x-gs-Gpk"/>
+                <viewControllerPlaceholder storyboardIdentifier="ShowDetailNavC2" storyboardName="ShowDetail" referencedIdentifier="showDetailController" id="Nbv-xF-VxD" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="zJe-20-1Fv"/>
                 </viewControllerPlaceholder>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="kSb-yS-Dim" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Gdf-0M-84R" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="879.5" y="-663"/>
-        </scene>
-        <!--showDetailController-->
-        <scene sceneID="H4f-6l-7cF">
-            <objects>
-                <viewControllerPlaceholder storyboardName="ShowDetail" referencedIdentifier="showDetailController" id="Ifm-N4-U2z" sceneMemberID="viewController">
-                    <navigationItem key="navigationItem" id="ikx-vW-vg7"/>
-                </viewControllerPlaceholder>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="M55-Se-lvQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="879.5" y="-663"/>
+            <point key="canvasLocation" x="864" y="-591"/>
         </scene>
     </scenes>
     <resources>

@@ -10,13 +10,15 @@ import UIKit
 import JavaScriptCore
 
 let showDetailVcNotificationKey = "showDetailVcNotification"
-
+let showAllCommentNotificationKey = "showAllCommentNotification"
 // 定义协议SwiftJavaScriptDelegate 该协议必须遵守JSExport协议
 @objc protocol SwiftJavaScriptDelegate: JSExport {
     // js调用App方法时传递多个参数 并弹出对话框 注意js调用时的函数名
     // 第二个参数首字母大写 
     //showDetailVcId('linkRecipeDtl', id);
     func showDetailVc(title: String, id: Int)
+    
+    func showAllComment()
     
 }
 
@@ -35,6 +37,11 @@ let showDetailVcNotificationKey = "showDetailVcNotification"
             NSNotificationCenter.defaultCenter().postNotificationName(showDetailVcNotificationKey, object: id)
         }
         
+    }
+    
+    func showAllComment() {
+        NSNotificationCenter.defaultCenter().postNotificationName(showAllCommentNotificationKey, object: nil)
+        print("显示更多评论数据")
     }
 
 
@@ -116,7 +123,6 @@ extension DetailInfoCell:UIWebViewDelegate
     func webViewDidStartLoad(webView: UIWebView) {
         self.webView.sizeToFit()
         cellHeight = webView.scrollView.contentSize.height
-        print(cellHeight)
     }
     func webView(webView: UIWebView, shouldStartLoadWithRequest request: NSURLRequest, navigationType: UIWebViewNavigationType) -> Bool {
         
@@ -128,13 +134,13 @@ extension DetailInfoCell:UIWebViewDelegate
         self.sizeToFit()
         cellHeight = webView.scrollView.contentSize.height
         loadFinished = true
-        
-//        print(webView.request?.URL?.absoluteString)
-        
+ 
         
         if let action = loadFinishedAction {
             action()
         }
+        
+        print(webView.request?.URL?.absoluteString)
         
 
         let context = webView.valueForKeyPath("documentView.webView.mainFrame.javaScriptContext") as! JSContext
@@ -149,6 +155,10 @@ extension DetailInfoCell:UIWebViewDelegate
             print("exception：", exception)
         }
 
+    }
+    
+    func webView(webView: UIWebView, didFailLoadWithError error: NSError?) {
+        print(error)
     }
 
 }

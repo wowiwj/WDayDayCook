@@ -38,7 +38,6 @@ func transfromOfTupleAndString()->TransformOf<(CGFloat,CGFloat,CGFloat),String>{
                 let value1 = (strArr[0] as NSString).floatValue
                 let value2 = (strArr[1] as NSString).floatValue
                 let value3 = (strArr[2] as NSString).floatValue
-                print("\(value1) \(value2) \(value3)")
                 return (CGFloat(value1),CGFloat(value2),CGFloat(value3))
             }
         }

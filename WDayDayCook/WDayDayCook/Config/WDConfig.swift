@@ -27,6 +27,8 @@ public class WDConfig {
     
     static let themeListHeight:CGFloat = 150
     
+    static let baseTitleHeight:CGFloat = 40
+    
     // 详情头部Cell的高度
     static let DetailTitleCellHeight: CGFloat = 60
     

@@ -92,7 +92,7 @@ class MyCollectionCell: BaseTitleViewCell {
         super.layoutSubviews()
 
         let height = self.collectionView.frame.size.height
-        let size = CGSize(width: WDConfig.articleCellWidth, height: height)
+        let size = CGSize(width: WDConfig.articleCellWidth.autoAdjust(), height: height)
         flowLayout.itemSize = size
  
     }

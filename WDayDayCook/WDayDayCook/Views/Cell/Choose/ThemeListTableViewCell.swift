@@ -36,7 +36,7 @@ class ThemeListTableViewCell: BaseTitleViewCell {
         flowLayout.minimumLineSpacing = 0
         flowLayout.minimumInteritemSpacing = 0
         let width = UIScreen.mainScreen().bounds.size.width
-        let height = WDConfig.themeListHeight
+        let height = WDConfig.themeListHeight.autoAdjust()
         
         flowLayout.itemSize = CGSize(width: width, height: height)
         return flowLayout

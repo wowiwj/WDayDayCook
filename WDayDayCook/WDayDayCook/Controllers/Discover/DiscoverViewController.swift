@@ -22,7 +22,7 @@ class DiscoverViewController: UICollectionViewController {
         let placeholderImage = UIImage(named: "default_1~iphone")!
         let screenSize = UIScreen.mainScreen().bounds.size
         let headerW = screenSize.width
-        let headerH = placeholderImage.size.width / headerW * placeholderImage.size.height - 50
+        let headerH = headerW / placeholderImage.size.width * placeholderImage.size.height
         let size = CGSize(width: headerW, height: headerH)
         let cycleView = SDCycleScrollView(frame: CGRect(origin: CGPointZero, size: size), delegate: self, placeholderImage: placeholderImage)
         
@@ -46,7 +46,6 @@ class DiscoverViewController: UICollectionViewController {
     
     var themeRecipes:[ThemeRecipe]?{
         didSet{
-            print(themeRecipes)
             collectionView?.reloadData()
         }
     }
@@ -112,16 +111,10 @@ class DiscoverViewController: UICollectionViewController {
                 return
             }else
             {
-                let result = JSON(response.result.value!)
-                print(result)
-                
                 let recipeList = Mapper<ThemeRecipeList>().map(response.result.value)
                 self.recipeList = recipeList
             }
-            
-            let result = JSON(response.result.value!)
-            
-            print(result)
+
         }
     
     
@@ -182,7 +175,6 @@ class DiscoverViewController: UICollectionViewController {
         
         var reusableHeaderView:UICollectionReusableView? = nil
         
-        print(kind)
         if kind == "UICollectionElementKindSectionHeader" {
             reusableHeaderView = collectionView.dequeueReusableSupplementaryViewOfKind(kind, withReuseIdentifier: reusableHeaderViewID, forIndexPath: indexPath)
             reusableHeaderView?.addSubview(cycleView)
@@ -239,7 +231,6 @@ class DiscoverViewController: UICollectionViewController {
 extension DiscoverViewController: SDCycleScrollViewDelegate
 {
     func cycleScrollView(cycleScrollView: SDCycleScrollView!, didSelectItemAtIndex index: Int) {
-        print(index)
         guard let headerRecipes = headerRecipes else{
             return
         }

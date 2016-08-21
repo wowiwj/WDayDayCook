@@ -105,7 +105,8 @@ class ShowDetailViewController: UIViewController {
         super.viewDidLoad()
         makeUI()
         
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(ShowDetailViewController.ShowDetailVC(_:)), name: showDetailVcNotificationKey, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(ShowDetailViewController.showDetailVC(_:)), name: showDetailVcNotificationKey, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(ShowDetailViewController.showMoreComments(_:)), name: showAllCommentNotificationKey, object: nil)
         
         loadData()
         
@@ -208,12 +209,15 @@ class ShowDetailViewController: UIViewController {
 
     }
     
-    @objc private func ShowDetailVC(info:NSNotification){
+    @objc private func showDetailVC(info:NSNotification){
         if let id = info.object {
             let item = id as! Int
             navigationController?.pushToDetailViewController(item, animated: true)
    
         }
+    }
+    @objc private func showMoreComments(info:NSNotification){
+        WDAlert.alert(title: "显示更多评论", message: "点击了显示更多评论按钮", dismissTitle: "取消", inViewController: self, withDismissAction: nil)
     }
 
 }

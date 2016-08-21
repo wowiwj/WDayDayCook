@@ -7,9 +7,19 @@
 //
 
 import UIKit
+import SnapKit
 
 class MineViewController: UIViewController {
     
+    @IBOutlet weak var topViewHeightCons: NSLayoutConstraint!
+    @IBOutlet weak var topView: UIView!{
+        didSet{
+            
+            
+        
+        
+        }
+    }
     private lazy var customNavigationItem: UINavigationItem = UINavigationItem(title: "")
     
     private lazy var customNavgationBar:UINavigationBar = {
@@ -45,6 +55,10 @@ class MineViewController: UIViewController {
         customNavigationItem.rightBarButtonItem = setItem
         
         automaticallyAdjustsScrollViewInsets = false
+        
+        topViewHeightCons.constant = topViewHeightCons.constant.autoAdjust()
+        
+        
     }
     
     override func preferredStatusBarStyle() -> UIStatusBarStyle {

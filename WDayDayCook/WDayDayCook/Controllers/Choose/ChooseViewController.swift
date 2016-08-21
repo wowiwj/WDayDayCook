@@ -97,16 +97,13 @@ final class ChooseViewController: UIViewController {
             
             let queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)
             dispatch_group_async(group, queue) {
-                print(NSThread.currentThread())
                 self.loadADData()
             }
             dispatch_group_async(group, queue) {
-                print(NSThread.currentThread())
                 self.loadNewFoodEachDay(0, pageSize: 10)
             }
             
             dispatch_group_notify(group, queue) {
-                print(NSThread.currentThread())
                 self.loadRecommandInfo()
                 
             }
@@ -311,11 +308,11 @@ extension ChooseViewController:UITableViewDelegate,UITableViewDataSource
         
         switch indexPath.row {
         case CellStyle.themeList.rawValue:
-            return CGFloat(themeList?.count ?? 0) * WDConfig.themeListHeight + 30
+            return CGFloat(themeList?.count ?? 0).autoAdjust() * WDConfig.themeListHeight + 30
         case CellStyle.recipeDiscussList.rawValue:
-            return 200
+            return CGFloat(200).autoAdjust()
         default:
-            return 280
+            return CGFloat(280).autoAdjust()
         }
         
     }
@@ -328,7 +325,6 @@ extension ChooseViewController : SDCycleScrollViewDelegate
     
     func cycleScrollView(cycleScrollView: SDCycleScrollView!, didSelectItemAtIndex index: Int) {
         let item = adData[index]
-        print(item)
         performSegueWithIdentifier("showDetail", sender: Int(item.url))
         
 
@@ -347,8 +343,7 @@ extension ChooseViewController :MyCollectionCellDelegete,ThemeListTableViewCellD
         }
         
         if item is FoodRecmmand{
-            print(item)
-            
+    
             performSegueWithIdentifier("showDetail", sender: (item as! FoodRecmmand).recipe_id)
         }
         

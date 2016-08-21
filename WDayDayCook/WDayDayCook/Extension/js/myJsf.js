@@ -11,5 +11,10 @@ var myJsf = {
 //        document.location = url;
         
         WebViewJavascriptBridge.showDetailVcId('linkRecipeDtl', id);
+    },
+    
+    linkAllComment: function()
+    {
+        WebViewJavascriptBridge.showAllComment();
     }
 };

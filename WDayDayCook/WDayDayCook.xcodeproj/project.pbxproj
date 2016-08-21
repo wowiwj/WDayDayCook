@@ -61,6 +61,7 @@
 		99FA8B001D4469120029E898 /* WDayDayCookUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99FA8AFF1D4469120029E898 /* WDayDayCookUITests.swift */; };
 		99FE1F581D69C3590075559F /* ViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99FE1F571D69C3590075559F /* ViewController+Extension.swift */; };
 		99FE1F5B1D69CB2C0075559F /* MineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99FE1F5A1D69CB2C0075559F /* MineViewController.swift */; };
+		99FE1F5D1D69E0640075559F /* CGFloat+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99FE1F5C1D69E0640075559F /* CGFloat+Extension.swift */; };
 		B65D97C1589950090769B5F7 /* Pods_WDayDayCook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 34888801C8AEAB4046589C3C /* Pods_WDayDayCook.framework */; };
 /* End PBXBuildFile section */
 
@@ -146,6 +147,7 @@
 		99FA8B011D4469120029E898 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		99FE1F571D69C3590075559F /* ViewController+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ViewController+Extension.swift"; sourceTree = "<group>"; };
 		99FE1F5A1D69CB2C0075559F /* MineViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MineViewController.swift; sourceTree = "<group>"; };
+		99FE1F5C1D69E0640075559F /* CGFloat+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CGFloat+Extension.swift"; sourceTree = "<group>"; };
 		DE4CED5AAD1A41271F01640C /* Pods-WDayDayCook.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WDayDayCook.release.xcconfig"; path = "Pods/Target Support Files/Pods-WDayDayCook/Pods-WDayDayCook.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -401,6 +403,7 @@
 				99F88DDC1D68419F0036D715 /* js */,
 				99CD21861D66B79F006F75EE /* connlecionViewLayout */,
 				99FE1F571D69C3590075559F /* ViewController+Extension.swift */,
+				99FE1F5C1D69E0640075559F /* CGFloat+Extension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -765,6 +768,7 @@
 				99B891241D44D4CA00261A84 /* RefreshFooterView.swift in Sources */,
 				99A081CC1D4662D4003FC427 /* WDAlert.swift in Sources */,
 				992644D51D4C3C3B0039DDEA /* DetailTitleViewCell.swift in Sources */,
+				99FE1F5D1D69E0640075559F /* CGFloat+Extension.swift in Sources */,
 				99B8912F1D44FC6400261A84 /* ServiceApi.swift in Sources */,
 				99B8910E1D44788A00261A84 /* NewFeatureController.swift in Sources */,
 				999C82E41D4A709600B8EA9E /* ThemeRecommandCell.swift in Sources */,

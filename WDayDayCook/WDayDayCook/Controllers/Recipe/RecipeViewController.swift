@@ -119,9 +119,6 @@ class RecipeViewController: UIViewController {
                 return
             }else
             {
-                let result = JSON(response.result.value!)
-                print(result)
-                
                 let recipeList = Mapper<RecipeList>().map(response.result.value)
                 
                 if recipeList?.code == "200"
@@ -196,9 +193,6 @@ extension RecipeViewController:UICollectionViewDelegate,UICollectionViewDataSour
     }
     
     func collectionView(collectionView: UICollectionView, willDisplayCell cell: UICollectionViewCell, forItemAtIndexPath indexPath: NSIndexPath) {
-        
-        print(indexPath.item)
-        
         guard let cell = cell as? ArticleCell else{
             return
         }
@@ -214,15 +208,9 @@ extension RecipeViewController:UICollectionViewDelegate,UICollectionViewDataSour
     }
     
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
-        
-        
-
-        
         if let id = recipeList[indexPath.item].id {
             performSegueWithIdentifier("showDetail", sender: id)
         }
-        
-        print(indexPath)
         
     }
 
@@ -236,8 +224,11 @@ extension RecipeViewController: UICollectionViewWaterFlowLayoutDelegate
         let arr = recipeList.map{ $0.screeningId ?? (defaultValue,defaultValue,defaultValue) }
         
         let (_,value2,_) = arr[indexpath.item]
+//        if UIScreen.mainScreen().bounds.size.width > 320 {
+//            value2 *= UIScreen.mainScreen().bounds.size.width / 320
+//        }
         
-        return CGFloat(value2)
+        return CGFloat(value2).autoAdjust()
     }
     
     func columnCountInwaterFlowLayout(waterFlowLayout: WaterFlowlayout) -> Int {
