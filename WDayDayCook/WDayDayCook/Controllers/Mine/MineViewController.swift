@@ -61,7 +61,10 @@ class MineViewController: UIViewController {
         
         makeUI()
         titleView.delegate = self
+        addChildViewControllers()
         titleView.setTitleSelectIndex(0)
+        
+        
         
 
         // Do any additional setup after loading the view.
@@ -95,10 +98,20 @@ class MineViewController: UIViewController {
             make.leading.equalTo(self.view)
             make.bottom.equalTo(self.view)
         }
+   
         
+    }
+    
+    func addChildViewControllers(){
         
+        let waterFlowlayout = UICollectionViewFlowLayout()
         
+        let mineCollectionVc = MineCollectionontroller(collectionViewLayout: waterFlowlayout)
+        addChildViewController(mineCollectionVc)
         
+        let footPrintsVc = FootPrintsViewController(collectionViewLayout: waterFlowlayout)
+        addChildViewController(footPrintsVc)
+
     }
     
     override func preferredStatusBarStyle() -> UIStatusBarStyle {
@@ -133,6 +146,14 @@ extension MineViewController:IndicatorTitleViewDelegate{
     
     func indicatorTitleView(indicatorTitleView view: UIView, didSelectButton button: IndicatorButton, atIndex index: Int) {
         print("dggg \(index)")
+        
+        let selectedVc = childViewControllers[index]
+        
+        print(selectedVc)
+        
+        contentView.addSubview(selectedVc.view)
+        
+        
     }
 
 

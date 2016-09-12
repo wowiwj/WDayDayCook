@@ -11,6 +11,7 @@
 		992428881D86AD540065FE6E /* IndicatorTitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 992428871D86AD540065FE6E /* IndicatorTitleView.swift */; };
 		9924288C1D86B0020065FE6E /* IndicatorButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9924288B1D86B0020065FE6E /* IndicatorButton.swift */; };
 		9924288E1D86BCA90065FE6E /* Int+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9924288D1D86BCA90065FE6E /* Int+Extension.swift */; };
+		992428901D86DE270065FE6E /* MineCollectionontroller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9924288F1D86DE270065FE6E /* MineCollectionontroller.swift */; };
 		992644D21D4C17FD0039DDEA /* DetailHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 992644D11D4C17FD0039DDEA /* DetailHeaderView.swift */; };
 		992644D51D4C3C3B0039DDEA /* DetailTitleViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 992644D31D4C3C3B0039DDEA /* DetailTitleViewCell.swift */; };
 		992644D61D4C3C3B0039DDEA /* DetailTitleViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 992644D41D4C3C3B0039DDEA /* DetailTitleViewCell.xib */; };
@@ -96,6 +97,7 @@
 		992428871D86AD540065FE6E /* IndicatorTitleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IndicatorTitleView.swift; sourceTree = "<group>"; };
 		9924288B1D86B0020065FE6E /* IndicatorButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IndicatorButton.swift; sourceTree = "<group>"; };
 		9924288D1D86BCA90065FE6E /* Int+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Int+Extension.swift"; sourceTree = "<group>"; };
+		9924288F1D86DE270065FE6E /* MineCollectionontroller.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MineCollectionontroller.swift; sourceTree = "<group>"; };
 		992644D11D4C17FD0039DDEA /* DetailHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailHeaderView.swift; sourceTree = "<group>"; };
 		992644D31D4C3C3B0039DDEA /* DetailTitleViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailTitleViewCell.swift; sourceTree = "<group>"; };
 		992644D41D4C3C3B0039DDEA /* DetailTitleViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DetailTitleViewCell.xib; sourceTree = "<group>"; };
@@ -578,6 +580,7 @@
 			isa = PBXGroup;
 			children = (
 				99FE1F5A1D69CB2C0075559F /* MineViewController.swift */,
+				9924288F1D86DE270065FE6E /* MineCollectionontroller.swift */,
 			);
 			path = Mine;
 			sourceTree = "<group>";
@@ -811,6 +814,7 @@
 				999C82BA1D4A6CCC00B8EA9E /* BaseTitleViewCell.swift in Sources */,
 				99B891341D44FD4D00261A84 /* WDConfig.swift in Sources */,
 				999C82E21D4A709600B8EA9E /* RecipeDiscussListTableViewCell.swift in Sources */,
+				992428901D86DE270065FE6E /* MineCollectionontroller.swift in Sources */,
 				99B891241D44D4CA00261A84 /* RefreshFooterView.swift in Sources */,
 				99A081CC1D4662D4003FC427 /* WDAlert.swift in Sources */,
 				992644D51D4C3C3B0039DDEA /* DetailTitleViewCell.swift in Sources */,
