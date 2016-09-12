@@ -109,7 +109,7 @@ class MineViewController: UIViewController {
         let mineCollectionVc = MineCollectionontroller(collectionViewLayout: waterFlowlayout)
         addChildViewController(mineCollectionVc)
         
-        let footPrintsVc = FootPrintsViewController(collectionViewLayout: waterFlowlayout)
+        let footPrintsVc = MineFootPrintsViewController(collectionViewLayout: waterFlowlayout)
         addChildViewController(footPrintsVc)
 
     }
