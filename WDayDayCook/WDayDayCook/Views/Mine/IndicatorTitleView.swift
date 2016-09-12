@@ -9,7 +9,31 @@
 import UIKit
 import SnapKit
 
+@objc protocol IndicatorTitleViewDelegate:NSObjectProtocol{
+
+    optional func indicatorTitleView(indicatorTitleView view:UIView,didSelectButton button:IndicatorButton,atIndex index:Int)->Void
+
+
+}
+
 class IndicatorTitleView: UIView {
+    
+    var selectedIndex:Int = 0
+    
+    func setTitleSelectIndex(index:Int){
+        
+        if index < 0 {
+            return
+        }
+        if index > buttons.count {
+            return
+        }
+        buttonclicked(buttons[index])
+    
+    }
+    
+    weak var delegate:IndicatorTitleViewDelegate?
+    
     
     private var buttons:[IndicatorButton] = []
     
@@ -17,6 +41,9 @@ class IndicatorTitleView: UIView {
     internal func setTitlesColor(color: UIColor?, forState state: UIControlState){
         for item in buttons {
             item.setTitleColor(color, forState: state)
+            if state == .Selected  {
+                item.setTitleColor(color, forState: .Disabled)
+            }
         }
     }
     
@@ -29,43 +56,28 @@ class IndicatorTitleView: UIView {
         }
 
     }
-    
-    
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        
-        _ = IndicatorButton()
-        
-//        btn.frame = CGRect(x: 1, y: 1, width: 100, height: 40)
-//        btn.setTitle("测试", forState: UIControlState.Normal)
-//        btn.setTitleColor(UIColor.orangeColor(), forState: UIControlState.Normal)
-//        btn.setTitleColor(UIColor.blueColor(), forState: UIControlState.Selected)
-//        btn.addTarget(self, action: #selector(IndicatorTitleView.buttonclicked(_:)), forControlEvents: UIControlEvents.TouchUpInside)
-//        addSubview(btn)
-        
-        
-        
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
+
     
     @objc private func buttonclicked(target:UIButton)
     {
-        target.selected = !target.selected
+        buttons[selectedIndex].selected = false
         
+        target.selected = true
         
-        for item in buttons {
-//            print(item.indicatorView)
+        selectedIndex = buttons.indexOf(target as! IndicatorButton) ?? 0
+  
+        guard let delegate = delegate else{
+            return
+        
         }
         
-    
+        if delegate.respondsToSelector(#selector(IndicatorTitleViewDelegate.indicatorTitleView(indicatorTitleView:didSelectButton:atIndex:))) {
+            delegate.indicatorTitleView!(indicatorTitleView: self, didSelectButton: target as! IndicatorButton, atIndex: selectedIndex)
+        }
+ 
+
     }
-    
-    
-    
-    
+
     var titles:[String]?{
         didSet{
             
@@ -133,8 +145,5 @@ class IndicatorTitleView: UIView {
         }
 
     }
-    
-    
-    
 
 }

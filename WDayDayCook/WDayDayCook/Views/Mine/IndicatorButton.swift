@@ -15,7 +15,7 @@ class IndicatorButton: UIButton {
     override var selected:Bool{
         
         didSet{
-            let normalColor = titleColorForState(UIControlState.Normal)
+            let normalColor = titleColorForState(UIControlState.Normal)?.colorWithAlphaComponent(0.5)
             let selectedColor = titleColorForState(UIControlState.Selected)
             indicatorView.backgroundColor = selected ? selectedColor : normalColor
         
@@ -28,7 +28,7 @@ class IndicatorButton: UIButton {
     lazy var indicatorView:UIView = {
         let view = UIView()
         self.addSubview(view)
-        let normalColor = self.titleColorForState(UIControlState.Normal)
+        let normalColor = self.titleColorForState(UIControlState.Normal)?.colorWithAlphaComponent(0.5)
         view.backgroundColor = normalColor
         return view
     }()

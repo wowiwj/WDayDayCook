@@ -14,6 +14,11 @@ extension Int{
         return CGFloat(self)
     }
     
+    /// 根据当前屏幕宽度的尺寸自动调节大小
+    func autoAdjust(currentWidth:Int = 320)->CGFloat {
+        return CGFloat(self) * UIScreen.mainScreen().bounds.size.width / currentWidth.CGFloatValue()
+    }
+    
     
 
 }

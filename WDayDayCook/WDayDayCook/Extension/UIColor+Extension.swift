@@ -15,5 +15,11 @@ extension UIColor {
        // 252 176 10
         return UIColor(colorLiteralRed: 252.0/255, green: 176.0/255, blue: 10/255, alpha: 1)
     }
+    
+    class func WD_MineTitleDefaultColor()->UIColor{
+        
+        // 252 176 10
+        return UIColor(colorLiteralRed: 180.0/255, green: 180.0/255, blue: 180/255, alpha: 1)
+    }
 
 }

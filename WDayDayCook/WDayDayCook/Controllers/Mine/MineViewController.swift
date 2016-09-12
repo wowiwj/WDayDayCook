@@ -38,9 +38,10 @@ class MineViewController: UIViewController {
     
         let view = IndicatorTitleView()
         self.view.addSubview(view)
-        view.titles = ["我的收藏","我的足迹","哈哈"]
-        view.setTitlesColor(UIColor.lightGrayColor(), forState: UIControlState.Normal)
+        view.titles = ["我的收藏","我的足迹"]
+        view.setTitlesColor(UIColor.WD_MineTitleDefaultColor(), forState: UIControlState.Normal)
         view.setTitlesColor(UIColor.orangeColor(), forState: UIControlState.Selected)
+        view.titleLabelsFont = UIFont.systemFontOfSize(15.autoAdjust())
         return view
     }()
     
@@ -59,6 +60,9 @@ class MineViewController: UIViewController {
         super.viewDidLoad()
         
         makeUI()
+        titleView.delegate = self
+        titleView.setTitleSelectIndex(0)
+        
 
         // Do any additional setup after loading the view.
     }
@@ -122,5 +126,14 @@ class MineViewController: UIViewController {
     {
         print("666666")
     }
+
+}
+
+extension MineViewController:IndicatorTitleViewDelegate{
+    
+    func indicatorTitleView(indicatorTitleView view: UIView, didSelectButton button: IndicatorButton, atIndex index: Int) {
+        print("dggg \(index)")
+    }
+
 
 }
