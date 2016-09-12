@@ -62,6 +62,10 @@ class DiscoverViewController: UICollectionViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        
+        // MARK: - 代理测试
+//        self.collectionView?.emptyDataSetDataSource = self
  
         MakeUI()
         
@@ -241,3 +245,5 @@ extension DiscoverViewController: SDCycleScrollViewDelegate
         }
     }
 }
+
+

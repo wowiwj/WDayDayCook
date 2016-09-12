@@ -35,5 +35,10 @@ public class WDConfig {
     // DiscoverViewController 默认边距
     static let discoverDefaultMargin: CGFloat = 3
     
+    
+    // MineViewController 
+    
+    static let mineTitleViewheight:CGFloat = 40
+    
 }
 

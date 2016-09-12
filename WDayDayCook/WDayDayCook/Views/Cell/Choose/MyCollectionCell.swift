@@ -21,11 +21,11 @@ enum CellStyle:Int {
     var cellTitle :(title:String,image:UIImage){
         switch self {
         case .newFood:
-            return ("每日新品",UIImage(named: "icon- 每日新品~iphone")!)
+            return ("每日新菜馆",UIImage(named: "icon- 每日新品~iphone")!)
         case .recipeList:
-            return ("热门推荐",UIImage(named: "icon－热门推荐~iphone")!)
+            return ("当红人气菜",UIImage(named: "icon－热门推荐~iphone")!)
         case .themeList:
-            return ("主题推荐",UIImage(named: "icon－主题~iphone")!)
+            return ("美食全攻略",UIImage(named: "icon－主题~iphone")!)
         case .recipeDiscussList:
             return ("话题推荐",UIImage(named: "icon－话题~iphone")!)
         }

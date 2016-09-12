@@ -14,10 +14,7 @@ class MineViewController: UIViewController {
     @IBOutlet weak var topViewHeightCons: NSLayoutConstraint!
     @IBOutlet weak var topView: UIView!{
         didSet{
-            
-            
-        
-        
+
         }
     }
     private lazy var customNavigationItem: UINavigationItem = UINavigationItem(title: "")
@@ -34,6 +31,28 @@ class MineViewController: UIViewController {
         bar.setBackgroundImage(UIImage(), forBarMetrics: UIBarMetrics.Default)
         return bar
         
+    }()
+    
+    // 显示标题 我的收藏 与 足迹的View
+    private lazy var titleView:IndicatorTitleView = {
+    
+        let view = IndicatorTitleView()
+        self.view.addSubview(view)
+        view.titles = ["我的收藏","我的足迹","哈哈"]
+        view.setTitlesColor(UIColor.lightGrayColor(), forState: UIControlState.Normal)
+        view.setTitlesColor(UIColor.orangeColor(), forState: UIControlState.Selected)
+        return view
+    }()
+    
+    // 显示详细内容的View
+    private lazy var contentView:UIView = {
+        
+        let view = UIView()
+        view.backgroundColor = UIColor.yellowColor()
+        
+        self.view.addSubview(view)
+        
+        return view
     }()
 
     override func viewDidLoad() {
@@ -57,6 +76,23 @@ class MineViewController: UIViewController {
         automaticallyAdjustsScrollViewInsets = false
         
         topViewHeightCons.constant = topViewHeightCons.constant.autoAdjust()
+    
+        
+        titleView.snp_makeConstraints { (make) in
+            make.width.equalTo(self.view)
+            make.height.equalTo(WDConfig.mineTitleViewheight.autoAdjust())
+            make.top.equalTo(topView.snp_bottom)
+        }
+    
+        
+        contentView.snp_makeConstraints { (make) in
+            make.top.equalTo(titleView.snp_bottom)
+            make.trailing.equalTo(self.view)
+            make.leading.equalTo(self.view)
+            make.bottom.equalTo(self.view)
+        }
+        
+        
         
         
     }

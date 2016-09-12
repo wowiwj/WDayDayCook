@@ -111,6 +111,12 @@ final class ChooseViewController: UIViewController {
         
         self.tableView.headerBeginRefreshing()
         
+//        self.tableView.addEmptyDataSetView { (set) in
+//            set.image = UIImage(named: "666")
+//        }
+//        
+        
+        
     }
     
     
@@ -188,6 +194,7 @@ final class ChooseViewController: UIViewController {
                 self.recipeList = getRecipeListInRealm(self.realm)
                 self.recipeDiscussList = getRecipeDiscussListInRealm(self.realm)
                 self.tableView.reloadData()
+                
             }
     
             if response.result.isFailure

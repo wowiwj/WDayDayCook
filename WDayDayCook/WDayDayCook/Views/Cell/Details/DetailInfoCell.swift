@@ -125,7 +125,8 @@ extension DetailInfoCell:UIWebViewDelegate
         cellHeight = webView.scrollView.contentSize.height
     }
     func webView(webView: UIWebView, shouldStartLoadWithRequest request: NSURLRequest, navigationType: UIWebViewNavigationType) -> Bool {
-        
+//        print(request.URL?.absoluteString)
+//        print("_________________________")
         return true
     }
     
