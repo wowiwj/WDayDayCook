@@ -15,6 +15,9 @@ class MineCollectionontroller: UICollectionViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.collectionView?.emptyDataSetSource = self
+        self.collectionView?.emptyDataSetDelegate = self
+        
         collectionView?.backgroundColor = UIColor.greenColor()
 
         // Uncomment the following line to preserve selection between presentations
@@ -22,6 +25,8 @@ class MineCollectionontroller: UICollectionViewController {
 
         // Register cell classes
         self.collectionView!.registerClass(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
+        
+        collectionView?.reloadData()
 
         // Do any additional setup after loading the view.
     }
@@ -29,6 +34,11 @@ class MineCollectionontroller: UICollectionViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        collectionView?.reloadData()
     }
 
     /*
@@ -92,5 +102,58 @@ class MineCollectionontroller: UICollectionViewController {
     
     }
     */
+
+}
+
+
+
+extension MineCollectionontroller:DZNEmptyDataSetSource{
+    
+    func titleForEmptyDataSet(scrollView: UIScrollView) -> NSAttributedString? {
+        
+        var dict = [String:AnyObject]()
+        dict[NSForegroundColorAttributeName] = UIColor.blueColor()
+        dict[NSFontAttributeName] = UIFont.systemFontOfSize(16)
+        
+        return NSAttributedString(string: "sughuisgsgsgsgsg", attributes: dict)
+    }
+    
+    func descriptionForEmptyDataSet(scrollView: UIScrollView) -> NSAttributedString? {
+        
+        var dict = [String:AnyObject]()
+        dict[NSForegroundColorAttributeName] = UIColor.blueColor()
+        dict[NSFontAttributeName] = UIFont.systemFontOfSize(16)
+        
+        return NSAttributedString(string: "sughuisgsgsgsgsg", attributes: dict)
+        
+    }
+    
+    func backgroundColorForEmptyDataSet(scrollView: UIScrollView) -> UIColor? {
+        return UIColor.whiteColor()
+    }
+    
+    func buttonBackgroundImageForEmptyDataSet(scrollView: UIScrollView, forState state: UIControlState) -> UIImage? {
+        return UIImage(named: "iPhone_personal_blank~iphone")
+    }
+    
+    func imageForEmptyDataSet(scrollView: UIScrollView) -> UIImage? {
+        return UIImage(named: "iPhone_personal_blank~iphone")
+    }
+    
+    func buttonTitleForEmptyDataSet(scrollView: UIScrollView, forState state: UIControlState) -> NSAttributedString? {
+        
+        var dict = [String:AnyObject]()
+        dict[NSForegroundColorAttributeName] = UIColor.blueColor()
+        dict[NSFontAttributeName] = UIFont.systemFontOfSize(16)
+        
+        return NSAttributedString(string: "哈哈", attributes: dict)
+        
+    }
+
+
+}
+
+extension MineCollectionontroller:DZNEmptyDataSetDelegate{
+
 
 }
