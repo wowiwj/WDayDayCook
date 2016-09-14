@@ -69,7 +69,16 @@ class DiscoverViewController: UICollectionViewController {
  
         MakeUI()
         
-        loadDatda()
+        
+
+        
+        collectionView?.addHeaderWithCallback({
+            self.loadDatda()
+        })
+        
+        collectionView?.headerBeginRefreshing()
+        
+        
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 

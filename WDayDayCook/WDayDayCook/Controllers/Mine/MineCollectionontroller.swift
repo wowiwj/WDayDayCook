@@ -15,8 +15,8 @@ class MineCollectionontroller: UICollectionViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.collectionView?.emptyDataSetSource = self
-        self.collectionView?.emptyDataSetDelegate = self
+//        self.collectionView?.emptyDataSetSource = self
+//        self.collectionView?.emptyDataSetDelegate = self
         
         collectionView?.backgroundColor = UIColor.greenColor()
 

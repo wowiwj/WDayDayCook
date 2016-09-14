@@ -23,6 +23,7 @@
 		994556791D503B9F00DDC7A9 /* VenvyVideoSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 994556761D503B9F00DDC7A9 /* VenvyVideoSDK.framework */; };
 		9945567A1D503B9F00DDC7A9 /* VenvyVideoSDKResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 994556771D503B9F00DDC7A9 /* VenvyVideoSDKResources.bundle */; };
 		9945567B1D503B9F00DDC7A9 /* VideoPlsIVASDKResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 994556781D503B9F00DDC7A9 /* VideoPlsIVASDKResources.bundle */; };
+		996050F81D892DFA007EAB37 /* WDHUD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 996050F71D892DFA007EAB37 /* WDHUD.swift */; };
 		996F847E1D6899CC0052FB96 /* DiscoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 996F847D1D6899CC0052FB96 /* DiscoverViewController.swift */; };
 		996F84811D68A9E70052FB96 /* ThemeRecipe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 996F84801D68A9E70052FB96 /* ThemeRecipe.swift */; };
 		999C82B81D4A6CCC00B8EA9E /* ArticleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 999C82B01D4A6CCC00B8EA9E /* ArticleCell.swift */; };
@@ -111,6 +112,7 @@
 		994556761D503B9F00DDC7A9 /* VenvyVideoSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = VenvyVideoSDK.framework; sourceTree = "<group>"; };
 		994556771D503B9F00DDC7A9 /* VenvyVideoSDKResources.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = VenvyVideoSDKResources.bundle; sourceTree = "<group>"; };
 		994556781D503B9F00DDC7A9 /* VideoPlsIVASDKResources.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = VideoPlsIVASDKResources.bundle; sourceTree = "<group>"; };
+		996050F71D892DFA007EAB37 /* WDHUD.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WDHUD.swift; sourceTree = "<group>"; };
 		996F847D1D6899CC0052FB96 /* DiscoverViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiscoverViewController.swift; sourceTree = "<group>"; };
 		996F84801D68A9E70052FB96 /* ThemeRecipe.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThemeRecipe.swift; sourceTree = "<group>"; };
 		999C82B01D4A6CCC00B8EA9E /* ArticleCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArticleCell.swift; sourceTree = "<group>"; };
@@ -319,6 +321,7 @@
 			isa = PBXGroup;
 			children = (
 				99A081CB1D4662D4003FC427 /* WDAlert.swift */,
+				996050F71D892DFA007EAB37 /* WDHUD.swift */,
 			);
 			path = Helper;
 			sourceTree = "<group>";
@@ -790,6 +793,7 @@
 			files = (
 				99400D421D6B4DC600E63483 /* UITableView+EmptyDataSet.swift in Sources */,
 				99FA8AE01D4469120029E898 /* AppDelegate.swift in Sources */,
+				996050F81D892DFA007EAB37 /* WDHUD.swift in Sources */,
 				99B891211D44D4C100261A84 /* RefreshConst.swift in Sources */,
 				992644D91D4C3C5C0039DDEA /* DetailInfoCell.swift in Sources */,
 				99FE1F581D69C3590075559F /* ViewController+Extension.swift in Sources */,

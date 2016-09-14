@@ -138,8 +138,35 @@ class MineViewController: UIViewController {
     @objc private func setBarButtonClicked()
     {
         print("666666")
+        
+        
+        
+//        WDHUD.showView()
+        let selectedVc = childViewControllers[self.titleView.selectedIndex]
+        WDHUD.setContainerView(toView: selectedVc.view, parentView: { (containerView) in
+            
+            if self.titleView.selectedIndex == 0{
+                containerView.backgroundColor = UIColor.redColor()
+            }
+            
+        })
+        
+        WDHUD.showInView(selectedVc.view)
+        
+        
+        
     }
 
+
+    @IBAction func loginButtonClicked(sender: UIButton) {
+        
+        print("7777")
+        
+        let selectedVc = childViewControllers[self.titleView.selectedIndex]
+        
+        WDHUD.hideInView(selectedVc.view)
+        
+    }
 }
 
 extension MineViewController:IndicatorTitleViewDelegate{
