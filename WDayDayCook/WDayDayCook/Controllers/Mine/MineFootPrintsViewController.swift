@@ -22,6 +22,17 @@ class MineFootPrintsViewController: UICollectionViewController {
 
         // Register cell classes
         self.collectionView!.registerClass(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
+        
+        WDHUD.setContainerView(toView: self.collectionView!, parentView: {(containerView) in
+            
+            let messageView = ShowHUBMessage()
+            containerView.addSubview(messageView)
+            
+            messageView.frame = containerView.bounds
+            messageView.descriptionLabel.text = "四处逛逛，开启美味之旅吧"
+            messageView.infoButton.setTitle("去逛逛", forState: UIControlState.Normal)
+            
+        })
 
         // Do any additional setup after loading the view.
     }

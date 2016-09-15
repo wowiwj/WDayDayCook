@@ -43,6 +43,7 @@
 		99A1FBE01D5DFC6E006D6D2A /* DetailTabbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99A1FBDF1D5DFC6E006D6D2A /* DetailTabbar.swift */; };
 		99B418A91D75C84600575938 /* UIScrollView+EmptyDataSet.m in Sources */ = {isa = PBXBuildFile; fileRef = 99B418A81D75C84600575938 /* UIScrollView+EmptyDataSet.m */; };
 		99B418B01D75DAF000575938 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99B418AF1D75DAF000575938 /* UIColor+Extension.swift */; };
+		99B890271D8AD24E00EA902F /* UIImageView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99B890261D8AD24E00EA902F /* UIImageView+Extension.swift */; };
 		99B8910E1D44788A00261A84 /* NewFeatureController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99B8910D1D44788A00261A84 /* NewFeatureController.swift */; };
 		99B891101D447C4100261A84 /* loadingVideo.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 99B8910F1D447C4100261A84 /* loadingVideo.mp4 */; };
 		99B891141D4498DA00261A84 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99B891131D4498DA00261A84 /* TabBarViewController.swift */; };
@@ -134,6 +135,7 @@
 		99B418A71D75C84600575938 /* UIScrollView+EmptyDataSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIScrollView+EmptyDataSet.h"; sourceTree = "<group>"; };
 		99B418A81D75C84600575938 /* UIScrollView+EmptyDataSet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIScrollView+EmptyDataSet.m"; sourceTree = "<group>"; };
 		99B418AF1D75DAF000575938 /* UIColor+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
+		99B890261D8AD24E00EA902F /* UIImageView+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImageView+Extension.swift"; sourceTree = "<group>"; };
 		99B8910D1D44788A00261A84 /* NewFeatureController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewFeatureController.swift; sourceTree = "<group>"; };
 		99B8910F1D447C4100261A84 /* loadingVideo.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = loadingVideo.mp4; sourceTree = "<group>"; };
 		99B891131D4498DA00261A84 /* TabBarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
@@ -453,6 +455,7 @@
 				99400D411D6B4DC600E63483 /* UITableView+EmptyDataSet.swift */,
 				99B418AF1D75DAF000575938 /* UIColor+Extension.swift */,
 				9924288D1D86BCA90065FE6E /* Int+Extension.swift */,
+				99B890261D8AD24E00EA902F /* UIImageView+Extension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -810,6 +813,7 @@
 				999C82B81D4A6CCC00B8EA9E /* ArticleCell.swift in Sources */,
 				99FE1F5F1D6A00400075559F /* UIScrollView+EmptyDataSet.swift in Sources */,
 				996F84811D68A9E70052FB96 /* ThemeRecipe.swift in Sources */,
+				99B890271D8AD24E00EA902F /* UIImageView+Extension.swift in Sources */,
 				99FE1F5B1D69CB2C0075559F /* MineViewController.swift in Sources */,
 				99B418A91D75C84600575938 /* UIScrollView+EmptyDataSet.m in Sources */,
 				99B418B01D75DAF000575938 /* UIColor+Extension.swift in Sources */,

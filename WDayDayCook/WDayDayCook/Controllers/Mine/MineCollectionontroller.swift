@@ -31,8 +31,9 @@ class MineCollectionontroller: UICollectionViewController {
                 let messageView = ShowHUBMessage()
                 containerView.addSubview(messageView)
                
-               messageView.frame = containerView.bounds
-                messageView.descriptionLabel.text = "fdgasjbfjabgjgsgggdgdg"
+                messageView.frame = containerView.bounds
+                messageView.descriptionLabel.text = "看到喜欢的菜谱记得收藏喔"
+            messageView.infoButton.setTitle("去逛逛", forState: UIControlState.Normal)
           
             })
 

@@ -143,6 +143,8 @@ extension DetailInfoCell:UIWebViewDelegate
         
         print(webView.request?.URL?.absoluteString)
         
+        NSNotificationCenter.defaultCenter().postNotificationName(webViewLoadFinishedKey, object: nil)
+        
 
         let context = webView.valueForKeyPath("documentView.webView.mainFrame.javaScriptContext") as! JSContext
         

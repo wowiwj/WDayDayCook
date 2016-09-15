@@ -19,6 +19,7 @@ enum DetailCellStyle: Int {
 
 let DetailTitleViewCellID = "DetailTitleViewCell"
 let DetailInfoCellID = "DetailInfoCell"
+let webViewLoadFinishedKey = "webViewLoadFinishedNotificationKey"
 
 
 class ShowDetailViewController: UIViewController {
@@ -107,8 +108,12 @@ class ShowDetailViewController: UIViewController {
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(ShowDetailViewController.showDetailVC(_:)), name: showDetailVcNotificationKey, object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(ShowDetailViewController.showMoreComments(_:)), name: showAllCommentNotificationKey, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(ShowDetailViewController.webViewLoadFinished), name: webViewLoadFinishedKey, object: nil)
         
         loadData()
+        
+        WDHUD.showLoading(inView: self.view)
+        view.userInteractionEnabled = false
         
 
         // Do any additional setup after loading the view.
@@ -159,7 +164,7 @@ class ShowDetailViewController: UIViewController {
     func loadData()
     {
         Alamofire.request(Router.Details(id: self.id)).responseJSON { (resopnse) in
-            
+//            WDHUD.hideLoading(inView: self.tableView)
             if resopnse.result.isFailure
             {
                 print("请求失败")
@@ -218,6 +223,16 @@ class ShowDetailViewController: UIViewController {
     }
     @objc private func showMoreComments(info:NSNotification){
         WDAlert.alert(title: "显示更多评论", message: "点击了显示更多评论按钮", dismissTitle: "取消", inViewController: self, withDismissAction: nil)
+    }
+    
+    @objc private func webViewLoadFinished()
+    {
+        
+        print("webViewLoadFinished")
+        WDHUD.hideLoading(inView: self.view)
+        view.userInteractionEnabled = true
+    
+    
     }
 
 }

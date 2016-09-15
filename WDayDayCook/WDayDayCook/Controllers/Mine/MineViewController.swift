@@ -64,7 +64,7 @@ class MineViewController: UIViewController {
         addChildViewControllers()
         titleView.setTitleSelectIndex(0)
         
-        
+//        WDHUD.showLoading(inView: self.view)
         
 
         // Do any additional setup after loading the view.

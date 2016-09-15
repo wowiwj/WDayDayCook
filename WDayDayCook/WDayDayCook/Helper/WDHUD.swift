@@ -22,6 +22,12 @@ class WDContainerView:UIView {
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
+    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
+        print("ffff")
+    }
+    
+    
 
 }
 
@@ -165,5 +171,70 @@ final class WDHUD: NSObject {
     
     }
   
+
+}
+
+
+import SnapKit
+
+extension WDHUD {
+    class func showLoading(inView view:UIView)
+    {
+        dispatch_async(dispatch_get_main_queue()) {
+            
+            setContainerView(toView: view, parentView: { (containerView) in
+                
+                let image = UIImage(named: "loadingIcon~iphone")
+        
+                let view = UIView()
+                view.backgroundColor = UIColor.blackColor().colorWithAlphaComponent(0.6)
+                var frame = CGRect(origin: CGPointZero, size: image!.size)
+                let fit = 20.CGFloatValue()
+                frame.size.height += fit
+                view.frame = frame
+                view.layer.cornerRadius = 5
+                view.clipsToBounds = true
+                
+                containerView.addSubview(view)
+                view.center = containerView.center
+                containerView.userInteractionEnabled = false
+                containerView.backgroundColor = UIColor.clearColor()
+                
+                let imageView = UIImageView(image: image)
+                imageView.frame = CGRect(origin: CGPointZero, size: image!.size)
+                imageView.startRotation()
+                view.addSubview(imageView)
+                
+                
+                let loadLabel = UILabel()
+                loadLabel.textAlignment = .Center
+                loadLabel.font = UIFont.systemFontOfSize(12)
+                loadLabel.textColor = UIColor.whiteColor()
+                loadLabel.text = "加载中..."
+                let labelX = 0.CGFloatValue()
+                let labelY = CGRectGetMaxY(imageView.frame)
+                let labelH = view.frame.size.height - imageView.frame.size.height
+                let labelW = imageView.frame.size.width
+                
+                loadLabel.frame = CGRect(x: labelX, y: labelY, width: labelW, height: labelH)
+                view.addSubview(loadLabel)
+           
+                
+            })
+            
+            showInView(view)
+        }
+        
+        
+        
+    }
+    
+    class func hideLoading(inView view:UIView)
+    {
+        hideInView(view)
+    
+    }
+
+
 
 }
