@@ -24,6 +24,7 @@
 		9945567A1D503B9F00DDC7A9 /* VenvyVideoSDKResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 994556771D503B9F00DDC7A9 /* VenvyVideoSDKResources.bundle */; };
 		9945567B1D503B9F00DDC7A9 /* VideoPlsIVASDKResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 994556781D503B9F00DDC7A9 /* VideoPlsIVASDKResources.bundle */; };
 		996050F81D892DFA007EAB37 /* WDHUD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 996050F71D892DFA007EAB37 /* WDHUD.swift */; };
+		996AA40E1D895C37001B7F28 /* ShowHUBMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 996AA40D1D895C37001B7F28 /* ShowHUBMessage.swift */; };
 		996F847E1D6899CC0052FB96 /* DiscoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 996F847D1D6899CC0052FB96 /* DiscoverViewController.swift */; };
 		996F84811D68A9E70052FB96 /* ThemeRecipe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 996F84801D68A9E70052FB96 /* ThemeRecipe.swift */; };
 		999C82B81D4A6CCC00B8EA9E /* ArticleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 999C82B01D4A6CCC00B8EA9E /* ArticleCell.swift */; };
@@ -113,6 +114,7 @@
 		994556771D503B9F00DDC7A9 /* VenvyVideoSDKResources.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = VenvyVideoSDKResources.bundle; sourceTree = "<group>"; };
 		994556781D503B9F00DDC7A9 /* VideoPlsIVASDKResources.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = VideoPlsIVASDKResources.bundle; sourceTree = "<group>"; };
 		996050F71D892DFA007EAB37 /* WDHUD.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WDHUD.swift; sourceTree = "<group>"; };
+		996AA40D1D895C37001B7F28 /* ShowHUBMessage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShowHUBMessage.swift; sourceTree = "<group>"; };
 		996F847D1D6899CC0052FB96 /* DiscoverViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiscoverViewController.swift; sourceTree = "<group>"; };
 		996F84801D68A9E70052FB96 /* ThemeRecipe.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThemeRecipe.swift; sourceTree = "<group>"; };
 		999C82B01D4A6CCC00B8EA9E /* ArticleCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArticleCell.swift; sourceTree = "<group>"; };
@@ -312,6 +314,7 @@
 			isa = PBXGroup;
 			children = (
 				99A081C51D46302D003FC427 /* CycleScrollView.swift */,
+				996AA40D1D895C37001B7F28 /* ShowHUBMessage.swift */,
 				991BA78E1D47058900EE3CFE /* TitleView.swift */,
 			);
 			path = Other;
@@ -811,6 +814,7 @@
 				99B418A91D75C84600575938 /* UIScrollView+EmptyDataSet.m in Sources */,
 				99B418B01D75DAF000575938 /* UIColor+Extension.swift in Sources */,
 				999C82E31D4A709600B8EA9E /* ThemeListTableViewCell.swift in Sources */,
+				996AA40E1D895C37001B7F28 /* ShowHUBMessage.swift in Sources */,
 				99B891311D44FC7900261A84 /* Router.swift in Sources */,
 				992644D21D4C17FD0039DDEA /* DetailHeaderView.swift in Sources */,
 				999C82E01D4A709600B8EA9E /* RecipeDiscussCell.swift in Sources */,

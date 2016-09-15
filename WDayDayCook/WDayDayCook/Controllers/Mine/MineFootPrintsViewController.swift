@@ -25,6 +25,20 @@ class MineFootPrintsViewController: UICollectionViewController {
 
         // Do any additional setup after loading the view.
     }
+    
+    func showHUB()
+    {
+        WDHUD.showInView(self.collectionView)
+        
+        
+    }
+    
+    func hideHUB()
+    {
+        WDHUD.hideInView(self.collectionView)
+        
+        
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

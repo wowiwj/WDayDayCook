@@ -137,21 +137,17 @@ class MineViewController: UIViewController {
     // MARK: - 消息的监听
     @objc private func setBarButtonClicked()
     {
-        print("666666")
-        
-        
-        
-//        WDHUD.showView()
+   
         let selectedVc = childViewControllers[self.titleView.selectedIndex]
-        WDHUD.setContainerView(toView: selectedVc.view, parentView: { (containerView) in
-            
-            if self.titleView.selectedIndex == 0{
-                containerView.backgroundColor = UIColor.redColor()
-            }
-            
-        })
         
-        WDHUD.showInView(selectedVc.view)
+        if self.titleView.selectedIndex == 0 {
+            (selectedVc as! MineCollectionontroller).showHUB()
+        }
+        
+        if self.titleView.selectedIndex == 1 {
+            (selectedVc as! MineFootPrintsViewController).showHUB()
+        }
+      
         
         
         
@@ -159,12 +155,17 @@ class MineViewController: UIViewController {
 
 
     @IBAction func loginButtonClicked(sender: UIButton) {
-        
-        print("7777")
+     
         
         let selectedVc = childViewControllers[self.titleView.selectedIndex]
         
-        WDHUD.hideInView(selectedVc.view)
+        if self.titleView.selectedIndex == 0 {
+            (selectedVc as! MineCollectionontroller).hideHUB()
+        }
+        
+        if self.titleView.selectedIndex == 1 {
+            (selectedVc as! MineFootPrintsViewController).hideHUB()
+        }
         
     }
 }
@@ -172,15 +173,13 @@ class MineViewController: UIViewController {
 extension MineViewController:IndicatorTitleViewDelegate{
     
     func indicatorTitleView(indicatorTitleView view: UIView, didSelectButton button: IndicatorButton, atIndex index: Int) {
-        print("dggg \(index)")
-        
+    
         let selectedVc = childViewControllers[index]
         
         print(selectedVc)
-        
+        selectedVc.view.frame = contentView.bounds
         contentView.addSubview(selectedVc.view)
-        
-        
+  
     }
 
 
