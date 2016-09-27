@@ -9,13 +9,13 @@
 import UIKit
 
 extension UINavigationController {
-    public func pushToDetailViewController(id: Int, animated: Bool)
+    public func pushToDetailViewController(_ id: Int, animated: Bool)
     {
         let sb = UIStoryboard(name: "ShowDetail", bundle: nil)
-        let showDetailVc = sb.instantiateViewControllerWithIdentifier("showDetailController") as! ShowDetailViewController
+        let showDetailVc = sb.instantiateViewController(withIdentifier: "showDetailController") as! ShowDetailViewController
         showDetailVc.id = id
         
-        dispatch_async(dispatch_get_main_queue(), {
+        DispatchQueue.main.async(execute: {
             self.pushViewController(showDetailVc, animated: animated)
         })
 

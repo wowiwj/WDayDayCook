@@ -16,25 +16,25 @@ class NewFeatureController: UIViewController {
     static let playFinishedNotify = "PlayFinishedNotify"
     
     
-    private lazy var moviePlayer: MPMoviePlayerController = {
+    fileprivate lazy var moviePlayer: MPMoviePlayerController = {
     
-        let path = NSBundle.mainBundle().pathForResource("loadingVideo", ofType: "mp4")
-        let player = MPMoviePlayerController(contentURL: NSURL(fileURLWithPath: path!))
+        let path = Bundle.main.path(forResource: "loadingVideo", ofType: "mp4")
+        let player = MPMoviePlayerController(contentURL: URL(fileURLWithPath: path!))
         // 和屏幕一样大小
-        player.view.frame = self.view.bounds
+        player?.view.frame = self.view.bounds
         // 设置自动播放
-        player.shouldAutoplay = true
+        player?.shouldAutoplay = true
         // 设置源类型
-        player.movieSourceType = .File
+        player?.movieSourceType = .file
         // 隐藏控制视图
-        player.controlStyle = .None
+        player?.controlStyle = .none
 
-        return player
+        return player!
     }()
     
     let cancerButton: UIButton = {
     let button = UIButton()
-        button.setImage(UIImage(named:"loading_start_btn"), forState: .Normal)
+        button.setImage(UIImage(named:"loading_start_btn"), for: UIControlState())
         return button
     }()
     
@@ -56,32 +56,32 @@ class NewFeatureController: UIViewController {
         }
         
         
-        cancerButton.addTarget(self, action: #selector(playFinished), forControlEvents: .TouchUpInside)
+        cancerButton.addTarget(self, action: #selector(playFinished), for: .touchUpInside)
  
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(playEnd), name: MPMoviePlayerPlaybackDidFinishNotification, object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(loadStatus), name: MPMoviePlayerLoadStateDidChangeNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(playEnd), name: NSNotification.Name.MPMoviePlayerPlaybackDidFinish, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(loadStatus), name: NSNotification.Name.MPMoviePlayerLoadStateDidChange, object: nil)
 
     }
     
 
-    @objc private func loadStatus()
+    @objc fileprivate func loadStatus()
     {
         print(moviePlayer.loadState)
         
-        if moviePlayer.loadState == MPMovieLoadState.PlaythroughOK{
+        if moviePlayer.loadState == MPMovieLoadState.playthroughOK{
             moviePlayer.play()
         }
     
     }
     
-    @objc private func playFinished()
+    @objc fileprivate func playFinished()
     {
-        NSNotificationCenter.defaultCenter().postNotificationName(MPMoviePlayerPlaybackDidFinishNotification, object: nil)
+        NotificationCenter.default.post(name: NSNotification.Name.MPMoviePlayerPlaybackDidFinish, object: nil)
     }
     
     @objc func playEnd()
     {
-        if let appDelegate = UIApplication.sharedApplication().delegate as? AppDelegate {
+        if let appDelegate = UIApplication.shared.delegate as? AppDelegate {
             appDelegate.showMainStoryboard()
         }
     }
@@ -89,7 +89,7 @@ class NewFeatureController: UIViewController {
     
     deinit
     {
-        NSNotificationCenter.defaultCenter().removeObserver(self)
+        NotificationCenter.default.removeObserver(self)
     
         print("deinit")
     }

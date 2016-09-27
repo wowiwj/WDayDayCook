@@ -78,7 +78,7 @@ struct ThemeRecipeList :Mappable {
     }
     var headerRecipes:[ThemeRecipe]?
     
-    init?(_ map: Map) {
+    init?(map: Map) {
         
         
 //        for i in 1...8 {
@@ -110,8 +110,8 @@ struct ThemeRecipeArray: Mappable {
     
     var key = "1"
     
-    init?(_ map: Map) {
-        key = map.JSONDictionary.keys.first!
+    init?(map: Map) {
+        key = map.JSON.keys.first!
     }
     
     mutating func mapping(map: Map) {
@@ -138,7 +138,7 @@ struct ThemeRecipe: Mappable {
     var share_count:String?
     var str_date:String?
     
-    init?(_ map: Map) {
+    init?(map: Map) {
         
     }
     

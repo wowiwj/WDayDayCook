@@ -10,7 +10,7 @@ import UIKit
 import RealmSwift
 
 protocol ThemeListTableViewCellDelagate {
-    func didSeclectItem(item:Object)
+    func didSeclectItem(_ item:Object)
 }
 
 class ThemeListTableViewCell: BaseTitleViewCell {
@@ -32,10 +32,10 @@ class ThemeListTableViewCell: BaseTitleViewCell {
     lazy var themeListLayout:UICollectionViewFlowLayout = {
         
         let flowLayout = UICollectionViewFlowLayout()
-        flowLayout.scrollDirection = .Vertical
+        flowLayout.scrollDirection = .vertical
         flowLayout.minimumLineSpacing = 0
         flowLayout.minimumInteritemSpacing = 0
-        let width = UIScreen.mainScreen().bounds.size.width
+        let width = UIScreen.main.bounds.size.width
         let height = WDConfig.themeListHeight.autoAdjust()
         
         flowLayout.itemSize = CGSize(width: width, height: height)
@@ -50,12 +50,12 @@ class ThemeListTableViewCell: BaseTitleViewCell {
         }
     }
     lazy var collectionView: UICollectionView = {
-        let collectionView = UICollectionView(frame: CGRectZero, collectionViewLayout: self.themeListLayout)
+        let collectionView = UICollectionView(frame: CGRect.zero, collectionViewLayout: self.themeListLayout)
         collectionView.dataSource = self
         collectionView.delegate = self
-        collectionView.backgroundColor = UIColor.whiteColor()
-        collectionView.scrollEnabled = false
-        collectionView.registerNib(UINib(nibName: self.ThemeRecommandCellID, bundle: nil), forCellWithReuseIdentifier: self.ThemeRecommandCellID)
+        collectionView.backgroundColor = UIColor.white
+        collectionView.isScrollEnabled = false
+        collectionView.register(UINib(nibName: self.ThemeRecommandCellID, bundle: nil), forCellWithReuseIdentifier: self.ThemeRecommandCellID)
         return collectionView
         
     }()
@@ -64,11 +64,11 @@ class ThemeListTableViewCell: BaseTitleViewCell {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         contentView.addSubview(collectionView)
         
-        collectionView.registerNib(UINib(nibName: ThemeListTableViewCellID, bundle: nil), forCellWithReuseIdentifier: ThemeListTableViewCellID)
+        collectionView.register(UINib(nibName: ThemeListTableViewCellID, bundle: nil), forCellWithReuseIdentifier: ThemeListTableViewCellID)
         
         
-        collectionView.snp_makeConstraints { (make) in
-            make.top.equalTo(titleView.snp_bottom)
+        collectionView.snp.makeConstraints { (make) in
+            make.top.equalTo(titleView.snp.bottom)
             make.leading.equalTo(self)
             make.trailing.equalTo(self)
             make.bottom.equalTo(self)
@@ -85,7 +85,7 @@ class ThemeListTableViewCell: BaseTitleViewCell {
         // Initialization code
     }
 
-    override func setSelected(selected: Bool, animated: Bool) {
+    override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state
@@ -96,33 +96,33 @@ class ThemeListTableViewCell: BaseTitleViewCell {
 extension ThemeListTableViewCell: UICollectionViewDataSource,UICollectionViewDelegate
 {
     
-    func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return themeList?.count ?? 0
     }
     
     
-    func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
 
-        let cell = collectionView.dequeueReusableCellWithReuseIdentifier(ThemeRecommandCellID, forIndexPath: indexPath)
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ThemeRecommandCellID, for: indexPath)
         return cell
 
         
     }
     
-    func collectionView(collectionView: UICollectionView, willDisplayCell cell: UICollectionViewCell, forItemAtIndexPath indexPath: NSIndexPath) {
+    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
  
         let themeCell = cell as! ThemeRecommandCell
-        themeCell.theme = themeList![indexPath.row]
+        themeCell.theme = themeList![(indexPath as NSIndexPath).row]
    
     }
     
-    func collectionView(collectionView: UICollectionView, didEndDisplayingCell cell: UICollectionViewCell, forItemAtIndexPath indexPath: NSIndexPath) {
+    func collectionView(_ collectionView: UICollectionView, didEndDisplaying cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
         
     }
     
-    func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
-        print(indexPath.item)
+        print((indexPath as NSIndexPath).item)
         
         guard let delegate = delegate else
         {
@@ -132,7 +132,7 @@ extension ThemeListTableViewCell: UICollectionViewDataSource,UICollectionViewDel
         
         if let themeList = themeList
         {
-            delegate.didSeclectItem(themeList[indexPath.row])
+            delegate.didSeclectItem(themeList[(indexPath as NSIndexPath).row])
             print()
             
         }

@@ -24,7 +24,7 @@ class ArticleCell: UICollectionViewCell {
     @IBOutlet weak var favoriteButton: UIButton!
     
  
-    private lazy var placeholderImage: UIImage = {
+    fileprivate lazy var placeholderImage: UIImage = {
     
         let image = UIImage(named: "default~iphone")!
         return image
@@ -41,8 +41,8 @@ class ArticleCell: UICollectionViewCell {
             }
             titleLabel.text = newFood?.title
             foodDescription.text = newFood?.foodDescription
-            clickCountButton.setTitle("\(newFood!.clickCount)", forState: .Normal)
-            foodImageView.kf_setImageWithURL(NSURL(string: (newFood?.imageUrl)!))
+            clickCountButton.setTitle("\(newFood!.clickCount)", for: UIControlState())
+            foodImageView.kf.setImage(with: URL(string: (newFood?.imageUrl)!))
         }
     }
     
@@ -55,10 +55,10 @@ class ArticleCell: UICollectionViewCell {
             }
             titleLabel.text = recipe!.title
             foodDescription.text = recipe!.foodDescription
-            clickCountButton.setTitle("\(recipe!.click_count)", forState: .Normal)
+            clickCountButton.setTitle("\(recipe!.click_count)", for: UIControlState())
             
-            
-            foodImageView.kf_setImageWithURL(NSURL(string: recipe!.image_url))
+           
+            foodImageView.kf.setImage(with: URL(string: recipe!.image_url))
         }
     }
     
@@ -70,8 +70,8 @@ class ArticleCell: UICollectionViewCell {
         
             titleLabel.text = recipeData.title
             foodDescription.text = recipeData.description
-            clickCountButton.setTitle("\(recipeData.clickCount ?? 0)", forState: .Normal)
-            foodImageView.kf_setImageWithURL(NSURL(string: recipeData.imageUrl!))
+            clickCountButton.setTitle("\(recipeData.clickCount ?? 0)", for: UIControlState())
+            foodImageView.kf.setImage(with: URL(string: recipeData.imageUrl!))
         
         }
     
@@ -91,7 +91,7 @@ class ArticleCell: UICollectionViewCell {
         // Initialization code
 
         bgView.layer.borderWidth = 0.5
-        bgView.layer.borderColor = UIColor.lightGrayColor().colorWithAlphaComponent(0.5).CGColor
+        bgView.layer.borderColor = UIColor.lightGray.withAlphaComponent(0.5).cgColor
         bgView.layer.cornerRadius = 5
         bgView.layer.masksToBounds = true
 

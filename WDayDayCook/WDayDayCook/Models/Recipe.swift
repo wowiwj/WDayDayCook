@@ -14,7 +14,7 @@ struct RecipeList: Mappable
     var code:String?
     var msg:String?
     var data :[Recipe]?
-    init?(_ map: Map) {
+    init?(map: Map) {
         
     }
     mutating func mapping(map: Map) {
@@ -31,7 +31,7 @@ func transfromOfTupleAndString()->TransformOf<(CGFloat,CGFloat,CGFloat),String>{
         
         if let string = screenID
         {
-            let strArr = string.componentsSeparatedByString(",")
+            let strArr = string.components(separatedBy: ",")
             
             if strArr.count >= 3
             {
@@ -63,12 +63,12 @@ struct Recipe: Mappable {
     var maketime:String?
     var name:String?
     var shareCount:Int?
-    var createDate:NSTimeInterval?
-    var modifyDate:NSTimeInterval?
+    var createDate:TimeInterval?
+    var modifyDate:TimeInterval?
     var imageUrl:String?
     var title:String?
     
-    init?(_ map: Map) {
+    init?(map: Map) {
         
     }
     

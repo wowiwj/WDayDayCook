@@ -20,7 +20,7 @@ class ServiceApi: NSObject {
     {
         return "\(host)/server/ad/listAds.do?languageId=\(WDConfig.languageId)&mainland=\(WDConfig.mainland)&uid=\(WDConfig.uid)&regionCode=\(WDConfig.regionCode)"
     }
-    class func getNewFoodEachDay(currentpage :Int,pageSize:Int)->String
+    class func getNewFoodEachDay(_ currentpage :Int,pageSize:Int)->String
     {
         return "\(host)/server/recipe/search.do?currentPage=\(currentpage)&pageSize=\(pageSize)&name=&categoryId=&parentId=&screeningId=&tagId=&username=(null)&password=(null)&languageId=\(WDConfig.languageId)&mainland=\(WDConfig.mainland)&uid=\(WDConfig.uid)&regionCode=\(WDConfig.regionCode)"
     }
@@ -36,17 +36,17 @@ class ServiceApi: NSObject {
  
     }
     
-    class func getDetails(id:Int)->String
+    class func getDetails(_ id:Int)->String
     {
         return "\(host)/server/recipe/details.do?ver=2&id=\(id)&username=&password=&languageId=\(WDConfig.languageId)&mainland=\(WDConfig.mainland)&uid=\(WDConfig.uid)&regionCode=\(WDConfig.regionCode)"
     }
     
-    class func getVideosDetail(id:Int)->String
+    class func getVideosDetail(_ id:Int)->String
     {
         return "\(host)/server/recipe/detailVideo.do?id=\(id)&languageId=\(WDConfig.languageId)&mainland=\(WDConfig.mainland)&uid=\(WDConfig.uid)&regionCode=\(WDConfig.regionCode)"
     }
 
-    class func getRecipeList(currentPage:Int,pageSize:Int)->String
+    class func getRecipeList(_ currentPage:Int,pageSize:Int)->String
     {
     
         return "\(host)/server/recipe/search.do?currentPage=\(currentPage)&pageSize=\(pageSize)&name=&categoryId=&parentId=&screeningId=&tagId=&htagId=&username=&password=&languageId=\(WDConfig.languageId)&mainland=\(WDConfig.mainland)&notheme=3&uid=\(WDConfig.uid)&regionCode=\(WDConfig.regionCode)"

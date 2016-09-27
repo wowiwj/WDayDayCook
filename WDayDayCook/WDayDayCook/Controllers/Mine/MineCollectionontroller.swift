@@ -16,13 +16,13 @@ class MineCollectionontroller: UICollectionViewController {
         super.viewDidLoad()
 
         
-        collectionView?.backgroundColor = UIColor.greenColor()
+        collectionView?.backgroundColor = UIColor.green
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
         // Register cell classes
-        self.collectionView!.registerClass(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
+        self.collectionView!.register(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
 
 
         
@@ -33,9 +33,14 @@ class MineCollectionontroller: UICollectionViewController {
                
                 messageView.frame = containerView.bounds
                 messageView.descriptionLabel.text = "看到喜欢的菜谱记得收藏喔"
-            messageView.infoButton.setTitle("去逛逛", forState: UIControlState.Normal)
+                messageView.infoButton.setTitle("去逛逛", for: UIControlState())
+                messageView.infoButton.addTarget(self, action: #selector(MineCollectionontroller.messageInfoButtonClicked), for: UIControlEvents.touchUpInside)
           
             })
+        
+        WDHUD.showInView(self.collectionView)
+        
+//        showHUB()
 
         // Do any additional setup after loading the view.
     }
@@ -59,7 +64,7 @@ class MineCollectionontroller: UICollectionViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         collectionView?.reloadData()
     }
@@ -76,19 +81,21 @@ class MineCollectionontroller: UICollectionViewController {
 
     // MARK: UICollectionViewDataSource
 
-    override func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
+    override func numberOfSections(in collectionView: UICollectionView) -> Int {
         // #warning Incomplete implementation, return the number of sections
         return 0
     }
 
 
-    override func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of items
+        
+        
         return 0
     }
 
-    override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCellWithReuseIdentifier(reuseIdentifier, forIndexPath: indexPath)
+    override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath)
     
         // Configure the cell
     
@@ -125,6 +132,12 @@ class MineCollectionontroller: UICollectionViewController {
     
     }
     */
+    // MARK: - 消息的监听
+    @objc fileprivate func messageInfoButtonClicked()
+    {
+        self.tabBarController?.selectedIndex = 0
+    
+    }
 
 }
 

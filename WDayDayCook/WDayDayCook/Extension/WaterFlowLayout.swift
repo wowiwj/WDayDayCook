@@ -10,13 +10,13 @@ import UIKit
 
 @objc protocol UICollectionViewWaterFlowLayoutDelegate: NSObjectProtocol{
     
-    func waterFlowLayout(waterFlowLayout:WaterFlowlayout,heightForItemAtIndexpath indexpath:NSIndexPath,itemWidth:CGFloat)->CGFloat
+    func waterFlowLayout(_ waterFlowLayout:WaterFlowlayout,heightForItemAtIndexpath indexpath:IndexPath,itemWidth:CGFloat)->CGFloat
     
     
-    optional func columnCountInwaterFlowLayout(waterFlowLayout:WaterFlowlayout)->Int
-    optional func columnMarginInwaterFlowLayout(waterFlowLayout:WaterFlowlayout)->CGFloat
-    optional func rowMarginInwaterFlowLayout(waterFlowLayout:WaterFlowlayout)->CGFloat
-    optional func edgeInsertInwaterFlowLayout(waterFlowLayout:WaterFlowlayout)->UIEdgeInsets
+    @objc optional func columnCountInwaterFlowLayout(_ waterFlowLayout:WaterFlowlayout)->Int
+    @objc optional func columnMarginInwaterFlowLayout(_ waterFlowLayout:WaterFlowlayout)->CGFloat
+    @objc optional func rowMarginInwaterFlowLayout(_ waterFlowLayout:WaterFlowlayout)->CGFloat
+    @objc optional func edgeInsertInwaterFlowLayout(_ waterFlowLayout:WaterFlowlayout)->UIEdgeInsets
     
 }
 
@@ -25,13 +25,13 @@ class WaterFlowlayout: UICollectionViewLayout {
     // MARK: 默认值属性
     
     // 默认行数
-    private let DefaultColCount:Int = 3
+    fileprivate let DefaultColCount:Int = 3
     // 默认每一列的间距
-    private let DefaultColMargin:CGFloat = 10
+    fileprivate let DefaultColMargin:CGFloat = 10
     // 默认每一行的间距
-    private let DefaultRowMargin:CGFloat = 10
+    fileprivate let DefaultRowMargin:CGFloat = 10
     // 默认边缘间距
-    private let DefaultEdgeInsert:UIEdgeInsets = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
+    fileprivate let DefaultEdgeInsert:UIEdgeInsets = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
     
     
     // MARK: - 代理
@@ -40,32 +40,32 @@ class WaterFlowlayout: UICollectionViewLayout {
     
     
     // MARK: - 数据处理
-    private var rowMargin:CGFloat{
-        if let delegate = delegate where delegate.respondsToSelector(#selector(UICollectionViewWaterFlowLayoutDelegate.rowMarginInwaterFlowLayout(_:))) {
+    fileprivate var rowMargin:CGFloat{
+        if let delegate = delegate , delegate.responds(to: #selector(UICollectionViewWaterFlowLayoutDelegate.rowMarginInwaterFlowLayout(_:))) {
             return delegate.rowMarginInwaterFlowLayout!(self)
         }
         return DefaultRowMargin
         
     }
     
-    private var colCount:Int{
-        if let delegate = delegate where delegate.respondsToSelector(#selector(UICollectionViewWaterFlowLayoutDelegate.columnCountInwaterFlowLayout(_:))) {
+    fileprivate var colCount:Int{
+        if let delegate = delegate , delegate.responds(to: #selector(UICollectionViewWaterFlowLayoutDelegate.columnCountInwaterFlowLayout(_:))) {
             return delegate.columnCountInwaterFlowLayout!(self)
         }
         return DefaultColCount
         
     }
     
-    private var colMargin:CGFloat{
-        if let delegate = delegate where delegate.respondsToSelector(#selector(UICollectionViewWaterFlowLayoutDelegate.columnMarginInwaterFlowLayout(_:))) {
+    fileprivate var colMargin:CGFloat{
+        if let delegate = delegate , delegate.responds(to: #selector(UICollectionViewWaterFlowLayoutDelegate.columnMarginInwaterFlowLayout(_:))) {
             return delegate.columnMarginInwaterFlowLayout!(self)
         }
         return DefaultColMargin
         
     }
     
-    private var edgeInsert:UIEdgeInsets{
-        if let delegate = delegate where delegate.respondsToSelector(#selector(UICollectionViewWaterFlowLayoutDelegate.edgeInsertInwaterFlowLayout(_:))) {
+    fileprivate var edgeInsert:UIEdgeInsets{
+        if let delegate = delegate , delegate.responds(to: #selector(UICollectionViewWaterFlowLayoutDelegate.edgeInsertInwaterFlowLayout(_:))) {
             return delegate.edgeInsertInwaterFlowLayout!(self)
         }
         return DefaultEdgeInsert
@@ -73,16 +73,16 @@ class WaterFlowlayout: UICollectionViewLayout {
     }
     
     //  所有collectionView的布局属性
-    private var attrsArr:Array = [UICollectionViewLayoutAttributes]()
+    fileprivate var attrsArr:Array = [UICollectionViewLayoutAttributes]()
     /** 存放所有列的最大Y值 */
-    private var colHeights:Array = [CGFloat]()
+    fileprivate var colHeights:Array = [CGFloat]()
     
     
     // MARK: - 瀑布流的核心计算
     
     // 初始化
-    override func prepareLayout() {
-        super.prepareLayout()
+    override func prepare() {
+        super.prepare()
         
         
 //        
@@ -96,13 +96,13 @@ class WaterFlowlayout: UICollectionViewLayout {
 
         var attArr = [UICollectionViewLayoutAttributes]()
         
-        let count = collectionView!.numberOfItemsInSection(0)
+        let count = collectionView!.numberOfItems(inSection: 0)
 
         
         for i in 0..<count {
-            let indexPath = NSIndexPath(forItem: i, inSection: 0)
+            let indexPath = IndexPath(item: i, section: 0)
             
-            let attr = layoutAttributesForItemAtIndexPath(indexPath)
+            let attr = layoutAttributesForItem(at: indexPath)
             attArr.append(attr!)
         
         }
@@ -111,14 +111,14 @@ class WaterFlowlayout: UICollectionViewLayout {
     }
     
     // 决定cell的排布
-    override func layoutAttributesForElementsInRect(rect: CGRect) -> [UICollectionViewLayoutAttributes]? {
+    override func layoutAttributesForElements(in rect: CGRect) -> [UICollectionViewLayoutAttributes]? {
         return attrsArr
     }
     
     // 返回indexPath的cell对应的布局属性
-    override func layoutAttributesForItemAtIndexPath(indexPath: NSIndexPath) -> UICollectionViewLayoutAttributes? {
+    override func layoutAttributesForItem(at indexPath: IndexPath) -> UICollectionViewLayoutAttributes? {
         
-        let attribute = UICollectionViewLayoutAttributes(forCellWithIndexPath: indexPath)
+        let attribute = UICollectionViewLayoutAttributes(forCellWith: indexPath)
         
         guard let delegate = delegate else
         {
@@ -152,12 +152,12 @@ class WaterFlowlayout: UICollectionViewLayout {
             
             attribute.frame = CGRect(x: x, y: y, width: w, height: h)
             
-            self.colHeights[destColumn] = CGRectGetMaxY(attribute.frame)
+            self.colHeights[destColumn] = attribute.frame.maxY
         }
         return attribute
     }
     
-    override func collectionViewContentSize() -> CGSize {
+    override var collectionViewContentSize : CGSize {
         
         var maxColHeight:CGFloat = colHeights[0]
         

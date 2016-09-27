@@ -11,16 +11,14 @@ import SnapKit
 import Kingfisher
 
 protocol DetailHeaderViewDelegate {
-    func videoButtonClicked(detailsUrl:String?,id:Int?)
+    func videoButtonClicked(_ detailsUrl:String?,id:Int?)
 }
 
 class DetailHeaderView: UIView {
     
     var imageUrl:String?{
         didSet{
-
-            imageView.kf_setImageWithURL(NSURL(string: imageUrl!))
-            
+            imageView.kf.setImage(with: URL(string: imageUrl!))
         }
     }
     
@@ -34,10 +32,10 @@ class DetailHeaderView: UIView {
     lazy var videoButton:UIButton = {
     
         let button = UIButton()
-        button.setImage(UIImage(named: "食谱详情icon－Play~iphone"), forState: .Normal)
+        button.setImage(UIImage(named: "食谱详情icon－Play~iphone"), for: UIControlState())
         button.sizeToFit()
-        button.hidden = true
-        button.addTarget(self, action: #selector(videoButtonClicked), forControlEvents: .TouchUpInside)
+        button.isHidden = true
+        button.addTarget(self, action: #selector(videoButtonClicked), for: .touchUpInside)
         return button
     
     }()

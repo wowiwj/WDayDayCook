@@ -17,7 +17,7 @@ let ArticleCellID = "ArticleCell"
 
 class RecipeViewController: UIViewController {
     
-    private lazy var waterlayout:WaterFlowlayout = {
+    fileprivate lazy var waterlayout:WaterFlowlayout = {
     
         let layout = WaterFlowlayout()
         layout.delegate = self
@@ -29,20 +29,20 @@ class RecipeViewController: UIViewController {
     var currentpage = 0
     
     
-    private lazy var listlayout:UICollectionViewFlowLayout = {
+    fileprivate lazy var listlayout:UICollectionViewFlowLayout = {
         let layout = UICollectionViewFlowLayout()
         layout.itemSize = CGSize(width: 320, height: 150)
         return layout
         
     }()
     
-    private lazy var scrollTopButton:UIButton = {
+    fileprivate lazy var scrollTopButton:UIButton = {
         
         let button = UIButton()
-        button.setImage(UIImage(named: "upupupIcon~iphone"), forState: .Normal)
-        button.hidden = true
+        button.setImage(UIImage(named: "upupupIcon~iphone"), for: UIControlState())
+        button.isHidden = true
         button.sizeToFit()
-        button.addTarget(self, action: #selector(scrollButtonClicked), forControlEvents: .TouchUpInside)
+        button.addTarget(self, action: #selector(scrollButtonClicked), for: .touchUpInside)
         return button
         
     }()
@@ -51,10 +51,10 @@ class RecipeViewController: UIViewController {
     
     @IBOutlet weak var collectionView: UICollectionView!{
         didSet{
-            collectionView.registerNib(UINib(nibName: ArticleCellID, bundle: nil), forCellWithReuseIdentifier: ArticleCellID)
+            collectionView.register(UINib(nibName: ArticleCellID, bundle: nil), forCellWithReuseIdentifier: ArticleCellID)
             
             collectionView.collectionViewLayout = waterlayout
-            collectionView.backgroundColor = UIColor.clearColor()
+            collectionView.backgroundColor = UIColor.clear
         
         }
     
@@ -78,24 +78,26 @@ class RecipeViewController: UIViewController {
     
 
     // 初始化UI
-    private func makeUI()
+    fileprivate func makeUI()
     {
         let button = UIButton()
-        button.setImage(UIImage(named: "icon－list~iphone"), forState: .Normal)
-        button.setImage(UIImage(named: "icon－缩略图~iphone"), forState: .Selected)
+        button.setImage(UIImage(named: "icon－list~iphone"), for: UIControlState())
+        button.setImage(UIImage(named: "icon－缩略图~iphone"), for: .selected)
         button.sizeToFit()
-        button.addTarget(self, action: #selector(layoutStyleButtonClicked(_:)), forControlEvents: UIControlEvents.TouchUpInside)
+        button.addTarget(self, action: #selector(layoutStyleButtonClicked(_:)), for: UIControlEvents.touchUpInside)
 
         let layoutStyleItem = UIBarButtonItem(customView: button)
         self.navigationItem.leftBarButtonItem = layoutStyleItem
         
-        let searchButton = UIBarButtonItem(image: UIImage(named: "icon-search~iphone"), style: .Plain, target: self, action: #selector(RecipeViewController.searchButtonClicked(_:)))
+        let searchButton = UIBarButtonItem(image: UIImage(named: "icon-search~iphone"), style: .plain, target: self, action: #selector(RecipeViewController.searchButtonClicked(_:)))
         navigationItem.rightBarButtonItem = searchButton
         view.addSubview(scrollTopButton)
-        scrollTopButton.snp_makeConstraints { (make) in
-            make.bottom.equalTo(collectionView.snp_bottom).offset(-20)
+       
+        scrollTopButton.snp.makeConstraints { (make) in
+            make.bottom.equalTo(collectionView.snp.bottom).offset(-20)
             make.trailing.equalTo(collectionView).offset(-20)
         }
+        
     }
     
     // MARK: - 网络请求
@@ -108,8 +110,9 @@ class RecipeViewController: UIViewController {
     }
     
     func loadMoreData(){
-    
-        Alamofire.request(Router.RecipeList(currentpage: currentpage, pageSize: 20)).responseJSON { [unowned self](response) in
+        
+        
+        Alamofire.request(Router.recipeList(currentpage: currentpage, pageSize: 20)).responseObject { (response:DataResponse<RecipeList>) in
             
             self.collectionView.headerEndRefreshing()
             self.collectionView.footerEndRefreshing()
@@ -119,7 +122,8 @@ class RecipeViewController: UIViewController {
                 return
             }else
             {
-                let recipeList = Mapper<RecipeList>().map(response.result.value)
+                let recipeList = response.result.value
+                
                 
                 if recipeList?.code == "200"
                 {
@@ -133,7 +137,9 @@ class RecipeViewController: UIViewController {
                 }
                 
             }
+    
         }
+  
     }
 
     override func didReceiveMemoryWarning() {
@@ -143,36 +149,36 @@ class RecipeViewController: UIViewController {
     
     
     // MARK: - 动作监听
-    @objc private func layoutStyleButtonClicked(button:UIButton)
+    @objc fileprivate func layoutStyleButtonClicked(_ button:UIButton)
     {
-        button.selected = !button.selected
+        button.isSelected = !button.isSelected
     
-        button.selected ?(collectionView.collectionViewLayout = listlayout) :(collectionView.collectionViewLayout = waterlayout)
+        button.isSelected ?(collectionView.collectionViewLayout = listlayout) :(collectionView.collectionViewLayout = waterlayout)
         
         collectionView.reloadData()
     
     }
-    @objc private func scrollButtonClicked()
+    @objc fileprivate func scrollButtonClicked()
     {
         
-        collectionView.scrollToItemAtIndexPath(NSIndexPath(forItem: 0, inSection: 0), atScrollPosition: UICollectionViewScrollPosition.Top, animated: true)
+        collectionView.scrollToItem(at: IndexPath(item: 0, section: 0), at: UICollectionViewScrollPosition.top, animated: true)
         
     }
     
-    @objc private func searchButtonClicked(button:UIButton)
+    @objc fileprivate func searchButtonClicked(_ button:UIButton)
     {
 
     
     }
     
     // MARK: - 控制器跳转
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         guard let identifier = segue.identifier else{
             return
         }
         if identifier == "showDetail" {
-            let vc = segue.destinationViewController as! ShowDetailViewController
+            let vc = segue.destination as! ShowDetailViewController
             let item = sender as! Int
             
             vc.id = item
@@ -183,33 +189,33 @@ class RecipeViewController: UIViewController {
 extension RecipeViewController:UICollectionViewDelegate,UICollectionViewDataSource
 {
     
-    func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return recipeList.count
     }
     
-    func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCellWithReuseIdentifier(ArticleCellID, forIndexPath: indexPath) as! ArticleCell
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ArticleCellID, for: indexPath) as! ArticleCell
         return cell
     }
     
-    func collectionView(collectionView: UICollectionView, willDisplayCell cell: UICollectionViewCell, forItemAtIndexPath indexPath: NSIndexPath) {
+    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
         guard let cell = cell as? ArticleCell else{
             return
         }
-        cell.recipeData = recipeList[indexPath.item]
+        cell.recipeData = recipeList[(indexPath as NSIndexPath).item]
     }
     
-    func collectionView(collectionView: UICollectionView, didEndDisplayingCell cell: UICollectionViewCell, forItemAtIndexPath indexPath: NSIndexPath) {
+    func collectionView(_ collectionView: UICollectionView, didEndDisplaying cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
         
-        guard let cell = collectionView.cellForItemAtIndexPath(indexPath) as? ArticleCell else{
+        guard let cell = collectionView.cellForItem(at: indexPath) as? ArticleCell else{
             return
         }
         cell.foodImageView.image = nil
     }
     
-    func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
-        if let id = recipeList[indexPath.item].id {
-            performSegueWithIdentifier("showDetail", sender: id)
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        if let id = recipeList[(indexPath as NSIndexPath).item].id {
+            performSegue(withIdentifier: "showDetail", sender: id)
         }
         
     }
@@ -219,11 +225,11 @@ extension RecipeViewController:UICollectionViewDelegate,UICollectionViewDataSour
 
 extension RecipeViewController: UICollectionViewWaterFlowLayoutDelegate
 {
-    func waterFlowLayout(waterFlowLayout: WaterFlowlayout, heightForItemAtIndexpath indexpath: NSIndexPath, itemWidth: CGFloat) -> CGFloat {
+    func waterFlowLayout(_ waterFlowLayout: WaterFlowlayout, heightForItemAtIndexpath indexpath: IndexPath, itemWidth: CGFloat) -> CGFloat {
         let defaultValue: CGFloat = 0
         let arr = recipeList.map{ $0.screeningId ?? (defaultValue,defaultValue,defaultValue) }
         
-        let (_,value2,_) = arr[indexpath.item]
+        let (_,value2,_) = arr[(indexpath as NSIndexPath).item]
 //        if UIScreen.mainScreen().bounds.size.width > 320 {
 //            value2 *= UIScreen.mainScreen().bounds.size.width / 320
 //        }
@@ -231,13 +237,13 @@ extension RecipeViewController: UICollectionViewWaterFlowLayoutDelegate
         return CGFloat(value2).autoAdjust()
     }
     
-    func columnCountInwaterFlowLayout(waterFlowLayout: WaterFlowlayout) -> Int {
+    func columnCountInwaterFlowLayout(_ waterFlowLayout: WaterFlowlayout) -> Int {
         return 2
     }
     
-    func scrollViewDidScroll(scrollView: UIScrollView) {
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
         let offsetY = scrollView.contentOffset.y
-        scrollTopButton.hidden = offsetY < UIScreen.mainScreen().bounds.size.height
+        scrollTopButton.isHidden = offsetY < UIScreen.main.bounds.size.height
     }
 
 

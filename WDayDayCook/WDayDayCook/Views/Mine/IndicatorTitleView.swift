@@ -11,7 +11,7 @@ import SnapKit
 
 @objc protocol IndicatorTitleViewDelegate:NSObjectProtocol{
 
-    optional func indicatorTitleView(indicatorTitleView view:UIView,didSelectButton button:IndicatorButton,atIndex index:Int)->Void
+    @objc optional func indicatorTitleView(indicatorTitleView view:UIView,didSelectButton button:IndicatorButton,atIndex index:Int)->Void
 
 
 }
@@ -20,7 +20,7 @@ class IndicatorTitleView: UIView {
     
     var selectedIndex:Int = 0
     
-    func setTitleSelectIndex(index:Int){
+    func setTitleSelectIndex(_ index:Int){
         
         if index < 0 {
             return
@@ -35,14 +35,14 @@ class IndicatorTitleView: UIView {
     weak var delegate:IndicatorTitleViewDelegate?
     
     
-    private var buttons:[IndicatorButton] = []
+    fileprivate var buttons:[IndicatorButton] = []
     
     
-    internal func setTitlesColor(color: UIColor?, forState state: UIControlState){
+    internal func setTitlesColor(_ color: UIColor?, forState state: UIControlState){
         for item in buttons {
-            item.setTitleColor(color, forState: state)
-            if state == .Selected  {
-                item.setTitleColor(color, forState: .Disabled)
+            item.setTitleColor(color, for: state)
+            if state == .selected  {
+                item.setTitleColor(color, for: .disabled)
             }
         }
     }
@@ -58,20 +58,20 @@ class IndicatorTitleView: UIView {
     }
 
     
-    @objc private func buttonclicked(target:UIButton)
+    @objc fileprivate func buttonclicked(_ target:UIButton)
     {
-        buttons[selectedIndex].selected = false
+        buttons[selectedIndex].isSelected = false
         
-        target.selected = true
+        target.isSelected = true
         
-        selectedIndex = buttons.indexOf(target as! IndicatorButton) ?? 0
+        selectedIndex = buttons.index(of: target as! IndicatorButton) ?? 0
   
         guard let delegate = delegate else{
             return
         
         }
         
-        if delegate.respondsToSelector(#selector(IndicatorTitleViewDelegate.indicatorTitleView(indicatorTitleView:didSelectButton:atIndex:))) {
+        if delegate.responds(to: #selector(IndicatorTitleViewDelegate.indicatorTitleView(indicatorTitleView:didSelectButton:atIndex:))) {
             delegate.indicatorTitleView!(indicatorTitleView: self, didSelectButton: target as! IndicatorButton, atIndex: selectedIndex)
         }
  
@@ -98,11 +98,11 @@ class IndicatorTitleView: UIView {
             // 添加按钮
             for i in 0..<titles.count{
                 let button = IndicatorButton()
-                button.setTitle(titles[i], forState: UIControlState.Normal)
+                button.setTitle(titles[i], for: UIControlState())
                 buttons.append(button)
                 addSubview(button)
                 
-                button.addTarget(self, action: #selector(IndicatorTitleView.buttonclicked(_:)), forControlEvents: UIControlEvents.TouchUpInside)
+                button.addTarget(self, action: #selector(IndicatorTitleView.buttonclicked(_:)), for: UIControlEvents.touchUpInside)
             }
        
         }
@@ -121,7 +121,7 @@ class IndicatorTitleView: UIView {
         var oldItem :UIButton?
         
         for item in buttons {
-            item.snp_makeConstraints(closure: { (make) in
+            item.snp_makeConstraints({ (make) in
                 make.top.equalTo(self)
                 make.bottom.equalTo(self)
             

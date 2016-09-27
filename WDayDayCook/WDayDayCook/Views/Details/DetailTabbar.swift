@@ -13,7 +13,7 @@ class DetailTabbar: UIView {
     lazy var commentButton:UIButton = {
     
         let button = UIButton()
-        button.setImage(UIImage(named: "Details_tabcommentIcon~iphone"), forState: .Normal)
+        button.setImage(UIImage(named: "Details_tabcommentIcon~iphone"), for: UIControlState())
         return button
     }()
     
@@ -21,7 +21,7 @@ class DetailTabbar: UIView {
         
         let button = UIButton()
         
-        button.setImage(UIImage(named: "Details_tabfavIcon~iphone"), forState: .Normal)
+        button.setImage(UIImage(named: "Details_tabfavIcon~iphone"), for: UIControlState())
         return button
     }()
     
@@ -29,7 +29,7 @@ class DetailTabbar: UIView {
         
         let button = UIButton()
         
-        button.setImage(UIImage(named: "Details_selectFont~iphone"), forState: .Normal)
+        button.setImage(UIImage(named: "Details_selectFont~iphone"), for: UIControlState())
         return button
     }()
     
@@ -37,7 +37,7 @@ class DetailTabbar: UIView {
         
         let button = UIButton()
         
-        button.setImage(UIImage(named: "Details_tabshare~iphone"), forState: .Normal)
+        button.setImage(UIImage(named: "Details_tabshare~iphone"), for: UIControlState())
         return button
     }()
     
@@ -50,7 +50,7 @@ class DetailTabbar: UIView {
         addSubview(fontButton)
         addSubview(shareButton)
         
-        self.backgroundColor = UIColor.whiteColor()
+        self.backgroundColor = UIColor.white
         
         commentButton.snp_makeConstraints { (make) in
             make.leading.equalTo(self)

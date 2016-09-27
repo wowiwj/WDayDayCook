@@ -13,8 +13,8 @@ import Kingfisher
 import SnapKit
 
 enum DetailCellStyle: Int {
-    case Title
-    case Detail
+    case title
+    case detail
 }
 
 let DetailTitleViewCellID = "DetailTitleViewCell"
@@ -40,7 +40,7 @@ class ShowDetailViewController: UIViewController {
     
         didSet{
             tableView.tableHeaderView = headerView
-            tableView.separatorStyle = .None
+            tableView.separatorStyle = .none
             
             tableView.delegate = self
             tableView.dataSource = self
@@ -51,8 +51,8 @@ class ShowDetailViewController: UIViewController {
             tableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 44, right: 0)
             tableView.scrollIndicatorInsets = tableView.contentInset
             
-            tableView.registerNib(UINib(nibName: DetailTitleViewCellID, bundle: nil), forCellReuseIdentifier: DetailTitleViewCellID)
-            tableView.registerNib(UINib(nibName: DetailInfoCellID, bundle: nil), forCellReuseIdentifier: DetailInfoCellID)
+            tableView.register(UINib(nibName: DetailTitleViewCellID, bundle: nil), forCellReuseIdentifier: DetailTitleViewCellID)
+            tableView.register(UINib(nibName: DetailInfoCellID, bundle: nil), forCellReuseIdentifier: DetailInfoCellID)
             
         }
     }
@@ -60,28 +60,28 @@ class ShowDetailViewController: UIViewController {
     var webCell:DetailInfoCell?
     
 
-    private lazy var customNavigationItem: UINavigationItem = UINavigationItem(title: "")
+    fileprivate lazy var customNavigationItem: UINavigationItem = UINavigationItem(title: "")
     
-    private lazy var customNavgationBar:UINavigationBar = {
+    fileprivate lazy var customNavgationBar:UINavigationBar = {
     
-        let bar = UINavigationBar(frame: CGRectMake(0, 0, CGRectGetWidth(self.view.bounds), 64))
+        let bar = UINavigationBar(frame: CGRect(x: 0, y: 0, width: self.view.bounds.width, height: 64))
         bar.setItems([self.customNavigationItem], animated: false)
         
-        bar.backgroundColor = UIColor.clearColor()
-        bar.translucent = true
+        bar.backgroundColor = UIColor.clear
+        bar.isTranslucent = true
         bar.shadowImage = UIImage()
-        bar.barStyle = UIBarStyle.BlackTranslucent
-        bar.setBackgroundImage(UIImage(), forBarMetrics: UIBarMetrics.Default)
+        bar.barStyle = UIBarStyle.blackTranslucent
+        bar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
         return bar
     
     }()
     
-    private lazy var scrollTopButton:UIButton = {
+    fileprivate lazy var scrollTopButton:UIButton = {
     
         let button = UIButton()
-        button.setImage(UIImage(named: "upupupIcon~iphone"), forState: .Normal)
-        button.hidden = true
-        button.addTarget(self, action: #selector(scrollButtonClicked), forControlEvents: .TouchUpInside)
+        button.setImage(UIImage(named: "upupupIcon~iphone"), for: UIControlState())
+        button.isHidden = true
+        button.addTarget(self, action: #selector(scrollButtonClicked), for: .touchUpInside)
         return button
     
     }()
@@ -94,7 +94,7 @@ class ShowDetailViewController: UIViewController {
                 self.headerView.imageUrl = result["data"]["imageUrl"].stringValue
                 self.headerView.detailsUrl = result["data"]["detailsUrl"].stringValue
                 self.headerView.id = result["data"]["id"].intValue
-                self.headerView.videoButton.hidden = result["data"]["detailsUrl"].stringValue.isEmpty
+                self.headerView.videoButton.isHidden = result["data"]["detailsUrl"].stringValue.isEmpty
                 tableView.reloadData()
             }
         }
@@ -106,14 +106,14 @@ class ShowDetailViewController: UIViewController {
         super.viewDidLoad()
         makeUI()
         
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(ShowDetailViewController.showDetailVC(_:)), name: showDetailVcNotificationKey, object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(ShowDetailViewController.showMoreComments(_:)), name: showAllCommentNotificationKey, object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(ShowDetailViewController.webViewLoadFinished), name: webViewLoadFinishedKey, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(ShowDetailViewController.showDetailVC(_:)), name: NSNotification.Name(rawValue: showDetailVcNotificationKey), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(ShowDetailViewController.showMoreComments(_:)), name: NSNotification.Name(rawValue: showAllCommentNotificationKey), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(ShowDetailViewController.webViewLoadFinished), name: NSNotification.Name(rawValue: webViewLoadFinishedKey), object: nil)
         
         loadData()
         
         WDHUD.showLoading(inView: self.view)
-        view.userInteractionEnabled = false
+        view.isUserInteractionEnabled = false
         
 
         // Do any additional setup after loading the view.
@@ -121,7 +121,7 @@ class ShowDetailViewController: UIViewController {
     
     deinit
     {
-        NSNotificationCenter.defaultCenter().removeObserver(self)
+        NotificationCenter.default.removeObserver(self)
     
     }
     
@@ -130,10 +130,10 @@ class ShowDetailViewController: UIViewController {
     {
         view.addSubview(customNavgationBar)
         let backButton = UIButton()
-        backButton.setImage(UIImage(named: "back_icon~iphone"), forState: .Normal)
+        backButton.setImage(UIImage(named: "back_icon~iphone"), for: UIControlState())
         backButton.sizeToFit()
-        backButton.setImage(UIImage(named: "back_icon_on~iphone"), forState: .Highlighted)
-        backButton.addTarget(self, action: #selector(backBarButtonClicked), forControlEvents: .TouchUpInside)
+        backButton.setImage(UIImage(named: "back_icon_on~iphone"), for: .highlighted)
+        backButton.addTarget(self, action: #selector(backBarButtonClicked), for: .touchUpInside)
         let backItem = UIBarButtonItem(customView: backButton)
         customNavigationItem.leftBarButtonItem = backItem
         
@@ -145,15 +145,15 @@ class ShowDetailViewController: UIViewController {
         let tabbar = DetailTabbar()
 
         self.view.addSubview(tabbar)
-        tabbar.snp_makeConstraints { (make) in
+        tabbar.snp.makeConstraints { (make) in
             make.bottom.equalTo(self.view)
             make.width.equalTo(self.view)
             make.height.equalTo(44)
         }
         
         view.addSubview(scrollTopButton)
-        scrollTopButton.snp_makeConstraints { (make) in
-            make.bottom.equalTo(tabbar.snp_top).offset(-20)
+        scrollTopButton.snp.makeConstraints { (make) in
+            make.bottom.equalTo(tabbar.snp.top).offset(-20)
             make.trailing.equalTo(self.view).offset(-20)
         }
 
@@ -163,7 +163,7 @@ class ShowDetailViewController: UIViewController {
     // MARK: -  请求数据
     func loadData()
     {
-        Alamofire.request(Router.Details(id: self.id)).responseJSON { (resopnse) in
+        Alamofire.request(Router.details(id: self.id)).responseJSON { (resopnse) in
 //            WDHUD.hideLoading(inView: self.tableView)
             if resopnse.result.isFailure
             {
@@ -185,13 +185,13 @@ class ShowDetailViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
 
-    override func viewWillDisappear(animated: Bool) {
+    override func viewWillDisappear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
         self.navigationController?.setNavigationBarHidden(false, animated: false)
     }
     
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
         self.navigationController?.setNavigationBarHidden(true, animated: true)
@@ -200,37 +200,37 @@ class ShowDetailViewController: UIViewController {
     
     
     // MARK: - 消息的监听
-    @objc private func backBarButtonClicked()
+    @objc fileprivate func backBarButtonClicked()
     {
-        self.navigationController?.popViewControllerAnimated(true)
+        self.navigationController?.popViewController(animated: true)
     }
     
-    @objc private func scrollButtonClicked()
+    @objc fileprivate func scrollButtonClicked()
     {
         
-        tableView.scrollToRowAtIndexPath(NSIndexPath(forRow: 0, inSection: 0), atScrollPosition: UITableViewScrollPosition.Top, animated: true)
+        tableView.scrollToRow(at: IndexPath(row: 0, section: 0), at: UITableViewScrollPosition.top, animated: true)
 
-        tableView.setContentOffset(CGPointZero, animated: true)
+        tableView.setContentOffset(CGPoint.zero, animated: true)
 
     }
     
-    @objc private func showDetailVC(info:NSNotification){
+    @objc fileprivate func showDetailVC(_ info:Notification){
         if let id = info.object {
             let item = id as! Int
             navigationController?.pushToDetailViewController(item, animated: true)
    
         }
     }
-    @objc private func showMoreComments(info:NSNotification){
+    @objc fileprivate func showMoreComments(_ info:Notification){
         WDAlert.alert(title: "显示更多评论", message: "点击了显示更多评论按钮", dismissTitle: "取消", inViewController: self, withDismissAction: nil)
     }
     
-    @objc private func webViewLoadFinished()
+    @objc fileprivate func webViewLoadFinished()
     {
         
         print("webViewLoadFinished")
         WDHUD.hideLoading(inView: self.view)
-        view.userInteractionEnabled = true
+        view.isUserInteractionEnabled = true
     
     
     }
@@ -241,24 +241,24 @@ class ShowDetailViewController: UIViewController {
 extension ShowDetailViewController :UITableViewDelegate,UITableViewDataSource
 {
     
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 2
     }
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        switch indexPath.row {
-        case DetailCellStyle.Title.rawValue:
-            let cell = tableView.dequeueReusableCellWithIdentifier(DetailTitleViewCellID)
+        switch (indexPath as NSIndexPath).row {
+        case DetailCellStyle.title.rawValue:
+            let cell = tableView.dequeueReusableCell(withIdentifier: DetailTitleViewCellID)
             return cell!
-        case DetailCellStyle.Detail.rawValue:
-            let cell = tableView.dequeueReusableCellWithIdentifier(DetailInfoCellID) as! DetailInfoCell
+        case DetailCellStyle.detail.rawValue:
+            let cell = tableView.dequeueReusableCell(withIdentifier: DetailInfoCellID) as! DetailInfoCell
             if let result = result
             {
                 cell.requestUrl = result["data"]["loadContent"].stringValue
                 webCell = cell
                 cell.loadFinishedAction = { [unowned self] in
-                    self.tableView.reloadRowsAtIndexPaths([NSIndexPath(forRow: 0, inSection: 0)], withRowAnimation: .None)
+                    self.tableView.reloadRows(at: [IndexPath(row: 0, section: 0)], with: .none)
                 }
             }
             return cell
@@ -267,38 +267,38 @@ extension ShowDetailViewController :UITableViewDelegate,UITableViewDataSource
         }
     }
     
-    func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         
         guard let result = result else{
             return
         }
         
         
-        switch indexPath.row {
-        case DetailCellStyle.Title.rawValue:
+        switch (indexPath as NSIndexPath).row {
+        case DetailCellStyle.title.rawValue:
             let cell = cell as! DetailTitleViewCell
             cell.nameLabel.text = result["data"]["name"].stringValue
             let maketime = " \(result["data"]["maketime"])"
-            cell.makeTimeButton.setTitle(maketime, forState: .Normal)
-            cell.makeTimeButton.hidden = (maketime == " ")
+            cell.makeTimeButton.setTitle(maketime, for: UIControlState())
+            cell.makeTimeButton.isHidden = (maketime == " ")
             if maketime == " " {
-                cell.makeTimeButton.setImage(UIImage(), forState: .Normal)
+                cell.makeTimeButton.setImage(UIImage(), for: UIControlState())
                 cell.makeTimeButton.layoutIfNeeded()
             }
             let clickCount = " \(result["data"]["clickCount"].stringValue)"
-            cell.clickCountButton.setTitle(clickCount, forState: .Normal)
+            cell.clickCountButton.setTitle(clickCount, for: UIControlState())
    
         default:
             return
         }
     }
     
-    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
 
-        switch indexPath.row {
-        case DetailCellStyle.Title.rawValue:
+        switch (indexPath as NSIndexPath).row {
+        case DetailCellStyle.title.rawValue:
             return WDConfig.cellTitleViewHeight
-        case DetailCellStyle.Detail.rawValue:
+        case DetailCellStyle.detail.rawValue:
             if let cell = webCell
             {
                 print(cell.cellHeight)
@@ -312,7 +312,7 @@ extension ShowDetailViewController :UITableViewDelegate,UITableViewDataSource
     }
 
     
-    func scrollViewDidScroll(scrollView: UIScrollView) {
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
         
         /// 下拉放大效果
         
@@ -323,16 +323,16 @@ extension ShowDetailViewController :UITableViewDelegate,UITableViewDataSource
         if offsetY < 0 {
             
             let deltaY = minY - offsetY
-            frame.size.height = max(minY, CGRectGetHeight(self.headerView.bounds) + deltaY)
-            frame.size.width = max(minY, CGRectGetWidth(self.headerView.bounds) + deltaY)
+            frame.size.height = max(minY, self.headerView.bounds.height + deltaY)
+            frame.size.width = max(minY, self.headerView.bounds.width + deltaY)
             frame.origin.x = -deltaY * 0.5
-            frame.origin.y = CGRectGetMinX(frame) - deltaY * 0.5
+            frame.origin.y = frame.minX - deltaY * 0.5
             self.headerView.imageView.frame = frame
         }
         
 //         加载更多
         
-        let value1 = scrollView.contentOffset.y + UIScreen.mainScreen().bounds.height
+        let value1 = scrollView.contentOffset.y + UIScreen.main.bounds.height
         let value2 = scrollView.contentSize.height + tableView.contentInset.bottom
 
         
@@ -340,7 +340,7 @@ extension ShowDetailViewController :UITableViewDelegate,UITableViewDataSource
             webCell?.scrollEnabled = true
         }
         
-        scrollTopButton.hidden = offsetY < UIScreen.mainScreen().bounds.size.height
+        scrollTopButton.isHidden = offsetY < UIScreen.main.bounds.size.height
     }
 
 }
@@ -348,20 +348,20 @@ extension ShowDetailViewController :UITableViewDelegate,UITableViewDataSource
 extension ShowDetailViewController: DetailHeaderViewDelegate
 {
     
-    func videoButtonClicked(detailsUrl: String?,id:Int?) {
+    func videoButtonClicked(_ detailsUrl: String?,id:Int?) {
         
-        if let url = detailsUrl,id = id {
+        if let url = detailsUrl,let id = id {
             let moreUrl = ServiceApi.getVideosDetail(id)
             
-            Alamofire.request(Router.VideosDetail(id: id)).responseJSON(completionHandler: { [unowned self] response in
+            Alamofire.request(Router.videosDetail(id: id)).responseJSON(completionHandler: { [unowned self] response in
                 
                 
                 func playBaseVideo()
                 {
                     let player = VVSDKPlayerViewController(url: url, videoType: 1, localVideoTitle: "")
-                    player.setEnableBubble(false)
+                    player?.setEnableBubble(false)
                     //            player.setIsLive(false)
-                    self.presentViewController(player, animated: true, completion: nil)
+                    self.present(player!, animated: true, completion: nil)
                     return
                     
                 }
@@ -379,9 +379,9 @@ extension ShowDetailViewController: DetailHeaderViewDelegate
                     //                    playBaseVideo()
                     
                     let player = VVSDKPlayerViewController(url: moreUrl, videoType: 2, localVideoTitle: "")
-                    player.setEnableBubble(false)
+                    player?.setEnableBubble(false)
                     //            player.setIsLive(false)
-                    self.presentViewController(player, animated: true, completion: nil)
+                    self.present(player!, animated: true, completion: nil)
                 }else{
                     
                     playBaseVideo()

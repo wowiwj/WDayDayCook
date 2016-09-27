@@ -9,16 +9,16 @@ import UIKit
 
 //控件的刷新状态
 enum RefreshState {
-    case  Pulling               // 松开就可以进行刷新的状态
-    case  Normal                // 普通状态
-    case  Refreshing            // 正在刷新中的状态
-    case  WillRefreshing
+    case  pulling               // 松开就可以进行刷新的状态
+    case  normal                // 普通状态
+    case  refreshing            // 正在刷新中的状态
+    case  willRefreshing
 }
 
 //控件的类型
 enum RefreshViewType {
-    case  TypeHeader             // 头部控件
-    case  TypeFooter             // 尾部控件
+    case  typeHeader             // 头部控件
+    case  typeFooter             // 尾部控件
 }
 let RefreshLabelTextColor:UIColor = UIColor(red: 150.0/255, green: 150.0/255.0, blue: 150.0/255.0, alpha: 1)
 
@@ -40,7 +40,7 @@ class RefreshBaseView: UIView {
     // 交给子类去实现 和 调用
     var  oldState:RefreshState?
     
-    var State:RefreshState = RefreshState.Normal{
+    var State:RefreshState = RefreshState.normal{
     willSet{
     }
     didSet{
@@ -49,10 +49,10 @@ class RefreshBaseView: UIView {
     
     }
     
-    func setState(newValue:RefreshState){
+    func setState(_ newValue:RefreshState){
         
         
-        if self.State != RefreshState.Refreshing {
+        if self.State != RefreshState.refreshing {
             
             scrollViewOriginalInset = self.scrollView.contentInset;
         }
@@ -62,24 +62,24 @@ class RefreshBaseView: UIView {
         
         
         switch newValue {
-        case .Normal:
-           activityView.hidden = true
+        case .normal:
+           activityView.isHidden = true
             self.activityView.stopAnimating()
             break
-        case .Pulling:
-            activityView.hidden = false
+        case .pulling:
+            activityView.isHidden = false
             activityView.startAnimating()
             break
-        case .Refreshing:
+        case .refreshing:
             activityView.startAnimating()
-            activityView.hidden = false
+            activityView.isHidden = false
             beginRefreshingCallback!()
             break
         default:
             break
             
         }
-        statusLabel.hidden = true
+        statusLabel.isHidden = true
 
 
     }
@@ -93,10 +93,10 @@ class RefreshBaseView: UIView {
         //状态标签
         statusLabel = UILabel()
         statusLabel.frame = self.bounds
-        statusLabel.font = UIFont.boldSystemFontOfSize(13)
+        statusLabel.font = UIFont.boldSystemFont(ofSize: 13)
         statusLabel.textColor = RefreshLabelTextColor
-        statusLabel.backgroundColor =  UIColor.clearColor()
-        statusLabel.textAlignment = NSTextAlignment.Center
+        statusLabel.backgroundColor =  UIColor.clear
+        statusLabel.textAlignment = NSTextAlignment.center
         self.addSubview(statusLabel)
         
 //        statusLabel.backgroundColor = UIColor.redColor()
@@ -108,10 +108,10 @@ class RefreshBaseView: UIView {
         activityView.center = statusLabel.center
         self.addSubview(activityView)
          //自己的属性
-        self.autoresizingMask = UIViewAutoresizing.FlexibleWidth
-        self.backgroundColor = UIColor.clearColor()
+        self.autoresizingMask = UIViewAutoresizing.flexibleWidth
+        self.backgroundColor = UIColor.clear
         //设置默认状态
-        self.State = RefreshState.Normal;
+        self.State = RefreshState.normal;
     }
 
     required init?(coder aDecoder: NSCoder) {
@@ -127,15 +127,15 @@ class RefreshBaseView: UIView {
 //        let arrowX:CGFloat = self.frame.size.width * 0.5 - 100
 //        self.arrowImage.center = CGPointMake(arrowX, self.frame.size.height * 0.5)
         //指示器
-        self.autoresizingMask = UIViewAutoresizing.FlexibleWidth
+        self.autoresizingMask = UIViewAutoresizing.flexibleWidth
         statusLabel.frame = self.bounds
         self.activityView.center = self.statusLabel.center
         
     }
     
     
-    override func willMoveToSuperview(newSuperview: UIView!) {
-        super.willMoveToSuperview(newSuperview)
+    override func willMove(toSuperview newSuperview: UIView!) {
+        super.willMove(toSuperview: newSuperview)
         // 旧的父控件
          
         if (self.superview != nil) {
@@ -144,7 +144,7 @@ class RefreshBaseView: UIView {
             }
         // 新的父控件
         if (newSuperview != nil) {
-            newSuperview.addObserver(self, forKeyPath: RefreshContentOffset, options: NSKeyValueObservingOptions.New, context: nil)
+            newSuperview.addObserver(self, forKeyPath: RefreshContentOffset, options: NSKeyValueObservingOptions.new, context: nil)
             var rect:CGRect = self.frame
             // 设置宽度   位置
             rect.size.width = newSuperview.frame.size.width
@@ -157,26 +157,26 @@ class RefreshBaseView: UIView {
     }
     
     //显示到屏幕上
-    override func drawRect(rect: CGRect) {
-        superview?.drawRect(rect);
-        if self.State == RefreshState.WillRefreshing {
-            self.State = RefreshState.Refreshing
+    override func draw(_ rect: CGRect) {
+        superview?.draw(rect);
+        if self.State == RefreshState.willRefreshing {
+            self.State = RefreshState.refreshing
         }
     }
     
     // 刷新相关
     // 是否正在刷新
     func isRefreshing()->Bool{
-        return RefreshState.Refreshing == self.State;
+        return RefreshState.refreshing == self.State;
     }
     
     // 开始刷新
     func beginRefreshing(){
         if (self.window != nil) {
-            self.State = RefreshState.Refreshing;
+            self.State = RefreshState.refreshing;
         } else {
             //不能调用set方法
-            State = RefreshState.WillRefreshing;
+            State = RefreshState.willRefreshing;
             super.setNeedsDisplay()
         }
         
@@ -185,10 +185,10 @@ class RefreshBaseView: UIView {
     //结束刷新
     func endRefreshing(){
         let delayInSeconds:Double = 0.3
-        let popTime:dispatch_time_t = dispatch_time(DISPATCH_TIME_NOW, Int64(delayInSeconds));
+        let popTime:DispatchTime = DispatchTime.now() + Double(Int64(delayInSeconds)) / Double(NSEC_PER_SEC);
         
-        dispatch_after(popTime, dispatch_get_main_queue(), {
-            self.State = RefreshState.Normal;
+        DispatchQueue.main.asyncAfter(deadline: popTime, execute: {
+            self.State = RefreshState.normal;
             })
     }
 }

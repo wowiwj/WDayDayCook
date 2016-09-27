@@ -15,12 +15,12 @@ extension UIImageView {
     {
         
         let animation = CABasicAnimation(keyPath: "transform")
-        animation.fromValue = NSValue(CATransform3D: CATransform3DIdentity)
-        animation.toValue = NSValue(CATransform3D: CATransform3DMakeRotation(CGFloat(M_PI), 0, 0, 1))
+        animation.fromValue = NSValue(caTransform3D: CATransform3DIdentity)
+        animation.toValue = NSValue(caTransform3D: CATransform3DMakeRotation(CGFloat(M_PI), 0, 0, 1))
         animation.duration = 0.5
-        animation.cumulative = true
+        animation.isCumulative = true
         animation.repeatCount = Float(Int.max)
-        self.layer.addAnimation(animation, forKey: nil)
+        self.layer.add(animation, forKey: nil)
         return self
     }
     

@@ -11,7 +11,7 @@ import UIKit
 extension CGFloat{
 
     /// 根据当前屏幕宽度的尺寸自动调节大小
-    func autoAdjust(currentWidth:CGFloat = 320)->CGFloat {
-        return self * UIScreen.mainScreen().bounds.size.width / currentWidth
+    func autoAdjust(_ currentWidth:CGFloat = 320)->CGFloat {
+        return self * UIScreen.main.bounds.size.width / currentWidth
     }
 }

@@ -11,7 +11,7 @@ import RealmSwift
 import SwiftyJSON
 
 
-let realmQueue = dispatch_queue_create("com.wangju.WDDayDayCook", dispatch_queue_attr_make_with_qos_class(DISPATCH_QUEUE_SERIAL, QOS_CLASS_UTILITY, 0))
+//let realmQueue = DispatchQueue(label: "com.wangju.WDDayDayCook", attributes: dispatch_queue_attr_make_with_qos_class(DispatchQueue.Attributes(), DispatchQoS.QoSClass.utility, 0))
 
 
 // :MARK: - 广告数据的处理
@@ -19,9 +19,9 @@ let realmQueue = dispatch_queue_create("com.wangju.WDDayDayCook", dispatch_queue
 /// 广告模型
 class MainADItem: Object
 {
-    dynamic var createDate: NSTimeInterval = NSDate().timeIntervalSince1970
+    dynamic var createDate: TimeInterval = Date().timeIntervalSince1970
     dynamic var id :Int = 0
-    dynamic var modifyDate: NSTimeInterval = NSDate().timeIntervalSince1970
+    dynamic var modifyDate: TimeInterval = Date().timeIntervalSince1970
     dynamic var path :String = ""
     dynamic var title :String = ""
     dynamic var type: Int = 0
@@ -33,7 +33,7 @@ func deleteAllADItem()
     deleteAllObject(MainADItem)
 }
 
-func addNewMainADItemInRealm(json :JSON)
+func addNewMainADItemInRealm(_ json :JSON)
 {
     let jsonArr = json.arrayValue
     
@@ -59,7 +59,7 @@ func addNewMainADItemInRealm(json :JSON)
     }
 }
 
-func getADItemInRealm(realm : Realm) -> Results<MainADItem>
+func getADItemInRealm(_ realm : Realm) -> Results<MainADItem>
 {
     let items = realm.objects(MainADItem)
     return items
@@ -85,12 +85,12 @@ class NewFood: Object {
     dynamic var favorite: Bool = false
     dynamic var imageUrl: String = ""
     dynamic var title: String = ""
-    dynamic var createDate: NSTimeInterval = NSDate().timeIntervalSince1970
-    dynamic var modifyDate: NSTimeInterval = NSDate().timeIntervalSince1970
+    dynamic var createDate: TimeInterval = Date().timeIntervalSince1970
+    dynamic var modifyDate: TimeInterval = Date().timeIntervalSince1970
     
 }
 
-func addNewFoodItemInRealm(json :JSON)
+func addNewFoodItemInRealm(_ json :JSON)
 {
     let jsonArr = json.arrayValue
     
@@ -125,7 +125,7 @@ func addNewFoodItemInRealm(json :JSON)
     }
 }
 
-func getNewFoodItemInRealm(realm : Realm) -> Results<NewFood>
+func getNewFoodItemInRealm(_ realm : Realm) -> Results<NewFood>
 {
     let items = realm.objects(NewFood)
     return items
@@ -146,10 +146,10 @@ class FoodRecmmand: Object
     dynamic var recipe_id: Int = 0
     dynamic var group_id: Int = -2
     dynamic var share_count: Int = 0
-    dynamic var str_date: NSTimeInterval = NSDate().timeIntervalSince1970
+    dynamic var str_date: TimeInterval = Date().timeIntervalSince1970
 }
 
-func addFoodRecmmandItemInRealm(json :JSON)
+func addFoodRecmmandItemInRealm(_ json :JSON)
 {
     let jsonArr = json.arrayValue
     
@@ -183,30 +183,30 @@ func addFoodRecmmandItemInRealm(json :JSON)
 
 
 }
-func getFoodRecmmandListInRealm(realm : Realm) -> Results<FoodRecmmand>
+func getFoodRecmmandListInRealm(_ realm : Realm) -> Results<FoodRecmmand>
 {
     let items = realm.objects(FoodRecmmand)
     return items
 }
 
-func getRecmmandListInRealm(realm : Realm,recommendType:Int) -> Results<FoodRecmmand>
+func getRecmmandListInRealm(_ realm : Realm,recommendType:Int) -> Results<FoodRecmmand>
 {
     let items = getFoodRecmmandListInRealm(realm)
     let predicate = NSPredicate(format:"recommend_type = %d",recommendType)
     return items.filter(predicate)
 }
 
-func getThemeListInRealm(realm : Realm) -> Results<FoodRecmmand>
+func getThemeListInRealm(_ realm : Realm) -> Results<FoodRecmmand>
 {
     return getRecmmandListInRealm(realm, recommendType: 2)
 }
 
-func getRecipeListInRealm(realm : Realm) -> Results<FoodRecmmand>
+func getRecipeListInRealm(_ realm : Realm) -> Results<FoodRecmmand>
 {
     return getRecmmandListInRealm(realm, recommendType: 1)
 }
 
-func getRecipeDiscussListInRealm(realm : Realm) -> Results<FoodRecmmand>
+func getRecipeDiscussListInRealm(_ realm : Realm) -> Results<FoodRecmmand>
 {
     return getRecmmandListInRealm(realm, recommendType: 3)
 }
@@ -218,7 +218,7 @@ func getRecipeDiscussListInRealm(realm : Realm) -> Results<FoodRecmmand>
 // MARK: - 公用的方法
 
 // 删除某一个对象的所有数据
-func deleteAllObject(objectType: Object.Type)
+func deleteAllObject(_ objectType: Object.Type)
 {
     if let realm = try? Realm() {
         let items = realm.objects(objectType)
@@ -231,7 +231,7 @@ func deleteAllObject(objectType: Object.Type)
 
 // 获取某一个模型的数据
 
-func getObjectItemsInRealm(objectType: Object.Type,realm : Realm) -> Results<Object>
+func getObjectItemsInRealm(_ objectType: Object.Type,realm : Realm) -> Results<Object>
 {
     let items = realm.objects(objectType)
     return items

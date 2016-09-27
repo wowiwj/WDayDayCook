@@ -10,75 +10,96 @@ import UIKit
 import Alamofire
 
 enum Router: URLRequestConvertible {
+    
 
-    case ChooseViewAdList(parameters:[String: AnyObject]?)
-    case NewFoodEachDay(currentpage :Int,pageSize:Int)
-    case RecommendInfo(parameters:[String: AnyObject]?)
-    case Details(id: Int)
-    case VideosDetail(id:Int)
-    case RecipeList(currentpage :Int,pageSize:Int)
-    case MoreThemeRecipe(parameters:[String: AnyObject]?)
+    case chooseViewAdList(parameters:[String: AnyObject]?)
+    case newFoodEachDay(currentpage :Int,pageSize:Int)
+    case recommendInfo(parameters:[String: AnyObject]?)
+    case details(id: Int)
+    case videosDetail(id:Int)
+    case recipeList(currentpage :Int,pageSize:Int)
+    case moreThemeRecipe(parameters:[String: AnyObject]?)
     case test()
     
     
     var path: String {
         
         switch self {
-        case .ChooseViewAdList:
+        case .chooseViewAdList:
             return ServiceApi.getChooseViewAdList()
-        case .NewFoodEachDay(let currentpage, let pageSize):
+        case .newFoodEachDay(let currentpage, let pageSize):
             return ServiceApi.getNewFoodEachDay(currentpage, pageSize: pageSize)
-        case .RecommendInfo:
+        case .recommendInfo:
             return ServiceApi.getRecommendInfo()
-        case .Details(let id):
+        case .details(let id):
             return ServiceApi.getDetails(id)
-        case .VideosDetail(let id):
+        case .videosDetail(let id):
             return ServiceApi.getVideosDetail(id)
-        case .RecipeList(let currentpage, let pageSize):
+        case .recipeList(let currentpage, let pageSize):
             return ServiceApi.getRecipeList(currentpage, pageSize: pageSize)
-        case .MoreThemeRecipe:
+        case .moreThemeRecipe:
             return ServiceApi.getMoreThemeRecipe()
         default:
             return ServiceApi.getChooseViewAdList()
         }
     }
     
-    var method:Alamofire.Method {
+    var method:HTTPMethod {
         switch self {
-        case .ChooseViewAdList:
-            return .GET
-        case .NewFoodEachDay:
-            return .GET
-        case .RecommendInfo:
-            return .GET
-        case .Details:
-            return .POST
-        case .RecipeList:
-            return .POST
+        case .chooseViewAdList:
+            return .get
+        case .newFoodEachDay:
+            return .get
+        case .recommendInfo:
+            return .get
+        case .details:
+            return .post
+        case .recipeList:
+            return .post
         default:
-            return .GET
+            return HTTPMethod.get
         }
     
     }
     
-    var URLRequest: NSMutableURLRequest {
-        
+    func asURLRequest() throws -> URLRequest {
         print(path)
         
-        let URL = NSURL(string: path)!
+        let URL = Foundation.URL(string: path)!
         
-        let mutableURLRequest = NSMutableURLRequest(URL: URL)
+        let mutableURLRequest = NSMutableURLRequest(url: URL)
         mutableURLRequest.setValue("1", forHTTPHeaderField: "device")
-        mutableURLRequest.HTTPMethod = method.rawValue
-
-        switch self {
-        case .ChooseViewAdList(let parameters):
-            return Alamofire.ParameterEncoding.JSON.encode(mutableURLRequest, parameters: parameters).0
-        default:
-            return mutableURLRequest
-        }
+        mutableURLRequest.httpMethod = method.rawValue
         
+        return mutableURLRequest as URLRequest;
+        
+//        switch self {
+//        case .chooseViewAdList(let parameters):
+//            return try URLEncoding.default.encode(mutableURLRequest, with: nil)
+//        default:
+//            return mutableURLRequest
+//        }
         
     }
+    
+//    var URLRequest: NSMutableURLRequest {
+//        
+//        print(path)
+//        
+//        let URL = Foundation.URL(string: path)!
+//        
+//        let mutableURLRequest = NSMutableURLRequest(url: URL)
+//        mutableURLRequest.setValue("1", forHTTPHeaderField: "device")
+//        mutableURLRequest.httpMethod = method.rawValue
+//
+//        switch self {
+//        case .chooseViewAdList(let parameters):
+//            return Alamofire.ParameterEncoding.json.encode(mutableURLRequest, parameters: parameters).0
+//        default:
+//            return mutableURLRequest
+//        }
+//        
+//        
+//    }
     
 }

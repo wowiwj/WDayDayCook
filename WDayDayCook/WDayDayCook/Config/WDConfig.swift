@@ -8,14 +8,14 @@
 
 import UIKit
 
-public class WDConfig {
+open class WDConfig {
     /// 地域默认是中国
-    public static var regionCode = "156"
+    open static var regionCode = "156"
     
-    public static var mainland = 1
+    open static var mainland = 1
     
-    public static var languageId = 3
-    public static var uid = ""
+    open static var languageId = 3
+    open static var uid = ""
     
     static let appGroupID: String = "group.wangju.WdaydayCook"
     static let firstOpen = false

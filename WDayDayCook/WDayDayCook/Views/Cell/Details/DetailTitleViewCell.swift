@@ -23,7 +23,7 @@ class DetailTitleViewCell: UITableViewCell {
         super.awakeFromNib()
         self.sizeToFit()
         cellheight = self.bounds.size.height
-        makeTimeButton.hidden = true
+        makeTimeButton.isHidden = true
         // Initialization code
     }
     
@@ -32,7 +32,7 @@ class DetailTitleViewCell: UITableViewCell {
         cellheight = self.frame.size.height
     }
 
-    override func setSelected(selected: Bool, animated: Bool) {
+    override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state

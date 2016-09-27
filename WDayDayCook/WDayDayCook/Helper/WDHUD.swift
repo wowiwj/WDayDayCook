@@ -16,14 +16,14 @@ class WDContainerView:UIView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        self.backgroundColor = UIColor.blackColor().colorWithAlphaComponent(0.5)
+        self.backgroundColor = UIColor.black.withAlphaComponent(0.5)
     }
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         print("ffff")
     }
     
@@ -41,14 +41,14 @@ final class WDHUD: NSObject {
     lazy var containerViewDict = [String:UIView]()
     
     
-    typealias ViewSetting = ((containerView:UIView)->Void)
+    typealias ViewSetting = ((_ containerView:UIView)->Void)
     
     // 保存显示视图的设置的字典
     lazy var settingViewDict = [String:ViewSetting]()
     
     
  
-    private func setContainerView(toView view:UIView,parentView:ViewSetting)
+    fileprivate func setContainerView(toView view:UIView,parentView:@escaping ViewSetting)
     {
 //        parentView(containerView: getConentView(inView: view))
         // 保存当前的设置信息
@@ -60,12 +60,12 @@ final class WDHUD: NSObject {
 //        print(settingViewDict)
     }
     
-    private func getViewPointerString(view:UIView)->String{
+    fileprivate func getViewPointerString(_ view:UIView)->String{
     
         return NSValue(nonretainedObject: view).pointerValue.debugDescription
     }
     
-    private func getConentView(inView view:UIView)->WDContainerView
+    fileprivate func getConentView(inView view:UIView)->WDContainerView
     {
         let pointStr = getViewPointerString(view)
         
@@ -82,8 +82,8 @@ final class WDHUD: NSObject {
     
     /// 添加自定义View
     
-    class func setContainerView(parentView:ViewSetting){
-        guard let appDelegate = UIApplication.sharedApplication().delegate as? AppDelegate else{
+    class func setContainerView(_ parentView:@escaping ViewSetting){
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else{
             return
         }
         
@@ -91,7 +91,7 @@ final class WDHUD: NSObject {
     }
 
     
-    class func setContainerView(toView view:UIView,parentView:ViewSetting){
+    class func setContainerView(toView view:UIView,parentView:@escaping ViewSetting){
     
         self.shareInstance.setContainerView(toView: view, parentView: parentView)
     }
@@ -99,9 +99,9 @@ final class WDHUD: NSObject {
     /// 默认在window显示view
     class func showView(){
         
-        dispatch_async(dispatch_get_main_queue()) { 
+        DispatchQueue.main.async { 
             
-            guard let appDelegate = UIApplication.sharedApplication().delegate as? AppDelegate else{
+            guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else{
                 return
             }
             showInView(appDelegate.window)
@@ -110,9 +110,9 @@ final class WDHUD: NSObject {
     /// 默认在window影藏view
     class func hideView(){
         
-        dispatch_async(dispatch_get_main_queue()) {
+        DispatchQueue.main.async {
             
-            guard let appDelegate = UIApplication.sharedApplication().delegate as? AppDelegate else{
+            guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else{
                 return
             }
             hideInView(appDelegate.window)
@@ -122,7 +122,7 @@ final class WDHUD: NSObject {
     }
     
     /// 在特定的窗口显影藏HUD
-    class func hideInView(view:UIView?){
+    class func hideInView(_ view:UIView?){
         guard let view = view else{
             return
         }
@@ -132,12 +132,12 @@ final class WDHUD: NSObject {
             return
         }
         containerView.isShowing = false
-        containerView.hidden = true
+        containerView.isHidden = true
         containerView.removeFromSuperview()
     }
     
     /// 在特定的窗口显示HUD
-    class func showInView(view:UIView?)
+    class func showInView(_ view:UIView?)
     {
         guard let view = view else{
             return
@@ -151,10 +151,10 @@ final class WDHUD: NSObject {
         print("添加")
         
         // 此处可能存在多个containerView，一个collectionView无法满足要求
-        dispatch_async(dispatch_get_main_queue()) {
+        DispatchQueue.main.async {
     
             view.addSubview(containerView)
-            containerView.hidden = false
+            containerView.isHidden = false
             containerView.frame = view.bounds
             print(view.bounds)
             containerView.isShowing = true
@@ -163,7 +163,7 @@ final class WDHUD: NSObject {
             let pointStr = self.shareInstance.getViewPointerString(view)
             
             if let viewSetting = self.shareInstance.settingViewDict[pointStr]{
-                viewSetting(containerView: containerView)
+                viewSetting(containerView)
             
             }
             print(view.backgroundColor)
@@ -180,15 +180,15 @@ import SnapKit
 extension WDHUD {
     class func showLoading(inView view:UIView)
     {
-        dispatch_async(dispatch_get_main_queue()) {
+        DispatchQueue.main.async {
             
             setContainerView(toView: view, parentView: { (containerView) in
                 
                 let image = UIImage(named: "loadingIcon~iphone")
         
                 let view = UIView()
-                view.backgroundColor = UIColor.blackColor().colorWithAlphaComponent(0.6)
-                var frame = CGRect(origin: CGPointZero, size: image!.size)
+                view.backgroundColor = UIColor.black.withAlphaComponent(0.6)
+                var frame = CGRect(origin: CGPoint.zero, size: image!.size)
                 let fit = 20.CGFloatValue()
                 frame.size.height += fit
                 view.frame = frame
@@ -197,22 +197,22 @@ extension WDHUD {
                 
                 containerView.addSubview(view)
                 view.center = containerView.center
-                containerView.userInteractionEnabled = false
-                containerView.backgroundColor = UIColor.clearColor()
+                containerView.isUserInteractionEnabled = false
+                containerView.backgroundColor = UIColor.clear
                 
                 let imageView = UIImageView(image: image)
-                imageView.frame = CGRect(origin: CGPointZero, size: image!.size)
+                imageView.frame = CGRect(origin: CGPoint.zero, size: image!.size)
                 imageView.startRotation()
                 view.addSubview(imageView)
                 
                 
                 let loadLabel = UILabel()
-                loadLabel.textAlignment = .Center
-                loadLabel.font = UIFont.systemFontOfSize(12)
-                loadLabel.textColor = UIColor.whiteColor()
+                loadLabel.textAlignment = .center
+                loadLabel.font = UIFont.systemFont(ofSize: 12)
+                loadLabel.textColor = UIColor.white
                 loadLabel.text = "加载中..."
                 let labelX = 0.CGFloatValue()
-                let labelY = CGRectGetMaxY(imageView.frame)
+                let labelY = imageView.frame.maxY
                 let labelH = view.frame.size.height - imageView.frame.size.height
                 let labelW = imageView.frame.size.width
                 

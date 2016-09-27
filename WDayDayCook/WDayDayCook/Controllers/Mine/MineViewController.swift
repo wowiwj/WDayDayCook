@@ -17,39 +17,39 @@ class MineViewController: UIViewController {
 
         }
     }
-    private lazy var customNavigationItem: UINavigationItem = UINavigationItem(title: "")
+    fileprivate lazy var customNavigationItem: UINavigationItem = UINavigationItem(title: "")
     
-    private lazy var customNavgationBar:UINavigationBar = {
+    fileprivate lazy var customNavgationBar:UINavigationBar = {
         
-        let bar = UINavigationBar(frame: CGRectMake(0, 0, CGRectGetWidth(self.view.bounds), 64))
+        let bar = UINavigationBar(frame: CGRect(x: 0, y: 0, width: self.view.bounds.width, height: 64))
         bar.setItems([self.customNavigationItem], animated: false)
         
-        bar.backgroundColor = UIColor.clearColor()
-        bar.translucent = true
+        bar.backgroundColor = UIColor.clear
+        bar.isTranslucent = true
         bar.shadowImage = UIImage()
-        bar.barStyle = UIBarStyle.BlackTranslucent
-        bar.setBackgroundImage(UIImage(), forBarMetrics: UIBarMetrics.Default)
+        bar.barStyle = UIBarStyle.blackTranslucent
+        bar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
         return bar
         
     }()
     
     // 显示标题 我的收藏 与 足迹的View
-    private lazy var titleView:IndicatorTitleView = {
+    fileprivate lazy var titleView:IndicatorTitleView = {
     
         let view = IndicatorTitleView()
         self.view.addSubview(view)
         view.titles = ["我的收藏","我的足迹"]
-        view.setTitlesColor(UIColor.WD_MineTitleDefaultColor(), forState: UIControlState.Normal)
-        view.setTitlesColor(UIColor.orangeColor(), forState: UIControlState.Selected)
-        view.titleLabelsFont = UIFont.systemFontOfSize(15.autoAdjust())
+        view.setTitlesColor(UIColor.WD_MineTitleDefaultColor(), forState: UIControlState())
+        view.setTitlesColor(UIColor.orange, forState: UIControlState.selected)
+        view.titleLabelsFont = UIFont.systemFont(ofSize: 15.autoAdjust())
         return view
     }()
     
     // 显示详细内容的View
-    private lazy var contentView:UIView = {
+    fileprivate lazy var contentView:UIView = {
         
         let view = UIView()
-        view.backgroundColor = UIColor.yellowColor()
+        view.backgroundColor = UIColor.yellow
         
         self.view.addSubview(view)
         
@@ -74,9 +74,9 @@ class MineViewController: UIViewController {
     {
         view.addSubview(customNavgationBar)
         let setButton = UIButton()
-        setButton.setImage(UIImage(named: "iPhone_personal_set_btn~iphone"), forState: .Normal)
+        setButton.setImage(UIImage(named: "iPhone_personal_set_btn~iphone"), for: UIControlState())
         setButton.sizeToFit()
-        setButton.addTarget(self, action: #selector(MineViewController.setBarButtonClicked), forControlEvents: .TouchUpInside)
+        setButton.addTarget(self, action: #selector(MineViewController.setBarButtonClicked), for: .touchUpInside)
         let setItem = UIBarButtonItem(customView: setButton)
         customNavigationItem.rightBarButtonItem = setItem
         
@@ -114,13 +114,33 @@ class MineViewController: UIViewController {
 
     }
     
-    override func preferredStatusBarStyle() -> UIStatusBarStyle {
-        return .LightContent
+    override var preferredStatusBarStyle : UIStatusBarStyle {
+        return .lightContent
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+//        self.setNeedsStatusBarAppearanceUpdate()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        self.navigationController?.setNavigationBarHidden(true, animated: true)
+        self.setNeedsStatusBarAppearanceUpdate()
+        
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        
+        self.navigationController?.setNavigationBarHidden(false, animated: true)
+        self.setNeedsStatusBarAppearanceUpdate()
     }
     
 
@@ -135,18 +155,24 @@ class MineViewController: UIViewController {
     */
     
     // MARK: - 消息的监听
-    @objc private func setBarButtonClicked()
+    @objc fileprivate func setBarButtonClicked()
     {
    
-        let selectedVc = childViewControllers[self.titleView.selectedIndex]
+//        let selectedVc = childViewControllers[self.titleView.selectedIndex]
+//        
+//        if self.titleView.selectedIndex == 0 {
+//            (selectedVc as! MineCollectionontroller).showHUB()
+//        }
+//        
+//        if self.titleView.selectedIndex == 1 {
+//            (selectedVc as! MineFootPrintsViewController).showHUB()
+//        }
         
-        if self.titleView.selectedIndex == 0 {
-            (selectedVc as! MineCollectionontroller).showHUB()
-        }
+        let settingVc = SettngViewController()
         
-        if self.titleView.selectedIndex == 1 {
-            (selectedVc as! MineFootPrintsViewController).showHUB()
-        }
+        settingVc.hidesBottomBarWhenPushed = true
+        
+        self.navigationController?.pushViewController(settingVc, animated: true)
       
         
         
@@ -154,7 +180,7 @@ class MineViewController: UIViewController {
     }
 
 
-    @IBAction func loginButtonClicked(sender: UIButton) {
+    @IBAction func loginButtonClicked(_ sender: UIButton) {
      
         
         let selectedVc = childViewControllers[self.titleView.selectedIndex]

@@ -23,7 +23,7 @@ class BaseTitleViewCell: UITableViewCell {
     override func layoutSubviews() {
         super.layoutSubviews()
         
-        titleView.snp_makeConstraints(closure: { (make) in
+        titleView.snp_makeConstraints({ (make) in
             make.top.equalTo(self)
             make.width.equalTo(self)
             make.height.equalTo(WDConfig.baseTitleHeight.autoAdjust())
@@ -39,7 +39,7 @@ class BaseTitleViewCell: UITableViewCell {
         // Initialization code
     }
 
-    override func setSelected(selected: Bool, animated: Bool) {
+    override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state

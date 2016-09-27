@@ -25,7 +25,7 @@ class scrollImage: UIImage
 
 class CycleScrollView: UIView {
     
-    var imagesURL = []{
+    var imagesURL = [String](){
         didSet{
             
             print(imagesURL)
@@ -33,7 +33,7 @@ class CycleScrollView: UIView {
         }
     
     }
-    let images = []
+    //let images = []
     
     var placeholder:UIImage?{
         didSet{
@@ -44,7 +44,7 @@ class CycleScrollView: UIView {
     
     
     // 自己的属性
-    private var scrollView:UIScrollView?
+    fileprivate var scrollView:UIScrollView?
     
     
 
@@ -52,7 +52,7 @@ class CycleScrollView: UIView {
     
     convenience init(placeholder: UIImage,imagesURL:[String]) {
         let size = placeholder.size
-        self.init(frame: CGRect(origin: CGPointZero, size: size))
+        self.init(frame: CGRect(origin: CGPoint.zero, size: size))
         self.imagesURL = imagesURL
         
         
@@ -68,12 +68,12 @@ class CycleScrollView: UIView {
         makeUI()
     }
     
-    private func makeUI()
+    fileprivate func makeUI()
     {
         
         scrollView = UIScrollView()
         addSubview(scrollView!)
-        scrollView?.pagingEnabled = true
+        scrollView?.isPagingEnabled = true
         
         scrollView?.delegate = self
         
@@ -88,7 +88,7 @@ class CycleScrollView: UIView {
         super.layoutSubviews()
         
         scrollView?.frame = self.bounds
-        scrollView?.backgroundColor = UIColor.yellowColor()
+        scrollView?.backgroundColor = UIColor.yellow
         
         scrollView?.contentSize = CGSize(width: self.bounds.width * 3, height: self.bounds.height)
         
@@ -113,11 +113,11 @@ class CycleScrollView: UIView {
 
 extension CycleScrollView: UIScrollViewDelegate
 {
-    func scrollViewDidScroll(scrollView: UIScrollView) {
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
         print("----")
     }
     
-    func scrollViewDidEndDecelerating(scrollView: UIScrollView) {
+    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
         print("@@@@@")
         
         let index = scrollView.contentOffset.x / scrollView.frame.size.width

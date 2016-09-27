@@ -10,19 +10,19 @@ import UIKit
 
 class TitleView: UIView {
 
-    private lazy var button: UIButton = {
+    fileprivate lazy var button: UIButton = {
         let button = UIButton()
-        button.setTitleColor(UIColor.blackColor(), forState: .Normal)
+        button.setTitleColor(UIColor.black, for: UIControlState())
         button.imageEdgeInsets = UIEdgeInsets(top: 0, left: -10, bottom: 0, right: 0)
         button.titleEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: -10)
-        button.titleLabel?.font = UIFont.boldSystemFontOfSize(17)
-        button.backgroundColor = UIColor.clearColor()
+        button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 17)
+        button.backgroundColor = UIColor.clear
         return button
     }()
     
     var title: String?{
         didSet{
-            button.setTitle(title, forState: .Normal)
+            button.setTitle(title, for: UIControlState())
             button.sizeToFit()
         }
     }
@@ -31,7 +31,7 @@ class TitleView: UIView {
         didSet{
             if let _ = image
             {
-                button.setImage(image, forState: .Normal)
+                button.setImage(image, for: UIControlState())
                 button.sizeToFit()
             }
         
@@ -41,13 +41,13 @@ class TitleView: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         addSubview(button)
-        self.backgroundColor = UIColor.clearColor()
+        self.backgroundColor = UIColor.clear
     }
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         addSubview(button)
-        self.backgroundColor = UIColor.clearColor()
+        self.backgroundColor = UIColor.clear
     }
     
 

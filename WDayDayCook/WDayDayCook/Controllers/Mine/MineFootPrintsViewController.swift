@@ -15,13 +15,13 @@ class MineFootPrintsViewController: UICollectionViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        collectionView?.backgroundColor = UIColor.yellowColor()
+        collectionView?.backgroundColor = UIColor.yellow
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
         // Register cell classes
-        self.collectionView!.registerClass(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
+        self.collectionView!.register(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
         
         WDHUD.setContainerView(toView: self.collectionView!, parentView: {(containerView) in
             
@@ -30,9 +30,12 @@ class MineFootPrintsViewController: UICollectionViewController {
             
             messageView.frame = containerView.bounds
             messageView.descriptionLabel.text = "四处逛逛，开启美味之旅吧"
-            messageView.infoButton.setTitle("去逛逛", forState: UIControlState.Normal)
+            messageView.infoButton.setTitle("去逛逛", for: UIControlState())
+            messageView.infoButton.addTarget(self, action: #selector(MineFootPrintsViewController.messageInfoButtonClicked), for: UIControlEvents.touchUpInside)
             
         })
+        
+        showHUB()
 
         // Do any additional setup after loading the view.
     }
@@ -47,6 +50,7 @@ class MineFootPrintsViewController: UICollectionViewController {
     func hideHUB()
     {
         WDHUD.hideInView(self.collectionView)
+        
         
         
     }
@@ -68,19 +72,19 @@ class MineFootPrintsViewController: UICollectionViewController {
 
     // MARK: UICollectionViewDataSource
 
-    override func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
+    override func numberOfSections(in collectionView: UICollectionView) -> Int {
         // #warning Incomplete implementation, return the number of sections
         return 0
     }
 
 
-    override func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of items
         return 0
     }
 
-    override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCellWithReuseIdentifier(reuseIdentifier, forIndexPath: indexPath)
+    override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath)
     
         // Configure the cell
     
@@ -117,5 +121,12 @@ class MineFootPrintsViewController: UICollectionViewController {
     
     }
     */
+    
+    // MARK: - 消息的监听
+    @objc fileprivate func messageInfoButtonClicked()
+    {
+        self.tabBarController?.selectedIndex = 0
+        
+    }
 
 }

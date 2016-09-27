@@ -34,7 +34,7 @@ enum CellStyle:Int {
 }
 
 protocol MyCollectionCellDelegete {
-    func didSeclectItem(item:Object)
+    func didSeclectItem(_ item:Object)
 }
 
 
@@ -75,15 +75,15 @@ class MyCollectionCell: BaseTitleViewCell {
     lazy var flowLayout:UICollectionViewFlowLayout = {
     
         let flowLayout = UICollectionViewFlowLayout()
-        flowLayout.scrollDirection = .Horizontal
+        flowLayout.scrollDirection = .horizontal
         return flowLayout
     }()
  
     lazy var collectionView: UICollectionView = {
-        let collectionView = UICollectionView(frame: CGRectZero, collectionViewLayout: self.flowLayout)
+        let collectionView = UICollectionView(frame: CGRect.zero, collectionViewLayout: self.flowLayout)
         collectionView.dataSource = self
         collectionView.delegate = self
-        collectionView.backgroundColor = UIColor.whiteColor()
+        collectionView.backgroundColor = UIColor.white
         return collectionView
 
     }()
@@ -105,7 +105,7 @@ class MyCollectionCell: BaseTitleViewCell {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         contentView.addSubview(collectionView)
         
-        collectionView.registerNib(UINib(nibName: ArticleCellID, bundle: nil), forCellWithReuseIdentifier: ArticleCellID)
+        collectionView.register(UINib(nibName: ArticleCellID, bundle: nil), forCellWithReuseIdentifier: ArticleCellID)
         
         
         collectionView.snp_makeConstraints { (make) in
@@ -121,7 +121,7 @@ class MyCollectionCell: BaseTitleViewCell {
         fatalError("init(coder:) has not been implemented")
     }
 
-    override func setSelected(selected: Bool, animated: Bool) {
+    override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state
@@ -132,7 +132,7 @@ class MyCollectionCell: BaseTitleViewCell {
 extension MyCollectionCell: UICollectionViewDataSource,UICollectionViewDelegate
 {
     
-    func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
         guard let cellStyle = cellStyle else
         {
@@ -151,15 +151,15 @@ extension MyCollectionCell: UICollectionViewDataSource,UICollectionViewDelegate
     }
     
     
-    func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
  
-        let cell = collectionView.dequeueReusableCellWithReuseIdentifier(ArticleCellID, forIndexPath: indexPath)
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ArticleCellID, for: indexPath)
         return cell
      
 
     }
     
-    func collectionView(collectionView: UICollectionView, willDisplayCell cell: UICollectionViewCell, forItemAtIndexPath indexPath: NSIndexPath) {
+    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
         guard let cellStyle = cellStyle else
         {
             return
@@ -168,25 +168,25 @@ extension MyCollectionCell: UICollectionViewDataSource,UICollectionViewDelegate
         switch cellStyle {
         case .newFood:
             let articleCell = cell as! ArticleCell
-            articleCell.newFood = newFoodItems![indexPath.item]
+            articleCell.newFood = newFoodItems![(indexPath as NSIndexPath).item]
         case .recipeList:
             let articleCell = cell as! ArticleCell
-            articleCell.recipe = recipeList![indexPath.item]
+            articleCell.recipe = recipeList![(indexPath as NSIndexPath).item]
         default:
             break
             
         }
     }
     
-    func collectionView(collectionView: UICollectionView, didEndDisplayingCell cell: UICollectionViewCell, forItemAtIndexPath indexPath: NSIndexPath) {
+    func collectionView(_ collectionView: UICollectionView, didEndDisplaying cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
         
         
     }
     
     
-    func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
-        print(indexPath.item)
+        print((indexPath as NSIndexPath).item)
         
         guard let delegate = delegate else
         {
@@ -198,14 +198,14 @@ extension MyCollectionCell: UICollectionViewDataSource,UICollectionViewDelegate
         
         if let recipeList = recipeList
         {
-            delegate.didSeclectItem(recipeList[indexPath.row])
+            delegate.didSeclectItem(recipeList[(indexPath as NSIndexPath).row])
             print()
             return
         
         }
         
         if let newFoodItems = newFoodItems {
-            delegate.didSeclectItem(newFoodItems[indexPath.row])
+            delegate.didSeclectItem(newFoodItems[(indexPath as NSIndexPath).row])
 //            print(newFoodItems[indexPath.row])
             return
         }

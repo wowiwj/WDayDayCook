@@ -10,6 +10,8 @@ import UIKit
 import Alamofire
 import SwiftyJSON
 import RealmSwift
+
+
 import SDCycleScrollView
 
 let cellIdentifier = "MyCollectionCell"
@@ -23,17 +25,17 @@ final class ChooseViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!{
         didSet{
             
-            tableView.backgroundColor = UIColor.whiteColor()
-            tableView.registerClass(MyCollectionCell.self, forCellReuseIdentifier: cellIdentifier)
-            tableView.registerClass(ThemeListTableViewCell.self, forCellReuseIdentifier: ThemeListTableViewCellID)
-            tableView.registerClass(RecipeDiscussListTableViewCell.self, forCellReuseIdentifier: RecipeDiscussListTableViewCellID)
-            tableView.separatorStyle = .None
+            tableView.backgroundColor = UIColor.white
+            tableView.register(MyCollectionCell.self, forCellReuseIdentifier: cellIdentifier)
+            tableView.register(ThemeListTableViewCell.self, forCellReuseIdentifier: ThemeListTableViewCellID)
+            tableView.register(RecipeDiscussListTableViewCell.self, forCellReuseIdentifier: RecipeDiscussListTableViewCellID)
+            tableView.separatorStyle = .none
             tableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 20, right: 0)
             tableView.estimatedRowHeight = 250
             
         }
     }
-    private lazy var titleView :UIImageView = {
+    fileprivate lazy var titleView :UIImageView = {
         let titleView = UIImageView()
         titleView.image = UIImage(named: "navi_logo~iphone")
         titleView.sizeToFit()
@@ -42,30 +44,30 @@ final class ChooseViewController: UIViewController {
         
     }()
     
-    private var realm: Realm!
+    fileprivate var realm: Realm!
     
     
     // 广告数据
-    private lazy var adData: Results<MainADItem> = {
+    fileprivate lazy var adData: Results<MainADItem> = {
         return getADItemInRealm(self.realm)
     }()
     
     // 每日新品数据
-    private var newFoodItems: Results<NewFood>?{
+    fileprivate var newFoodItems: Results<NewFood>?{
         didSet{
-            tableView.reloadRowsAtIndexPaths([NSIndexPath(forRow: 0, inSection: 0)], withRowAnimation: UITableViewRowAnimation.Automatic)
+            tableView.reloadRows(at: [IndexPath(row: 0, section: 0)], with: UITableViewRowAnimation.automatic)
         
         }
     }
     
     /// 主题推荐
-    private var themeList: Results<FoodRecmmand>?
+    fileprivate var themeList: Results<FoodRecmmand>?
     
     /// 热门推荐
-    private var recipeList: Results<FoodRecmmand>?
+    fileprivate var recipeList: Results<FoodRecmmand>?
     
     /// 话题推荐
-    private var recipeDiscussList: Results<FoodRecmmand>?
+    fileprivate var recipeDiscussList: Results<FoodRecmmand>?
     
     // tabble头部
     var cycleView: SDCycleScrollView?
@@ -74,36 +76,36 @@ final class ChooseViewController: UIViewController {
         super.viewDidLoad()
         navigationItem.titleView = titleView
         
-        let searchButton = UIBarButtonItem(image: UIImage(named: "icon-search~iphone"), style: .Plain, target: self, action: #selector(searchButtonClicked(_:)))
+        let searchButton = UIBarButtonItem(image: UIImage(named: "icon-search~iphone"), style: .plain, target: self, action: #selector(searchButtonClicked(_:)))
         navigationItem.rightBarButtonItem = searchButton
         
         realm = try! Realm()
         
         let placeholderImage = UIImage(named: "default_1~iphone")!
         
-        let images = realm.objects(MainADItem).map { item -> String in
+        let images = realm.objects(MainADItem.self).map { item -> String in
             return item.path
         }
         
-        cycleView = SDCycleScrollView(frame: CGRect(origin: CGPointZero, size: placeholderImage.size), delegate: self, placeholderImage: placeholderImage)
+        cycleView = SDCycleScrollView(frame: CGRect(origin: CGPoint.zero, size: placeholderImage.size), delegate: self, placeholderImage: placeholderImage)
         
-        cycleView!.imageURLStringsGroup = images
+        //cycleView!.imageURLStringsGroup = images
         
         tableView.tableHeaderView = cycleView
         
         tableView.addHeaderWithCallback {
             
-            let group = dispatch_group_create()
+            let group = DispatchGroup()
             
-            let queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)
-            dispatch_group_async(group, queue) {
+            let queue = DispatchQueue.global(priority: DispatchQueue.GlobalQueuePriority.default)
+            queue.async(group: group) {
                 self.loadADData()
             }
-            dispatch_group_async(group, queue) {
+            queue.async(group: group) {
                 self.loadNewFoodEachDay(0, pageSize: 10)
             }
             
-            dispatch_group_notify(group, queue) {
+            group.notify(queue: queue) {
                 self.loadRecommandInfo()
                 
             }
@@ -125,7 +127,7 @@ final class ChooseViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
 //        self.navigationController?.navigationBar.hidden = false
     }
@@ -133,7 +135,7 @@ final class ChooseViewController: UIViewController {
     // MARK: - LoadData
     /// 加载上方滚动广告
     func loadADData(){
-        Alamofire.request(Router.ChooseViewAdList(parameters: nil)).responseJSON { [unowned self] responses in
+        Alamofire.request(Router.chooseViewAdList(parameters: nil)).responseJSON { [unowned self] responses in
 
             if responses.result.isFailure
             {
@@ -149,16 +151,16 @@ final class ChooseViewController: UIViewController {
             addNewMainADItemInRealm(result["data"])
             // 加载成功，使用新数据
             self.adData = getADItemInRealm(self.realm)
-            self.cycleView?.imageURLStringsGroup = self.realm.objects(MainADItem).map { item -> String in
+            self.cycleView?.imageURLStringsGroup = self.realm.objects(MainADItem.self).map { item -> String in
                 return item.path
             }
             
         }
     }
     // 加载每日新品
-    func loadNewFoodEachDay(currentPage:Int,pageSize:Int)
+    func loadNewFoodEachDay(_ currentPage:Int,pageSize:Int)
     {
-        Alamofire.request(Router.NewFoodEachDay(currentpage: currentPage, pageSize: pageSize)).responseJSON { [unowned self] response in
+        Alamofire.request(Router.newFoodEachDay(currentpage: currentPage, pageSize: pageSize)).responseJSON { [unowned self] response in
             
             
             if response.result.isFailure
@@ -172,7 +174,7 @@ final class ChooseViewController: UIViewController {
             let value = response.result.value
             let result = JSON(value!)
             
-            deleteAllObject(NewFood)
+            deleteAllObject(NewFood.self)
             addNewFoodItemInRealm(result["data"])
             
             self.newFoodItems = getNewFoodItemInRealm(self.realm)
@@ -183,7 +185,7 @@ final class ChooseViewController: UIViewController {
     /// 加载推荐信息数据
     func loadRecommandInfo()
     {
-        Alamofire.request(Router.RecommendInfo(parameters: nil)).responseJSON {[unowned self] response in
+        Alamofire.request(Router.recommendInfo(parameters: nil)).responseJSON {[unowned self] response in
             
             
             self.tableView.headerEndRefreshing()
@@ -214,7 +216,7 @@ final class ChooseViewController: UIViewController {
             func updateFoodRecmmand()
             {
                 // 删除之前存的旧数据
-                deleteAllObject(FoodRecmmand)
+                deleteAllObject(FoodRecmmand.self)
                 // 添加新数据到数据库
                 addFoodRecmmandItemInRealm(result["themeList"])
                 addFoodRecmmandItemInRealm(result["recipeList"])
@@ -227,14 +229,14 @@ final class ChooseViewController: UIViewController {
     }
     
     // MARK: - 控制器跳转
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         guard let identifier = segue.identifier else{
             return
         }
         
         if identifier == "showDetail" {
-            let vc = segue.destinationViewController as! ShowDetailViewController
+            let vc = segue.destination as! ShowDetailViewController
             let item = sender as! Int
             
             vc.id = item
@@ -244,7 +246,7 @@ final class ChooseViewController: UIViewController {
     }
     
     // MARK: - 动作监听
-    @objc private func searchButtonClicked(button:UIButton)
+    @objc fileprivate func searchButtonClicked(_ button:UIButton)
     {
         
         
@@ -257,7 +259,7 @@ final class ChooseViewController: UIViewController {
 
 extension ChooseViewController:UITableViewDelegate,UITableViewDataSource
 {
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
         if recipeDiscussList == nil {
             return 3
@@ -266,30 +268,30 @@ extension ChooseViewController:UITableViewDelegate,UITableViewDataSource
         return recipeDiscussList!.count > 0 ? 4 : 3
     }
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        switch indexPath.row {
+        switch (indexPath as NSIndexPath).row {
         case CellStyle.themeList.rawValue:
             let cell =
-                tableView.dequeueReusableCellWithIdentifier(ThemeListTableViewCellID)! as! ThemeListTableViewCell
+                tableView.dequeueReusableCell(withIdentifier: ThemeListTableViewCellID)! as! ThemeListTableViewCell
             cell.delegate = self
             return cell
         case CellStyle.recipeDiscussList.rawValue:
             let cell =
-                tableView.dequeueReusableCellWithIdentifier(RecipeDiscussListTableViewCellID)!
+                tableView.dequeueReusableCell(withIdentifier: RecipeDiscussListTableViewCellID)!
             return cell
         default:
             let cell =
-                tableView.dequeueReusableCellWithIdentifier(cellIdentifier)! as! MyCollectionCell
+                tableView.dequeueReusableCell(withIdentifier: cellIdentifier)! as! MyCollectionCell
             cell.delegate = self
             return cell
         }
         
     }
     
-    func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         
-        switch indexPath.row {
+        switch (indexPath as NSIndexPath).row {
         case CellStyle.newFood.rawValue:
             let newFoodcell = cell as! MyCollectionCell
             newFoodcell.newFoodItems = newFoodItems
@@ -306,14 +308,14 @@ extension ChooseViewController:UITableViewDelegate,UITableViewDataSource
         
     }
     
-    func tableView(tableView: UITableView, didEndDisplayingCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
+    func tableView(_ tableView: UITableView, didEndDisplaying cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         //        let cell = cell as! MyCollectionCell
         //        cell.collectionView.frame = CGRectZero
     }
     
-    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         
-        switch indexPath.row {
+        switch (indexPath as NSIndexPath).row {
         case CellStyle.themeList.rawValue:
             return CGFloat(themeList?.count ?? 0).autoAdjust() * WDConfig.themeListHeight + 30
         case CellStyle.recipeDiscussList.rawValue:
@@ -330,9 +332,9 @@ extension ChooseViewController:UITableViewDelegate,UITableViewDataSource
 extension ChooseViewController : SDCycleScrollViewDelegate
 {
     
-    func cycleScrollView(cycleScrollView: SDCycleScrollView!, didSelectItemAtIndex index: Int) {
+    func cycleScrollView(_ cycleScrollView: SDCycleScrollView!, didSelectItemAt index: Int) {
         let item = adData[index]
-        performSegueWithIdentifier("showDetail", sender: Int(item.url))
+        performSegue(withIdentifier: "showDetail", sender: Int(item.url))
         
 
     }
@@ -342,16 +344,16 @@ extension ChooseViewController : SDCycleScrollViewDelegate
 extension ChooseViewController :MyCollectionCellDelegete,ThemeListTableViewCellDelagate
 {
     
-    func didSeclectItem(item: Object) {
+    func didSeclectItem(_ item: Object) {
         if item is NewFood
         {
-            performSegueWithIdentifier("showDetail", sender: (item as! NewFood).id)
+            performSegue(withIdentifier: "showDetail", sender: (item as! NewFood).id)
 
         }
         
         if item is FoodRecmmand{
     
-            performSegueWithIdentifier("showDetail", sender: (item as! FoodRecmmand).recipe_id)
+            performSegue(withIdentifier: "showDetail", sender: (item as! FoodRecmmand).recipe_id)
         }
         
         if item is FoodRecmmand {

@@ -21,8 +21,11 @@ class RecipeDiscussCell: UICollectionViewCell {
             guard let _ = recipeDiscuss else {
                 return
             }
+            let url = URL(string: recipeDiscuss!.image_url)
             
-            imageView.kf_setImageWithURL(NSURL(string: recipeDiscuss!.image_url))
+            imageView.kf.setImage(with: url)
+            
+            //imageView.kf.setImageWithURL(URL(string: recipeDiscuss!.image_url))
             title.text = recipeDiscuss?.foodDescription
         }
     }
@@ -31,7 +34,7 @@ class RecipeDiscussCell: UICollectionViewCell {
         didSet{
             if let themeRecipe = themeRecipe
             {
-                imageView.kf_setImageWithURL(NSURL(string: themeRecipe.image_url!))
+                imageView.kf.setImage(with: URL(string: themeRecipe.image_url!))
                 title.text = themeRecipe.title
                 
             }

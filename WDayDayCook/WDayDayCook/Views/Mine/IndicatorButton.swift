@@ -12,12 +12,12 @@ import SnapKit
 class IndicatorButton: UIButton {
     
     
-    override var selected:Bool{
+    override var isSelected:Bool{
         
         didSet{
-            let normalColor = titleColorForState(UIControlState.Normal)?.colorWithAlphaComponent(0.5)
-            let selectedColor = titleColorForState(UIControlState.Selected)
-            indicatorView.backgroundColor = selected ? selectedColor : normalColor
+            let normalColor = titleColor(for: UIControlState())?.withAlphaComponent(0.5)
+            let selectedColor = titleColor(for: UIControlState.selected)
+            indicatorView.backgroundColor = isSelected ? selectedColor : normalColor
         
         }
 
@@ -28,7 +28,7 @@ class IndicatorButton: UIButton {
     lazy var indicatorView:UIView = {
         let view = UIView()
         self.addSubview(view)
-        let normalColor = self.titleColorForState(UIControlState.Normal)?.colorWithAlphaComponent(0.5)
+        let normalColor = self.titleColor(for: UIControlState())?.withAlphaComponent(0.5)
         view.backgroundColor = normalColor
         return view
     }()

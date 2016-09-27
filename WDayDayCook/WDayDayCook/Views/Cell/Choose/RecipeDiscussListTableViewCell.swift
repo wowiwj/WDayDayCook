@@ -35,15 +35,15 @@ class RecipeDiscussListTableViewCell: BaseTitleViewCell {
     lazy var recipeDiscussLayout:UICollectionViewFlowLayout = {
         
         let flowLayout = UICollectionViewFlowLayout()
-        flowLayout.scrollDirection = .Horizontal
+        flowLayout.scrollDirection = .horizontal
         return flowLayout
     }()
     
     lazy var collectionView: UICollectionView = {
-        let collectionView = UICollectionView(frame: CGRectZero, collectionViewLayout: self.recipeDiscussLayout)
+        let collectionView = UICollectionView(frame: CGRect.zero, collectionViewLayout: self.recipeDiscussLayout)
         collectionView.dataSource = self
         collectionView.delegate = self
-        collectionView.backgroundColor = UIColor.whiteColor()
+        collectionView.backgroundColor = UIColor.white
         return collectionView
         
     }()
@@ -52,7 +52,7 @@ class RecipeDiscussListTableViewCell: BaseTitleViewCell {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         contentView.addSubview(collectionView)
         
-        collectionView.registerNib(UINib(nibName: RecipeDiscussCellID, bundle: nil), forCellWithReuseIdentifier: RecipeDiscussCellID)
+        collectionView.register(UINib(nibName: RecipeDiscussCellID, bundle: nil), forCellWithReuseIdentifier: RecipeDiscussCellID)
 
         collectionView.snp_makeConstraints { (make) in
             make.top.equalTo(titleView.snp_bottom)
@@ -82,7 +82,7 @@ class RecipeDiscussListTableViewCell: BaseTitleViewCell {
         // Initialization code
     }
 
-    override func setSelected(selected: Bool, animated: Bool) {
+    override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state
@@ -93,22 +93,22 @@ class RecipeDiscussListTableViewCell: BaseTitleViewCell {
 extension RecipeDiscussListTableViewCell :UICollectionViewDelegate,UICollectionViewDataSource
 {
     
-    func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return recipeDiscussList?.count ?? 0
     }
     
     
-    func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
    
-        let cell = collectionView.dequeueReusableCellWithReuseIdentifier(RecipeDiscussCellID, forIndexPath: indexPath)
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: RecipeDiscussCellID, for: indexPath)
         return cell
         
         
     }
     
-    func collectionView(collectionView: UICollectionView, willDisplayCell cell: UICollectionViewCell, forItemAtIndexPath indexPath: NSIndexPath) {
+    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
         let articleCell = cell as! RecipeDiscussCell
-        articleCell.recipeDiscuss = recipeDiscussList![indexPath.row]
+        articleCell.recipeDiscuss = recipeDiscussList![(indexPath as NSIndexPath).row]
    
     }
 

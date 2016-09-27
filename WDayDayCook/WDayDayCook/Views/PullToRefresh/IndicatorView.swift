@@ -10,7 +10,7 @@ import UIKit
 
 class indecatorView: UIImageView {
 
-    private lazy var images:[UIImage] = {
+    fileprivate lazy var images:[UIImage] = {
     
         var array = [UIImage]()
         

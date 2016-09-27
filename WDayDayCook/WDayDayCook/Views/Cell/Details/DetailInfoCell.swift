@@ -16,7 +16,7 @@ let showAllCommentNotificationKey = "showAllCommentNotification"
     // js调用App方法时传递多个参数 并弹出对话框 注意js调用时的函数名
     // 第二个参数首字母大写 
     //showDetailVcId('linkRecipeDtl', id);
-    func showDetailVc(title: String, id: Int)
+    func showDetailVc(_ title: String, id: Int)
     
     func showAllComment()
     
@@ -28,19 +28,19 @@ let showAllCommentNotificationKey = "showAllCommentNotification"
     weak var controller: UIViewController?
     weak var jsContext: JSContext?
     
-    func showDetailVc(title: String, id: Int) {
+    func showDetailVc(_ title: String, id: Int) {
         
         print(title)
         print(id)
         
         if title == "linkRecipeDtl" {
-            NSNotificationCenter.defaultCenter().postNotificationName(showDetailVcNotificationKey, object: id)
+            NotificationCenter.default.post(name: Notification.Name(rawValue: showDetailVcNotificationKey), object: id)
         }
         
     }
     
     func showAllComment() {
-        NSNotificationCenter.defaultCenter().postNotificationName(showAllCommentNotificationKey, object: nil)
+        NotificationCenter.default.post(name: Notification.Name(rawValue: showAllCommentNotificationKey), object: nil)
         print("显示更多评论数据")
     }
 
@@ -59,10 +59,10 @@ class DetailInfoCell: UITableViewCell {
    
         didSet{
             let oldHeight = cellHeight
-            self.webView.scrollView.scrollEnabled = scrollEnabled
+            self.webView.scrollView.isScrollEnabled = scrollEnabled
             self.webView.sizeToFit()
             cellHeight = webView.scrollView.contentSize.height
-            self.webView.scrollView.scrollEnabled = false
+            self.webView.scrollView.isScrollEnabled = false
             scrollEnabled = false
             if oldHeight == cellHeight {
                 // 数据加载完，则不再加载
@@ -92,7 +92,7 @@ class DetailInfoCell: UITableViewCell {
                 return
             }
             
-            let request = NSURLRequest(URL: NSURL(string: requestUrl)!)
+            let request = URLRequest(url: URL(string: requestUrl)!)
                 
             webView.loadRequest(request)
             
@@ -102,15 +102,15 @@ class DetailInfoCell: UITableViewCell {
     @IBOutlet weak var webView: UIWebView!{
         didSet{
             webView.delegate = self
-            webView.scrollView.scrollEnabled = false
-            webView.stringByEvaluatingJavaScriptFromString(try! String(contentsOfURL: NSBundle.mainBundle().URLForResource("myJsf", withExtension: "js")!, encoding: NSUTF8StringEncoding))
+            webView.scrollView.isScrollEnabled = false
+            webView.stringByEvaluatingJavaScript(from: try! String(contentsOf: Bundle.main.url(forResource: "myJsf", withExtension: "js")!, encoding: String.Encoding.utf8))
         }
     }
     override func awakeFromNib() {
         super.awakeFromNib()
     }
 
-    override func setSelected(selected: Bool, animated: Bool) {
+    override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state
@@ -120,17 +120,17 @@ class DetailInfoCell: UITableViewCell {
 
 extension DetailInfoCell:UIWebViewDelegate
 {
-    func webViewDidStartLoad(webView: UIWebView) {
+    func webViewDidStartLoad(_ webView: UIWebView) {
         self.webView.sizeToFit()
         cellHeight = webView.scrollView.contentSize.height
     }
-    func webView(webView: UIWebView, shouldStartLoadWithRequest request: NSURLRequest, navigationType: UIWebViewNavigationType) -> Bool {
+    func webView(_ webView: UIWebView, shouldStartLoadWith request: URLRequest, navigationType: UIWebViewNavigationType) -> Bool {
 //        print(request.URL?.absoluteString)
 //        print("_________________________")
         return true
     }
     
-    func webViewDidFinishLoad(webView: UIWebView) {
+    func webViewDidFinishLoad(_ webView: UIWebView) {
         self.webView.sizeToFit()
         self.sizeToFit()
         cellHeight = webView.scrollView.contentSize.height
@@ -141,18 +141,18 @@ extension DetailInfoCell:UIWebViewDelegate
             action()
         }
         
-        print(webView.request?.URL?.absoluteString)
+        print(webView.request?.url?.absoluteString)
         
-        NSNotificationCenter.defaultCenter().postNotificationName(webViewLoadFinishedKey, object: nil)
+        NotificationCenter.default.post(name: Notification.Name(rawValue: webViewLoadFinishedKey), object: nil)
         
 
-        let context = webView.valueForKeyPath("documentView.webView.mainFrame.javaScriptContext") as! JSContext
+        let context = webView.value(forKeyPath: "documentView.webView.mainFrame.javaScriptContext") as! JSContext
         
         let model = SwiftJavaScriptModel()
-        model.controller = UIApplication.sharedApplication().keyWindow?.rootViewController
+        model.controller = UIApplication.shared.keyWindow?.rootViewController
         model.jsContext = context
         
-        context.setObject(model, forKeyedSubscript: "WebViewJavascriptBridge")
+        context.setObject(model, forKeyedSubscript: "WebViewJavascriptBridge" as (NSCopying & NSObjectProtocol)!)
         
         context.exceptionHandler = { (context, exception) in
             print("exception：", exception)
@@ -160,7 +160,7 @@ extension DetailInfoCell:UIWebViewDelegate
 
     }
     
-    func webView(webView: UIWebView, didFailLoadWithError error: NSError?) {
+    func webView(_ webView: UIWebView, didFailLoadWithError error: Error) {
         print(error)
     }
 
