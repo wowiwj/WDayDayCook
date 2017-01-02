@@ -11,7 +11,7 @@ import UIKit
 extension UIImageView {
 
     
-    func startRotation()->UIImageView
+    public func startRotation()
     {
         
         let animation = CABasicAnimation(keyPath: "transform")
@@ -21,7 +21,6 @@ extension UIImageView {
         animation.isCumulative = true
         animation.repeatCount = Float(Int.max)
         self.layer.add(animation, forKey: nil)
-        return self
     }
     
     

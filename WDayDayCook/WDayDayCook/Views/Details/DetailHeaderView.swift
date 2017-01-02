@@ -61,14 +61,14 @@ class DetailHeaderView: UIView {
     {
         addSubview(imageView)
         addSubview(videoButton)
-        imageView.snp_makeConstraints { (make) in
+        imageView.snp.makeConstraints { (make) in
             make.top.equalTo(self)
             make.trailing.equalTo(self)
             make.leading.equalTo(self)
             make.bottom.equalTo(self)
         }
         
-        videoButton.snp_makeConstraints { (make) in
+        videoButton.snp.makeConstraints { (make) in
             make.center.equalTo(self)
         }   
     }

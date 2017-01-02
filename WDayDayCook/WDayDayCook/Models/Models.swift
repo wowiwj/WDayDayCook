@@ -30,7 +30,7 @@ class MainADItem: Object
 
 func deleteAllADItem()
 {
-    deleteAllObject(MainADItem)
+    deleteAllObject(MainADItem.self)
 }
 
 func addNewMainADItemInRealm(_ json :JSON)
@@ -61,7 +61,7 @@ func addNewMainADItemInRealm(_ json :JSON)
 
 func getADItemInRealm(_ realm : Realm) -> Results<MainADItem>
 {
-    let items = realm.objects(MainADItem)
+    let items = realm.objects(MainADItem.self)
     return items
     
 }
@@ -127,7 +127,7 @@ func addNewFoodItemInRealm(_ json :JSON)
 
 func getNewFoodItemInRealm(_ realm : Realm) -> Results<NewFood>
 {
-    let items = realm.objects(NewFood)
+    let items = realm.objects(NewFood.self)
     return items
     
 }
@@ -185,7 +185,7 @@ func addFoodRecmmandItemInRealm(_ json :JSON)
 }
 func getFoodRecmmandListInRealm(_ realm : Realm) -> Results<FoodRecmmand>
 {
-    let items = realm.objects(FoodRecmmand)
+    let items = realm.objects(FoodRecmmand.self)
     return items
 }
 

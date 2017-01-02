@@ -134,12 +134,16 @@ extension DetailInfoCell:UIWebViewDelegate
         self.webView.sizeToFit()
         self.sizeToFit()
         cellHeight = webView.scrollView.contentSize.height
-        loadFinished = true
- 
         
-        if let action = loadFinishedAction {
-            action()
+ 
+        loadFinished = true
+        
+        if let action = loadFinishedAction{
+           
+            action();
+            
         }
+        
         
         print(webView.request?.url?.absoluteString)
         

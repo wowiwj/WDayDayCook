@@ -85,15 +85,15 @@ class MineViewController: UIViewController {
         topViewHeightCons.constant = topViewHeightCons.constant.autoAdjust()
     
         
-        titleView.snp_makeConstraints { (make) in
+        titleView.snp.makeConstraints { (make) in
             make.width.equalTo(self.view)
             make.height.equalTo(WDConfig.mineTitleViewheight.autoAdjust())
-            make.top.equalTo(topView.snp_bottom)
+            make.top.equalTo(topView.snp.bottom)
         }
     
         
-        contentView.snp_makeConstraints { (make) in
-            make.top.equalTo(titleView.snp_bottom)
+        contentView.snp.makeConstraints { (make) in
+            make.top.equalTo(titleView.snp.bottom)
             make.trailing.equalTo(self.view)
             make.leading.equalTo(self.view)
             make.bottom.equalTo(self.view)

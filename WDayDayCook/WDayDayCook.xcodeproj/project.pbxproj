@@ -20,9 +20,9 @@
 		992644DA1D4C3C5C0039DDEA /* DetailInfoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 992644D81D4C3C5C0039DDEA /* DetailInfoCell.xib */; };
 		99272ADE1D6709B20059FF4C /* Recipe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99272ADD1D6709B20059FF4C /* Recipe.swift */; };
 		99400D421D6B4DC600E63483 /* UITableView+EmptyDataSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99400D411D6B4DC600E63483 /* UITableView+EmptyDataSet.swift */; };
-		994556791D503B9F00DDC7A9 /* VenvyVideoSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 994556761D503B9F00DDC7A9 /* VenvyVideoSDK.framework */; };
-		9945567A1D503B9F00DDC7A9 /* VenvyVideoSDKResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 994556771D503B9F00DDC7A9 /* VenvyVideoSDKResources.bundle */; };
-		9945567B1D503B9F00DDC7A9 /* VideoPlsIVASDKResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 994556781D503B9F00DDC7A9 /* VideoPlsIVASDKResources.bundle */; };
+		995F03211DBF9B9D00311CF6 /* VenvyVideoSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 995F031E1DBF9B9D00311CF6 /* VenvyVideoSDK.framework */; };
+		995F03221DBF9B9D00311CF6 /* VenvyVideoSDKResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 995F031F1DBF9B9D00311CF6 /* VenvyVideoSDKResources.bundle */; };
+		995F03231DBF9B9D00311CF6 /* VideoPlsIVASDKResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 995F03201DBF9B9D00311CF6 /* VideoPlsIVASDKResources.bundle */; };
 		996050F81D892DFA007EAB37 /* WDHUD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 996050F71D892DFA007EAB37 /* WDHUD.swift */; };
 		996AA40E1D895C37001B7F28 /* ShowHUBMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 996AA40D1D895C37001B7F28 /* ShowHUBMessage.swift */; };
 		996F847E1D6899CC0052FB96 /* DiscoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 996F847D1D6899CC0052FB96 /* DiscoverViewController.swift */; };
@@ -118,9 +118,9 @@
 		99272ADD1D6709B20059FF4C /* Recipe.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Recipe.swift; sourceTree = "<group>"; };
 		99400D411D6B4DC600E63483 /* UITableView+EmptyDataSet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UITableView+EmptyDataSet.swift"; sourceTree = "<group>"; };
 		9945565F1D50395F00DDC7A9 /* BridgeHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BridgeHeader.h; sourceTree = "<group>"; };
-		994556761D503B9F00DDC7A9 /* VenvyVideoSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = VenvyVideoSDK.framework; sourceTree = "<group>"; };
-		994556771D503B9F00DDC7A9 /* VenvyVideoSDKResources.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = VenvyVideoSDKResources.bundle; sourceTree = "<group>"; };
-		994556781D503B9F00DDC7A9 /* VideoPlsIVASDKResources.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = VideoPlsIVASDKResources.bundle; sourceTree = "<group>"; };
+		995F031E1DBF9B9D00311CF6 /* VenvyVideoSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = VenvyVideoSDK.framework; sourceTree = "<group>"; };
+		995F031F1DBF9B9D00311CF6 /* VenvyVideoSDKResources.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = VenvyVideoSDKResources.bundle; sourceTree = "<group>"; };
+		995F03201DBF9B9D00311CF6 /* VideoPlsIVASDKResources.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = VideoPlsIVASDKResources.bundle; sourceTree = "<group>"; };
 		996050F71D892DFA007EAB37 /* WDHUD.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WDHUD.swift; sourceTree = "<group>"; };
 		996AA40D1D895C37001B7F28 /* ShowHUBMessage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShowHUBMessage.swift; sourceTree = "<group>"; };
 		996F847D1D6899CC0052FB96 /* DiscoverViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiscoverViewController.swift; sourceTree = "<group>"; };
@@ -200,7 +200,7 @@
 				9980FDCF1D9A921F006F11FB /* MediaPlayer.framework in Frameworks */,
 				9980FDCD1D9A920E006F11FB /* AVFoundation.framework in Frameworks */,
 				9980FDCB1D9A9204006F11FB /* AudioToolbox.framework in Frameworks */,
-				994556791D503B9F00DDC7A9 /* VenvyVideoSDK.framework in Frameworks */,
+				995F03211DBF9B9D00311CF6 /* VenvyVideoSDK.framework in Frameworks */,
 				99B89E5C1D501E76009231F9 /* libz.1.1.3.tbd in Frameworks */,
 				99B89E5A1D501E68009231F9 /* libsqlite3.tbd in Frameworks */,
 				B65D97C1589950090769B5F7 /* Pods_WDayDayCook.framework in Frameworks */,
@@ -289,12 +289,12 @@
 			name = ObjectMapper;
 			sourceTree = "<group>";
 		};
-		994556751D503B9F00DDC7A9 /* VenvyVideoSDK */ = {
+		995F031D1DBF9B9D00311CF6 /* VenvyVideoSDK */ = {
 			isa = PBXGroup;
 			children = (
-				994556761D503B9F00DDC7A9 /* VenvyVideoSDK.framework */,
-				994556771D503B9F00DDC7A9 /* VenvyVideoSDKResources.bundle */,
-				994556781D503B9F00DDC7A9 /* VideoPlsIVASDKResources.bundle */,
+				995F031E1DBF9B9D00311CF6 /* VenvyVideoSDK.framework */,
+				995F031F1DBF9B9D00311CF6 /* VenvyVideoSDKResources.bundle */,
+				995F03201DBF9B9D00311CF6 /* VideoPlsIVASDKResources.bundle */,
 			);
 			name = VenvyVideoSDK;
 			path = ../../../../Framework/VenvyVideoSDK;
@@ -470,7 +470,7 @@
 		99B89E511D501E55009231F9 /* Framework */ = {
 			isa = PBXGroup;
 			children = (
-				994556751D503B9F00DDC7A9 /* VenvyVideoSDK */,
+				995F031D1DBF9B9D00311CF6 /* VenvyVideoSDK */,
 			);
 			path = Framework;
 			sourceTree = "<group>";
@@ -705,7 +705,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0730;
-				LastUpgradeCheck = 0800;
+				LastUpgradeCheck = 0820;
 				ORGANIZATIONNAME = wangju;
 				TargetAttributes = {
 					99FA8ADB1D4469120029E898 = {
@@ -758,15 +758,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				999C82E51D4A709600B8EA9E /* ThemeRecommandCell.xib in Resources */,
+				995F03221DBF9B9D00311CF6 /* VenvyVideoSDKResources.bundle in Resources */,
 				999C82C11D4A6E8300B8EA9E /* ShowDetail.storyboard in Resources */,
 				99B891101D447C4100261A84 /* loadingVideo.mp4 in Resources */,
 				992644D61D4C3C3B0039DDEA /* DetailTitleViewCell.xib in Resources */,
 				992644DA1D4C3C5C0039DDEA /* DetailInfoCell.xib in Resources */,
-				9945567B1D503B9F00DDC7A9 /* VideoPlsIVASDKResources.bundle in Resources */,
 				99FA8AEA1D4469120029E898 /* LaunchScreen.storyboard in Resources */,
 				99FA8AE71D4469120029E898 /* Assets.xcassets in Resources */,
-				9945567A1D503B9F00DDC7A9 /* VenvyVideoSDKResources.bundle in Resources */,
 				99F88DDE1D6841C50036D715 /* myJsf.js in Resources */,
+				995F03231DBF9B9D00311CF6 /* VideoPlsIVASDKResources.bundle in Resources */,
 				999C82B91D4A6CCC00B8EA9E /* ArticleCell.xib in Resources */,
 				999C82E11D4A709600B8EA9E /* RecipeDiscussCell.xib in Resources */,
 				99FA8AE51D4469120029E898 /* Main.storyboard in Resources */,
@@ -988,7 +988,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -1030,7 +1030,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
@@ -1051,8 +1051,10 @@
 				INFOPLIST_FILE = WDayDayCook/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks \"$(SRCROOT)/../../Framework/VenvyVideoSDK\"";
+				LIBRARY_SEARCH_PATHS = ../../Framework/VenvyVideoSDK;
 				PRODUCT_BUNDLE_IDENTIFIER = cn.wjbest.WDayDayCook;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
 				SWIFT_OBJC_BRIDGING_HEADER = ./WDayDayCook/BridgeHeader.h;
 				SWIFT_VERSION = 3.0;
 			};
@@ -1071,8 +1073,10 @@
 				INFOPLIST_FILE = WDayDayCook/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks \"$(SRCROOT)/../../Framework/VenvyVideoSDK\"";
+				LIBRARY_SEARCH_PATHS = ../../Framework/VenvyVideoSDK;
 				PRODUCT_BUNDLE_IDENTIFIER = cn.wjbest.WDayDayCook;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
 				SWIFT_OBJC_BRIDGING_HEADER = ./WDayDayCook/BridgeHeader.h;
 				SWIFT_VERSION = 3.0;
 			};

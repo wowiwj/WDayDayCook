@@ -1,0 +1,45 @@
+PODS:
+  - Alamofire (4.0.1)
+  - AlamofireObjectMapper (4.0.0):
+    - Alamofire (~> 4.0)
+    - ObjectMapper (~> 2.0)
+  - Kingfisher (3.1.0)
+  - ObjectMapper (2.0.0)
+  - Realm (1.1.0):
+    - Realm/Headers (= 1.1.0)
+  - Realm/Headers (1.1.0)
+  - RealmSwift (1.1.0):
+    - Realm (= 1.1.0)
+  - SDCycleScrollView (1.65):
+    - SDWebImage (~> 3.7)
+  - SDWebImage (3.8.2):
+    - SDWebImage/Core (= 3.8.2)
+  - SDWebImage/Core (3.8.2)
+  - SnapKit (3.0.1)
+  - SwiftyJSON (3.1.0)
+
+DEPENDENCIES:
+  - Alamofire
+  - AlamofireObjectMapper
+  - Kingfisher
+  - ObjectMapper
+  - RealmSwift
+  - SDCycleScrollView
+  - SnapKit
+  - SwiftyJSON
+
+SPEC CHECKSUMS:
+  Alamofire: 7682d43245de14874acd142ec137b144aa1dd335
+  AlamofireObjectMapper: 9faa3ce5a240efda1b209009a2d6e1e949227abc
+  Kingfisher: 7779f22e977393e9533a89a9685beb8f679d3767
+  ObjectMapper: aed2570edabbd3c9b26c939e1cabdb6558f933e0
+  Realm: ceecf1a4540c4ce9efe196fe73fa9855bce05bd8
+  RealmSwift: 838058b2db95b12cb86bd0cf209df642c33fb60a
+  SDCycleScrollView: f72904c77698a7f93a41bcbbc2d78b073bf7326c
+  SDWebImage: 098e97e6176540799c27e804c96653ee0833d13c
+  SnapKit: f818b8326d45b4e1c777d0ab27b5c0a3624bfdeb
+  SwiftyJSON: 29b9f2a64f118c07e691667c2ba1efe536acfe0b
+
+PODFILE CHECKSUM: 1abaa5fb1b309951d5c0d060bbfe017aa8d14003
+
+COCOAPODS: 1.0.1

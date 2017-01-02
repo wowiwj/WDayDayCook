@@ -48,11 +48,11 @@ class NewFeatureController: UIViewController {
         moviePlayer.prepareToPlay()
         view.addSubview(cancerButton)
      
-        cancerButton.snp_makeConstraints { (make) in
+        cancerButton.snp.makeConstraints { (make) in
             make.bottom.equalTo(-80)
             make.centerX.equalTo(self.view)
             make.width.equalTo(self.view).multipliedBy(0.6)
-            make.height.equalTo(cancerButton.snp_width).multipliedBy(0.18)
+            make.height.equalTo(cancerButton.snp.width).multipliedBy(0.18)
         }
         
         

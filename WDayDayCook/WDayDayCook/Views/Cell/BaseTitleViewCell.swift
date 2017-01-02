@@ -23,7 +23,7 @@ class BaseTitleViewCell: UITableViewCell {
     override func layoutSubviews() {
         super.layoutSubviews()
         
-        titleView.snp_makeConstraints({ (make) in
+        titleView.snp.makeConstraints({ (make) in
             make.top.equalTo(self)
             make.width.equalTo(self)
             make.height.equalTo(WDConfig.baseTitleHeight.autoAdjust())

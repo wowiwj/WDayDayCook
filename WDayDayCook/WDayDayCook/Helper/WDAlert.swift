@@ -35,9 +35,4 @@ class WDAlert: NSObject {
         alert(title: NSLocalizedString("Sorry", comment: ""), message: message, dismissTitle: NSLocalizedString("OK", comment: ""), inViewController: viewController, withDismissAction: nil)
     }
 
-    
-    
-    
-    
-
 }

@@ -8,4 +8,3 @@
 
 #import <VenvyVideoSDK/VenvyVideoSDK.h>
 #import <VenvyVideoSDK/VVSDKPlayerViewController.h>
-#import "UIScrollView+EmptyDataSet.h"

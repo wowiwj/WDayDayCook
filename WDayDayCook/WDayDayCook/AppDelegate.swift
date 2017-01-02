@@ -16,9 +16,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
 
     fileprivate func realmConfig() -> Realm.Configuration {
-//        let directory: NSURL = NSFileManager.defaultManager().containerURLForSecurityApplicationGroupIdentifier(WDConfig.appGroupID)!
-//        let realmFileURL = directory.URLByAppendingPathComponent("db.realm")
-        
+
         let directory: URL = URL(fileURLWithPath: NSSearchPathForDirectoriesInDomains(.documentDirectory, FileManager.SearchPathDomainMask.userDomainMask, true).first!)
         let realmFileURL =  directory.appendingPathComponent("db.realm")
         
@@ -102,15 +100,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Nav bar
         let navBar = UINavigationBar.appearance()
         
-        //   navBar.backgroundColor = UIColor.whiteColor()
         navBar.tintColor = UIColor.darkGray
         // 导航条默认设置为不透明
         navBar.isTranslucent = false
-        
-        // navBg~iphone navi_bar_bg~iphone navBg2~iphone
+   
         navBar.setBackgroundImage(UIImage(named: "navi_bar_bg~iphone"), for: .default)
-        // 取消navbar 下面的细线
-//        navBar.shadowImage = UIImage()
     
     }
 

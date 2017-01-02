@@ -121,7 +121,7 @@ class IndicatorTitleView: UIView {
         var oldItem :UIButton?
         
         for item in buttons {
-            item.snp_makeConstraints({ (make) in
+            item.snp.makeConstraints({ (make) in
                 make.top.equalTo(self)
                 make.bottom.equalTo(self)
             
@@ -130,7 +130,7 @@ class IndicatorTitleView: UIView {
                 }else
                 {
                     if let oldItem = oldItem {
-                        make.left.equalTo(oldItem.snp_right)
+                        make.left.equalTo(oldItem.snp.right)
                     }
                     make.width.equalTo(buttons.first!)
                 }

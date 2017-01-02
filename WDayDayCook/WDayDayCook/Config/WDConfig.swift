@@ -18,7 +18,7 @@ open class WDConfig {
     open static var uid = ""
     
     static let appGroupID: String = "group.wangju.WdaydayCook"
-    static let firstOpen = false
+    static let firstOpen = true
     
     static let cellTitleViewHeight:CGFloat = 60
     

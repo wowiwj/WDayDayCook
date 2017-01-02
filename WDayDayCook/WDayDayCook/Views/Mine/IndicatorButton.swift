@@ -36,7 +36,7 @@ class IndicatorButton: UIButton {
     override func layoutSubviews() {
         super.layoutSubviews()
         
-        indicatorView.snp_makeConstraints { (make) in
+        indicatorView.snp.makeConstraints { (make) in
             make.leading.equalTo(self)
             make.trailing.equalTo(self)
             make.height.equalTo(indicatorHeight)

@@ -14,7 +14,7 @@ class TabBarViewController: UITabBarController {
         super.viewDidLoad()
         
 
-        selectedIndex = 3
+        //selectedIndex = 3
         
  
     }

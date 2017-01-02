@@ -18,6 +18,8 @@ extension UINavigationController {
         DispatchQueue.main.async(execute: {
             self.pushViewController(showDetailVc, animated: animated)
         })
+        
+        
 
     }
     

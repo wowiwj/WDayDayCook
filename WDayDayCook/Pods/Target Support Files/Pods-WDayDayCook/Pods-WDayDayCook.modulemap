@@ -1,0 +1,6 @@
+framework module Pods_WDayDayCook {
+  umbrella header "Pods-WDayDayCook-umbrella.h"
+
+  export *
+  module * { export * }
+}

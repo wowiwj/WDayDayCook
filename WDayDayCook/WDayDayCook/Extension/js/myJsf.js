@@ -5,11 +5,7 @@
 
 
 var myJsf = {
-    linkRecipeDtl: function(id){
-//        var url = "linkRecipeDtl/"+id;
-//        var url = "wangju://6666666";
-//        document.location = url;
-        
+    linkRecipeDtl: function(id){     
         WebViewJavascriptBridge.showDetailVcId('linkRecipeDtl', id);
     },
     

@@ -54,8 +54,8 @@ class RecipeDiscussListTableViewCell: BaseTitleViewCell {
         
         collectionView.register(UINib(nibName: RecipeDiscussCellID, bundle: nil), forCellWithReuseIdentifier: RecipeDiscussCellID)
 
-        collectionView.snp_makeConstraints { (make) in
-            make.top.equalTo(titleView.snp_bottom)
+        collectionView.snp.makeConstraints { (make) in
+            make.top.equalTo(titleView.snp.bottom)
             make.leading.equalTo(self)
             make.trailing.equalTo(self)
             make.bottom.equalTo(self)

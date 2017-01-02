@@ -202,7 +202,7 @@ class ShowDetailViewController: UIViewController {
     // MARK: - 消息的监听
     @objc fileprivate func backBarButtonClicked()
     {
-        self.navigationController?.popViewController(animated: true)
+        _ = self.navigationController?.popViewController(animated: true)
     }
     
     @objc fileprivate func scrollButtonClicked()
@@ -258,7 +258,7 @@ extension ShowDetailViewController :UITableViewDelegate,UITableViewDataSource
                 cell.requestUrl = result["data"]["loadContent"].stringValue
                 webCell = cell
                 cell.loadFinishedAction = { [unowned self] in
-                    self.tableView.reloadRows(at: [IndexPath(row: 0, section: 0)], with: .none)
+                    self.tableView.reloadRows(at: [IndexPath(row: 0, section: 0)], with: .bottom)
                 }
             }
             return cell

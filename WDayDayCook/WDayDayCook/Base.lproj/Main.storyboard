@@ -1,19 +1,18 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="VFp-yV-CCe">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="VFp-yV-CCe">
     <dependencies>
-        <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
         <!--Tab Bar View Controller-->
         <scene sceneID="u1r-LJ-rEF">
             <objects>
                 <tabBarController id="VFp-yV-CCe" customClass="TabBarViewController" customModule="WDayDayCook" customModuleProvider="target" sceneMemberID="viewController">
-                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" id="Hpi-rN-Mdk">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                     </tabBar>
                     <connections>
                         <segue destination="dSC-RZ-BrA" kind="relationship" relationship="viewControllers" id="v2b-m8-DDM"/>
@@ -31,7 +30,6 @@
             <objects>
                 <navigationController id="dSC-RZ-BrA" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="精选" image="tab_icon_choose_normal~iphone" selectedImage="tab_icon_choose_selected~iphone" id="iXc-uf-Nlg"/>
-                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Y7f-y5-Sh0">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -57,15 +55,14 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="470-rK-eHK">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <connections>
                                     <outlet property="dataSource" destination="qiO-yI-yeD" id="2Nd-sX-YAF"/>
                                     <outlet property="delegate" destination="qiO-yI-yeD" id="DXa-6N-Oza"/>
                                 </connections>
                             </tableView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="470-rK-eHK" secondAttribute="trailing" id="PnL-tk-5Fg"/>
                             <constraint firstItem="470-rK-eHK" firstAttribute="leading" secondItem="6Ik-ap-W46" secondAttribute="leading" id="bT3-sR-qLt"/>
@@ -74,7 +71,6 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="3ot-tk-gCl"/>
-                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
                         <outlet property="tableView" destination="470-rK-eHK" id="L7u-Te-Q3Y"/>
                         <segue destination="IvJ-AA-arm" kind="show" identifier="showDetail" id="vBe-K3-5U0"/>
@@ -99,7 +95,6 @@
             <objects>
                 <navigationController id="lYb-wY-Z8j" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="食谱" image="tab_icon_recipe_normal~iphone" selectedImage="tab_icon_recipe_selected~iphone" id="E5F-Fa-IJ3"/>
-                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="kF0-4i-xGp">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -125,7 +120,6 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="9ci-Wc-AZl">
-                                <rect key="frame" x="0.0" y="64" width="375" height="554"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Ybg-mX-J6y">
                                     <size key="itemSize" width="50" height="50"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -139,7 +133,7 @@
                                 </connections>
                             </collectionView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="9ci-Wc-AZl" firstAttribute="leading" secondItem="BYZ-9s-l5g" secondAttribute="leading" id="DZG-uf-kLt"/>
                             <constraint firstItem="Hph-LB-u3H" firstAttribute="top" secondItem="9ci-Wc-AZl" secondAttribute="bottom" id="FXo-C3-odj"/>
@@ -148,7 +142,6 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="食谱" id="4EN-tG-ecG"/>
-                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
                         <outlet property="collectionView" destination="9ci-Wc-AZl" id="Tqy-rx-UJr"/>
                         <segue destination="Nbv-xF-VxD" kind="show" identifier="showDetail" id="iki-Hc-vXV"/>
@@ -163,7 +156,6 @@
             <objects>
                 <navigationController id="udr-DS-oT3" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="发现" image="tab_icon_discover_normal~iphone" selectedImage="tab_icon_discover_selected~iphone" id="sAJ-sH-QPZ"/>
-                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="2X2-Xf-9s1">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -191,9 +183,9 @@
                         </collectionViewFlowLayout>
                         <cells/>
                         <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="DiscoverHeaderView" id="UqU-BX-69k">
-                            <rect key="frame" x="0.0" y="64" width="375" height="122"/>
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="122"/>
                             <autoresizingMask key="autoresizingMask"/>
-                            <color key="backgroundColor" red="1" green="0.92734757290000003" blue="0.60016107149999998" alpha="1" colorSpace="calibratedRGB"/>
+                            <color key="backgroundColor" red="1" green="0.92734757290000003" blue="0.60016107149999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         </collectionReusableView>
                         <connections>
                             <outlet property="dataSource" destination="pBu-xx-9MH" id="zsa-Pw-u5f"/>
@@ -222,7 +214,6 @@
             <objects>
                 <navigationController navigationBarHidden="YES" id="auT-VW-alj" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="我的" image="tab_icon_mine_normal~iphone" selectedImage="tab_icon_mine_selected~iphone" id="n0g-kN-ciB"/>
-                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="xQd-Xm-8SL">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -248,16 +239,11 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dye-l9-I07">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="200"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="iPhone_personal_head_bg~iphone" translatesAutoresizingMaskIntoConstraints="NO" id="rz6-ya-Bbd">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="200"/>
-                                    </imageView>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="iPhone_personal_head_bg~iphone" translatesAutoresizingMaskIntoConstraints="NO" id="rz6-ya-Bbd"/>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7D5-7c-Sss">
-                                        <rect key="frame" x="138" y="60" width="100" height="80"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AnT-CN-8Aj">
-                                                <rect key="frame" x="0.0" y="0.0" width="100" height="50"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="50" id="9Jj-Eg-ulT"/>
                                                 </constraints>
@@ -267,13 +253,12 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eeA-ci-TWE">
-                                                <rect key="frame" x="0.0" y="50" width="100" height="30"/>
                                                 <state key="normal" title="登录 / 注册">
-                                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 </state>
                                             </button>
                                         </subviews>
-                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstItem="AnT-CN-8Aj" firstAttribute="top" secondItem="7D5-7c-Sss" secondAttribute="top" id="F6l-6C-GeL"/>
                                             <constraint firstItem="AnT-CN-8Aj" firstAttribute="leading" secondItem="7D5-7c-Sss" secondAttribute="leading" id="QOy-Qf-V2n"/>
@@ -286,7 +271,7 @@
                                         </constraints>
                                     </view>
                                 </subviews>
-                                <color key="backgroundColor" red="1" green="0.58797966749999997" blue="0.1465187121" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="1" green="0.58797966749999997" blue="0.1465187121" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="bottom" secondItem="rz6-ya-Bbd" secondAttribute="bottom" id="NCr-Bc-ukR"/>
                                     <constraint firstItem="7D5-7c-Sss" firstAttribute="centerX" secondItem="dye-l9-I07" secondAttribute="centerX" id="P2D-09-4N4"/>
@@ -298,7 +283,7 @@
                                 </constraints>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="dye-l9-I07" secondAttribute="trailing" id="7yl-bA-s9j"/>
                             <constraint firstItem="dye-l9-I07" firstAttribute="leading" secondItem="hdM-H0-wDu" secondAttribute="leading" id="bHz-0L-SoQ"/>
@@ -306,7 +291,6 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="NO5-Nh-oQj"/>
-                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
                         <outlet property="topView" destination="dye-l9-I07" id="7Ll-zO-kOQ"/>
                         <outlet property="topViewHeightCons" destination="ngW-Ik-nod" id="p7N-hk-FoV"/>

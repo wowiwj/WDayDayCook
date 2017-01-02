@@ -52,25 +52,25 @@ class DetailTabbar: UIView {
         
         self.backgroundColor = UIColor.white
         
-        commentButton.snp_makeConstraints { (make) in
+        commentButton.snp.makeConstraints { (make) in
             make.leading.equalTo(self)
             make.top.equalTo(self)
             make.bottom.equalTo(self)
         }
-        favButton.snp_makeConstraints { (make) in
-            make.leading.equalTo(commentButton.snp_trailing)
+        favButton.snp.makeConstraints { (make) in
+            make.leading.equalTo(commentButton.snp.trailing)
             make.top.equalTo(self)
             make.bottom.equalTo(self)
             make.width.equalTo(commentButton)
         }
-        fontButton.snp_makeConstraints { (make) in
-            make.leading.equalTo(favButton.snp_trailing)
+        fontButton.snp.makeConstraints { (make) in
+            make.leading.equalTo(favButton.snp.trailing)
             make.top.equalTo(self)
             make.bottom.equalTo(self)
             make.width.equalTo(commentButton)
         }
-        shareButton.snp_makeConstraints { (make) in
-            make.leading.equalTo(fontButton.snp_trailing)
+        shareButton.snp.makeConstraints { (make) in
+            make.leading.equalTo(fontButton.snp.trailing)
             make.top.equalTo(self)
             make.bottom.equalTo(self)
             make.trailing.equalTo(self)
