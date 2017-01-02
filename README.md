@@ -31,7 +31,7 @@ git clone https://github.com/wowiwj/WDayDayCook.git
  - 安装
    - 第一种方法
    直接拖到项目的Framework目录
-    ![image](./install1.png)
+    ![image](./install.png)
    - 第二种方法
    和项目放到平齐目录,目录结构如下
     ![image](./install2.png)
@@ -40,13 +40,12 @@ git clone https://github.com/wowiwj/WDayDayCook.git
  pod install
 ```
 ### 项目截图
-![image](./show1.png)
-![image](./show2.png)
-![image](./show3.png)
-![image](./show4.png)
-![image](./show5.png)
-![image](./show6.png)
-![image](./show7.png)
+![image](./show1@2x.png)
+![image](./show2@2x.png)
+![image](./show3@2x.png)
+![image](./show4@2x.png)
+![image](./show5@2x.png)
+![image](./show6@2x.png)
 
    
    
